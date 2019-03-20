@@ -1,0 +1,11 @@
+Agent Repository
+
+	recognizes Artifact
+	
+	understands GetArtifacts
+		with Date, Artifact, Tag, Author, Team
+		trained with 'Sentences.txt'
+		
+	understands SelectTeam
+		with Team
+		trained with 'blub.txt'

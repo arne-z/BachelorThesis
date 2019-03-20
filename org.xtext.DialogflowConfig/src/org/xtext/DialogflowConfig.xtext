@@ -1,0 +1,26 @@
+grammar org.xtext.DialogflowConfig with org.eclipse.xtext.common.Terminals
+
+generate dialogflowConfig "http://www.xtext.org/DialogflowConfig"
+
+Agent:
+	'Agent' name=ID
+	elements+=Element*
+;
+
+Element:
+	Intent | Entity
+;
+Intent:
+	'understands' name=ID
+	('with' parameters+=[Entity](',' parameters+=[Entity])*)?
+	'trained' 'with' file=STRING
+;
+	
+Entity:
+	'recognizes' name=ID
+	('is' states+=State)*
+;
+
+State:
+	name=ID
+;
