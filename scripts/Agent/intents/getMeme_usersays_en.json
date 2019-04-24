@@ -1,0 +1,41 @@
+[
+  {
+    "id": "c96ac579-db3e-4350-8c99-7cc7ff4cc12a",
+    "data": [
+    {
+    "text": "get me 1 random meme from",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "memeSet",
+      "alias": "memeSet",
+      "meta": "@memeSet",
+      "userDefined": true
+    }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1556113460
+  	}
+,
+  {
+    "id": "59219f79-1856-4776-8138-40a74ebf21af",
+    "data": [
+    {
+    "text": "show me a meme from",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "memeSet",
+      "alias": "memeSet",
+      "meta": "@memeSet",
+      "userDefined": true
+    }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1556113460
+  	}
+	]

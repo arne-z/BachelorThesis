@@ -43,7 +43,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
 	protected def void generateEntityUsersaysFile(IFileSystemAccess2 fsa, EntityTypeImpl entityType) {
 		if(entityType.dynamic || entityType.builtIn) return;
 		fsa.generateFile(
-			'''entities/«entityType.name»_entires_en.json''',
+			'''entities/«entityType.name»_entries_en.json''',
 			'''
 				[
 					«FOR entity : entityType.values»

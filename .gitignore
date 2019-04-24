@@ -1,6 +1,7 @@
 
 *.env
-
+testagent-bachelor-thesis-key.json
+node_modules/
 ## Eclipse Configuration
 .metadata
 bin/

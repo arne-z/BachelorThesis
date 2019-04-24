@@ -60,7 +60,7 @@ public class DialogflowConfigGenerator extends AbstractGenerator {
     _builder.append("entities/");
     String _name = entityType.getName();
     _builder.append(_name);
-    _builder.append("_entires_en.json");
+    _builder.append("_entries_en.json");
     StringConcatenation _builder_1 = new StringConcatenation();
     _builder_1.append("[");
     _builder_1.newLine();

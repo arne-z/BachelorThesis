@@ -1,0 +1,44 @@
+{
+	"id": "e9b5811c-91b5-4f28-a99f-781e84b9bd9e",
+	  "name": "getMeme",
+	  "auto": true,
+	  "contexts": [
+	  ],
+	  "responses": [
+	    {
+	      "resetContexts": false,
+	      "affectedContexts": [
+	                {
+	                  "name": "memeSet",
+	                  "parameters": {},
+	                  "lifespan": 7
+	                }
+	      ],
+	      "parameters": [
+	        {
+	          "id": "daddb749-a4da-4d9c-b03b-9d1fb057ab4f",
+	          "required": true,
+	          "dataType": "@memeSet",
+	          "name": "memeSet",
+	          "value": "$memeSet",
+	          "isList": false
+	        }
+	      ],
+	      "messages": [
+	        {
+	          "type": 0,
+	          "lang": "en",
+	          "speech": []
+	        }
+	      ],
+	      "defaultResponsePlatforms": {},
+	      "speech": []
+	    }
+	  ],
+	  "priority": 500000,
+	  "webhookUsed": false,
+	  "webhookForSlotFilling": false,
+	  "lastUpdate": 1556113460,
+	  "fallbackIntent": false,
+	  "events": []
+}
