@@ -81,9 +81,9 @@ public class DialogflowConfigAdapterFactory extends AdapterFactoryImpl
         return createAgentAdapter();
       }
       @Override
-      public Adapter caseElement(Element object)
+      public Adapter caseAbstractElement(AbstractElement object)
       {
-        return createElementAdapter();
+        return createAbstractElementAdapter();
       }
       @Override
       public Adapter caseIntent(Intent object)
@@ -91,14 +91,49 @@ public class DialogflowConfigAdapterFactory extends AdapterFactoryImpl
         return createIntentAdapter();
       }
       @Override
+      public Adapter caseInputContext(InputContext object)
+      {
+        return createInputContextAdapter();
+      }
+      @Override
+      public Adapter caseOutputContext(OutputContext object)
+      {
+        return createOutputContextAdapter();
+      }
+      @Override
+      public Adapter caseTrainingPhrase(TrainingPhrase object)
+      {
+        return createTrainingPhraseAdapter();
+      }
+      @Override
+      public Adapter caseAbstractWord(AbstractWord object)
+      {
+        return createAbstractWordAdapter();
+      }
+      @Override
+      public Adapter caseText(Text object)
+      {
+        return createTextAdapter();
+      }
+      @Override
+      public Adapter caseToken(Token object)
+      {
+        return createTokenAdapter();
+      }
+      @Override
+      public Adapter caseParameter(Parameter object)
+      {
+        return createParameterAdapter();
+      }
+      @Override
+      public Adapter caseEntityType(EntityType object)
+      {
+        return createEntityTypeAdapter();
+      }
+      @Override
       public Adapter caseEntity(Entity object)
       {
         return createEntityAdapter();
-      }
-      @Override
-      public Adapter caseState(State object)
-      {
-        return createStateAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -138,16 +173,16 @@ public class DialogflowConfigAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.dialogflowConfig.Element <em>Element</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.dialogflowConfig.AbstractElement <em>Abstract Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.dialogflowConfig.Element
+   * @see org.xtext.dialogflowConfig.AbstractElement
    * @generated
    */
-  public Adapter createElementAdapter()
+  public Adapter createAbstractElementAdapter()
   {
     return null;
   }
@@ -168,6 +203,126 @@ public class DialogflowConfigAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xtext.dialogflowConfig.InputContext <em>Input Context</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.dialogflowConfig.InputContext
+   * @generated
+   */
+  public Adapter createInputContextAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.dialogflowConfig.OutputContext <em>Output Context</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.dialogflowConfig.OutputContext
+   * @generated
+   */
+  public Adapter createOutputContextAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.dialogflowConfig.TrainingPhrase <em>Training Phrase</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.dialogflowConfig.TrainingPhrase
+   * @generated
+   */
+  public Adapter createTrainingPhraseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.dialogflowConfig.AbstractWord <em>Abstract Word</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.dialogflowConfig.AbstractWord
+   * @generated
+   */
+  public Adapter createAbstractWordAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.dialogflowConfig.Text <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.dialogflowConfig.Text
+   * @generated
+   */
+  public Adapter createTextAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.dialogflowConfig.Token <em>Token</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.dialogflowConfig.Token
+   * @generated
+   */
+  public Adapter createTokenAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.dialogflowConfig.Parameter <em>Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.dialogflowConfig.Parameter
+   * @generated
+   */
+  public Adapter createParameterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.dialogflowConfig.EntityType <em>Entity Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.dialogflowConfig.EntityType
+   * @generated
+   */
+  public Adapter createEntityTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xtext.dialogflowConfig.Entity <em>Entity</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -178,21 +333,6 @@ public class DialogflowConfigAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEntityAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.dialogflowConfig.State <em>State</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.dialogflowConfig.State
-   * @generated
-   */
-  public Adapter createStateAdapter()
   {
     return null;
   }

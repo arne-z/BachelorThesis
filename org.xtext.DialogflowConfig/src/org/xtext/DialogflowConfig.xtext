@@ -4,23 +4,69 @@ generate dialogflowConfig "http://www.xtext.org/DialogflowConfig"
 
 Agent:
 	'Agent' name=ID
-	elements+=Element*
+	elements+=AbstractElement*
 ;
 
-Element:
-	Intent | Entity
+AbstractElement:
+	Intent | EntityType
 ;
+
 Intent:
-	'understands' name=ID
-	('with' parameters+=[Entity](',' parameters+=[Entity])*)?
-	'trained' 'with' file=STRING
-;
-	
-Entity:
-	'recognizes' name=ID
-	('is' states+=State)*
+	'Intent' name=ID
+	('parameters' parameters+=Parameter*)?
+	('contexts' (
+		('in' inputContexts+=InputContext+)?
+		('out' affectedContexts+=OutputContext+)?
+	))?
+	(
+		'file' file=STRING 
+		| 'trained' 'with' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*
+	)?
 ;
 
-State:
-	name=ID
+InputContext:
+	type=[EntityType]
+;
+OutputContext:
+	type=[EntityType]('lifespan'lifespan=INT)?
+;
+
+TrainingPhrase:
+	data+=AbstractWord+
+;
+
+AbstractWord:
+	Text | Token
+;
+
+Text:
+	text=STRING
+;
+
+Token:
+	type=[EntityType]
+;
+
+Parameter:
+	type=[EntityType] 
+	('('
+		(required?='required'? & list?='list'?)
+	')')?
+;
+
+EntityType:
+	'Type' name=ID
+	(dynamic?='dynamic' | builtIn?='builtin' |
+	'values' values+=Entity+)
+	('state' 
+		isOverridable?='overridable'?
+		&isEnum?='enum'?
+		&automatedExpansion?='autoexpand'?
+		&allowFuzzyExtraction?='fuzzyextract'?
+	)?
+;
+
+Entity:
+	name=STRING
+	('('synonyms+=STRING*')')?
 ;

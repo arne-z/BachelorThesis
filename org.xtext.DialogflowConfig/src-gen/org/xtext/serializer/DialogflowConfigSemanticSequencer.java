@@ -17,8 +17,13 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransi
 import org.xtext.dialogflowConfig.Agent;
 import org.xtext.dialogflowConfig.DialogflowConfigPackage;
 import org.xtext.dialogflowConfig.Entity;
+import org.xtext.dialogflowConfig.EntityType;
+import org.xtext.dialogflowConfig.InputContext;
 import org.xtext.dialogflowConfig.Intent;
-import org.xtext.dialogflowConfig.State;
+import org.xtext.dialogflowConfig.OutputContext;
+import org.xtext.dialogflowConfig.Text;
+import org.xtext.dialogflowConfig.Token;
+import org.xtext.dialogflowConfig.TrainingPhrase;
 import org.xtext.services.DialogflowConfigGrammarAccess;
 
 @SuppressWarnings("all")
@@ -41,11 +46,29 @@ public class DialogflowConfigSemanticSequencer extends AbstractDelegatingSemanti
 			case DialogflowConfigPackage.ENTITY:
 				sequence_Entity(context, (Entity) semanticObject); 
 				return; 
+			case DialogflowConfigPackage.ENTITY_TYPE:
+				sequence_EntityType(context, (EntityType) semanticObject); 
+				return; 
+			case DialogflowConfigPackage.INPUT_CONTEXT:
+				sequence_InputContext(context, (InputContext) semanticObject); 
+				return; 
 			case DialogflowConfigPackage.INTENT:
 				sequence_Intent(context, (Intent) semanticObject); 
 				return; 
-			case DialogflowConfigPackage.STATE:
-				sequence_State(context, (State) semanticObject); 
+			case DialogflowConfigPackage.OUTPUT_CONTEXT:
+				sequence_OutputContext(context, (OutputContext) semanticObject); 
+				return; 
+			case DialogflowConfigPackage.PARAMETER:
+				sequence_Parameter(context, (org.xtext.dialogflowConfig.Parameter) semanticObject); 
+				return; 
+			case DialogflowConfigPackage.TEXT:
+				sequence_Text(context, (Text) semanticObject); 
+				return; 
+			case DialogflowConfigPackage.TOKEN:
+				sequence_Token(context, (Token) semanticObject); 
+				return; 
+			case DialogflowConfigPackage.TRAINING_PHRASE:
+				sequence_TrainingPhrase(context, (TrainingPhrase) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -57,7 +80,7 @@ public class DialogflowConfigSemanticSequencer extends AbstractDelegatingSemanti
 	 *     Agent returns Agent
 	 *
 	 * Constraint:
-	 *     (name=ID elements+=Element*)
+	 *     (name=ID elements+=AbstractElement*)
 	 */
 	protected void sequence_Agent(ISerializationContext context, Agent semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -66,11 +89,28 @@ public class DialogflowConfigSemanticSequencer extends AbstractDelegatingSemanti
 	
 	/**
 	 * Contexts:
-	 *     Element returns Entity
+	 *     AbstractElement returns EntityType
+	 *     EntityType returns EntityType
+	 *
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         (dynamic?='dynamic' | builtIn?='builtin' | values+=Entity+) 
+	 *         isOverridable?='overridable'? 
+	 *         ((isEnum?='enum' | automatedExpansion?='autoexpand' | allowFuzzyExtraction?='fuzzyextract')? isOverridable?='overridable'?)*
+	 *     )
+	 */
+	protected void sequence_EntityType(ISerializationContext context, EntityType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Entity returns Entity
 	 *
 	 * Constraint:
-	 *     (name=ID states+=State*)
+	 *     (name=STRING synonyms+=STRING*)
 	 */
 	protected void sequence_Entity(ISerializationContext context, Entity semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -79,11 +119,35 @@ public class DialogflowConfigSemanticSequencer extends AbstractDelegatingSemanti
 	
 	/**
 	 * Contexts:
-	 *     Element returns Intent
+	 *     InputContext returns InputContext
+	 *
+	 * Constraint:
+	 *     type=[EntityType|ID]
+	 */
+	protected void sequence_InputContext(ISerializationContext context, InputContext semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DialogflowConfigPackage.Literals.INPUT_CONTEXT__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DialogflowConfigPackage.Literals.INPUT_CONTEXT__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getInputContextAccess().getTypeEntityTypeIDTerminalRuleCall_0_1(), semanticObject.eGet(DialogflowConfigPackage.Literals.INPUT_CONTEXT__TYPE, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     AbstractElement returns Intent
 	 *     Intent returns Intent
 	 *
 	 * Constraint:
-	 *     (name=ID (parameters+=[Entity|ID] parameters+=[Entity|ID]*)? file=STRING)
+	 *     (
+	 *         name=ID 
+	 *         parameters+=Parameter* 
+	 *         inputContexts+=InputContext* 
+	 *         affectedContexts+=OutputContext* 
+	 *         (file=STRING | (trainingPhrases+=TrainingPhrase trainingPhrases+=TrainingPhrase*))?
+	 *     )
 	 */
 	protected void sequence_Intent(ISerializationContext context, Intent semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -92,19 +156,75 @@ public class DialogflowConfigSemanticSequencer extends AbstractDelegatingSemanti
 	
 	/**
 	 * Contexts:
-	 *     State returns State
+	 *     OutputContext returns OutputContext
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (type=[EntityType|ID] lifespan=INT?)
 	 */
-	protected void sequence_State(ISerializationContext context, State semanticObject) {
+	protected void sequence_OutputContext(ISerializationContext context, OutputContext semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Parameter returns Parameter
+	 *
+	 * Constraint:
+	 *     (type=[EntityType|ID] (required?='required' | list?='list')*)
+	 */
+	protected void sequence_Parameter(ISerializationContext context, org.xtext.dialogflowConfig.Parameter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     AbstractWord returns Text
+	 *     Text returns Text
+	 *
+	 * Constraint:
+	 *     text=STRING
+	 */
+	protected void sequence_Text(ISerializationContext context, Text semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DialogflowConfigPackage.Literals.STATE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DialogflowConfigPackage.Literals.STATE__NAME));
+			if (transientValues.isValueTransient(semanticObject, DialogflowConfigPackage.Literals.TEXT__TEXT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DialogflowConfigPackage.Literals.TEXT__TEXT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStateAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getTextAccess().getTextSTRINGTerminalRuleCall_0(), semanticObject.getText());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     AbstractWord returns Token
+	 *     Token returns Token
+	 *
+	 * Constraint:
+	 *     type=[EntityType|ID]
+	 */
+	protected void sequence_Token(ISerializationContext context, Token semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DialogflowConfigPackage.Literals.TOKEN__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DialogflowConfigPackage.Literals.TOKEN__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTokenAccess().getTypeEntityTypeIDTerminalRuleCall_0_1(), semanticObject.eGet(DialogflowConfigPackage.Literals.TOKEN__TYPE, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TrainingPhrase returns TrainingPhrase
+	 *
+	 * Constraint:
+	 *     data+=AbstractWord+
+	 */
+	protected void sequence_TrainingPhrase(ISerializationContext context, TrainingPhrase semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

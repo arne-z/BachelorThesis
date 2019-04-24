@@ -10,6 +10,9 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
+import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.xtext.services.DialogflowConfigGrammarAccess;
@@ -18,10 +21,22 @@ import org.xtext.services.DialogflowConfigGrammarAccess;
 public class DialogflowConfigSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected DialogflowConfigGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_EntityType_StateKeyword_3_0_0_a;
+	protected AbstractElementAlias match_EntityType_StateKeyword_3_0_0_p;
+	protected AbstractElementAlias match_Entity___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q;
+	protected AbstractElementAlias match_Intent_ContextsKeyword_3_0_q;
+	protected AbstractElementAlias match_Intent_ParametersKeyword_2_0_q;
+	protected AbstractElementAlias match_Parameter___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (DialogflowConfigGrammarAccess) access;
+		match_EntityType_StateKeyword_3_0_0_a = new TokenAlias(true, true, grammarAccess.getEntityTypeAccess().getStateKeyword_3_0_0());
+		match_EntityType_StateKeyword_3_0_0_p = new TokenAlias(true, false, grammarAccess.getEntityTypeAccess().getStateKeyword_3_0_0());
+		match_Entity___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getEntityAccess().getLeftParenthesisKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getEntityAccess().getRightParenthesisKeyword_1_2()));
+		match_Intent_ContextsKeyword_3_0_q = new TokenAlias(false, true, grammarAccess.getIntentAccess().getContextsKeyword_3_0());
+		match_Intent_ParametersKeyword_2_0_q = new TokenAlias(false, true, grammarAccess.getIntentAccess().getParametersKeyword_2_0());
+		match_Parameter___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getParameterAccess().getLeftParenthesisKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getParameterAccess().getRightParenthesisKeyword_1_2()));
 	}
 	
 	@Override
@@ -36,8 +51,128 @@ public class DialogflowConfigSyntacticSequencer extends AbstractSyntacticSequenc
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			acceptNodes(getLastNavigableState(), syntaxNodes);
+			if (match_EntityType_StateKeyword_3_0_0_a.equals(syntax))
+				emit_EntityType_StateKeyword_3_0_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_EntityType_StateKeyword_3_0_0_p.equals(syntax))
+				emit_EntityType_StateKeyword_3_0_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Entity___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q.equals(syntax))
+				emit_Entity___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Intent_ContextsKeyword_3_0_q.equals(syntax))
+				emit_Intent_ContextsKeyword_3_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Intent_ParametersKeyword_2_0_q.equals(syntax))
+				emit_Intent_ParametersKeyword_2_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Parameter___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q.equals(syntax))
+				emit_Parameter___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     'state'*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     allowFuzzyExtraction?='fuzzyextract' (ambiguity) (rule end)
+	 *     allowFuzzyExtraction?='fuzzyextract' (ambiguity) allowFuzzyExtraction?='fuzzyextract'
+	 *     allowFuzzyExtraction?='fuzzyextract' (ambiguity) automatedExpansion?='autoexpand'
+	 *     allowFuzzyExtraction?='fuzzyextract' (ambiguity) isEnum?='enum'
+	 *     automatedExpansion?='autoexpand' (ambiguity) (rule end)
+	 *     automatedExpansion?='autoexpand' (ambiguity) allowFuzzyExtraction?='fuzzyextract'
+	 *     automatedExpansion?='autoexpand' (ambiguity) automatedExpansion?='autoexpand'
+	 *     automatedExpansion?='autoexpand' (ambiguity) isEnum?='enum'
+	 *     builtIn?='builtin' (ambiguity) (rule end)
+	 *     builtIn?='builtin' (ambiguity) allowFuzzyExtraction?='fuzzyextract'
+	 *     builtIn?='builtin' (ambiguity) automatedExpansion?='autoexpand'
+	 *     builtIn?='builtin' (ambiguity) isEnum?='enum'
+	 *     dynamic?='dynamic' (ambiguity) (rule end)
+	 *     dynamic?='dynamic' (ambiguity) allowFuzzyExtraction?='fuzzyextract'
+	 *     dynamic?='dynamic' (ambiguity) automatedExpansion?='autoexpand'
+	 *     dynamic?='dynamic' (ambiguity) isEnum?='enum'
+	 *     isEnum?='enum' (ambiguity) (rule end)
+	 *     isEnum?='enum' (ambiguity) allowFuzzyExtraction?='fuzzyextract'
+	 *     isEnum?='enum' (ambiguity) automatedExpansion?='autoexpand'
+	 *     isEnum?='enum' (ambiguity) isEnum?='enum'
+	 *     isOverridable?='overridable' (ambiguity) (rule end)
+	 *     isOverridable?='overridable' (ambiguity) allowFuzzyExtraction?='fuzzyextract'
+	 *     isOverridable?='overridable' (ambiguity) automatedExpansion?='autoexpand'
+	 *     isOverridable?='overridable' (ambiguity) isEnum?='enum'
+	 *     values+=Entity (ambiguity) (rule end)
+	 *     values+=Entity (ambiguity) allowFuzzyExtraction?='fuzzyextract'
+	 *     values+=Entity (ambiguity) automatedExpansion?='autoexpand'
+	 *     values+=Entity (ambiguity) isEnum?='enum'
+	 */
+	protected void emit_EntityType_StateKeyword_3_0_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'state'+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     allowFuzzyExtraction?='fuzzyextract' (ambiguity) isOverridable?='overridable'
+	 *     automatedExpansion?='autoexpand' (ambiguity) isOverridable?='overridable'
+	 *     builtIn?='builtin' (ambiguity) isOverridable?='overridable'
+	 *     dynamic?='dynamic' (ambiguity) isOverridable?='overridable'
+	 *     isEnum?='enum' (ambiguity) isOverridable?='overridable'
+	 *     isOverridable?='overridable' (ambiguity) isOverridable?='overridable'
+	 *     values+=Entity (ambiguity) isOverridable?='overridable'
+	 */
+	protected void emit_EntityType_StateKeyword_3_0_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('(' ')')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=STRING (ambiguity) (rule end)
+	 */
+	protected void emit_Entity___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'contexts'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=ID 'parameters'? (ambiguity) 'file' file=STRING
+	 *     name=ID 'parameters'? (ambiguity) 'trained' 'with' trainingPhrases+=TrainingPhrase
+	 *     name=ID 'parameters'? (ambiguity) (rule end)
+	 *     parameters+=Parameter (ambiguity) 'file' file=STRING
+	 *     parameters+=Parameter (ambiguity) 'trained' 'with' trainingPhrases+=TrainingPhrase
+	 *     parameters+=Parameter (ambiguity) (rule end)
+	 */
+	protected void emit_Intent_ContextsKeyword_3_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'parameters'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=ID (ambiguity) 'contexts' 'in' inputContexts+=InputContext
+	 *     name=ID (ambiguity) 'contexts' 'out' affectedContexts+=OutputContext
+	 *     name=ID (ambiguity) 'contexts'? 'file' file=STRING
+	 *     name=ID (ambiguity) 'contexts'? 'trained' 'with' trainingPhrases+=TrainingPhrase
+	 *     name=ID (ambiguity) 'contexts'? (rule end)
+	 */
+	protected void emit_Intent_ParametersKeyword_2_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('(' ')')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     type=[EntityType|ID] (ambiguity) (rule end)
+	 */
+	protected void emit_Parameter___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 }

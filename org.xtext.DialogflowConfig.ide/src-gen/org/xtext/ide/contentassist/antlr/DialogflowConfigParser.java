@@ -31,22 +31,59 @@ public class DialogflowConfigParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, DialogflowConfigGrammarAccess grammarAccess) {
-			builder.put(grammarAccess.getElementAccess().getAlternatives(), "rule__Element__Alternatives");
+			builder.put(grammarAccess.getAbstractElementAccess().getAlternatives(), "rule__AbstractElement__Alternatives");
+			builder.put(grammarAccess.getIntentAccess().getAlternatives_4(), "rule__Intent__Alternatives_4");
+			builder.put(grammarAccess.getAbstractWordAccess().getAlternatives(), "rule__AbstractWord__Alternatives");
+			builder.put(grammarAccess.getEntityTypeAccess().getAlternatives_2(), "rule__EntityType__Alternatives_2");
 			builder.put(grammarAccess.getAgentAccess().getGroup(), "rule__Agent__Group__0");
 			builder.put(grammarAccess.getIntentAccess().getGroup(), "rule__Intent__Group__0");
 			builder.put(grammarAccess.getIntentAccess().getGroup_2(), "rule__Intent__Group_2__0");
-			builder.put(grammarAccess.getIntentAccess().getGroup_2_2(), "rule__Intent__Group_2_2__0");
+			builder.put(grammarAccess.getIntentAccess().getGroup_3(), "rule__Intent__Group_3__0");
+			builder.put(grammarAccess.getIntentAccess().getGroup_3_1(), "rule__Intent__Group_3_1__0");
+			builder.put(grammarAccess.getIntentAccess().getGroup_3_1_0(), "rule__Intent__Group_3_1_0__0");
+			builder.put(grammarAccess.getIntentAccess().getGroup_3_1_1(), "rule__Intent__Group_3_1_1__0");
+			builder.put(grammarAccess.getIntentAccess().getGroup_4_0(), "rule__Intent__Group_4_0__0");
+			builder.put(grammarAccess.getIntentAccess().getGroup_4_1(), "rule__Intent__Group_4_1__0");
+			builder.put(grammarAccess.getIntentAccess().getGroup_4_1_3(), "rule__Intent__Group_4_1_3__0");
+			builder.put(grammarAccess.getOutputContextAccess().getGroup(), "rule__OutputContext__Group__0");
+			builder.put(grammarAccess.getOutputContextAccess().getGroup_1(), "rule__OutputContext__Group_1__0");
+			builder.put(grammarAccess.getParameterAccess().getGroup(), "rule__Parameter__Group__0");
+			builder.put(grammarAccess.getParameterAccess().getGroup_1(), "rule__Parameter__Group_1__0");
+			builder.put(grammarAccess.getEntityTypeAccess().getGroup(), "rule__EntityType__Group__0");
+			builder.put(grammarAccess.getEntityTypeAccess().getGroup_2_2(), "rule__EntityType__Group_2_2__0");
+			builder.put(grammarAccess.getEntityTypeAccess().getGroup_3_0(), "rule__EntityType__Group_3_0__0");
 			builder.put(grammarAccess.getEntityAccess().getGroup(), "rule__Entity__Group__0");
-			builder.put(grammarAccess.getEntityAccess().getGroup_2(), "rule__Entity__Group_2__0");
+			builder.put(grammarAccess.getEntityAccess().getGroup_1(), "rule__Entity__Group_1__0");
 			builder.put(grammarAccess.getAgentAccess().getNameAssignment_1(), "rule__Agent__NameAssignment_1");
 			builder.put(grammarAccess.getAgentAccess().getElementsAssignment_2(), "rule__Agent__ElementsAssignment_2");
 			builder.put(grammarAccess.getIntentAccess().getNameAssignment_1(), "rule__Intent__NameAssignment_1");
 			builder.put(grammarAccess.getIntentAccess().getParametersAssignment_2_1(), "rule__Intent__ParametersAssignment_2_1");
-			builder.put(grammarAccess.getIntentAccess().getParametersAssignment_2_2_1(), "rule__Intent__ParametersAssignment_2_2_1");
-			builder.put(grammarAccess.getIntentAccess().getFileAssignment_5(), "rule__Intent__FileAssignment_5");
-			builder.put(grammarAccess.getEntityAccess().getNameAssignment_1(), "rule__Entity__NameAssignment_1");
-			builder.put(grammarAccess.getEntityAccess().getStatesAssignment_2_1(), "rule__Entity__StatesAssignment_2_1");
-			builder.put(grammarAccess.getStateAccess().getNameAssignment(), "rule__State__NameAssignment");
+			builder.put(grammarAccess.getIntentAccess().getInputContextsAssignment_3_1_0_1(), "rule__Intent__InputContextsAssignment_3_1_0_1");
+			builder.put(grammarAccess.getIntentAccess().getAffectedContextsAssignment_3_1_1_1(), "rule__Intent__AffectedContextsAssignment_3_1_1_1");
+			builder.put(grammarAccess.getIntentAccess().getFileAssignment_4_0_1(), "rule__Intent__FileAssignment_4_0_1");
+			builder.put(grammarAccess.getIntentAccess().getTrainingPhrasesAssignment_4_1_2(), "rule__Intent__TrainingPhrasesAssignment_4_1_2");
+			builder.put(grammarAccess.getIntentAccess().getTrainingPhrasesAssignment_4_1_3_1(), "rule__Intent__TrainingPhrasesAssignment_4_1_3_1");
+			builder.put(grammarAccess.getInputContextAccess().getTypeAssignment(), "rule__InputContext__TypeAssignment");
+			builder.put(grammarAccess.getOutputContextAccess().getTypeAssignment_0(), "rule__OutputContext__TypeAssignment_0");
+			builder.put(grammarAccess.getOutputContextAccess().getLifespanAssignment_1_1(), "rule__OutputContext__LifespanAssignment_1_1");
+			builder.put(grammarAccess.getTrainingPhraseAccess().getDataAssignment(), "rule__TrainingPhrase__DataAssignment");
+			builder.put(grammarAccess.getTextAccess().getTextAssignment(), "rule__Text__TextAssignment");
+			builder.put(grammarAccess.getTokenAccess().getTypeAssignment(), "rule__Token__TypeAssignment");
+			builder.put(grammarAccess.getParameterAccess().getTypeAssignment_0(), "rule__Parameter__TypeAssignment_0");
+			builder.put(grammarAccess.getParameterAccess().getRequiredAssignment_1_1_0(), "rule__Parameter__RequiredAssignment_1_1_0");
+			builder.put(grammarAccess.getParameterAccess().getListAssignment_1_1_1(), "rule__Parameter__ListAssignment_1_1_1");
+			builder.put(grammarAccess.getEntityTypeAccess().getNameAssignment_1(), "rule__EntityType__NameAssignment_1");
+			builder.put(grammarAccess.getEntityTypeAccess().getDynamicAssignment_2_0(), "rule__EntityType__DynamicAssignment_2_0");
+			builder.put(grammarAccess.getEntityTypeAccess().getBuiltInAssignment_2_1(), "rule__EntityType__BuiltInAssignment_2_1");
+			builder.put(grammarAccess.getEntityTypeAccess().getValuesAssignment_2_2_1(), "rule__EntityType__ValuesAssignment_2_2_1");
+			builder.put(grammarAccess.getEntityTypeAccess().getIsOverridableAssignment_3_0_1(), "rule__EntityType__IsOverridableAssignment_3_0_1");
+			builder.put(grammarAccess.getEntityTypeAccess().getIsEnumAssignment_3_1(), "rule__EntityType__IsEnumAssignment_3_1");
+			builder.put(grammarAccess.getEntityTypeAccess().getAutomatedExpansionAssignment_3_2(), "rule__EntityType__AutomatedExpansionAssignment_3_2");
+			builder.put(grammarAccess.getEntityTypeAccess().getAllowFuzzyExtractionAssignment_3_3(), "rule__EntityType__AllowFuzzyExtractionAssignment_3_3");
+			builder.put(grammarAccess.getEntityAccess().getNameAssignment_0(), "rule__Entity__NameAssignment_0");
+			builder.put(grammarAccess.getEntityAccess().getSynonymsAssignment_1_1(), "rule__Entity__SynonymsAssignment_1_1");
+			builder.put(grammarAccess.getParameterAccess().getUnorderedGroup_1_1(), "rule__Parameter__UnorderedGroup_1_1");
+			builder.put(grammarAccess.getEntityTypeAccess().getUnorderedGroup_3(), "rule__EntityType__UnorderedGroup_3");
 		}
 	}
 	

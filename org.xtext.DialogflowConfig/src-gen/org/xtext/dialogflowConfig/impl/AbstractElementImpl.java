@@ -3,37 +3,30 @@
  */
 package org.xtext.dialogflowConfig.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
-
+import org.xtext.dialogflowConfig.AbstractElement;
 import org.xtext.dialogflowConfig.DialogflowConfigPackage;
-import org.xtext.dialogflowConfig.Entity;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Entity</b></em>'.
+ * An implementation of the model object '<em><b>Abstract Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.dialogflowConfig.impl.EntityImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.dialogflowConfig.impl.EntityImpl#getSynonyms <em>Synonyms</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.impl.AbstractElementImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
+public class AbstractElementImpl extends MinimalEObjectImpl.Container implements AbstractElement
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -56,21 +49,11 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getSynonyms() <em>Synonyms</em>}' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSynonyms()
-   * @generated
-   * @ordered
-   */
-  protected EList<String> synonyms;
-
-  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EntityImpl()
+  protected AbstractElementImpl()
   {
     super();
   }
@@ -83,7 +66,7 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   @Override
   protected EClass eStaticClass()
   {
-    return DialogflowConfigPackage.Literals.ENTITY;
+    return DialogflowConfigPackage.Literals.ABSTRACT_ELEMENT;
   }
 
   /**
@@ -108,22 +91,7 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DialogflowConfigPackage.ENTITY__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<String> getSynonyms()
-  {
-    if (synonyms == null)
-    {
-      synonyms = new EDataTypeEList<String>(String.class, this, DialogflowConfigPackage.ENTITY__SYNONYMS);
-    }
-    return synonyms;
+      eNotify(new ENotificationImpl(this, Notification.SET, DialogflowConfigPackage.ABSTRACT_ELEMENT__NAME, oldName, name));
   }
 
   /**
@@ -136,10 +104,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   {
     switch (featureID)
     {
-      case DialogflowConfigPackage.ENTITY__NAME:
+      case DialogflowConfigPackage.ABSTRACT_ELEMENT__NAME:
         return getName();
-      case DialogflowConfigPackage.ENTITY__SYNONYMS:
-        return getSynonyms();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -149,18 +115,13 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case DialogflowConfigPackage.ENTITY__NAME:
+      case DialogflowConfigPackage.ABSTRACT_ELEMENT__NAME:
         setName((String)newValue);
-        return;
-      case DialogflowConfigPackage.ENTITY__SYNONYMS:
-        getSynonyms().clear();
-        getSynonyms().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -176,11 +137,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   {
     switch (featureID)
     {
-      case DialogflowConfigPackage.ENTITY__NAME:
+      case DialogflowConfigPackage.ABSTRACT_ELEMENT__NAME:
         setName(NAME_EDEFAULT);
-        return;
-      case DialogflowConfigPackage.ENTITY__SYNONYMS:
-        getSynonyms().clear();
         return;
     }
     super.eUnset(featureID);
@@ -196,10 +154,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   {
     switch (featureID)
     {
-      case DialogflowConfigPackage.ENTITY__NAME:
+      case DialogflowConfigPackage.ABSTRACT_ELEMENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case DialogflowConfigPackage.ENTITY__SYNONYMS:
-        return synonyms != null && !synonyms.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -217,10 +173,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", synonyms: ");
-    result.append(synonyms);
     result.append(')');
     return result.toString();
   }
 
-} //EntityImpl
+} //AbstractElementImpl

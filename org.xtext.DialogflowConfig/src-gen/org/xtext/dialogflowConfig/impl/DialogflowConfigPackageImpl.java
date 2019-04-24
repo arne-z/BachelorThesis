@@ -10,13 +10,20 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.xtext.dialogflowConfig.AbstractElement;
+import org.xtext.dialogflowConfig.AbstractWord;
 import org.xtext.dialogflowConfig.Agent;
 import org.xtext.dialogflowConfig.DialogflowConfigFactory;
 import org.xtext.dialogflowConfig.DialogflowConfigPackage;
-import org.xtext.dialogflowConfig.Element;
 import org.xtext.dialogflowConfig.Entity;
+import org.xtext.dialogflowConfig.EntityType;
+import org.xtext.dialogflowConfig.InputContext;
 import org.xtext.dialogflowConfig.Intent;
-import org.xtext.dialogflowConfig.State;
+import org.xtext.dialogflowConfig.OutputContext;
+import org.xtext.dialogflowConfig.Parameter;
+import org.xtext.dialogflowConfig.Text;
+import org.xtext.dialogflowConfig.Token;
+import org.xtext.dialogflowConfig.TrainingPhrase;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +45,7 @@ public class DialogflowConfigPackageImpl extends EPackageImpl implements Dialogf
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass elementEClass = null;
+  private EClass abstractElementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -52,14 +59,63 @@ public class DialogflowConfigPackageImpl extends EPackageImpl implements Dialogf
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass entityEClass = null;
+  private EClass inputContextEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass stateEClass = null;
+  private EClass outputContextEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass trainingPhraseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass abstractWordEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass textEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tokenEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parameterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass entityTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass entityEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -163,9 +219,9 @@ public class DialogflowConfigPackageImpl extends EPackageImpl implements Dialogf
    * @generated
    */
   @Override
-  public EClass getElement()
+  public EClass getAbstractElement()
   {
-    return elementEClass;
+    return abstractElementEClass;
   }
 
   /**
@@ -174,9 +230,9 @@ public class DialogflowConfigPackageImpl extends EPackageImpl implements Dialogf
    * @generated
    */
   @Override
-  public EAttribute getElement_Name()
+  public EAttribute getAbstractElement_Name()
   {
-    return (EAttribute)elementEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)abstractElementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -207,9 +263,306 @@ public class DialogflowConfigPackageImpl extends EPackageImpl implements Dialogf
    * @generated
    */
   @Override
+  public EReference getIntent_InputContexts()
+  {
+    return (EReference)intentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIntent_AffectedContexts()
+  {
+    return (EReference)intentEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getIntent_File()
   {
-    return (EAttribute)intentEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)intentEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIntent_TrainingPhrases()
+  {
+    return (EReference)intentEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getInputContext()
+  {
+    return inputContextEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getInputContext_Type()
+  {
+    return (EReference)inputContextEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getOutputContext()
+  {
+    return outputContextEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getOutputContext_Type()
+  {
+    return (EReference)outputContextEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getOutputContext_Lifespan()
+  {
+    return (EAttribute)outputContextEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTrainingPhrase()
+  {
+    return trainingPhraseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTrainingPhrase_Data()
+  {
+    return (EReference)trainingPhraseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAbstractWord()
+  {
+    return abstractWordEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getText()
+  {
+    return textEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getText_Text()
+  {
+    return (EAttribute)textEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getToken()
+  {
+    return tokenEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getToken_Type()
+  {
+    return (EReference)tokenEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getParameter()
+  {
+    return parameterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getParameter_Type()
+  {
+    return (EReference)parameterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getParameter_Required()
+  {
+    return (EAttribute)parameterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getParameter_List()
+  {
+    return (EAttribute)parameterEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEntityType()
+  {
+    return entityTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEntityType_Dynamic()
+  {
+    return (EAttribute)entityTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEntityType_BuiltIn()
+  {
+    return (EAttribute)entityTypeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEntityType_Values()
+  {
+    return (EReference)entityTypeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEntityType_IsOverridable()
+  {
+    return (EAttribute)entityTypeEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEntityType_IsEnum()
+  {
+    return (EAttribute)entityTypeEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEntityType_AutomatedExpansion()
+  {
+    return (EAttribute)entityTypeEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEntityType_AllowFuzzyExtraction()
+  {
+    return (EAttribute)entityTypeEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -229,9 +582,9 @@ public class DialogflowConfigPackageImpl extends EPackageImpl implements Dialogf
    * @generated
    */
   @Override
-  public EReference getEntity_States()
+  public EAttribute getEntity_Name()
   {
-    return (EReference)entityEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)entityEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -240,20 +593,9 @@ public class DialogflowConfigPackageImpl extends EPackageImpl implements Dialogf
    * @generated
    */
   @Override
-  public EClass getState()
+  public EAttribute getEntity_Synonyms()
   {
-    return stateEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getState_Name()
-  {
-    return (EAttribute)stateEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)entityEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -291,18 +633,51 @@ public class DialogflowConfigPackageImpl extends EPackageImpl implements Dialogf
     createEAttribute(agentEClass, AGENT__NAME);
     createEReference(agentEClass, AGENT__ELEMENTS);
 
-    elementEClass = createEClass(ELEMENT);
-    createEAttribute(elementEClass, ELEMENT__NAME);
+    abstractElementEClass = createEClass(ABSTRACT_ELEMENT);
+    createEAttribute(abstractElementEClass, ABSTRACT_ELEMENT__NAME);
 
     intentEClass = createEClass(INTENT);
     createEReference(intentEClass, INTENT__PARAMETERS);
+    createEReference(intentEClass, INTENT__INPUT_CONTEXTS);
+    createEReference(intentEClass, INTENT__AFFECTED_CONTEXTS);
     createEAttribute(intentEClass, INTENT__FILE);
+    createEReference(intentEClass, INTENT__TRAINING_PHRASES);
+
+    inputContextEClass = createEClass(INPUT_CONTEXT);
+    createEReference(inputContextEClass, INPUT_CONTEXT__TYPE);
+
+    outputContextEClass = createEClass(OUTPUT_CONTEXT);
+    createEReference(outputContextEClass, OUTPUT_CONTEXT__TYPE);
+    createEAttribute(outputContextEClass, OUTPUT_CONTEXT__LIFESPAN);
+
+    trainingPhraseEClass = createEClass(TRAINING_PHRASE);
+    createEReference(trainingPhraseEClass, TRAINING_PHRASE__DATA);
+
+    abstractWordEClass = createEClass(ABSTRACT_WORD);
+
+    textEClass = createEClass(TEXT);
+    createEAttribute(textEClass, TEXT__TEXT);
+
+    tokenEClass = createEClass(TOKEN);
+    createEReference(tokenEClass, TOKEN__TYPE);
+
+    parameterEClass = createEClass(PARAMETER);
+    createEReference(parameterEClass, PARAMETER__TYPE);
+    createEAttribute(parameterEClass, PARAMETER__REQUIRED);
+    createEAttribute(parameterEClass, PARAMETER__LIST);
+
+    entityTypeEClass = createEClass(ENTITY_TYPE);
+    createEAttribute(entityTypeEClass, ENTITY_TYPE__DYNAMIC);
+    createEAttribute(entityTypeEClass, ENTITY_TYPE__BUILT_IN);
+    createEReference(entityTypeEClass, ENTITY_TYPE__VALUES);
+    createEAttribute(entityTypeEClass, ENTITY_TYPE__IS_OVERRIDABLE);
+    createEAttribute(entityTypeEClass, ENTITY_TYPE__IS_ENUM);
+    createEAttribute(entityTypeEClass, ENTITY_TYPE__AUTOMATED_EXPANSION);
+    createEAttribute(entityTypeEClass, ENTITY_TYPE__ALLOW_FUZZY_EXTRACTION);
 
     entityEClass = createEClass(ENTITY);
-    createEReference(entityEClass, ENTITY__STATES);
-
-    stateEClass = createEClass(STATE);
-    createEAttribute(stateEClass, STATE__NAME);
+    createEAttribute(entityEClass, ENTITY__NAME);
+    createEAttribute(entityEClass, ENTITY__SYNONYMS);
   }
 
   /**
@@ -334,26 +709,61 @@ public class DialogflowConfigPackageImpl extends EPackageImpl implements Dialogf
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    intentEClass.getESuperTypes().add(this.getElement());
-    entityEClass.getESuperTypes().add(this.getElement());
+    intentEClass.getESuperTypes().add(this.getAbstractElement());
+    textEClass.getESuperTypes().add(this.getAbstractWord());
+    tokenEClass.getESuperTypes().add(this.getAbstractWord());
+    entityTypeEClass.getESuperTypes().add(this.getAbstractElement());
 
     // Initialize classes and features; add operations and parameters
     initEClass(agentEClass, Agent.class, "Agent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAgent_Name(), ecorePackage.getEString(), "name", null, 0, 1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAgent_Elements(), this.getElement(), null, "elements", null, 0, -1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAgent_Elements(), this.getAbstractElement(), null, "elements", null, 0, -1, Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(abstractElementEClass, AbstractElement.class, "AbstractElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAbstractElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, AbstractElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intentEClass, Intent.class, "Intent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getIntent_Parameters(), this.getEntity(), null, "parameters", null, 0, -1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIntent_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIntent_InputContexts(), this.getInputContext(), null, "inputContexts", null, 0, -1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIntent_AffectedContexts(), this.getOutputContext(), null, "affectedContexts", null, 0, -1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getIntent_File(), ecorePackage.getEString(), "file", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIntent_TrainingPhrases(), this.getTrainingPhrase(), null, "trainingPhrases", null, 0, -1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(inputContextEClass, InputContext.class, "InputContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getInputContext_Type(), this.getEntityType(), null, "type", null, 0, 1, InputContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(outputContextEClass, OutputContext.class, "OutputContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOutputContext_Type(), this.getEntityType(), null, "type", null, 0, 1, OutputContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOutputContext_Lifespan(), ecorePackage.getEInt(), "lifespan", null, 0, 1, OutputContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(trainingPhraseEClass, TrainingPhrase.class, "TrainingPhrase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTrainingPhrase_Data(), this.getAbstractWord(), null, "data", null, 0, -1, TrainingPhrase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(abstractWordEClass, AbstractWord.class, "AbstractWord", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(textEClass, Text.class, "Text", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getText_Text(), ecorePackage.getEString(), "text", null, 0, 1, Text.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(tokenEClass, Token.class, "Token", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getToken_Type(), this.getEntityType(), null, "type", null, 0, 1, Token.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParameter_Type(), this.getEntityType(), null, "type", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParameter_Required(), ecorePackage.getEBoolean(), "required", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParameter_List(), ecorePackage.getEBoolean(), "list", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(entityTypeEClass, EntityType.class, "EntityType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEntityType_Dynamic(), ecorePackage.getEBoolean(), "dynamic", null, 0, 1, EntityType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntityType_BuiltIn(), ecorePackage.getEBoolean(), "builtIn", null, 0, 1, EntityType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntityType_Values(), this.getEntity(), null, "values", null, 0, -1, EntityType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntityType_IsOverridable(), ecorePackage.getEBoolean(), "isOverridable", null, 0, 1, EntityType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntityType_IsEnum(), ecorePackage.getEBoolean(), "isEnum", null, 0, 1, EntityType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntityType_AutomatedExpansion(), ecorePackage.getEBoolean(), "automatedExpansion", null, 0, 1, EntityType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntityType_AllowFuzzyExtraction(), ecorePackage.getEBoolean(), "allowFuzzyExtraction", null, 0, 1, EntityType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEntity_States(), this.getState(), null, "states", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getState_Name(), ecorePackage.getEString(), "name", null, 0, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntity_Synonyms(), ecorePackage.getEString(), "synonyms", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

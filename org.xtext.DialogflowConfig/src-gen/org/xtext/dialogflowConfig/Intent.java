@@ -15,30 +15,65 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.dialogflowConfig.Intent#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.Intent#getInputContexts <em>Input Contexts</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.Intent#getAffectedContexts <em>Affected Contexts</em>}</li>
  *   <li>{@link org.xtext.dialogflowConfig.Intent#getFile <em>File</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.Intent#getTrainingPhrases <em>Training Phrases</em>}</li>
  * </ul>
  *
  * @see org.xtext.dialogflowConfig.DialogflowConfigPackage#getIntent()
  * @model
  * @generated
  */
-public interface Intent extends Element
+public interface Intent extends AbstractElement
 {
   /**
-   * Returns the value of the '<em><b>Parameters</b></em>' reference list.
-   * The list contents are of type {@link org.xtext.dialogflowConfig.Entity}.
+   * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.dialogflowConfig.Parameter}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Parameters</em>' reference list isn't clear,
+   * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameters</em>' reference list.
+   * @return the value of the '<em>Parameters</em>' containment reference list.
    * @see org.xtext.dialogflowConfig.DialogflowConfigPackage#getIntent_Parameters()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  EList<Entity> getParameters();
+  EList<Parameter> getParameters();
+
+  /**
+   * Returns the value of the '<em><b>Input Contexts</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.dialogflowConfig.InputContext}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Input Contexts</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Input Contexts</em>' containment reference list.
+   * @see org.xtext.dialogflowConfig.DialogflowConfigPackage#getIntent_InputContexts()
+   * @model containment="true"
+   * @generated
+   */
+  EList<InputContext> getInputContexts();
+
+  /**
+   * Returns the value of the '<em><b>Affected Contexts</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.dialogflowConfig.OutputContext}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Affected Contexts</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Affected Contexts</em>' containment reference list.
+   * @see org.xtext.dialogflowConfig.DialogflowConfigPackage#getIntent_AffectedContexts()
+   * @model containment="true"
+   * @generated
+   */
+  EList<OutputContext> getAffectedContexts();
 
   /**
    * Returns the value of the '<em><b>File</b></em>' attribute.
@@ -65,5 +100,21 @@ public interface Intent extends Element
    * @generated
    */
   void setFile(String value);
+
+  /**
+   * Returns the value of the '<em><b>Training Phrases</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.dialogflowConfig.TrainingPhrase}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Training Phrases</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Training Phrases</em>' containment reference list.
+   * @see org.xtext.dialogflowConfig.DialogflowConfigPackage#getIntent_TrainingPhrases()
+   * @model containment="true"
+   * @generated
+   */
+  EList<TrainingPhrase> getTrainingPhrases();
 
 } // Intent

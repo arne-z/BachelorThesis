@@ -33,13 +33,13 @@ public interface DialogflowConfigFactory extends EFactory
   Agent createAgent();
 
   /**
-   * Returns a new object of class '<em>Element</em>'.
+   * Returns a new object of class '<em>Abstract Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Element</em>'.
+   * @return a new object of class '<em>Abstract Element</em>'.
    * @generated
    */
-  Element createElement();
+  AbstractElement createAbstractElement();
 
   /**
    * Returns a new object of class '<em>Intent</em>'.
@@ -51,6 +51,78 @@ public interface DialogflowConfigFactory extends EFactory
   Intent createIntent();
 
   /**
+   * Returns a new object of class '<em>Input Context</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Input Context</em>'.
+   * @generated
+   */
+  InputContext createInputContext();
+
+  /**
+   * Returns a new object of class '<em>Output Context</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Output Context</em>'.
+   * @generated
+   */
+  OutputContext createOutputContext();
+
+  /**
+   * Returns a new object of class '<em>Training Phrase</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Training Phrase</em>'.
+   * @generated
+   */
+  TrainingPhrase createTrainingPhrase();
+
+  /**
+   * Returns a new object of class '<em>Abstract Word</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Abstract Word</em>'.
+   * @generated
+   */
+  AbstractWord createAbstractWord();
+
+  /**
+   * Returns a new object of class '<em>Text</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Text</em>'.
+   * @generated
+   */
+  Text createText();
+
+  /**
+   * Returns a new object of class '<em>Token</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Token</em>'.
+   * @generated
+   */
+  Token createToken();
+
+  /**
+   * Returns a new object of class '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter</em>'.
+   * @generated
+   */
+  Parameter createParameter();
+
+  /**
+   * Returns a new object of class '<em>Entity Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Entity Type</em>'.
+   * @generated
+   */
+  EntityType createEntityType();
+
+  /**
    * Returns a new object of class '<em>Entity</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -58,15 +130,6 @@ public interface DialogflowConfigFactory extends EFactory
    * @generated
    */
   Entity createEntity();
-
-  /**
-   * Returns a new object of class '<em>State</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>State</em>'.
-   * @generated
-   */
-  State createState();
 
   /**
    * Returns the package supported by this factory.

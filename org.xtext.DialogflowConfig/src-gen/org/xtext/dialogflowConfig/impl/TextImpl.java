@@ -8,52 +8,51 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.dialogflowConfig.DialogflowConfigPackage;
-import org.xtext.dialogflowConfig.Element;
+import org.xtext.dialogflowConfig.Text;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Element</b></em>'.
+ * An implementation of the model object '<em><b>Text</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.dialogflowConfig.impl.ElementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.impl.TextImpl#getText <em>Text</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ElementImpl extends MinimalEObjectImpl.Container implements Element
+public class TextImpl extends AbstractWordImpl implements Text
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getText() <em>Text</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getText()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String TEXT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getText()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String text = TEXT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ElementImpl()
+  protected TextImpl()
   {
     super();
   }
@@ -66,7 +65,7 @@ public class ElementImpl extends MinimalEObjectImpl.Container implements Element
   @Override
   protected EClass eStaticClass()
   {
-    return DialogflowConfigPackage.Literals.ELEMENT;
+    return DialogflowConfigPackage.Literals.TEXT;
   }
 
   /**
@@ -75,9 +74,9 @@ public class ElementImpl extends MinimalEObjectImpl.Container implements Element
    * @generated
    */
   @Override
-  public String getName()
+  public String getText()
   {
-    return name;
+    return text;
   }
 
   /**
@@ -86,12 +85,12 @@ public class ElementImpl extends MinimalEObjectImpl.Container implements Element
    * @generated
    */
   @Override
-  public void setName(String newName)
+  public void setText(String newText)
   {
-    String oldName = name;
-    name = newName;
+    String oldText = text;
+    text = newText;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DialogflowConfigPackage.ELEMENT__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, DialogflowConfigPackage.TEXT__TEXT, oldText, text));
   }
 
   /**
@@ -104,8 +103,8 @@ public class ElementImpl extends MinimalEObjectImpl.Container implements Element
   {
     switch (featureID)
     {
-      case DialogflowConfigPackage.ELEMENT__NAME:
-        return getName();
+      case DialogflowConfigPackage.TEXT__TEXT:
+        return getText();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,8 +119,8 @@ public class ElementImpl extends MinimalEObjectImpl.Container implements Element
   {
     switch (featureID)
     {
-      case DialogflowConfigPackage.ELEMENT__NAME:
-        setName((String)newValue);
+      case DialogflowConfigPackage.TEXT__TEXT:
+        setText((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +136,8 @@ public class ElementImpl extends MinimalEObjectImpl.Container implements Element
   {
     switch (featureID)
     {
-      case DialogflowConfigPackage.ELEMENT__NAME:
-        setName(NAME_EDEFAULT);
+      case DialogflowConfigPackage.TEXT__TEXT:
+        setText(TEXT_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +153,8 @@ public class ElementImpl extends MinimalEObjectImpl.Container implements Element
   {
     switch (featureID)
     {
-      case DialogflowConfigPackage.ELEMENT__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DialogflowConfigPackage.TEXT__TEXT:
+        return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
     }
     return super.eIsSet(featureID);
   }
@@ -171,10 +170,10 @@ public class ElementImpl extends MinimalEObjectImpl.Container implements Element
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (text: ");
+    result.append(text);
     result.append(')');
     return result.toString();
   }
 
-} //ElementImpl
+} //TextImpl

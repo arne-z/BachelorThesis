@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.xtext.dialogflowConfig.AbstractElement;
 import org.xtext.dialogflowConfig.Agent;
 import org.xtext.dialogflowConfig.DialogflowConfigPackage;
-import org.xtext.dialogflowConfig.Element;
 
 /**
  * <!-- begin-user-doc -->
@@ -67,7 +67,7 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent
    * @generated
    * @ordered
    */
-  protected EList<Element> elements;
+  protected EList<AbstractElement> elements;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,11 +121,11 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent
    * @generated
    */
   @Override
-  public EList<Element> getElements()
+  public EList<AbstractElement> getElements()
   {
     if (elements == null)
     {
-      elements = new EObjectContainmentEList<Element>(Element.class, this, DialogflowConfigPackage.AGENT__ELEMENTS);
+      elements = new EObjectContainmentEList<AbstractElement>(AbstractElement.class, this, DialogflowConfigPackage.AGENT__ELEMENTS);
     }
     return elements;
   }
@@ -180,7 +180,7 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent
         return;
       case DialogflowConfigPackage.AGENT__ELEMENTS:
         getElements().clear();
-        getElements().addAll((Collection<? extends Element>)newValue);
+        getElements().addAll((Collection<? extends AbstractElement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

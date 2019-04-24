@@ -80,10 +80,10 @@ public class DialogflowConfigSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DialogflowConfigPackage.ELEMENT:
+      case DialogflowConfigPackage.ABSTRACT_ELEMENT:
       {
-        Element element = (Element)theEObject;
-        T result = caseElement(element);
+        AbstractElement abstractElement = (AbstractElement)theEObject;
+        T result = caseAbstractElement(abstractElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -91,7 +91,66 @@ public class DialogflowConfigSwitch<T> extends Switch<T>
       {
         Intent intent = (Intent)theEObject;
         T result = caseIntent(intent);
-        if (result == null) result = caseElement(intent);
+        if (result == null) result = caseAbstractElement(intent);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DialogflowConfigPackage.INPUT_CONTEXT:
+      {
+        InputContext inputContext = (InputContext)theEObject;
+        T result = caseInputContext(inputContext);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DialogflowConfigPackage.OUTPUT_CONTEXT:
+      {
+        OutputContext outputContext = (OutputContext)theEObject;
+        T result = caseOutputContext(outputContext);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DialogflowConfigPackage.TRAINING_PHRASE:
+      {
+        TrainingPhrase trainingPhrase = (TrainingPhrase)theEObject;
+        T result = caseTrainingPhrase(trainingPhrase);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DialogflowConfigPackage.ABSTRACT_WORD:
+      {
+        AbstractWord abstractWord = (AbstractWord)theEObject;
+        T result = caseAbstractWord(abstractWord);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DialogflowConfigPackage.TEXT:
+      {
+        Text text = (Text)theEObject;
+        T result = caseText(text);
+        if (result == null) result = caseAbstractWord(text);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DialogflowConfigPackage.TOKEN:
+      {
+        Token token = (Token)theEObject;
+        T result = caseToken(token);
+        if (result == null) result = caseAbstractWord(token);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DialogflowConfigPackage.PARAMETER:
+      {
+        Parameter parameter = (Parameter)theEObject;
+        T result = caseParameter(parameter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DialogflowConfigPackage.ENTITY_TYPE:
+      {
+        EntityType entityType = (EntityType)theEObject;
+        T result = caseEntityType(entityType);
+        if (result == null) result = caseAbstractElement(entityType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -99,14 +158,6 @@ public class DialogflowConfigSwitch<T> extends Switch<T>
       {
         Entity entity = (Entity)theEObject;
         T result = caseEntity(entity);
-        if (result == null) result = caseElement(entity);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DialogflowConfigPackage.STATE:
-      {
-        State state = (State)theEObject;
-        T result = caseState(state);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -131,17 +182,17 @@ public class DialogflowConfigSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Element</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Abstract Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseElement(Element object)
+  public T caseAbstractElement(AbstractElement object)
   {
     return null;
   }
@@ -163,6 +214,134 @@ public class DialogflowConfigSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Input Context</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Input Context</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseInputContext(InputContext object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Output Context</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Output Context</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOutputContext(OutputContext object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Training Phrase</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Training Phrase</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTrainingPhrase(TrainingPhrase object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Abstract Word</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Abstract Word</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAbstractWord(AbstractWord object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Text</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Text</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseText(Text object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Token</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Token</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseToken(Token object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameter(Parameter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Entity Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Entity Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEntityType(EntityType object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -174,22 +353,6 @@ public class DialogflowConfigSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseEntity(Entity object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>State</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>State</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseState(State object)
   {
     return null;
   }

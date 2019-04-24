@@ -95,14 +95,14 @@ public interface DialogflowConfigPackage extends EPackage
   int AGENT_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.ElementImpl <em>Element</em>}' class.
+   * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.dialogflowConfig.impl.ElementImpl
-   * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getElement()
+   * @see org.xtext.dialogflowConfig.impl.AbstractElementImpl
+   * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getAbstractElement()
    * @generated
    */
-  int ELEMENT = 1;
+  int ABSTRACT_ELEMENT = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -111,16 +111,16 @@ public interface DialogflowConfigPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ELEMENT__NAME = 0;
+  int ABSTRACT_ELEMENT__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Element</em>' class.
+   * The number of structural features of the '<em>Abstract Element</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ELEMENT_FEATURE_COUNT = 1;
+  int ABSTRACT_ELEMENT_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.IntentImpl <em>Intent</em>}' class.
@@ -139,16 +139,34 @@ public interface DialogflowConfigPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INTENT__NAME = ELEMENT__NAME;
+  int INTENT__NAME = ABSTRACT_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Parameters</b></em>' reference list.
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INTENT__PARAMETERS = ELEMENT_FEATURE_COUNT + 0;
+  int INTENT__PARAMETERS = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Input Contexts</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTENT__INPUT_CONTEXTS = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Affected Contexts</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTENT__AFFECTED_CONTEXTS = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>File</b></em>' attribute.
@@ -157,7 +175,16 @@ public interface DialogflowConfigPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INTENT__FILE = ELEMENT_FEATURE_COUNT + 1;
+  int INTENT__FILE = ABSTRACT_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Training Phrases</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTENT__TRAINING_PHRASES = ABSTRACT_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Intent</em>' class.
@@ -166,7 +193,312 @@ public interface DialogflowConfigPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INTENT_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
+  int INTENT_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 5;
+
+  /**
+   * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.InputContextImpl <em>Input Context</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.dialogflowConfig.impl.InputContextImpl
+   * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getInputContext()
+   * @generated
+   */
+  int INPUT_CONTEXT = 3;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT_CONTEXT__TYPE = 0;
+
+  /**
+   * The number of structural features of the '<em>Input Context</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT_CONTEXT_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.OutputContextImpl <em>Output Context</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.dialogflowConfig.impl.OutputContextImpl
+   * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getOutputContext()
+   * @generated
+   */
+  int OUTPUT_CONTEXT = 4;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUTPUT_CONTEXT__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Lifespan</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUTPUT_CONTEXT__LIFESPAN = 1;
+
+  /**
+   * The number of structural features of the '<em>Output Context</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUTPUT_CONTEXT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.TrainingPhraseImpl <em>Training Phrase</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.dialogflowConfig.impl.TrainingPhraseImpl
+   * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getTrainingPhrase()
+   * @generated
+   */
+  int TRAINING_PHRASE = 5;
+
+  /**
+   * The feature id for the '<em><b>Data</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAINING_PHRASE__DATA = 0;
+
+  /**
+   * The number of structural features of the '<em>Training Phrase</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAINING_PHRASE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.AbstractWordImpl <em>Abstract Word</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.dialogflowConfig.impl.AbstractWordImpl
+   * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getAbstractWord()
+   * @generated
+   */
+  int ABSTRACT_WORD = 6;
+
+  /**
+   * The number of structural features of the '<em>Abstract Word</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ABSTRACT_WORD_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.TextImpl <em>Text</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.dialogflowConfig.impl.TextImpl
+   * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getText()
+   * @generated
+   */
+  int TEXT = 7;
+
+  /**
+   * The feature id for the '<em><b>Text</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEXT__TEXT = ABSTRACT_WORD_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Text</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEXT_FEATURE_COUNT = ABSTRACT_WORD_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.TokenImpl <em>Token</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.dialogflowConfig.impl.TokenImpl
+   * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getToken()
+   * @generated
+   */
+  int TOKEN = 8;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TOKEN__TYPE = ABSTRACT_WORD_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Token</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TOKEN_FEATURE_COUNT = ABSTRACT_WORD_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.ParameterImpl <em>Parameter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.dialogflowConfig.impl.ParameterImpl
+   * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getParameter()
+   * @generated
+   */
+  int PARAMETER = 9;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Required</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER__REQUIRED = 1;
+
+  /**
+   * The feature id for the '<em><b>List</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER__LIST = 2;
+
+  /**
+   * The number of structural features of the '<em>Parameter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.EntityTypeImpl <em>Entity Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.dialogflowConfig.impl.EntityTypeImpl
+   * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getEntityType()
+   * @generated
+   */
+  int ENTITY_TYPE = 10;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_TYPE__NAME = ABSTRACT_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Dynamic</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_TYPE__DYNAMIC = ABSTRACT_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Built In</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_TYPE__BUILT_IN = ABSTRACT_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Values</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_TYPE__VALUES = ABSTRACT_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Is Overridable</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_TYPE__IS_OVERRIDABLE = ABSTRACT_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Is Enum</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_TYPE__IS_ENUM = ABSTRACT_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Automated Expansion</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_TYPE__AUTOMATED_EXPANSION = ABSTRACT_ELEMENT_FEATURE_COUNT + 5;
+
+  /**
+   * The feature id for the '<em><b>Allow Fuzzy Extraction</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_TYPE__ALLOW_FUZZY_EXTRACTION = ABSTRACT_ELEMENT_FEATURE_COUNT + 6;
+
+  /**
+   * The number of structural features of the '<em>Entity Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY_TYPE_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.EntityImpl <em>Entity</em>}' class.
@@ -176,7 +508,7 @@ public interface DialogflowConfigPackage extends EPackage
    * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getEntity()
    * @generated
    */
-  int ENTITY = 3;
+  int ENTITY = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -185,16 +517,16 @@ public interface DialogflowConfigPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY__NAME = ELEMENT__NAME;
+  int ENTITY__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>States</b></em>' containment reference list.
+   * The feature id for the '<em><b>Synonyms</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY__STATES = ELEMENT_FEATURE_COUNT + 0;
+  int ENTITY__SYNONYMS = 1;
 
   /**
    * The number of structural features of the '<em>Entity</em>' class.
@@ -203,35 +535,7 @@ public interface DialogflowConfigPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.StateImpl <em>State</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.dialogflowConfig.impl.StateImpl
-   * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getState()
-   * @generated
-   */
-  int STATE = 4;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STATE__NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>State</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STATE_FEATURE_COUNT = 1;
+  int ENTITY_FEATURE_COUNT = 2;
 
 
   /**
@@ -267,25 +571,25 @@ public interface DialogflowConfigPackage extends EPackage
   EReference getAgent_Elements();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.dialogflowConfig.Element <em>Element</em>}'.
+   * Returns the meta object for class '{@link org.xtext.dialogflowConfig.AbstractElement <em>Abstract Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Element</em>'.
-   * @see org.xtext.dialogflowConfig.Element
+   * @return the meta object for class '<em>Abstract Element</em>'.
+   * @see org.xtext.dialogflowConfig.AbstractElement
    * @generated
    */
-  EClass getElement();
+  EClass getAbstractElement();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.Element#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.AbstractElement#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.dialogflowConfig.Element#getName()
-   * @see #getElement()
+   * @see org.xtext.dialogflowConfig.AbstractElement#getName()
+   * @see #getAbstractElement()
    * @generated
    */
-  EAttribute getElement_Name();
+  EAttribute getAbstractElement_Name();
 
   /**
    * Returns the meta object for class '{@link org.xtext.dialogflowConfig.Intent <em>Intent</em>}'.
@@ -298,15 +602,37 @@ public interface DialogflowConfigPackage extends EPackage
   EClass getIntent();
 
   /**
-   * Returns the meta object for the reference list '{@link org.xtext.dialogflowConfig.Intent#getParameters <em>Parameters</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.xtext.dialogflowConfig.Intent#getParameters <em>Parameters</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Parameters</em>'.
+   * @return the meta object for the containment reference list '<em>Parameters</em>'.
    * @see org.xtext.dialogflowConfig.Intent#getParameters()
    * @see #getIntent()
    * @generated
    */
   EReference getIntent_Parameters();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.dialogflowConfig.Intent#getInputContexts <em>Input Contexts</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Input Contexts</em>'.
+   * @see org.xtext.dialogflowConfig.Intent#getInputContexts()
+   * @see #getIntent()
+   * @generated
+   */
+  EReference getIntent_InputContexts();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.dialogflowConfig.Intent#getAffectedContexts <em>Affected Contexts</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Affected Contexts</em>'.
+   * @see org.xtext.dialogflowConfig.Intent#getAffectedContexts()
+   * @see #getIntent()
+   * @generated
+   */
+  EReference getIntent_AffectedContexts();
 
   /**
    * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.Intent#getFile <em>File</em>}'.
@@ -320,6 +646,273 @@ public interface DialogflowConfigPackage extends EPackage
   EAttribute getIntent_File();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.dialogflowConfig.Intent#getTrainingPhrases <em>Training Phrases</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Training Phrases</em>'.
+   * @see org.xtext.dialogflowConfig.Intent#getTrainingPhrases()
+   * @see #getIntent()
+   * @generated
+   */
+  EReference getIntent_TrainingPhrases();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.dialogflowConfig.InputContext <em>Input Context</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Input Context</em>'.
+   * @see org.xtext.dialogflowConfig.InputContext
+   * @generated
+   */
+  EClass getInputContext();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xtext.dialogflowConfig.InputContext#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Type</em>'.
+   * @see org.xtext.dialogflowConfig.InputContext#getType()
+   * @see #getInputContext()
+   * @generated
+   */
+  EReference getInputContext_Type();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.dialogflowConfig.OutputContext <em>Output Context</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Output Context</em>'.
+   * @see org.xtext.dialogflowConfig.OutputContext
+   * @generated
+   */
+  EClass getOutputContext();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xtext.dialogflowConfig.OutputContext#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Type</em>'.
+   * @see org.xtext.dialogflowConfig.OutputContext#getType()
+   * @see #getOutputContext()
+   * @generated
+   */
+  EReference getOutputContext_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.OutputContext#getLifespan <em>Lifespan</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Lifespan</em>'.
+   * @see org.xtext.dialogflowConfig.OutputContext#getLifespan()
+   * @see #getOutputContext()
+   * @generated
+   */
+  EAttribute getOutputContext_Lifespan();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.dialogflowConfig.TrainingPhrase <em>Training Phrase</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Training Phrase</em>'.
+   * @see org.xtext.dialogflowConfig.TrainingPhrase
+   * @generated
+   */
+  EClass getTrainingPhrase();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.dialogflowConfig.TrainingPhrase#getData <em>Data</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Data</em>'.
+   * @see org.xtext.dialogflowConfig.TrainingPhrase#getData()
+   * @see #getTrainingPhrase()
+   * @generated
+   */
+  EReference getTrainingPhrase_Data();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.dialogflowConfig.AbstractWord <em>Abstract Word</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Abstract Word</em>'.
+   * @see org.xtext.dialogflowConfig.AbstractWord
+   * @generated
+   */
+  EClass getAbstractWord();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.dialogflowConfig.Text <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Text</em>'.
+   * @see org.xtext.dialogflowConfig.Text
+   * @generated
+   */
+  EClass getText();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.Text#getText <em>Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Text</em>'.
+   * @see org.xtext.dialogflowConfig.Text#getText()
+   * @see #getText()
+   * @generated
+   */
+  EAttribute getText_Text();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.dialogflowConfig.Token <em>Token</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Token</em>'.
+   * @see org.xtext.dialogflowConfig.Token
+   * @generated
+   */
+  EClass getToken();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xtext.dialogflowConfig.Token#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Type</em>'.
+   * @see org.xtext.dialogflowConfig.Token#getType()
+   * @see #getToken()
+   * @generated
+   */
+  EReference getToken_Type();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.dialogflowConfig.Parameter <em>Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parameter</em>'.
+   * @see org.xtext.dialogflowConfig.Parameter
+   * @generated
+   */
+  EClass getParameter();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xtext.dialogflowConfig.Parameter#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Type</em>'.
+   * @see org.xtext.dialogflowConfig.Parameter#getType()
+   * @see #getParameter()
+   * @generated
+   */
+  EReference getParameter_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.Parameter#isRequired <em>Required</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Required</em>'.
+   * @see org.xtext.dialogflowConfig.Parameter#isRequired()
+   * @see #getParameter()
+   * @generated
+   */
+  EAttribute getParameter_Required();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.Parameter#isList <em>List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>List</em>'.
+   * @see org.xtext.dialogflowConfig.Parameter#isList()
+   * @see #getParameter()
+   * @generated
+   */
+  EAttribute getParameter_List();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.dialogflowConfig.EntityType <em>Entity Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Entity Type</em>'.
+   * @see org.xtext.dialogflowConfig.EntityType
+   * @generated
+   */
+  EClass getEntityType();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.EntityType#isDynamic <em>Dynamic</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Dynamic</em>'.
+   * @see org.xtext.dialogflowConfig.EntityType#isDynamic()
+   * @see #getEntityType()
+   * @generated
+   */
+  EAttribute getEntityType_Dynamic();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.EntityType#isBuiltIn <em>Built In</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Built In</em>'.
+   * @see org.xtext.dialogflowConfig.EntityType#isBuiltIn()
+   * @see #getEntityType()
+   * @generated
+   */
+  EAttribute getEntityType_BuiltIn();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.dialogflowConfig.EntityType#getValues <em>Values</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Values</em>'.
+   * @see org.xtext.dialogflowConfig.EntityType#getValues()
+   * @see #getEntityType()
+   * @generated
+   */
+  EReference getEntityType_Values();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.EntityType#isIsOverridable <em>Is Overridable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Overridable</em>'.
+   * @see org.xtext.dialogflowConfig.EntityType#isIsOverridable()
+   * @see #getEntityType()
+   * @generated
+   */
+  EAttribute getEntityType_IsOverridable();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.EntityType#isIsEnum <em>Is Enum</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Enum</em>'.
+   * @see org.xtext.dialogflowConfig.EntityType#isIsEnum()
+   * @see #getEntityType()
+   * @generated
+   */
+  EAttribute getEntityType_IsEnum();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.EntityType#isAutomatedExpansion <em>Automated Expansion</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Automated Expansion</em>'.
+   * @see org.xtext.dialogflowConfig.EntityType#isAutomatedExpansion()
+   * @see #getEntityType()
+   * @generated
+   */
+  EAttribute getEntityType_AutomatedExpansion();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.EntityType#isAllowFuzzyExtraction <em>Allow Fuzzy Extraction</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Allow Fuzzy Extraction</em>'.
+   * @see org.xtext.dialogflowConfig.EntityType#isAllowFuzzyExtraction()
+   * @see #getEntityType()
+   * @generated
+   */
+  EAttribute getEntityType_AllowFuzzyExtraction();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.dialogflowConfig.Entity <em>Entity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -330,36 +923,26 @@ public interface DialogflowConfigPackage extends EPackage
   EClass getEntity();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.dialogflowConfig.Entity#getStates <em>States</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>States</em>'.
-   * @see org.xtext.dialogflowConfig.Entity#getStates()
-   * @see #getEntity()
-   * @generated
-   */
-  EReference getEntity_States();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.dialogflowConfig.State <em>State</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>State</em>'.
-   * @see org.xtext.dialogflowConfig.State
-   * @generated
-   */
-  EClass getState();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.State#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.Entity#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.dialogflowConfig.State#getName()
-   * @see #getState()
+   * @see org.xtext.dialogflowConfig.Entity#getName()
+   * @see #getEntity()
    * @generated
    */
-  EAttribute getState_Name();
+  EAttribute getEntity_Name();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.xtext.dialogflowConfig.Entity#getSynonyms <em>Synonyms</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Synonyms</em>'.
+   * @see org.xtext.dialogflowConfig.Entity#getSynonyms()
+   * @see #getEntity()
+   * @generated
+   */
+  EAttribute getEntity_Synonyms();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -411,14 +994,14 @@ public interface DialogflowConfigPackage extends EPackage
     EReference AGENT__ELEMENTS = eINSTANCE.getAgent_Elements();
 
     /**
-     * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.ElementImpl <em>Element</em>}' class.
+     * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.AbstractElementImpl <em>Abstract Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.dialogflowConfig.impl.ElementImpl
-     * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getElement()
+     * @see org.xtext.dialogflowConfig.impl.AbstractElementImpl
+     * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getAbstractElement()
      * @generated
      */
-    EClass ELEMENT = eINSTANCE.getElement();
+    EClass ABSTRACT_ELEMENT = eINSTANCE.getAbstractElement();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -426,7 +1009,7 @@ public interface DialogflowConfigPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ELEMENT__NAME = eINSTANCE.getElement_Name();
+    EAttribute ABSTRACT_ELEMENT__NAME = eINSTANCE.getAbstractElement_Name();
 
     /**
      * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.IntentImpl <em>Intent</em>}' class.
@@ -439,12 +1022,28 @@ public interface DialogflowConfigPackage extends EPackage
     EClass INTENT = eINSTANCE.getIntent();
 
     /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference INTENT__PARAMETERS = eINSTANCE.getIntent_Parameters();
+
+    /**
+     * The meta object literal for the '<em><b>Input Contexts</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INTENT__INPUT_CONTEXTS = eINSTANCE.getIntent_InputContexts();
+
+    /**
+     * The meta object literal for the '<em><b>Affected Contexts</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INTENT__AFFECTED_CONTEXTS = eINSTANCE.getIntent_AffectedContexts();
 
     /**
      * The meta object literal for the '<em><b>File</b></em>' attribute feature.
@@ -453,6 +1052,222 @@ public interface DialogflowConfigPackage extends EPackage
      * @generated
      */
     EAttribute INTENT__FILE = eINSTANCE.getIntent_File();
+
+    /**
+     * The meta object literal for the '<em><b>Training Phrases</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INTENT__TRAINING_PHRASES = eINSTANCE.getIntent_TrainingPhrases();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.InputContextImpl <em>Input Context</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.dialogflowConfig.impl.InputContextImpl
+     * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getInputContext()
+     * @generated
+     */
+    EClass INPUT_CONTEXT = eINSTANCE.getInputContext();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INPUT_CONTEXT__TYPE = eINSTANCE.getInputContext_Type();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.OutputContextImpl <em>Output Context</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.dialogflowConfig.impl.OutputContextImpl
+     * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getOutputContext()
+     * @generated
+     */
+    EClass OUTPUT_CONTEXT = eINSTANCE.getOutputContext();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OUTPUT_CONTEXT__TYPE = eINSTANCE.getOutputContext_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Lifespan</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute OUTPUT_CONTEXT__LIFESPAN = eINSTANCE.getOutputContext_Lifespan();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.TrainingPhraseImpl <em>Training Phrase</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.dialogflowConfig.impl.TrainingPhraseImpl
+     * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getTrainingPhrase()
+     * @generated
+     */
+    EClass TRAINING_PHRASE = eINSTANCE.getTrainingPhrase();
+
+    /**
+     * The meta object literal for the '<em><b>Data</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TRAINING_PHRASE__DATA = eINSTANCE.getTrainingPhrase_Data();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.AbstractWordImpl <em>Abstract Word</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.dialogflowConfig.impl.AbstractWordImpl
+     * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getAbstractWord()
+     * @generated
+     */
+    EClass ABSTRACT_WORD = eINSTANCE.getAbstractWord();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.TextImpl <em>Text</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.dialogflowConfig.impl.TextImpl
+     * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getText()
+     * @generated
+     */
+    EClass TEXT = eINSTANCE.getText();
+
+    /**
+     * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TEXT__TEXT = eINSTANCE.getText_Text();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.TokenImpl <em>Token</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.dialogflowConfig.impl.TokenImpl
+     * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getToken()
+     * @generated
+     */
+    EClass TOKEN = eINSTANCE.getToken();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TOKEN__TYPE = eINSTANCE.getToken_Type();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.ParameterImpl <em>Parameter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.dialogflowConfig.impl.ParameterImpl
+     * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getParameter()
+     * @generated
+     */
+    EClass PARAMETER = eINSTANCE.getParameter();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAMETER__TYPE = eINSTANCE.getParameter_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Required</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAMETER__REQUIRED = eINSTANCE.getParameter_Required();
+
+    /**
+     * The meta object literal for the '<em><b>List</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAMETER__LIST = eINSTANCE.getParameter_List();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.EntityTypeImpl <em>Entity Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.dialogflowConfig.impl.EntityTypeImpl
+     * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getEntityType()
+     * @generated
+     */
+    EClass ENTITY_TYPE = eINSTANCE.getEntityType();
+
+    /**
+     * The meta object literal for the '<em><b>Dynamic</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY_TYPE__DYNAMIC = eINSTANCE.getEntityType_Dynamic();
+
+    /**
+     * The meta object literal for the '<em><b>Built In</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY_TYPE__BUILT_IN = eINSTANCE.getEntityType_BuiltIn();
+
+    /**
+     * The meta object literal for the '<em><b>Values</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENTITY_TYPE__VALUES = eINSTANCE.getEntityType_Values();
+
+    /**
+     * The meta object literal for the '<em><b>Is Overridable</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY_TYPE__IS_OVERRIDABLE = eINSTANCE.getEntityType_IsOverridable();
+
+    /**
+     * The meta object literal for the '<em><b>Is Enum</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY_TYPE__IS_ENUM = eINSTANCE.getEntityType_IsEnum();
+
+    /**
+     * The meta object literal for the '<em><b>Automated Expansion</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY_TYPE__AUTOMATED_EXPANSION = eINSTANCE.getEntityType_AutomatedExpansion();
+
+    /**
+     * The meta object literal for the '<em><b>Allow Fuzzy Extraction</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY_TYPE__ALLOW_FUZZY_EXTRACTION = eINSTANCE.getEntityType_AllowFuzzyExtraction();
 
     /**
      * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.EntityImpl <em>Entity</em>}' class.
@@ -465,30 +1280,20 @@ public interface DialogflowConfigPackage extends EPackage
     EClass ENTITY = eINSTANCE.getEntity();
 
     /**
-     * The meta object literal for the '<em><b>States</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ENTITY__STATES = eINSTANCE.getEntity_States();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.StateImpl <em>State</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.dialogflowConfig.impl.StateImpl
-     * @see org.xtext.dialogflowConfig.impl.DialogflowConfigPackageImpl#getState()
-     * @generated
-     */
-    EClass STATE = eINSTANCE.getState();
-
-    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute STATE__NAME = eINSTANCE.getState_Name();
+    EAttribute ENTITY__NAME = eINSTANCE.getEntity_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Synonyms</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY__SYNONYMS = eINSTANCE.getEntity_Synonyms();
 
   }
 

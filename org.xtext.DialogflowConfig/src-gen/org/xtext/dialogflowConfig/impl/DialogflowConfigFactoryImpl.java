@@ -66,10 +66,17 @@ public class DialogflowConfigFactoryImpl extends EFactoryImpl implements Dialogf
     switch (eClass.getClassifierID())
     {
       case DialogflowConfigPackage.AGENT: return createAgent();
-      case DialogflowConfigPackage.ELEMENT: return createElement();
+      case DialogflowConfigPackage.ABSTRACT_ELEMENT: return createAbstractElement();
       case DialogflowConfigPackage.INTENT: return createIntent();
+      case DialogflowConfigPackage.INPUT_CONTEXT: return createInputContext();
+      case DialogflowConfigPackage.OUTPUT_CONTEXT: return createOutputContext();
+      case DialogflowConfigPackage.TRAINING_PHRASE: return createTrainingPhrase();
+      case DialogflowConfigPackage.ABSTRACT_WORD: return createAbstractWord();
+      case DialogflowConfigPackage.TEXT: return createText();
+      case DialogflowConfigPackage.TOKEN: return createToken();
+      case DialogflowConfigPackage.PARAMETER: return createParameter();
+      case DialogflowConfigPackage.ENTITY_TYPE: return createEntityType();
       case DialogflowConfigPackage.ENTITY: return createEntity();
-      case DialogflowConfigPackage.STATE: return createState();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -93,10 +100,10 @@ public class DialogflowConfigFactoryImpl extends EFactoryImpl implements Dialogf
    * @generated
    */
   @Override
-  public Element createElement()
+  public AbstractElement createAbstractElement()
   {
-    ElementImpl element = new ElementImpl();
-    return element;
+    AbstractElementImpl abstractElement = new AbstractElementImpl();
+    return abstractElement;
   }
 
   /**
@@ -117,10 +124,10 @@ public class DialogflowConfigFactoryImpl extends EFactoryImpl implements Dialogf
    * @generated
    */
   @Override
-  public Entity createEntity()
+  public InputContext createInputContext()
   {
-    EntityImpl entity = new EntityImpl();
-    return entity;
+    InputContextImpl inputContext = new InputContextImpl();
+    return inputContext;
   }
 
   /**
@@ -129,10 +136,94 @@ public class DialogflowConfigFactoryImpl extends EFactoryImpl implements Dialogf
    * @generated
    */
   @Override
-  public State createState()
+  public OutputContext createOutputContext()
   {
-    StateImpl state = new StateImpl();
-    return state;
+    OutputContextImpl outputContext = new OutputContextImpl();
+    return outputContext;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TrainingPhrase createTrainingPhrase()
+  {
+    TrainingPhraseImpl trainingPhrase = new TrainingPhraseImpl();
+    return trainingPhrase;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public AbstractWord createAbstractWord()
+  {
+    AbstractWordImpl abstractWord = new AbstractWordImpl();
+    return abstractWord;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Text createText()
+  {
+    TextImpl text = new TextImpl();
+    return text;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Token createToken()
+  {
+    TokenImpl token = new TokenImpl();
+    return token;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Parameter createParameter()
+  {
+    ParameterImpl parameter = new ParameterImpl();
+    return parameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EntityType createEntityType()
+  {
+    EntityTypeImpl entityType = new EntityTypeImpl();
+    return entityType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Entity createEntity()
+  {
+    EntityImpl entity = new EntityImpl();
+    return entity;
   }
 
   /**

@@ -6,18 +6,24 @@ package org.xtext.dialogflowConfig.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.dialogflowConfig.DialogflowConfigPackage;
-import org.xtext.dialogflowConfig.Entity;
+import org.xtext.dialogflowConfig.InputContext;
 import org.xtext.dialogflowConfig.Intent;
+import org.xtext.dialogflowConfig.OutputContext;
+import org.xtext.dialogflowConfig.Parameter;
+import org.xtext.dialogflowConfig.TrainingPhrase;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,22 +34,45 @@ import org.xtext.dialogflowConfig.Intent;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.dialogflowConfig.impl.IntentImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.impl.IntentImpl#getInputContexts <em>Input Contexts</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.impl.IntentImpl#getAffectedContexts <em>Affected Contexts</em>}</li>
  *   <li>{@link org.xtext.dialogflowConfig.impl.IntentImpl#getFile <em>File</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.impl.IntentImpl#getTrainingPhrases <em>Training Phrases</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class IntentImpl extends ElementImpl implements Intent
+public class IntentImpl extends AbstractElementImpl implements Intent
 {
   /**
-   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' reference list.
+   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getParameters()
    * @generated
    * @ordered
    */
-  protected EList<Entity> parameters;
+  protected EList<Parameter> parameters;
+
+  /**
+   * The cached value of the '{@link #getInputContexts() <em>Input Contexts</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInputContexts()
+   * @generated
+   * @ordered
+   */
+  protected EList<InputContext> inputContexts;
+
+  /**
+   * The cached value of the '{@link #getAffectedContexts() <em>Affected Contexts</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAffectedContexts()
+   * @generated
+   * @ordered
+   */
+  protected EList<OutputContext> affectedContexts;
 
   /**
    * The default value of the '{@link #getFile() <em>File</em>}' attribute.
@@ -64,6 +93,16 @@ public class IntentImpl extends ElementImpl implements Intent
    * @ordered
    */
   protected String file = FILE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getTrainingPhrases() <em>Training Phrases</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTrainingPhrases()
+   * @generated
+   * @ordered
+   */
+  protected EList<TrainingPhrase> trainingPhrases;
 
   /**
    * <!-- begin-user-doc -->
@@ -92,13 +131,43 @@ public class IntentImpl extends ElementImpl implements Intent
    * @generated
    */
   @Override
-  public EList<Entity> getParameters()
+  public EList<Parameter> getParameters()
   {
     if (parameters == null)
     {
-      parameters = new EObjectResolvingEList<Entity>(Entity.class, this, DialogflowConfigPackage.INTENT__PARAMETERS);
+      parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, DialogflowConfigPackage.INTENT__PARAMETERS);
     }
     return parameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<InputContext> getInputContexts()
+  {
+    if (inputContexts == null)
+    {
+      inputContexts = new EObjectContainmentEList<InputContext>(InputContext.class, this, DialogflowConfigPackage.INTENT__INPUT_CONTEXTS);
+    }
+    return inputContexts;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<OutputContext> getAffectedContexts()
+  {
+    if (affectedContexts == null)
+    {
+      affectedContexts = new EObjectContainmentEList<OutputContext>(OutputContext.class, this, DialogflowConfigPackage.INTENT__AFFECTED_CONTEXTS);
+    }
+    return affectedContexts;
   }
 
   /**
@@ -132,14 +201,57 @@ public class IntentImpl extends ElementImpl implements Intent
    * @generated
    */
   @Override
+  public EList<TrainingPhrase> getTrainingPhrases()
+  {
+    if (trainingPhrases == null)
+    {
+      trainingPhrases = new EObjectContainmentEList<TrainingPhrase>(TrainingPhrase.class, this, DialogflowConfigPackage.INTENT__TRAINING_PHRASES);
+    }
+    return trainingPhrases;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DialogflowConfigPackage.INTENT__PARAMETERS:
+        return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+      case DialogflowConfigPackage.INTENT__INPUT_CONTEXTS:
+        return ((InternalEList<?>)getInputContexts()).basicRemove(otherEnd, msgs);
+      case DialogflowConfigPackage.INTENT__AFFECTED_CONTEXTS:
+        return ((InternalEList<?>)getAffectedContexts()).basicRemove(otherEnd, msgs);
+      case DialogflowConfigPackage.INTENT__TRAINING_PHRASES:
+        return ((InternalEList<?>)getTrainingPhrases()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
       case DialogflowConfigPackage.INTENT__PARAMETERS:
         return getParameters();
+      case DialogflowConfigPackage.INTENT__INPUT_CONTEXTS:
+        return getInputContexts();
+      case DialogflowConfigPackage.INTENT__AFFECTED_CONTEXTS:
+        return getAffectedContexts();
       case DialogflowConfigPackage.INTENT__FILE:
         return getFile();
+      case DialogflowConfigPackage.INTENT__TRAINING_PHRASES:
+        return getTrainingPhrases();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -157,10 +269,22 @@ public class IntentImpl extends ElementImpl implements Intent
     {
       case DialogflowConfigPackage.INTENT__PARAMETERS:
         getParameters().clear();
-        getParameters().addAll((Collection<? extends Entity>)newValue);
+        getParameters().addAll((Collection<? extends Parameter>)newValue);
+        return;
+      case DialogflowConfigPackage.INTENT__INPUT_CONTEXTS:
+        getInputContexts().clear();
+        getInputContexts().addAll((Collection<? extends InputContext>)newValue);
+        return;
+      case DialogflowConfigPackage.INTENT__AFFECTED_CONTEXTS:
+        getAffectedContexts().clear();
+        getAffectedContexts().addAll((Collection<? extends OutputContext>)newValue);
         return;
       case DialogflowConfigPackage.INTENT__FILE:
         setFile((String)newValue);
+        return;
+      case DialogflowConfigPackage.INTENT__TRAINING_PHRASES:
+        getTrainingPhrases().clear();
+        getTrainingPhrases().addAll((Collection<? extends TrainingPhrase>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -179,8 +303,17 @@ public class IntentImpl extends ElementImpl implements Intent
       case DialogflowConfigPackage.INTENT__PARAMETERS:
         getParameters().clear();
         return;
+      case DialogflowConfigPackage.INTENT__INPUT_CONTEXTS:
+        getInputContexts().clear();
+        return;
+      case DialogflowConfigPackage.INTENT__AFFECTED_CONTEXTS:
+        getAffectedContexts().clear();
+        return;
       case DialogflowConfigPackage.INTENT__FILE:
         setFile(FILE_EDEFAULT);
+        return;
+      case DialogflowConfigPackage.INTENT__TRAINING_PHRASES:
+        getTrainingPhrases().clear();
         return;
     }
     super.eUnset(featureID);
@@ -198,8 +331,14 @@ public class IntentImpl extends ElementImpl implements Intent
     {
       case DialogflowConfigPackage.INTENT__PARAMETERS:
         return parameters != null && !parameters.isEmpty();
+      case DialogflowConfigPackage.INTENT__INPUT_CONTEXTS:
+        return inputContexts != null && !inputContexts.isEmpty();
+      case DialogflowConfigPackage.INTENT__AFFECTED_CONTEXTS:
+        return affectedContexts != null && !affectedContexts.isEmpty();
       case DialogflowConfigPackage.INTENT__FILE:
         return FILE_EDEFAULT == null ? file != null : !FILE_EDEFAULT.equals(file);
+      case DialogflowConfigPackage.INTENT__TRAINING_PHRASES:
+        return trainingPhrases != null && !trainingPhrases.isEmpty();
     }
     return super.eIsSet(featureID);
   }
