@@ -1,4 +1,6 @@
 
+*.env
+
 ## Eclipse Configuration
 .metadata
 bin/
