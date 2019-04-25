@@ -495,7 +495,7 @@ public class DialogflowConfigGenerator extends AbstractGenerator {
     _builder_1.append("\t      ");
     _builder_1.append("\"messages\": [");
     _builder_1.newLine();
-    _builder_1.append("\t        ");
+    _builder_1.append("\t      ");
     _builder_1.append("{");
     _builder_1.newLine();
     _builder_1.append("\t          ");
@@ -505,9 +505,35 @@ public class DialogflowConfigGenerator extends AbstractGenerator {
     _builder_1.append("\"lang\": \"en\",");
     _builder_1.newLine();
     _builder_1.append("\t          ");
-    _builder_1.append("\"speech\": []");
+    _builder_1.append("\"speech\": ");
     _builder_1.newLine();
-    _builder_1.append("\t        ");
+    _builder_1.append("\t          ");
+    _builder_1.append("[");
+    _builder_1.newLine();
+    {
+      EList<String> _responses = intent.getResponses();
+      for(final String response : _responses) {
+        _builder_1.append("\t       ");
+        {
+          String _get_3 = intent.getResponses().get(0);
+          boolean _notEquals_3 = (!Objects.equal(response, _get_3));
+          if (_notEquals_3) {
+            _builder_1.append(",");
+          }
+        }
+        _builder_1.newLineIfNotEmpty();
+        _builder_1.append("\t       ");
+        _builder_1.append(" \t");
+        _builder_1.append("\"");
+        _builder_1.append(response, "\t        \t");
+        _builder_1.append("\"");
+        _builder_1.newLineIfNotEmpty();
+      }
+    }
+    _builder_1.append("\t      \t");
+    _builder_1.append("]");
+    _builder_1.newLine();
+    _builder_1.append("\t      ");
     _builder_1.append("}");
     _builder_1.newLine();
     _builder_1.append("\t      ");
@@ -529,11 +555,17 @@ public class DialogflowConfigGenerator extends AbstractGenerator {
     _builder_1.append("\"priority\": 500000,");
     _builder_1.newLine();
     _builder_1.append("\t  ");
-    _builder_1.append("\"webhookUsed\": false,");
-    _builder_1.newLine();
+    _builder_1.append("\"webhookUsed\": ");
+    boolean _isWebHook = intent.isWebHook();
+    _builder_1.append(_isWebHook, "\t  ");
+    _builder_1.append(",");
+    _builder_1.newLineIfNotEmpty();
     _builder_1.append("\t  ");
-    _builder_1.append("\"webhookForSlotFilling\": false,");
-    _builder_1.newLine();
+    _builder_1.append("\"webhookForSlotFilling\": ");
+    boolean _isWebHookForSlotFilling = intent.isWebHookForSlotFilling();
+    _builder_1.append(_isWebHookForSlotFilling, "\t  ");
+    _builder_1.append(",");
+    _builder_1.newLineIfNotEmpty();
     _builder_1.append("\t  ");
     _builder_1.append("\"lastUpdate\": ");
     long _time = new Date().getTime();

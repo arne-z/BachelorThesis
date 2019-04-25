@@ -19,6 +19,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DialogflowConfig.ecore#//Intent/affectedContexts"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DialogflowConfig.ecore#//Intent/file"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DialogflowConfig.ecore#//Intent/trainingPhrases"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DialogflowConfig.ecore#//Intent/responses"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DialogflowConfig.ecore#//Intent/webHook"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DialogflowConfig.ecore#//Intent/webHookForSlotFilling"/>
     </genClasses>
     <genClasses ecoreClass="DialogflowConfig.ecore#//InputContext">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DialogflowConfig.ecore#//InputContext/type"/>

@@ -307,6 +307,39 @@ public class DialogflowConfigPackageImpl extends EPackageImpl implements Dialogf
    * @generated
    */
   @Override
+  public EAttribute getIntent_Responses()
+  {
+    return (EAttribute)intentEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getIntent_WebHook()
+  {
+    return (EAttribute)intentEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getIntent_WebHookForSlotFilling()
+  {
+    return (EAttribute)intentEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getInputContext()
   {
     return inputContextEClass;
@@ -642,6 +675,9 @@ public class DialogflowConfigPackageImpl extends EPackageImpl implements Dialogf
     createEReference(intentEClass, INTENT__AFFECTED_CONTEXTS);
     createEAttribute(intentEClass, INTENT__FILE);
     createEReference(intentEClass, INTENT__TRAINING_PHRASES);
+    createEAttribute(intentEClass, INTENT__RESPONSES);
+    createEAttribute(intentEClass, INTENT__WEB_HOOK);
+    createEAttribute(intentEClass, INTENT__WEB_HOOK_FOR_SLOT_FILLING);
 
     inputContextEClass = createEClass(INPUT_CONTEXT);
     createEReference(inputContextEClass, INPUT_CONTEXT__TYPE);
@@ -728,6 +764,9 @@ public class DialogflowConfigPackageImpl extends EPackageImpl implements Dialogf
     initEReference(getIntent_AffectedContexts(), this.getOutputContext(), null, "affectedContexts", null, 0, -1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getIntent_File(), ecorePackage.getEString(), "file", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIntent_TrainingPhrases(), this.getTrainingPhrase(), null, "trainingPhrases", null, 0, -1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getIntent_Responses(), ecorePackage.getEString(), "responses", null, 0, -1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getIntent_WebHook(), ecorePackage.getEBoolean(), "webHook", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getIntent_WebHookForSlotFilling(), ecorePackage.getEBoolean(), "webHookForSlotFilling", null, 0, 1, Intent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(inputContextEClass, InputContext.class, "InputContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getInputContext_Type(), this.getEntityType(), null, "type", null, 0, 1, InputContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -358,6 +358,90 @@ ruleIntent returns [EObject current=null]
 				)*
 			)
 		)?
+		(
+			otherlv_16='response'
+			{
+				newLeafNode(otherlv_16, grammarAccess.getIntentAccess().getResponseKeyword_5_0());
+			}
+			(
+				(
+					lv_responses_17_0=RULE_STRING
+					{
+						newLeafNode(lv_responses_17_0, grammarAccess.getIntentAccess().getResponsesSTRINGTerminalRuleCall_5_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getIntentRule());
+						}
+						addWithLastConsumed(
+							$current,
+							"responses",
+							lv_responses_17_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
+					}
+				)
+			)+
+		)?
+		(
+			(
+				{ 
+				  getUnorderedGroupHelper().enter(grammarAccess.getIntentAccess().getUnorderedGroup_6());
+				}
+				(
+					(
+			(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getIntentAccess().getUnorderedGroup_6(), 0)}?=>(
+					{
+						getUnorderedGroupHelper().select(grammarAccess.getIntentAccess().getUnorderedGroup_6(), 0);
+					}
+								({true}?=>((
+									lv_webHook_19_0='webhook'
+									{
+										newLeafNode(lv_webHook_19_0, grammarAccess.getIntentAccess().getWebHookWebhookKeyword_6_0_0());
+									}
+									{
+										if ($current==null) {
+											$current = createModelElement(grammarAccess.getIntentRule());
+										}
+										setWithLastConsumed($current, "webHook", true, "webhook");
+									}
+								)
+								))
+					{ 
+						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getIntentAccess().getUnorderedGroup_6());
+					}
+				)
+			)|
+			(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getIntentAccess().getUnorderedGroup_6(), 1)}?=>(
+					{
+						getUnorderedGroupHelper().select(grammarAccess.getIntentAccess().getUnorderedGroup_6(), 1);
+					}
+								({true}?=>((
+									lv_webHookForSlotFilling_20_0='webhook_for_slot_filling'
+									{
+										newLeafNode(lv_webHookForSlotFilling_20_0, grammarAccess.getIntentAccess().getWebHookForSlotFillingWebhook_for_slot_fillingKeyword_6_1_0());
+									}
+									{
+										if ($current==null) {
+											$current = createModelElement(grammarAccess.getIntentRule());
+										}
+										setWithLastConsumed($current, "webHookForSlotFilling", true, "webhook_for_slot_filling");
+									}
+								)
+								))
+					{ 
+						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getIntentAccess().getUnorderedGroup_6());
+					}
+				)
+			)
+					)*
+				)
+			)
+				{ 
+				  getUnorderedGroupHelper().leave(grammarAccess.getIntentAccess().getUnorderedGroup_6());
+				}
+		)
 	)
 ;
 
@@ -846,15 +930,15 @@ ruleEntityType returns [EObject current=null]
 						getUnorderedGroupHelper().select(grammarAccess.getEntityTypeAccess().getUnorderedGroup_3(), 2);
 					}
 								({true}?=>((
-									lv_automatedExpansion_10_0='autoexpand'
+									lv_automatedExpansion_10_0='auto_expand'
 									{
-										newLeafNode(lv_automatedExpansion_10_0, grammarAccess.getEntityTypeAccess().getAutomatedExpansionAutoexpandKeyword_3_2_0());
+										newLeafNode(lv_automatedExpansion_10_0, grammarAccess.getEntityTypeAccess().getAutomatedExpansionAuto_expandKeyword_3_2_0());
 									}
 									{
 										if ($current==null) {
 											$current = createModelElement(grammarAccess.getEntityTypeRule());
 										}
-										setWithLastConsumed($current, "automatedExpansion", true, "autoexpand");
+										setWithLastConsumed($current, "automatedExpansion", true, "auto_expand");
 									}
 								)
 								))
@@ -869,15 +953,15 @@ ruleEntityType returns [EObject current=null]
 						getUnorderedGroupHelper().select(grammarAccess.getEntityTypeAccess().getUnorderedGroup_3(), 3);
 					}
 								({true}?=>((
-									lv_allowFuzzyExtraction_11_0='fuzzyextract'
+									lv_allowFuzzyExtraction_11_0='fuzzy_extract'
 									{
-										newLeafNode(lv_allowFuzzyExtraction_11_0, grammarAccess.getEntityTypeAccess().getAllowFuzzyExtractionFuzzyextractKeyword_3_3_0());
+										newLeafNode(lv_allowFuzzyExtraction_11_0, grammarAccess.getEntityTypeAccess().getAllowFuzzyExtractionFuzzy_extractKeyword_3_3_0());
 									}
 									{
 										if ($current==null) {
 											$current = createModelElement(grammarAccess.getEntityTypeRule());
 										}
-										setWithLastConsumed($current, "allowFuzzyExtraction", true, "fuzzyextract");
+										setWithLastConsumed($current, "allowFuzzyExtraction", true, "fuzzy_extract");
 									}
 								)
 								))

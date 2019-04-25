@@ -45,6 +45,7 @@ public class DialogflowConfigParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getIntentAccess().getGroup_4_0(), "rule__Intent__Group_4_0__0");
 			builder.put(grammarAccess.getIntentAccess().getGroup_4_1(), "rule__Intent__Group_4_1__0");
 			builder.put(grammarAccess.getIntentAccess().getGroup_4_1_3(), "rule__Intent__Group_4_1_3__0");
+			builder.put(grammarAccess.getIntentAccess().getGroup_5(), "rule__Intent__Group_5__0");
 			builder.put(grammarAccess.getOutputContextAccess().getGroup(), "rule__OutputContext__Group__0");
 			builder.put(grammarAccess.getOutputContextAccess().getGroup_1(), "rule__OutputContext__Group_1__0");
 			builder.put(grammarAccess.getParameterAccess().getGroup(), "rule__Parameter__Group__0");
@@ -63,6 +64,9 @@ public class DialogflowConfigParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getIntentAccess().getFileAssignment_4_0_1(), "rule__Intent__FileAssignment_4_0_1");
 			builder.put(grammarAccess.getIntentAccess().getTrainingPhrasesAssignment_4_1_2(), "rule__Intent__TrainingPhrasesAssignment_4_1_2");
 			builder.put(grammarAccess.getIntentAccess().getTrainingPhrasesAssignment_4_1_3_1(), "rule__Intent__TrainingPhrasesAssignment_4_1_3_1");
+			builder.put(grammarAccess.getIntentAccess().getResponsesAssignment_5_1(), "rule__Intent__ResponsesAssignment_5_1");
+			builder.put(grammarAccess.getIntentAccess().getWebHookAssignment_6_0(), "rule__Intent__WebHookAssignment_6_0");
+			builder.put(grammarAccess.getIntentAccess().getWebHookForSlotFillingAssignment_6_1(), "rule__Intent__WebHookForSlotFillingAssignment_6_1");
 			builder.put(grammarAccess.getInputContextAccess().getTypeAssignment(), "rule__InputContext__TypeAssignment");
 			builder.put(grammarAccess.getOutputContextAccess().getTypeAssignment_0(), "rule__OutputContext__TypeAssignment_0");
 			builder.put(grammarAccess.getOutputContextAccess().getLifespanAssignment_1_1(), "rule__OutputContext__LifespanAssignment_1_1");
@@ -82,6 +86,7 @@ public class DialogflowConfigParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEntityTypeAccess().getAllowFuzzyExtractionAssignment_3_3(), "rule__EntityType__AllowFuzzyExtractionAssignment_3_3");
 			builder.put(grammarAccess.getEntityAccess().getNameAssignment_0(), "rule__Entity__NameAssignment_0");
 			builder.put(grammarAccess.getEntityAccess().getSynonymsAssignment_1_1(), "rule__Entity__SynonymsAssignment_1_1");
+			builder.put(grammarAccess.getIntentAccess().getUnorderedGroup_6(), "rule__Intent__UnorderedGroup_6");
 			builder.put(grammarAccess.getParameterAccess().getUnorderedGroup_1_1(), "rule__Parameter__UnorderedGroup_1_1");
 			builder.put(grammarAccess.getEntityTypeAccess().getUnorderedGroup_3(), "rule__EntityType__UnorderedGroup_3");
 		}

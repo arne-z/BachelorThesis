@@ -641,6 +641,7 @@ rule__Intent__Group__4
 	}
 :
 	rule__Intent__Group__4__Impl
+	rule__Intent__Group__5
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -655,6 +656,59 @@ rule__Intent__Group__4__Impl
 	{ before(grammarAccess.getIntentAccess().getAlternatives_4()); }
 	(rule__Intent__Alternatives_4)?
 	{ after(grammarAccess.getIntentAccess().getAlternatives_4()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__Group__5
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Intent__Group__5__Impl
+	rule__Intent__Group__6
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__Group__5__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getIntentAccess().getGroup_5()); }
+	(rule__Intent__Group_5__0)?
+	{ after(grammarAccess.getIntentAccess().getGroup_5()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__Group__6
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Intent__Group__6__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__Group__6__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getIntentAccess().getUnorderedGroup_6()); }
+	(rule__Intent__UnorderedGroup_6)
+	{ after(grammarAccess.getIntentAccess().getUnorderedGroup_6()); }
 )
 ;
 finally {
@@ -1155,6 +1209,67 @@ rule__Intent__Group_4_1_3__1__Impl
 	{ before(grammarAccess.getIntentAccess().getTrainingPhrasesAssignment_4_1_3_1()); }
 	(rule__Intent__TrainingPhrasesAssignment_4_1_3_1)
 	{ after(grammarAccess.getIntentAccess().getTrainingPhrasesAssignment_4_1_3_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Intent__Group_5__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Intent__Group_5__0__Impl
+	rule__Intent__Group_5__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__Group_5__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getIntentAccess().getResponseKeyword_5_0()); }
+	'response'
+	{ after(grammarAccess.getIntentAccess().getResponseKeyword_5_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__Group_5__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Intent__Group_5__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__Group_5__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	(
+		{ before(grammarAccess.getIntentAccess().getResponsesAssignment_5_1()); }
+		(rule__Intent__ResponsesAssignment_5_1)
+		{ after(grammarAccess.getIntentAccess().getResponsesAssignment_5_1()); }
+	)
+	(
+		{ before(grammarAccess.getIntentAccess().getResponsesAssignment_5_1()); }
+		(rule__Intent__ResponsesAssignment_5_1)*
+		{ after(grammarAccess.getIntentAccess().getResponsesAssignment_5_1()); }
+	)
 )
 ;
 finally {
@@ -1763,6 +1878,89 @@ finally {
 }
 
 
+rule__Intent__UnorderedGroup_6
+	@init {
+		int stackSize = keepStackSize();
+		getUnorderedGroupHelper().enter(grammarAccess.getIntentAccess().getUnorderedGroup_6());
+	}
+:
+	rule__Intent__UnorderedGroup_6__0
+	?
+;
+finally {
+	getUnorderedGroupHelper().leave(grammarAccess.getIntentAccess().getUnorderedGroup_6());
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__UnorderedGroup_6__Impl
+	@init {
+		int stackSize = keepStackSize();
+		boolean selected = false;
+	}
+:
+		(
+		( 
+			{getUnorderedGroupHelper().canSelect(grammarAccess.getIntentAccess().getUnorderedGroup_6(), 0)}?=>(
+				{
+					getUnorderedGroupHelper().select(grammarAccess.getIntentAccess().getUnorderedGroup_6(), 0);
+				}
+				{
+					selected = true;
+				}
+				(
+					{ before(grammarAccess.getIntentAccess().getWebHookAssignment_6_0()); }
+					(rule__Intent__WebHookAssignment_6_0)
+					{ after(grammarAccess.getIntentAccess().getWebHookAssignment_6_0()); }
+				)
+			)
+		)|
+		( 
+			{getUnorderedGroupHelper().canSelect(grammarAccess.getIntentAccess().getUnorderedGroup_6(), 1)}?=>(
+				{
+					getUnorderedGroupHelper().select(grammarAccess.getIntentAccess().getUnorderedGroup_6(), 1);
+				}
+				{
+					selected = true;
+				}
+				(
+					{ before(grammarAccess.getIntentAccess().getWebHookForSlotFillingAssignment_6_1()); }
+					(rule__Intent__WebHookForSlotFillingAssignment_6_1)
+					{ after(grammarAccess.getIntentAccess().getWebHookForSlotFillingAssignment_6_1()); }
+				)
+			)
+		)
+		)
+;
+finally {
+	if (selected)
+		getUnorderedGroupHelper().returnFromSelection(grammarAccess.getIntentAccess().getUnorderedGroup_6());
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__UnorderedGroup_6__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Intent__UnorderedGroup_6__Impl
+	rule__Intent__UnorderedGroup_6__1?
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__UnorderedGroup_6__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Intent__UnorderedGroup_6__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 rule__Parameter__UnorderedGroup_1_1
 	@init {
 		int stackSize = keepStackSize();
@@ -2118,6 +2316,59 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__Intent__ResponsesAssignment_5_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getIntentAccess().getResponsesSTRINGTerminalRuleCall_5_1_0()); }
+		RULE_STRING
+		{ after(grammarAccess.getIntentAccess().getResponsesSTRINGTerminalRuleCall_5_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__WebHookAssignment_6_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getIntentAccess().getWebHookWebhookKeyword_6_0_0()); }
+		(
+			{ before(grammarAccess.getIntentAccess().getWebHookWebhookKeyword_6_0_0()); }
+			'webhook'
+			{ after(grammarAccess.getIntentAccess().getWebHookWebhookKeyword_6_0_0()); }
+		)
+		{ after(grammarAccess.getIntentAccess().getWebHookWebhookKeyword_6_0_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Intent__WebHookForSlotFillingAssignment_6_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getIntentAccess().getWebHookForSlotFillingWebhook_for_slot_fillingKeyword_6_1_0()); }
+		(
+			{ before(grammarAccess.getIntentAccess().getWebHookForSlotFillingWebhook_for_slot_fillingKeyword_6_1_0()); }
+			'webhook_for_slot_filling'
+			{ after(grammarAccess.getIntentAccess().getWebHookForSlotFillingWebhook_for_slot_fillingKeyword_6_1_0()); }
+		)
+		{ after(grammarAccess.getIntentAccess().getWebHookForSlotFillingWebhook_for_slot_fillingKeyword_6_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__InputContext__TypeAssignment
 	@init {
 		int stackSize = keepStackSize();
@@ -2389,13 +2640,13 @@ rule__EntityType__AutomatedExpansionAssignment_3_2
 	}
 :
 	(
-		{ before(grammarAccess.getEntityTypeAccess().getAutomatedExpansionAutoexpandKeyword_3_2_0()); }
+		{ before(grammarAccess.getEntityTypeAccess().getAutomatedExpansionAuto_expandKeyword_3_2_0()); }
 		(
-			{ before(grammarAccess.getEntityTypeAccess().getAutomatedExpansionAutoexpandKeyword_3_2_0()); }
-			'autoexpand'
-			{ after(grammarAccess.getEntityTypeAccess().getAutomatedExpansionAutoexpandKeyword_3_2_0()); }
+			{ before(grammarAccess.getEntityTypeAccess().getAutomatedExpansionAuto_expandKeyword_3_2_0()); }
+			'auto_expand'
+			{ after(grammarAccess.getEntityTypeAccess().getAutomatedExpansionAuto_expandKeyword_3_2_0()); }
 		)
-		{ after(grammarAccess.getEntityTypeAccess().getAutomatedExpansionAutoexpandKeyword_3_2_0()); }
+		{ after(grammarAccess.getEntityTypeAccess().getAutomatedExpansionAuto_expandKeyword_3_2_0()); }
 	)
 ;
 finally {
@@ -2408,13 +2659,13 @@ rule__EntityType__AllowFuzzyExtractionAssignment_3_3
 	}
 :
 	(
-		{ before(grammarAccess.getEntityTypeAccess().getAllowFuzzyExtractionFuzzyextractKeyword_3_3_0()); }
+		{ before(grammarAccess.getEntityTypeAccess().getAllowFuzzyExtractionFuzzy_extractKeyword_3_3_0()); }
 		(
-			{ before(grammarAccess.getEntityTypeAccess().getAllowFuzzyExtractionFuzzyextractKeyword_3_3_0()); }
-			'fuzzyextract'
-			{ after(grammarAccess.getEntityTypeAccess().getAllowFuzzyExtractionFuzzyextractKeyword_3_3_0()); }
+			{ before(grammarAccess.getEntityTypeAccess().getAllowFuzzyExtractionFuzzy_extractKeyword_3_3_0()); }
+			'fuzzy_extract'
+			{ after(grammarAccess.getEntityTypeAccess().getAllowFuzzyExtractionFuzzy_extractKeyword_3_3_0()); }
 		)
-		{ after(grammarAccess.getEntityTypeAccess().getAllowFuzzyExtractionFuzzyextractKeyword_3_3_0()); }
+		{ after(grammarAccess.getEntityTypeAccess().getAllowFuzzyExtractionFuzzy_extractKeyword_3_3_0()); }
 	)
 ;
 finally {

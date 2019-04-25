@@ -20,6 +20,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="file" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="trainingPhrases" upperBound="-1"
         eType="#//TrainingPhrase" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="responses" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="webHook" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="webHookForSlotFilling"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InputContext">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//EntityType"/>

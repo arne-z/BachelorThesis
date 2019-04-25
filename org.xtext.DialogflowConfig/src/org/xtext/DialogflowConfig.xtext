@@ -4,7 +4,18 @@ generate dialogflowConfig "http://www.xtext.org/DialogflowConfig"
 
 Agent:
 	'Agent' name=ID
+	('config' 
+		('language' language=Language)?
+		&('something')?
+	)?
 	elements+=AbstractElement*
+;
+
+enum Language:
+	en |
+	de |
+	fr |
+	es
 ;
 
 AbstractElement:
@@ -22,6 +33,8 @@ Intent:
 		'file' file=STRING 
 		| 'trained' 'with' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*
 	)?
+	('response' responses+=STRING+)?
+	(webHook?='webhook'?&webHookForSlotFilling?='webhook_for_slot_filling'?)
 ;
 
 InputContext:
@@ -61,8 +74,8 @@ EntityType:
 	('state' 
 		isOverridable?='overridable'?
 		&isEnum?='enum'?
-		&automatedExpansion?='autoexpand'?
-		&allowFuzzyExtraction?='fuzzyextract'?
+		&automatedExpansion?='auto_expand'?
+		&allowFuzzyExtraction?='fuzzy_extract'?
 	)?
 ;
 

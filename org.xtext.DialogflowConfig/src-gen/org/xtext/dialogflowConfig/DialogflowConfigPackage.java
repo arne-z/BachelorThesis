@@ -187,13 +187,40 @@ public interface DialogflowConfigPackage extends EPackage
   int INTENT__TRAINING_PHRASES = ABSTRACT_ELEMENT_FEATURE_COUNT + 4;
 
   /**
+   * The feature id for the '<em><b>Responses</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTENT__RESPONSES = ABSTRACT_ELEMENT_FEATURE_COUNT + 5;
+
+  /**
+   * The feature id for the '<em><b>Web Hook</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTENT__WEB_HOOK = ABSTRACT_ELEMENT_FEATURE_COUNT + 6;
+
+  /**
+   * The feature id for the '<em><b>Web Hook For Slot Filling</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTENT__WEB_HOOK_FOR_SLOT_FILLING = ABSTRACT_ELEMENT_FEATURE_COUNT + 7;
+
+  /**
    * The number of structural features of the '<em>Intent</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INTENT_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 5;
+  int INTENT_FEATURE_COUNT = ABSTRACT_ELEMENT_FEATURE_COUNT + 8;
 
   /**
    * The meta object id for the '{@link org.xtext.dialogflowConfig.impl.InputContextImpl <em>Input Context</em>}' class.
@@ -657,6 +684,39 @@ public interface DialogflowConfigPackage extends EPackage
   EReference getIntent_TrainingPhrases();
 
   /**
+   * Returns the meta object for the attribute list '{@link org.xtext.dialogflowConfig.Intent#getResponses <em>Responses</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Responses</em>'.
+   * @see org.xtext.dialogflowConfig.Intent#getResponses()
+   * @see #getIntent()
+   * @generated
+   */
+  EAttribute getIntent_Responses();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.Intent#isWebHook <em>Web Hook</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Web Hook</em>'.
+   * @see org.xtext.dialogflowConfig.Intent#isWebHook()
+   * @see #getIntent()
+   * @generated
+   */
+  EAttribute getIntent_WebHook();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.dialogflowConfig.Intent#isWebHookForSlotFilling <em>Web Hook For Slot Filling</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Web Hook For Slot Filling</em>'.
+   * @see org.xtext.dialogflowConfig.Intent#isWebHookForSlotFilling()
+   * @see #getIntent()
+   * @generated
+   */
+  EAttribute getIntent_WebHookForSlotFilling();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.dialogflowConfig.InputContext <em>Input Context</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1060,6 +1120,30 @@ public interface DialogflowConfigPackage extends EPackage
      * @generated
      */
     EReference INTENT__TRAINING_PHRASES = eINSTANCE.getIntent_TrainingPhrases();
+
+    /**
+     * The meta object literal for the '<em><b>Responses</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INTENT__RESPONSES = eINSTANCE.getIntent_Responses();
+
+    /**
+     * The meta object literal for the '<em><b>Web Hook</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INTENT__WEB_HOOK = eINSTANCE.getIntent_WebHook();
+
+    /**
+     * The meta object literal for the '<em><b>Web Hook For Slot Filling</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INTENT__WEB_HOOK_FOR_SLOT_FILLING = eINSTANCE.getIntent_WebHookForSlotFilling();
 
     /**
      * The meta object literal for the '{@link org.xtext.dialogflowConfig.impl.InputContextImpl <em>Input Context</em>}' class.

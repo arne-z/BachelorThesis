@@ -19,6 +19,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.xtext.dialogflowConfig.Intent#getAffectedContexts <em>Affected Contexts</em>}</li>
  *   <li>{@link org.xtext.dialogflowConfig.Intent#getFile <em>File</em>}</li>
  *   <li>{@link org.xtext.dialogflowConfig.Intent#getTrainingPhrases <em>Training Phrases</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.Intent#getResponses <em>Responses</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.Intent#isWebHook <em>Web Hook</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.Intent#isWebHookForSlotFilling <em>Web Hook For Slot Filling</em>}</li>
  * </ul>
  *
  * @see org.xtext.dialogflowConfig.DialogflowConfigPackage#getIntent()
@@ -116,5 +119,73 @@ public interface Intent extends AbstractElement
    * @generated
    */
   EList<TrainingPhrase> getTrainingPhrases();
+
+  /**
+   * Returns the value of the '<em><b>Responses</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Responses</em>' attribute list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Responses</em>' attribute list.
+   * @see org.xtext.dialogflowConfig.DialogflowConfigPackage#getIntent_Responses()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getResponses();
+
+  /**
+   * Returns the value of the '<em><b>Web Hook</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Web Hook</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Web Hook</em>' attribute.
+   * @see #setWebHook(boolean)
+   * @see org.xtext.dialogflowConfig.DialogflowConfigPackage#getIntent_WebHook()
+   * @model
+   * @generated
+   */
+  boolean isWebHook();
+
+  /**
+   * Sets the value of the '{@link org.xtext.dialogflowConfig.Intent#isWebHook <em>Web Hook</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Web Hook</em>' attribute.
+   * @see #isWebHook()
+   * @generated
+   */
+  void setWebHook(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Web Hook For Slot Filling</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Web Hook For Slot Filling</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Web Hook For Slot Filling</em>' attribute.
+   * @see #setWebHookForSlotFilling(boolean)
+   * @see org.xtext.dialogflowConfig.DialogflowConfigPackage#getIntent_WebHookForSlotFilling()
+   * @model
+   * @generated
+   */
+  boolean isWebHookForSlotFilling();
+
+  /**
+   * Sets the value of the '{@link org.xtext.dialogflowConfig.Intent#isWebHookForSlotFilling <em>Web Hook For Slot Filling</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Web Hook For Slot Filling</em>' attribute.
+   * @see #isWebHookForSlotFilling()
+   * @generated
+   */
+  void setWebHookForSlotFilling(boolean value);
 
 } // Intent

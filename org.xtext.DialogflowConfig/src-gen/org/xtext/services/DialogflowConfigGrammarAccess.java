@@ -110,16 +110,27 @@ public class DialogflowConfigGrammarAccess extends AbstractGrammarElementFinder 
 		private final Keyword cCommaKeyword_4_1_3_0 = (Keyword)cGroup_4_1_3.eContents().get(0);
 		private final Assignment cTrainingPhrasesAssignment_4_1_3_1 = (Assignment)cGroup_4_1_3.eContents().get(1);
 		private final RuleCall cTrainingPhrasesTrainingPhraseParserRuleCall_4_1_3_1_0 = (RuleCall)cTrainingPhrasesAssignment_4_1_3_1.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cResponseKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cResponsesAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cResponsesSTRINGTerminalRuleCall_5_1_0 = (RuleCall)cResponsesAssignment_5_1.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_6 = (UnorderedGroup)cGroup.eContents().get(6);
+		private final Assignment cWebHookAssignment_6_0 = (Assignment)cUnorderedGroup_6.eContents().get(0);
+		private final Keyword cWebHookWebhookKeyword_6_0_0 = (Keyword)cWebHookAssignment_6_0.eContents().get(0);
+		private final Assignment cWebHookForSlotFillingAssignment_6_1 = (Assignment)cUnorderedGroup_6.eContents().get(1);
+		private final Keyword cWebHookForSlotFillingWebhook_for_slot_fillingKeyword_6_1_0 = (Keyword)cWebHookForSlotFillingAssignment_6_1.eContents().get(0);
 		
 		//Intent:
 		//	'Intent' name=ID ('parameters' parameters+=Parameter*)? ('contexts' (('in' inputContexts+=InputContext+)? ('out'
 		//	affectedContexts+=OutputContext+)?))? ('file' file=STRING
-		//	| 'trained' 'with' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*)?;
+		//	| 'trained' 'with' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*)? ('response'
+		//	responses+=STRING+)? (webHook?='webhook'? & webHookForSlotFilling?='webhook_for_slot_filling'?);
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Intent' name=ID ('parameters' parameters+=Parameter*)? ('contexts' (('in' inputContexts+=InputContext+)? ('out'
 		//affectedContexts+=OutputContext+)?))? ('file' file=STRING | 'trained' 'with' trainingPhrases+=TrainingPhrase (','
-		//trainingPhrases+=TrainingPhrase)*)?
+		//trainingPhrases+=TrainingPhrase)*)? ('response' responses+=STRING+)? (webHook?='webhook'? &
+		//webHookForSlotFilling?='webhook_for_slot_filling'?)
 		public Group getGroup() { return cGroup; }
 		
 		//'Intent'
@@ -217,6 +228,33 @@ public class DialogflowConfigGrammarAccess extends AbstractGrammarElementFinder 
 		
 		//TrainingPhrase
 		public RuleCall getTrainingPhrasesTrainingPhraseParserRuleCall_4_1_3_1_0() { return cTrainingPhrasesTrainingPhraseParserRuleCall_4_1_3_1_0; }
+		
+		//('response' responses+=STRING+)?
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'response'
+		public Keyword getResponseKeyword_5_0() { return cResponseKeyword_5_0; }
+		
+		//responses+=STRING+
+		public Assignment getResponsesAssignment_5_1() { return cResponsesAssignment_5_1; }
+		
+		//STRING
+		public RuleCall getResponsesSTRINGTerminalRuleCall_5_1_0() { return cResponsesSTRINGTerminalRuleCall_5_1_0; }
+		
+		//webHook?='webhook'? & webHookForSlotFilling?='webhook_for_slot_filling'?
+		public UnorderedGroup getUnorderedGroup_6() { return cUnorderedGroup_6; }
+		
+		//webHook?='webhook'?
+		public Assignment getWebHookAssignment_6_0() { return cWebHookAssignment_6_0; }
+		
+		//'webhook'
+		public Keyword getWebHookWebhookKeyword_6_0_0() { return cWebHookWebhookKeyword_6_0_0; }
+		
+		//webHookForSlotFilling?='webhook_for_slot_filling'?
+		public Assignment getWebHookForSlotFillingAssignment_6_1() { return cWebHookForSlotFillingAssignment_6_1; }
+		
+		//'webhook_for_slot_filling'
+		public Keyword getWebHookForSlotFillingWebhook_for_slot_fillingKeyword_6_1_0() { return cWebHookForSlotFillingWebhook_for_slot_fillingKeyword_6_1_0; }
 	}
 	public class InputContextElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.DialogflowConfig.InputContext");
@@ -423,22 +461,22 @@ public class DialogflowConfigGrammarAccess extends AbstractGrammarElementFinder 
 		private final Assignment cIsEnumAssignment_3_1 = (Assignment)cUnorderedGroup_3.eContents().get(1);
 		private final Keyword cIsEnumEnumKeyword_3_1_0 = (Keyword)cIsEnumAssignment_3_1.eContents().get(0);
 		private final Assignment cAutomatedExpansionAssignment_3_2 = (Assignment)cUnorderedGroup_3.eContents().get(2);
-		private final Keyword cAutomatedExpansionAutoexpandKeyword_3_2_0 = (Keyword)cAutomatedExpansionAssignment_3_2.eContents().get(0);
+		private final Keyword cAutomatedExpansionAuto_expandKeyword_3_2_0 = (Keyword)cAutomatedExpansionAssignment_3_2.eContents().get(0);
 		private final Assignment cAllowFuzzyExtractionAssignment_3_3 = (Assignment)cUnorderedGroup_3.eContents().get(3);
-		private final Keyword cAllowFuzzyExtractionFuzzyextractKeyword_3_3_0 = (Keyword)cAllowFuzzyExtractionAssignment_3_3.eContents().get(0);
+		private final Keyword cAllowFuzzyExtractionFuzzy_extractKeyword_3_3_0 = (Keyword)cAllowFuzzyExtractionAssignment_3_3.eContents().get(0);
 		
 		//EntityType:
 		//	'Type' name=ID (dynamic?='dynamic' | builtIn?='builtin' |
 		//	'values' values+=Entity+) ('state'
 		//	isOverridable?='overridable'?
 		//	& isEnum?='enum'?
-		//	& automatedExpansion?='autoexpand'?
-		//	& allowFuzzyExtraction?='fuzzyextract'?)?;
+		//	& automatedExpansion?='auto_expand'?
+		//	& allowFuzzyExtraction?='fuzzy_extract'?)?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'Type' name=ID (dynamic?='dynamic' | builtIn?='builtin' | 'values' values+=Entity+) ('state'
-		//isOverridable?='overridable'? & isEnum?='enum'? & automatedExpansion?='autoexpand'? &
-		//allowFuzzyExtraction?='fuzzyextract'?)?
+		//isOverridable?='overridable'? & isEnum?='enum'? & automatedExpansion?='auto_expand'? &
+		//allowFuzzyExtraction?='fuzzy_extract'?)?
 		public Group getGroup() { return cGroup; }
 		
 		//'Type'
@@ -477,8 +515,8 @@ public class DialogflowConfigGrammarAccess extends AbstractGrammarElementFinder 
 		//Entity
 		public RuleCall getValuesEntityParserRuleCall_2_2_1_0() { return cValuesEntityParserRuleCall_2_2_1_0; }
 		
-		//('state' isOverridable?='overridable'? & isEnum?='enum'? & automatedExpansion?='autoexpand'? &
-		//allowFuzzyExtraction?='fuzzyextract'?)?
+		//('state' isOverridable?='overridable'? & isEnum?='enum'? & automatedExpansion?='auto_expand'? &
+		//allowFuzzyExtraction?='fuzzy_extract'?)?
 		public UnorderedGroup getUnorderedGroup_3() { return cUnorderedGroup_3; }
 		
 		//'state' isOverridable?='overridable'?
@@ -499,17 +537,17 @@ public class DialogflowConfigGrammarAccess extends AbstractGrammarElementFinder 
 		//'enum'
 		public Keyword getIsEnumEnumKeyword_3_1_0() { return cIsEnumEnumKeyword_3_1_0; }
 		
-		//automatedExpansion?='autoexpand'?
+		//automatedExpansion?='auto_expand'?
 		public Assignment getAutomatedExpansionAssignment_3_2() { return cAutomatedExpansionAssignment_3_2; }
 		
-		//'autoexpand'
-		public Keyword getAutomatedExpansionAutoexpandKeyword_3_2_0() { return cAutomatedExpansionAutoexpandKeyword_3_2_0; }
+		//'auto_expand'
+		public Keyword getAutomatedExpansionAuto_expandKeyword_3_2_0() { return cAutomatedExpansionAuto_expandKeyword_3_2_0; }
 		
-		//allowFuzzyExtraction?='fuzzyextract'?
+		//allowFuzzyExtraction?='fuzzy_extract'?
 		public Assignment getAllowFuzzyExtractionAssignment_3_3() { return cAllowFuzzyExtractionAssignment_3_3; }
 		
-		//'fuzzyextract'
-		public Keyword getAllowFuzzyExtractionFuzzyextractKeyword_3_3_0() { return cAllowFuzzyExtractionFuzzyextractKeyword_3_3_0; }
+		//'fuzzy_extract'
+		public Keyword getAllowFuzzyExtractionFuzzy_extractKeyword_3_3_0() { return cAllowFuzzyExtractionFuzzy_extractKeyword_3_3_0; }
 	}
 	public class EntityElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.DialogflowConfig.Entity");
@@ -639,7 +677,8 @@ public class DialogflowConfigGrammarAccess extends AbstractGrammarElementFinder 
 	//Intent:
 	//	'Intent' name=ID ('parameters' parameters+=Parameter*)? ('contexts' (('in' inputContexts+=InputContext+)? ('out'
 	//	affectedContexts+=OutputContext+)?))? ('file' file=STRING
-	//	| 'trained' 'with' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*)?;
+	//	| 'trained' 'with' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*)? ('response'
+	//	responses+=STRING+)? (webHook?='webhook'? & webHookForSlotFilling?='webhook_for_slot_filling'?);
 	public IntentElements getIntentAccess() {
 		return pIntent;
 	}
@@ -724,8 +763,8 @@ public class DialogflowConfigGrammarAccess extends AbstractGrammarElementFinder 
 	//	'values' values+=Entity+) ('state'
 	//	isOverridable?='overridable'?
 	//	& isEnum?='enum'?
-	//	& automatedExpansion?='autoexpand'?
-	//	& allowFuzzyExtraction?='fuzzyextract'?)?;
+	//	& automatedExpansion?='auto_expand'?
+	//	& allowFuzzyExtraction?='fuzzy_extract'?)?;
 	public EntityTypeElements getEntityTypeAccess() {
 		return pEntityType;
 	}

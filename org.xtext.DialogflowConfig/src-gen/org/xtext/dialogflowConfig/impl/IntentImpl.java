@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -38,6 +39,9 @@ import org.xtext.dialogflowConfig.TrainingPhrase;
  *   <li>{@link org.xtext.dialogflowConfig.impl.IntentImpl#getAffectedContexts <em>Affected Contexts</em>}</li>
  *   <li>{@link org.xtext.dialogflowConfig.impl.IntentImpl#getFile <em>File</em>}</li>
  *   <li>{@link org.xtext.dialogflowConfig.impl.IntentImpl#getTrainingPhrases <em>Training Phrases</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.impl.IntentImpl#getResponses <em>Responses</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.impl.IntentImpl#isWebHook <em>Web Hook</em>}</li>
+ *   <li>{@link org.xtext.dialogflowConfig.impl.IntentImpl#isWebHookForSlotFilling <em>Web Hook For Slot Filling</em>}</li>
  * </ul>
  *
  * @generated
@@ -103,6 +107,56 @@ public class IntentImpl extends AbstractElementImpl implements Intent
    * @ordered
    */
   protected EList<TrainingPhrase> trainingPhrases;
+
+  /**
+   * The cached value of the '{@link #getResponses() <em>Responses</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getResponses()
+   * @generated
+   * @ordered
+   */
+  protected EList<String> responses;
+
+  /**
+   * The default value of the '{@link #isWebHook() <em>Web Hook</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isWebHook()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean WEB_HOOK_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isWebHook() <em>Web Hook</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isWebHook()
+   * @generated
+   * @ordered
+   */
+  protected boolean webHook = WEB_HOOK_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isWebHookForSlotFilling() <em>Web Hook For Slot Filling</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isWebHookForSlotFilling()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean WEB_HOOK_FOR_SLOT_FILLING_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isWebHookForSlotFilling() <em>Web Hook For Slot Filling</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isWebHookForSlotFilling()
+   * @generated
+   * @ordered
+   */
+  protected boolean webHookForSlotFilling = WEB_HOOK_FOR_SLOT_FILLING_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -216,6 +270,71 @@ public class IntentImpl extends AbstractElementImpl implements Intent
    * @generated
    */
   @Override
+  public EList<String> getResponses()
+  {
+    if (responses == null)
+    {
+      responses = new EDataTypeEList<String>(String.class, this, DialogflowConfigPackage.INTENT__RESPONSES);
+    }
+    return responses;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isWebHook()
+  {
+    return webHook;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setWebHook(boolean newWebHook)
+  {
+    boolean oldWebHook = webHook;
+    webHook = newWebHook;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DialogflowConfigPackage.INTENT__WEB_HOOK, oldWebHook, webHook));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isWebHookForSlotFilling()
+  {
+    return webHookForSlotFilling;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setWebHookForSlotFilling(boolean newWebHookForSlotFilling)
+  {
+    boolean oldWebHookForSlotFilling = webHookForSlotFilling;
+    webHookForSlotFilling = newWebHookForSlotFilling;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DialogflowConfigPackage.INTENT__WEB_HOOK_FOR_SLOT_FILLING, oldWebHookForSlotFilling, webHookForSlotFilling));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -252,6 +371,12 @@ public class IntentImpl extends AbstractElementImpl implements Intent
         return getFile();
       case DialogflowConfigPackage.INTENT__TRAINING_PHRASES:
         return getTrainingPhrases();
+      case DialogflowConfigPackage.INTENT__RESPONSES:
+        return getResponses();
+      case DialogflowConfigPackage.INTENT__WEB_HOOK:
+        return isWebHook();
+      case DialogflowConfigPackage.INTENT__WEB_HOOK_FOR_SLOT_FILLING:
+        return isWebHookForSlotFilling();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -286,6 +411,16 @@ public class IntentImpl extends AbstractElementImpl implements Intent
         getTrainingPhrases().clear();
         getTrainingPhrases().addAll((Collection<? extends TrainingPhrase>)newValue);
         return;
+      case DialogflowConfigPackage.INTENT__RESPONSES:
+        getResponses().clear();
+        getResponses().addAll((Collection<? extends String>)newValue);
+        return;
+      case DialogflowConfigPackage.INTENT__WEB_HOOK:
+        setWebHook((Boolean)newValue);
+        return;
+      case DialogflowConfigPackage.INTENT__WEB_HOOK_FOR_SLOT_FILLING:
+        setWebHookForSlotFilling((Boolean)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -315,6 +450,15 @@ public class IntentImpl extends AbstractElementImpl implements Intent
       case DialogflowConfigPackage.INTENT__TRAINING_PHRASES:
         getTrainingPhrases().clear();
         return;
+      case DialogflowConfigPackage.INTENT__RESPONSES:
+        getResponses().clear();
+        return;
+      case DialogflowConfigPackage.INTENT__WEB_HOOK:
+        setWebHook(WEB_HOOK_EDEFAULT);
+        return;
+      case DialogflowConfigPackage.INTENT__WEB_HOOK_FOR_SLOT_FILLING:
+        setWebHookForSlotFilling(WEB_HOOK_FOR_SLOT_FILLING_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -339,6 +483,12 @@ public class IntentImpl extends AbstractElementImpl implements Intent
         return FILE_EDEFAULT == null ? file != null : !FILE_EDEFAULT.equals(file);
       case DialogflowConfigPackage.INTENT__TRAINING_PHRASES:
         return trainingPhrases != null && !trainingPhrases.isEmpty();
+      case DialogflowConfigPackage.INTENT__RESPONSES:
+        return responses != null && !responses.isEmpty();
+      case DialogflowConfigPackage.INTENT__WEB_HOOK:
+        return webHook != WEB_HOOK_EDEFAULT;
+      case DialogflowConfigPackage.INTENT__WEB_HOOK_FOR_SLOT_FILLING:
+        return webHookForSlotFilling != WEB_HOOK_FOR_SLOT_FILLING_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -356,6 +506,12 @@ public class IntentImpl extends AbstractElementImpl implements Intent
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (file: ");
     result.append(file);
+    result.append(", responses: ");
+    result.append(responses);
+    result.append(", webHook: ");
+    result.append(webHook);
+    result.append(", webHookForSlotFilling: ");
+    result.append(webHookForSlotFilling);
     result.append(')');
     return result.toString();
   }

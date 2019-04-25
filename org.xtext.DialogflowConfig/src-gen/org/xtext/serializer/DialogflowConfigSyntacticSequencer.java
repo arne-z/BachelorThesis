@@ -72,33 +72,33 @@ public class DialogflowConfigSyntacticSequencer extends AbstractSyntacticSequenc
 	 *     'state'*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     allowFuzzyExtraction?='fuzzyextract' (ambiguity) (rule end)
-	 *     allowFuzzyExtraction?='fuzzyextract' (ambiguity) allowFuzzyExtraction?='fuzzyextract'
-	 *     allowFuzzyExtraction?='fuzzyextract' (ambiguity) automatedExpansion?='autoexpand'
-	 *     allowFuzzyExtraction?='fuzzyextract' (ambiguity) isEnum?='enum'
-	 *     automatedExpansion?='autoexpand' (ambiguity) (rule end)
-	 *     automatedExpansion?='autoexpand' (ambiguity) allowFuzzyExtraction?='fuzzyextract'
-	 *     automatedExpansion?='autoexpand' (ambiguity) automatedExpansion?='autoexpand'
-	 *     automatedExpansion?='autoexpand' (ambiguity) isEnum?='enum'
+	 *     allowFuzzyExtraction?='fuzzy_extract' (ambiguity) (rule end)
+	 *     allowFuzzyExtraction?='fuzzy_extract' (ambiguity) allowFuzzyExtraction?='fuzzy_extract'
+	 *     allowFuzzyExtraction?='fuzzy_extract' (ambiguity) automatedExpansion?='auto_expand'
+	 *     allowFuzzyExtraction?='fuzzy_extract' (ambiguity) isEnum?='enum'
+	 *     automatedExpansion?='auto_expand' (ambiguity) (rule end)
+	 *     automatedExpansion?='auto_expand' (ambiguity) allowFuzzyExtraction?='fuzzy_extract'
+	 *     automatedExpansion?='auto_expand' (ambiguity) automatedExpansion?='auto_expand'
+	 *     automatedExpansion?='auto_expand' (ambiguity) isEnum?='enum'
 	 *     builtIn?='builtin' (ambiguity) (rule end)
-	 *     builtIn?='builtin' (ambiguity) allowFuzzyExtraction?='fuzzyextract'
-	 *     builtIn?='builtin' (ambiguity) automatedExpansion?='autoexpand'
+	 *     builtIn?='builtin' (ambiguity) allowFuzzyExtraction?='fuzzy_extract'
+	 *     builtIn?='builtin' (ambiguity) automatedExpansion?='auto_expand'
 	 *     builtIn?='builtin' (ambiguity) isEnum?='enum'
 	 *     dynamic?='dynamic' (ambiguity) (rule end)
-	 *     dynamic?='dynamic' (ambiguity) allowFuzzyExtraction?='fuzzyextract'
-	 *     dynamic?='dynamic' (ambiguity) automatedExpansion?='autoexpand'
+	 *     dynamic?='dynamic' (ambiguity) allowFuzzyExtraction?='fuzzy_extract'
+	 *     dynamic?='dynamic' (ambiguity) automatedExpansion?='auto_expand'
 	 *     dynamic?='dynamic' (ambiguity) isEnum?='enum'
 	 *     isEnum?='enum' (ambiguity) (rule end)
-	 *     isEnum?='enum' (ambiguity) allowFuzzyExtraction?='fuzzyextract'
-	 *     isEnum?='enum' (ambiguity) automatedExpansion?='autoexpand'
+	 *     isEnum?='enum' (ambiguity) allowFuzzyExtraction?='fuzzy_extract'
+	 *     isEnum?='enum' (ambiguity) automatedExpansion?='auto_expand'
 	 *     isEnum?='enum' (ambiguity) isEnum?='enum'
 	 *     isOverridable?='overridable' (ambiguity) (rule end)
-	 *     isOverridable?='overridable' (ambiguity) allowFuzzyExtraction?='fuzzyextract'
-	 *     isOverridable?='overridable' (ambiguity) automatedExpansion?='autoexpand'
+	 *     isOverridable?='overridable' (ambiguity) allowFuzzyExtraction?='fuzzy_extract'
+	 *     isOverridable?='overridable' (ambiguity) automatedExpansion?='auto_expand'
 	 *     isOverridable?='overridable' (ambiguity) isEnum?='enum'
 	 *     values+=Entity (ambiguity) (rule end)
-	 *     values+=Entity (ambiguity) allowFuzzyExtraction?='fuzzyextract'
-	 *     values+=Entity (ambiguity) automatedExpansion?='autoexpand'
+	 *     values+=Entity (ambiguity) allowFuzzyExtraction?='fuzzy_extract'
+	 *     values+=Entity (ambiguity) automatedExpansion?='auto_expand'
 	 *     values+=Entity (ambiguity) isEnum?='enum'
 	 */
 	protected void emit_EntityType_StateKeyword_3_0_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -110,8 +110,8 @@ public class DialogflowConfigSyntacticSequencer extends AbstractSyntacticSequenc
 	 *     'state'+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     allowFuzzyExtraction?='fuzzyextract' (ambiguity) isOverridable?='overridable'
-	 *     automatedExpansion?='autoexpand' (ambiguity) isOverridable?='overridable'
+	 *     allowFuzzyExtraction?='fuzzy_extract' (ambiguity) isOverridable?='overridable'
+	 *     automatedExpansion?='auto_expand' (ambiguity) isOverridable?='overridable'
 	 *     builtIn?='builtin' (ambiguity) isOverridable?='overridable'
 	 *     dynamic?='dynamic' (ambiguity) isOverridable?='overridable'
 	 *     isEnum?='enum' (ambiguity) isOverridable?='overridable'
@@ -139,11 +139,17 @@ public class DialogflowConfigSyntacticSequencer extends AbstractSyntacticSequenc
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     name=ID 'parameters'? (ambiguity) 'file' file=STRING
+	 *     name=ID 'parameters'? (ambiguity) 'response' responses+=STRING
 	 *     name=ID 'parameters'? (ambiguity) 'trained' 'with' trainingPhrases+=TrainingPhrase
 	 *     name=ID 'parameters'? (ambiguity) (rule end)
+	 *     name=ID 'parameters'? (ambiguity) webHook?='webhook'
+	 *     name=ID 'parameters'? (ambiguity) webHookForSlotFilling?='webhook_for_slot_filling'
 	 *     parameters+=Parameter (ambiguity) 'file' file=STRING
+	 *     parameters+=Parameter (ambiguity) 'response' responses+=STRING
 	 *     parameters+=Parameter (ambiguity) 'trained' 'with' trainingPhrases+=TrainingPhrase
 	 *     parameters+=Parameter (ambiguity) (rule end)
+	 *     parameters+=Parameter (ambiguity) webHook?='webhook'
+	 *     parameters+=Parameter (ambiguity) webHookForSlotFilling?='webhook_for_slot_filling'
 	 */
 	protected void emit_Intent_ContextsKeyword_3_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -157,8 +163,11 @@ public class DialogflowConfigSyntacticSequencer extends AbstractSyntacticSequenc
 	 *     name=ID (ambiguity) 'contexts' 'in' inputContexts+=InputContext
 	 *     name=ID (ambiguity) 'contexts' 'out' affectedContexts+=OutputContext
 	 *     name=ID (ambiguity) 'contexts'? 'file' file=STRING
+	 *     name=ID (ambiguity) 'contexts'? 'response' responses+=STRING
 	 *     name=ID (ambiguity) 'contexts'? 'trained' 'with' trainingPhrases+=TrainingPhrase
 	 *     name=ID (ambiguity) 'contexts'? (rule end)
+	 *     name=ID (ambiguity) 'contexts'? webHook?='webhook'
+	 *     name=ID (ambiguity) 'contexts'? webHookForSlotFilling?='webhook_for_slot_filling'
 	 */
 	protected void emit_Intent_ParametersKeyword_2_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

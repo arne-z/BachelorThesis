@@ -96,8 +96,8 @@ public class DialogflowConfigSemanticSequencer extends AbstractDelegatingSemanti
 	 *     (
 	 *         name=ID 
 	 *         (dynamic?='dynamic' | builtIn?='builtin' | values+=Entity+) 
-	 *         isOverridable?='overridable'? 
-	 *         ((isEnum?='enum' | automatedExpansion?='autoexpand' | allowFuzzyExtraction?='fuzzyextract')? isOverridable?='overridable'?)*
+	 *         isEnum?='enum'? 
+	 *         ((isOverridable?='overridable' | automatedExpansion?='auto_expand' | allowFuzzyExtraction?='fuzzy_extract')? isEnum?='enum'?)*
 	 *     )
 	 */
 	protected void sequence_EntityType(ISerializationContext context, EntityType semanticObject) {
@@ -146,7 +146,9 @@ public class DialogflowConfigSemanticSequencer extends AbstractDelegatingSemanti
 	 *         parameters+=Parameter* 
 	 *         inputContexts+=InputContext* 
 	 *         affectedContexts+=OutputContext* 
-	 *         (file=STRING | (trainingPhrases+=TrainingPhrase trainingPhrases+=TrainingPhrase*))?
+	 *         (file=STRING | (trainingPhrases+=TrainingPhrase trainingPhrases+=TrainingPhrase*))? 
+	 *         responses+=STRING* 
+	 *         (webHook?='webhook' | webHookForSlotFilling?='webhook_for_slot_filling')*
 	 *     )
 	 */
 	protected void sequence_Intent(ISerializationContext context, Intent semanticObject) {

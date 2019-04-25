@@ -158,19 +158,25 @@ class DialogflowConfigGenerator extends AbstractGenerator {
 					        «ENDFOR»
 					      ],
 					      "messages": [
-					        {
+					      {
 					          "type": 0,
 					          "lang": "en",
-					          "speech": []
-					        }
+					          "speech": 
+					          [
+					       «FOR response : intent.responses»
+					       	«IF response != intent.responses.get(0)»,«ENDIF»
+					       	 	"«response»"
+					      «ENDFOR»
+					      	]
+					      }
 					      ],
 					      "defaultResponsePlatforms": {},
 					      "speech": []
 					    }
 					  ],
 					  "priority": 500000,
-					  "webhookUsed": false,
-					  "webhookForSlotFilling": false,
+					  "webhookUsed": «intent.webHook»,
+					  "webhookForSlotFilling": «intent.webHookForSlotFilling»,
 					  "lastUpdate": «new Date().time/1000»,
 					  "fallbackIntent": false,
 					  "events": []
