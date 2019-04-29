@@ -8,8 +8,6 @@ Do I need any approval from Uni-Potsdamm or HPI for my experiment?
 
 It might be worthwhile to collect additional feedback from team member after using the tool for development internally. Carries the risk of significant bias in favour of the tool when tested by Friends / Team members.
 
-
-
 ## Recruiting
 
 Current plan is to recruit from HPI Students. I am unlikely to have access to software professionals.
@@ -37,7 +35,6 @@ For the DSL it might be possible to explain external benefits (Git, Version Hist
 ### Field Trial
 
 Alternatively / additionaly the Tool could be field trialed in my BP-team to collect metrics from extended use. Expecially comparing out current code reviews (using diffs in the Agent Json) to later code reviews (using diffs in DSL code).
-
 
 ## Demographic data
 
@@ -83,7 +80,6 @@ Multiple things can be measured:
 Time to completion for part one of the task.
 Time to completion for part two of the task.
 Quality of the result (Fullfillment of the specifications described in the task).
-
 
 ## Debrief
 
