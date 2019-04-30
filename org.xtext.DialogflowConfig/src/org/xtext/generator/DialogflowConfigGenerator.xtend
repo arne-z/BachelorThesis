@@ -47,13 +47,13 @@ class DialogflowConfigGenerator extends AbstractGenerator {
             '''agent.json''',
             '''
                 {
-                  "description": "«agent.description»",
+                  "description": "«IF agent.description !== null»«agent.description»«ENDIF»",
                   "language": "«agent.language»",
                   "disableInteractionLogs": «!agent.interactionLogs»,
                   "disableStackdriverLogs": «!agent.stackdriverLogs»,
                   «IF agent.webhook !== null»
                       "webhook": {
-                          «IF agent.webhook.url != ''»
+                          «IF agent.webhook.url !== null»
                               "url": "«agent.webhook.url»",
                           «ENDIF»
                           «IF !agent.webhook.headers.empty»
@@ -72,7 +72,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                   «ENDIF»
                   "isPrivate": «agent.isPrivate»,
                   "customClassifierMode": «IF agent.hybridMatchMode»"use.after"«ELSE»"use.instead"«ENDIF»,
-                  "mlMinConfidence": «IF !agent.mlMinConfidence.equals('')» «agent.mlMinConfidence» «ELSE» 0.4 «ENDIF»,
+                  "mlMinConfidence": «IF agent.mlMinConfidence !== null» «agent.mlMinConfidence» «ELSE» 0.4 «ENDIF»,
                   "onePlatformApiVersion": "v2"
                 }
             '''

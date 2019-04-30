@@ -76,7 +76,7 @@ Entity:
 
 Webhook:
     'Webhook'
-    available?='active'
+    available?='active'?
     ('url' url=STRING)
     ('headers' headers+=Header+)?;
 
