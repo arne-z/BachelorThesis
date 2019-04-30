@@ -2,11 +2,10 @@
 
 ## Questions
 
-Do I need any approval from Uni-Potsdamm or HPI for my experiment?
+Do I need any approval from Uni-Potsdamm or HPI for my experiment?  
+=> Looks like I do not.
 
-## Ideas
-
-It might be worthwhile to collect additional feedback from team member after using the tool for development internally. Carries the risk of significant bias in favour of the tool when tested by Friends / Team members.
+---
 
 ## Recruiting
 
@@ -30,11 +29,12 @@ This is the default solution that I would use.
 ### Interrupted time-series
 
 Sounds worthwhile for showing impact of introducing a tool but requires more time from participants.  
-For the DSL it might be possible to explain external benefits (Git, Version History, Code Reviews), that can only be seen over long term use, and then quantify the cost / additional benefit of the tool through showing an increase / decrease of task completion time.
 
 ### Field Trial
 
 Alternatively / additionaly the Tool could be field trialed in my BP-team to collect metrics from extended use. Expecially comparing out current code reviews (using diffs in the Agent Json) to later code reviews (using diffs in DSL code).
+It might be worthwhile to collect additional feedback from team members after using the tool for development internally. Carries the risk of significant bias in favour of the tool when tested by Friends / Team members.
+For the DSL it might be possible to explain external benefits (Git, Version History, Code Reviews), that can only be seen over long term use, and then quantify the cost / additional benefit of the tool through showing an increase / decrease of task completion time.
 
 ## Demographic data
 
@@ -42,7 +42,7 @@ Is easy to collect, but I am unsure whether analysing it provides any benefit.
 
 ## Group Assignment
 
-If interrupted time series is used, no group assignment need take place. Otherwise random asignment seems to be the prudent choice.
+If interrupted time series is used, no group assignment need take place. Otherwise random asignment seems to be the most prudent choice.
 
 ## Training
 
@@ -79,7 +79,8 @@ Part two: Review
 Multiple things can be measured:
 Time to completion for part one of the task.
 Time to completion for part two of the task.
-Quality of the result (Fullfillment of the specifications described in the task).
+Quality of the result (Fullfillment of the specifications described in the task).  
+I am unsure if anything other than time can be measured from the code review. Maybe a rating by the reviewer about how confident he is in his review?
 
 ## Debrief
 
