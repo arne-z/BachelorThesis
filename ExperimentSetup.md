@@ -21,16 +21,16 @@ Consent will ony be needed insofar as mandated by HPI / Uni-Potsdam rules. The e
 
 ## Procedure
 
-## Basic Control Group / Experimental Group setup
+### Basic Control Group / Experimental Group setup
 
 Each participant is assigned to a group and carries out the tasks described below.
 This is the default solution that I would use.
 
-### Interrupted time-series
+#### Interrupted time-series
 
 Sounds worthwhile for showing impact of introducing a tool but requires more time from participants.  
 
-### Field Trial
+#### Field Trial
 
 Alternatively / additionaly the Tool could be field trialed in my BP-team to collect metrics from extended use. Expecially comparing out current code reviews (using diffs in the Agent Json) to later code reviews (using diffs in DSL code).
 It might be worthwhile to collect additional feedback from team members after using the tool for development internally. Carries the risk of significant bias in favour of the tool when tested by Friends / Team members.
@@ -57,21 +57,21 @@ One possible setup would be for both teams to make edits to the agent according 
 More specifically, each participant will find a computer with all neccessary tools installed and opened. 
 
 In the control group this means:  
-Part one: Development
+#### Part one: Development  
  - Chrome with the dialogflow console opened and Agent allready created  
  - Chrome with the Actions on Google testing console opened  
  - Shell with the utility scripts available (exportAgent.js and node)  
  - Shell with git available to commit changes at the end of the task
 
 For the Experimental group:  
-Part one: Development  
+#### Part one: Development    
  - Eclipse or VSCode window with DSL code of the existing Agent  
  - Shell with utility scripts available (importAgent.js and node)
  - Chrome with the Actions on Google testing console opened
  - Shell with git available to commit changes at the end of the task
 
 For both groups:  
-Part two: Review  
+#### Part two: Review  
  - Chrome  with Github pull request for code review
 
 ## Outcome measurement
