@@ -3,83 +3,99 @@ grammar org.xtext.DialogflowConfig with org.eclipse.xtext.common.Terminals
 generate dialogflowConfig "http://www.xtext.org/DialogflowConfig"
 
 Agent:
-	'Agent' name=ID
-	('config' 
-		('language' language=Language)?
-		&('something')?
-	)?
-	elements+=AbstractElement*
-;
+    'Agent' name=ID
+    'language' language=Language
+    ('description' description=STRING)?
+    ('ml_classification_threshold' mlMinConfidence=DOUBLE)?
+    webhook=Webhook?
+    elements+=AbstractElement*
+    interactionLogs?='enable_logs'?
+    & stackdriverLogs?='log_to_google_cloud'?
+    & isPrivate?='private'?
+    & hybridMatchMode?='hybrid_match_mode'?;
 
-enum Language:
-	en |
-	de |
-	fr |
-	es
-;
+terminal DOUBLE:
+    INT '.' INT;
 
 AbstractElement:
-	Intent | EntityType
-;
+    Intent | EntityType;
 
 Intent:
-	'Intent' name=ID
-	('parameters' parameters+=Parameter*)?
-	('contexts' (
-		('in' inputContexts+=InputContext+)?
-		('out' affectedContexts+=OutputContext+)?
-	))?
-	(
-		'file' file=STRING 
-		| 'trained' 'with' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*
-	)?
-	('response' responses+=STRING+)?
-	(webHook?='webhook'?&webHookForSlotFilling?='webhook_for_slot_filling'?)
-;
+    'Intent' name=ID
+    ('parameters' parameters+=Parameter*)?
+    ('contexts' (('in' inputContexts+=InputContext+)?
+    ('out' affectedContexts+=OutputContext+)?))?
+    ('file' file=STRING
+    | 'trained' 'with' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*)?
+    ('response' responses+=STRING+)?
+    (webHookFulfillment?='webhook_fullfillment'?
+    & webHookForSlotFilling?='webhook_slot_filling'?
+    & auto?='disable_ml'?
+    & end?='end_of_conversation'?);
 
 InputContext:
-	type=[EntityType]
-;
+    type=[EntityType];
+
 OutputContext:
-	type=[EntityType]('lifespan'lifespan=INT)?
-;
+    type=[EntityType] ('lifespan' lifespan=INT)?;
 
 TrainingPhrase:
-	data+=AbstractWord+
-;
+    data+=AbstractWord+;
 
 AbstractWord:
-	Text | Token
-;
+    Text | Token;
 
 Text:
-	text=STRING
-;
+    text=STRING;
 
 Token:
-	type=[EntityType]
-;
+    type=[EntityType];
 
 Parameter:
-	type=[EntityType] 
-	('('
-		(required?='required'? & list?='list'?)
-	')')?
-;
+    type=[EntityType]
+    ('('
+    (required?='required'? & list?='list'?)
+    ')')?;
 
 EntityType:
-	'Type' name=ID
-	(dynamic?='dynamic' | builtIn?='builtin' |
-	'values' values+=Entity+)
-	('state' 
-		isOverridable?='overridable'?
-		&isEnum?='enum'?
-		&automatedExpansion?='auto_expand'?
-		&allowFuzzyExtraction?='fuzzy_extract'?
-	)?
-;
+    'Type' name=ID
+    (dynamic?='dynamic' | builtIn?='builtin' |
+    'values' values+=Entity+)
+    ('state'
+    isOverridable?='overridable'?
+    & isEnum?='enum'?
+    & automatedExpansion?='auto_expand'?
+    & allowFuzzyExtraction?='fuzzy_extract'?)?;
 
 Entity:
-	name=STRING
-	('('synonyms+=STRING*')')?
-;
+    name=STRING
+    ('(' synonyms+=STRING* ')')?;
+
+Webhook:
+    'Webhook'
+    available?='active'
+    ('url' url=STRING)
+    ('headers' headers+=Header+)?;
+
+Header:
+    key=STRING ':' value=STRING;
+
+enum Language:
+    en |
+    de |
+    fr |
+    es |
+    da |
+    hi |
+    id |
+    it |
+    ja |
+    ko |
+    ni |
+    pl |
+    pt |
+    ru |
+    sv |
+    th |
+    tr |
+    uk;
