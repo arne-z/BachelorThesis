@@ -10,7 +10,7 @@ Do I need any approval from Uni-Potsdamm or HPI for my experiment?
 ## Recruiting
 
 Current plan is to recruit from HPI Students. I am unlikely to have access to software professionals.
---- comment Chris. I have a large network of professional programmers. We could tackle it in case you want to replicate the experiment.
+''comment Chris. I have a large network of professional programmers. We could tackle it in case you want to replicate the experiment.''
 
 ## Inclusion Criteria
 
@@ -19,7 +19,7 @@ No GPL is used, so no specific language experience is neccessary, but some gener
 ## Consent
 
 Consent will ony be needed insofar as mandated by HPI / Uni-Potsdam rules. The experiment does not call for any additional care.
---- comment Chris. It is a good practice however to ask for consent (simple one).
+''comment Chris. It is a good practice however to ask for consent (simple one).''
 
 ## Procedure
 
@@ -42,7 +42,7 @@ For the DSL it might be possible to explain external benefits (Git, Version Hist
 ## Demographic data
 
 Is easy to collect, but I am unsure whether analysing it provides any benefit. 
---- comment Chris. I believe demographic data is very important, e.g., age, gender, programming experience (years), programming languages.
+''comment Chris. I believe demographic data is very important, e.g., age, gender, programming experience (years), programming languages.''
 
 ## Group Assignment
 
@@ -60,7 +60,7 @@ One possible setup would be for both teams to make edits to the agent according 
 
 More specifically, each participant will find a computer with all neccessary tools installed and opened. 
 
---- comment Chris. You would need to compute the sample size (number of participants) necessary for the experiment to have higher probability of detecting a signifcant difference between the two conditions. This can be done by estimating the effect size that you expect to detect when comparing control group and treatment group. Look at how to perform a power analysis (e.g., https://www.youtube.com/watch?v=9LVD9oLg1A0)
+''comment Chris. You would need to compute the sample size (number of participants) necessary for the experiment to have higher probability of detecting a signifcant difference between the two conditions. This can be done by estimating the effect size that you expect to detect when comparing control group and treatment group. Look at how to perform a power analysis (e.g., https://www.youtube.com/watch?v=9LVD9oLg1A0)''
 
 In the control group this means:  
 #### Part one: Development  
@@ -87,7 +87,7 @@ Time to completion for part one of the task.
 Time to completion for part two of the task.
 Quality of the result (Fullfillment of the specifications described in the task).  
 I am unsure if anything other than time can be measured from the code review. Maybe a rating by the reviewer about how confident he is in his review?
---- comments Chris. Other interesting measurements: perceived difficulty, confidence, previous experience with similar task, coding skill. These all could be used to run a correlation analysis with the quality of the results.
+''comments Chris. Other interesting measurements: perceived difficulty, confidence, previous experience with similar task, coding skill. These all could be used to run a correlation analysis with the quality of the results.''
 
 ## Debrief
 
