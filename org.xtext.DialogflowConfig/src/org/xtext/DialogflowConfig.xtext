@@ -12,7 +12,8 @@ Agent:
     interactionLogs?='enable_logs'?
     & stackdriverLogs?='log_to_google_cloud'?
     & isPrivate?='private'?
-    & hybridMatchMode?='hybrid_match_mode'?;
+    & hybridMatchMode?='hybrid_match_mode'?
+    'end';
 
 terminal DOUBLE:
     INT '.' INT;
@@ -31,7 +32,8 @@ Intent:
     (webHookFulfillment?='webhook_fullfillment'?
     & webHookForSlotFilling?='webhook_slot_filling'?
     & auto?='disable_ml'?
-    & end?='end_of_conversation'?);
+    & end?='end_of_conversation'?)
+    'end';
 
 InputContext:
     type=[EntityType];
@@ -62,10 +64,11 @@ EntityType:
     (dynamic?='dynamic' | builtIn?='builtin' |
     'values' values+=Entity+)
     ('state'
-    isOverridable?='overridable'?
+    (isOverridable?='overridable'?
     & isEnum?='enum'?
     & automatedExpansion?='auto_expand'?
-    & allowFuzzyExtraction?='fuzzy_extract'?)?;
+    & allowFuzzyExtraction?='fuzzy_extract'?))?
+    'end';
 
 Entity:
     name=STRING
