@@ -22,166 +22,205 @@ import org.xtext.dialogflowConfig.impl.TokenImpl
  */
 class DialogflowConfigGenerator extends AbstractGenerator {
 
-	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		// .dfc file can only contain one Agent.
-		val Agent = resource.contents.filter(AgentImpl).get(0)
+    override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+        // .dfc file can only contain one Agent.
+        val agent = resource.contents.filter(AgentImpl).get(0)
 
-		val intents = Agent.elements.filter(IntentImpl)
-		val entityTypes = Agent.elements.filter(EntityTypeImpl)
+        val intents = agent.elements.filter(IntentImpl)
+        val entityTypes = agent.elements.filter(EntityTypeImpl)
 
-		for (intent : intents) {
-			generateIntentFile(fsa, intent)
-			generateIntentUsersaysFile(fsa, intent)
-		}
+        generateAgentFile(fsa, agent)
 
-		for (entityType : entityTypes) {
-			generateEntityFile(fsa, entityType)
-			generateEntityUsersaysFile(fsa, entityType)
-		}
-	}
+        for (intent : intents) {
+            generateIntentFile(fsa, agent, intent)
+            generateIntentUsersaysFile(fsa, agent, intent)
+        }
 
-	protected def void generateEntityUsersaysFile(IFileSystemAccess2 fsa, EntityTypeImpl entityType) {
-		if(entityType.dynamic || entityType.builtIn) return;
-		fsa.generateFile(
-			'''entities/«entityType.name»_entries_en.json''',
-			'''
-				[
-					«FOR entity : entityType.values»
-						«IF entity != entityType.values.get(0)»,«ENDIF»
-						{
-							"value": "«entity.name»",
-							"synonyms": [
-								«FOR synonym :entity.synonyms»
-									«IF synonym != entity.synonyms.get(0)»,«ENDIF»
-									"«synonym»"
-								«ENDFOR»
-							]
-						}
-					«ENDFOR»
-				]
-			'''
-		)
-	}
+        for (entityType : entityTypes) {
+            generateEntityFile(fsa, entityType)
+            generateEntityUsersaysFile(fsa, agent, entityType)
+        }
+    }
 
-	protected def void generateEntityFile(IFileSystemAccess2 fsa, EntityTypeImpl entityType) {
-		if(entityType.dynamic || entityType.builtIn) return;
-		fsa.generateFile(
-			'''entities/«entityType.name».json''',
-			'''
-				{
-				    "id": "«UUID.randomUUID()»",
-				    "name": "«entityType.name»",
-					"isOverridable": «entityType.isOverridable»,
-					"isEnum": «entityType.isEnum»,
-					"automatedExpansion": «entityType.automatedExpansion»,
-					"allowFuzzyExtraction": «entityType.allowFuzzyExtraction»
-				}
-			'''
-		)
-	}
+    protected def void generateAgentFile(IFileSystemAccess2 fsa, AgentImpl agent) {
+        fsa.generateFile(
+            '''agent.json''',
+            '''
+                {
+                  "description": "«agent.description»",
+                  "language": "«agent.language»",
+                  "disableInteractionLogs": «!agent.interactionLogs»,
+                  "disableStackdriverLogs": «!agent.stackdriverLogs»,
+                  «IF agent.webhook !== null»
+                      "webhook": {
+                          «IF agent.webhook.url != ''»
+                              "url": "«agent.webhook.url»",
+                          «ENDIF»
+                          «IF !agent.webhook.headers.empty»
+                              "headers": {
+                                 «FOR header: agent.webhook.headers»
+                                     «IF header != agent.webhook.headers.get(0)»,«ENDIF»
+                                     "«header.key»": "«header.value»"    
+                                 «ENDFOR»
+                              },
+                          «ENDIF»
+                      "available": «agent.webhook.available»,
+                      "useForDomains": false,
+                      "cloudFunctionsEnabled": false,
+                      "cloudFunctionsInitialized": false
+                      },
+                  «ENDIF»
+                  "isPrivate": «agent.isPrivate»,
+                  "customClassifierMode": «IF agent.hybridMatchMode»"use.after"«ELSE»"use.instead"«ENDIF»,
+                  "mlMinConfidence": «IF !agent.mlMinConfidence.equals('')» «agent.mlMinConfidence» «ELSE» 0.4 «ENDIF»,
+                  "onePlatformApiVersion": "v2"
+                }
+            '''
+        )
+    }
 
-	protected def void generateIntentUsersaysFile(IFileSystemAccess2 fsa, IntentImpl intent) {
-		fsa.generateFile(
-			'''intents/«intent.name»_usersays_en.json''',
-			'''
-				[
-				«FOR phrase : intent.trainingPhrases»
-					«IF phrase != intent.trainingPhrases.get(0)»,«ENDIF»
-					  {
-					    "id": "«UUID.randomUUID()»",
-					    "data": [
-					    «FOR datum: phrase.data»
-					    	«IF datum != phrase.data.get(0)»,«ENDIF»
-					    	«IF datum instanceof TokenImpl»
-					    		{
-					    		  "text": "«datum.type.name»",
-					    		  "alias": "«datum.type.name»",
-					    		  "meta": "@«IF datum.type.builtIn»sys.«ENDIF»«datum.type.name»",
-					    		  "userDefined": true
-					    		}
-					    	«ELSEIF datum instanceof TextImpl»
-					    		{
-					    		"text": "«datum.text»",
-					    		"userDefined": false
-					    		}
-					    	«ENDIF»
-					    «ENDFOR»
-					    ],
-					    "isTemplate": false,
-					    "count": 0,
-					    "updated": «new Date().time/1000»
-					  	}
-					«ENDFOR»
-					]
-			'''
-		)
-	}
+    protected def void generateEntityUsersaysFile(IFileSystemAccess2 fsa, AgentImpl agent, EntityTypeImpl entityType) {
+        if(entityType.dynamic || entityType.builtIn) return;
+        fsa.generateFile(
+            '''entities/«entityType.name»_entries_«agent.language».json''',
+            '''
+                [
+                	«FOR entity : entityType.values»
+                	    «IF entity != entityType.values.get(0)»,«ENDIF»
+                	    {
+                	    	"value": "«entity.name»",
+                	    	"synonyms": [
+                	    		«FOR synonym :entity.synonyms»
+                	    		    «IF synonym != entity.synonyms.get(0)»,«ENDIF»
+                	    		    "«synonym»"
+                	    		«ENDFOR»
+                	    	]
+                	    }
+                	«ENDFOR»
+                ]
+            '''
+        )
+    }
 
-	protected def void generateIntentFile(IFileSystemAccess2 fsa, IntentImpl intent) {
-		fsa.generateFile(
-			'''intents/«intent.name».json''',
-			'''
-				{
-					"id": "«UUID.randomUUID()»",
-					  "name": "«intent.name»",
-					  "auto": true,
-					  "contexts": [
-					  «FOR context : intent.inputContexts»
-					  	«IF context != intent.inputContexts.get(0)»,«ENDIF»
-					  	"«context.type.name»"
-					  «ENDFOR»
-					  ],
-					  "responses": [
-					    {
-					      "resetContexts": false,
-					      "affectedContexts": [
-					        «FOR context : intent.affectedContexts»
-					        	«IF context != intent.affectedContexts.get(0)»,«ENDIF»
-					        	        {
-					        	          "name": "«context.type.name»",
-					        	          "parameters": {},
-					        	          "lifespan": «if(context.lifespan > 0){context.lifespan}else{5}»
-					        	        }
-					        «ENDFOR»
-					      ],
-					      "parameters": [
-					        «FOR param : intent.parameters»
-					        	«IF param != intent.parameters.get(0)»,«ENDIF»
-					        	{
-					        	  "id": "«UUID.randomUUID()»",
-					        	  "required": «param.required»,
-					        	  "dataType": "@«IF param.type.builtIn»sys.«ENDIF»«param.type.name»",
-					        	  "name": "«param.type.name»",
-					        	  "value": "$«param.type.name»",
-					        	  "isList": «param.list»
-					        	}
-					        «ENDFOR»
-					      ],
-					      "messages": [
-					      {
-					          "type": 0,
-					          "lang": "en",
-					          "speech": 
-					          [
-					       «FOR response : intent.responses»
-					       	«IF response != intent.responses.get(0)»,«ENDIF»
-					       	 	"«response»"
-					      «ENDFOR»
-					      	]
-					      }
-					      ],
-					      "defaultResponsePlatforms": {},
-					      "speech": []
-					    }
-					  ],
-					  "priority": 500000,
-					  "webhookUsed": «intent.webHook»,
-					  "webhookForSlotFilling": «intent.webHookForSlotFilling»,
-					  "lastUpdate": «new Date().time/1000»,
-					  "fallbackIntent": false,
-					  "events": []
-				}
-			'''
-		)
-	}
+    protected def void generateEntityFile(IFileSystemAccess2 fsa, EntityTypeImpl entityType) {
+        if(entityType.dynamic || entityType.builtIn) return;
+        fsa.generateFile(
+            '''entities/«entityType.name».json''',
+            '''
+                {
+                    "id": "«UUID.randomUUID()»",
+                    "name": "«entityType.name»",
+                	"isOverridable": «entityType.isOverridable»,
+                	"isEnum": «entityType.isEnum»,
+                	"automatedExpansion": «entityType.automatedExpansion»,
+                	"allowFuzzyExtraction": «entityType.allowFuzzyExtraction»
+                }
+            '''
+        )
+    }
+
+    protected def void generateIntentUsersaysFile(IFileSystemAccess2 fsa, AgentImpl agent, IntentImpl intent) {
+        fsa.generateFile(
+            '''intents/«intent.name»_usersays«agent.language».json''',
+            '''
+                [
+                «FOR phrase : intent.trainingPhrases»
+                    «IF phrase != intent.trainingPhrases.get(0)»,«ENDIF»
+                      {
+                        "id": "«UUID.randomUUID()»",
+                        "data": [
+                        «FOR datum: phrase.data»
+                            «IF datum != phrase.data.get(0)»,«ENDIF»
+                            «IF datum instanceof TokenImpl»
+                                {
+                                  "text": "«datum.type.name»",
+                                  "alias": "«datum.type.name»",
+                                  "meta": "@«IF datum.type.builtIn»sys.«ENDIF»«datum.type.name»",
+                                  "userDefined": true
+                                }
+                            «ELSEIF datum instanceof TextImpl»
+                                {
+                                "text": "«datum.text»",
+                                "userDefined": false
+                                }
+                            «ENDIF»
+                        «ENDFOR»
+                        ],
+                        "isTemplate": false,
+                        "count": 0,
+                        "updated": «new Date().time/1000»
+                      	}
+                	«ENDFOR»
+                	]
+            '''
+        )
+    }
+
+    protected def void generateIntentFile(IFileSystemAccess2 fsa, AgentImpl agent, IntentImpl intent) {
+        fsa.generateFile(
+            '''intents/«intent.name».json''',
+            '''
+                {
+                	"id": "«UUID.randomUUID()»",
+                	  "name": "«intent.name»",
+                	  "auto": «intent.auto»,
+                	  "contexts": [
+                	  «FOR context : intent.inputContexts»
+                	      «IF context != intent.inputContexts.get(0)»,«ENDIF»
+                	      "«context.type.name»"
+                	  «ENDFOR»
+                	  ],
+                	  "responses": [
+                	    {
+                	      "resetContexts": false,
+                	      "affectedContexts": [
+                	        «FOR context : intent.affectedContexts»
+                	            «IF context != intent.affectedContexts.get(0)»,«ENDIF»
+                	                    {
+                	                      "name": "«context.type.name»",
+                	                      "parameters": {},
+                	                      "lifespan": «if(context.lifespan > 0){context.lifespan}else{5}»
+                	                    }
+                	        «ENDFOR»
+                	      ],
+                	      "parameters": [
+                	        «FOR param : intent.parameters»
+                	            «IF param != intent.parameters.get(0)»,«ENDIF»
+                	            {
+                	              "id": "«UUID.randomUUID()»",
+                	              "required": «param.required»,
+                	              "dataType": "@«IF param.type.builtIn»sys.«ENDIF»«param.type.name»",
+                	              "name": "«param.type.name»",
+                	              "value": "$«param.type.name»",
+                	              "isList": «param.list»
+                	            }
+                	        «ENDFOR»
+                	      ],
+                	      "messages": [
+                	      {
+                	          "type": 0,
+                	          "lang": "«agent.language»",
+                	          "speech": 
+                	          [
+                	       «FOR response : intent.responses»
+                	           «IF response != intent.responses.get(0)»,«ENDIF»
+                	            	"«response»"
+                	      «ENDFOR»
+                	      ]
+                	      }
+                	      ],
+                	      "defaultResponsePlatforms": {},
+                	      "speech": []
+                	    }
+                	  ],
+                	  "priority": 500000,
+                	  "webhookUsed": «intent.webHookFulfillment»,
+                	  "webhookForSlotFilling": «intent.webHookForSlotFilling»,
+                	  "lastUpdate": «new Date().time/1000»,
+                	  "fallbackIntent": false,
+                	  "events": []
+                }
+            '''
+        )
+    }
 }
