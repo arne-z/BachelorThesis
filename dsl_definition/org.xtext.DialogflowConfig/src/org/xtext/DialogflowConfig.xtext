@@ -31,8 +31,9 @@ Intent:
     ('contexts' (('in' inputContexts+=InputContext+)?
     ('out' affectedContexts+=OutputContext+)?))?
     ('parameters' parameters+=Parameter*)?
-    ('file' file=STRING
-    | 'trained' 'with' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*)?
+    ('trained' 'with' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*
+        | 'file' file=STRING
+    )?
     ('response' responses+=STRING+)?
     ('action' action=STRING)?
     ('events' events+=STRING+)?

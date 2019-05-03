@@ -16,6 +16,8 @@ import org.xtext.dialogflowConfig.impl.TextImpl
 import org.xtext.dialogflowConfig.impl.customTokenImpl
 import org.xtext.dialogflowConfig.impl.builtinTokenImpl
 import org.xtext.dialogflowConfig.Parameter
+import java.util.Map
+import java.util.HashMap
 
 /**
  * Generates code from your model files on save.
@@ -132,58 +134,77 @@ class DialogflowConfigGenerator extends AbstractGenerator {
     }
 
     protected def void generateIntentUsersaysFile(IFileSystemAccess2 fsa, AgentImpl agent, IntentImpl intent) {
-        fsa.generateFile(
-            '''intents/«intent.name»_usersays_«agent.language».json''',
-            '''
-                [
-                «FOR phrase : intent.trainingPhrases»
-                    «IF phrase != intent.trainingPhrases.get(0)»,«ENDIF»
-                      {
-                        "id": "«UUID.randomUUID()»",
-                        "data": [
-                        «FOR datum: phrase.data»
-                            «IF datum != phrase.data.get(0)»,«ENDIF»
-                            «IF datum instanceof customTokenImpl»
-                                {
-                                  "text": "«datum.type.name»",
-                                  "alias": "«datum.type.name»",
-                                  "meta": "@«datum.type.name»",
-                                  "userDefined": true
-                                }
-                            «ELSEIF datum instanceof builtinTokenImpl»
-                                {
-                                  "text": "«datum.type»",
-                                  "alias": "«datum.type»",
-                                  "meta": "@sys.«datum.type.toString().replace('_','-')»",
-                                  "userDefined": true
-                                }
-                                
-                            «ELSEIF datum instanceof TextImpl»
-                                {
-                                "text": "«datum.text»",
-                                "userDefined": false
-                                }
-                            «ENDIF»
-                        «ENDFOR»
-                        ],
-                        "isTemplate": false,
-                        "count": 0,
-                        "updated": «new Date().time/1000»
-                      	}
-                	«ENDFOR»
-                	]
-            '''
-        )
+        if (!intent.trainingPhrases.empty) {
+            fsa.generateFile(
+                '''intents/«intent.name»_usersays_«agent.language».json''',
+                '''
+                    [
+                    «FOR phrase : intent.trainingPhrases»
+                        «IF phrase != intent.trainingPhrases.get(0)»,«ENDIF»
+                          {
+                            "id": "«UUID.randomUUID()»",
+                            "data": [
+                            «FOR datum: phrase.data»
+                                «IF datum != phrase.data.get(0)»,«ENDIF»
+                                «IF datum instanceof customTokenImpl»
+                                    {
+                                      "text": "«datum.type.name»",
+                                      "alias": "«datum.type.name»",
+                                      "meta": "@«datum.type.name»",
+                                      "userDefined": true
+                                    }
+                                «ELSEIF datum instanceof builtinTokenImpl»
+                                    {
+                                      "text": "«datum.type»",
+                                      "alias": "«datum.type»",
+                                      "meta": "@sys.«datum.type.toString().replace('_','-')»",
+                                      "userDefined": true
+                                    }
+                                    
+                                «ELSEIF datum instanceof TextImpl»
+                                    {
+                                    "text": "«datum.text»",
+                                    "userDefined": false
+                                    }
+                                «ENDIF»
+                            «ENDFOR»
+                            ],
+                            "isTemplate": false,
+                            "count": 0,
+                            "updated": «new Date().time/1000»
+                          	}
+                    	«ENDFOR»
+                    	]
+                '''
+            )
+        } else if (intent.file !== null) {
+            fsa.generateFile(
+                '''intents/«intent.name»_usersays_«agent.language».json''',
+                fsa.readTextFile(intent.file)
+            )
+        }
     }
 
-    protected def String getParamTypeName(Parameter param) {
-        var typeName = '';
+    private static final class Param {
+        String datatype;
+        String name;
+        String value;
+    }
+
+    protected def Param getParamTypeName(Parameter param) {
+        var obj = new Param();
         if (param.builtInType !== null) {
-            typeName = "sys." + param.builtInType.toString().replace('_', '-');
+            var temp = param.builtInType.toString().replace('_', '-');
+            obj.datatype = '@sys.' + temp;
+            obj.name = temp;
+            obj.value = '$' + temp;
         } else {
-            typeName = param.type.toString();
+            var temp = param.type.toString();
+            obj.datatype = temp;
+            obj.name = temp;
+            obj.value = '$' + temp;
         }
-        return typeName;
+        return obj;
     }
 
     protected def void generateIntentFile(IFileSystemAccess2 fsa, AgentImpl agent, IntentImpl intent) {
@@ -222,9 +243,9 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                 	                {
                 	                  "id": "«UUID.randomUUID()»",
                 	                  "required": «param.required»,
-                	                  "dataType": "@«getParamTypeName(param)»",
-                	                  "name": "«getParamTypeName(param)»",
-                	                  "value": "$«getParamTypeName(param)»",
+                	                  "dataType": "«getParamTypeName(param).datatype»",
+                	                  "name": "«getParamTypeName(param).name»",
+                	                  "value": "«getParamTypeName(param).value»",
                 	                  «FOR prompt: param.prompts»
                 	                      "prompts": [
                 	                                  {
