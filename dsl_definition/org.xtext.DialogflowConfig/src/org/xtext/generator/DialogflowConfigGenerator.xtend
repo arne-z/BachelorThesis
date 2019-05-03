@@ -13,7 +13,9 @@ import org.xtext.dialogflowConfig.impl.AgentImpl
 import org.xtext.dialogflowConfig.impl.EntityTypeImpl
 import org.xtext.dialogflowConfig.impl.IntentImpl
 import org.xtext.dialogflowConfig.impl.TextImpl
-import org.xtext.dialogflowConfig.impl.TokenImpl
+import org.xtext.dialogflowConfig.impl.customTokenImpl
+import org.xtext.dialogflowConfig.impl.builtinTokenImpl
+import org.xtext.dialogflowConfig.Parameter
 
 /**
  * Generates code from your model files on save.
@@ -31,6 +33,8 @@ class DialogflowConfigGenerator extends AbstractGenerator {
 
         generateAgentFile(fsa, agent)
 
+        generatePackageFile(fsa, agent)
+
         for (intent : intents) {
             generateIntentFile(fsa, agent, intent)
             generateIntentUsersaysFile(fsa, agent, intent)
@@ -40,6 +44,14 @@ class DialogflowConfigGenerator extends AbstractGenerator {
             generateEntityFile(fsa, entityType)
             generateEntityUsersaysFile(fsa, agent, entityType)
         }
+    }
+
+    protected def void generatePackageFile(IFileSystemAccess2 fsa, AgentImpl agent) {
+        fsa.generateFile('''package.json''', '''
+            {
+              "version": «IF agent.version !== null »«agent.version»«ELSE»"1.0.0"«ENDIF»
+            }
+        ''')
     }
 
     protected def void generateAgentFile(IFileSystemAccess2 fsa, AgentImpl agent) {
@@ -80,7 +92,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
     }
 
     protected def void generateEntityUsersaysFile(IFileSystemAccess2 fsa, AgentImpl agent, EntityTypeImpl entityType) {
-        if(entityType.dynamic || entityType.builtIn) return;
+        if(entityType.dynamic) return;
         fsa.generateFile(
             '''entities/«entityType.name»_entries_«agent.language».json''',
             '''
@@ -103,7 +115,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
     }
 
     protected def void generateEntityFile(IFileSystemAccess2 fsa, EntityTypeImpl entityType) {
-        if(entityType.dynamic || entityType.builtIn) return;
+        if(entityType.dynamic) return;
         fsa.generateFile(
             '''entities/«entityType.name».json''',
             '''
@@ -121,7 +133,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
 
     protected def void generateIntentUsersaysFile(IFileSystemAccess2 fsa, AgentImpl agent, IntentImpl intent) {
         fsa.generateFile(
-            '''intents/«intent.name»_usersays«agent.language».json''',
+            '''intents/«intent.name»_usersays_«agent.language».json''',
             '''
                 [
                 «FOR phrase : intent.trainingPhrases»
@@ -131,13 +143,21 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                         "data": [
                         «FOR datum: phrase.data»
                             «IF datum != phrase.data.get(0)»,«ENDIF»
-                            «IF datum instanceof TokenImpl»
+                            «IF datum instanceof customTokenImpl»
                                 {
                                   "text": "«datum.type.name»",
                                   "alias": "«datum.type.name»",
-                                  "meta": "@«IF datum.type.builtIn»sys.«ENDIF»«datum.type.name»",
+                                  "meta": "@«datum.type.name»",
                                   "userDefined": true
                                 }
+                            «ELSEIF datum instanceof builtinTokenImpl»
+                                {
+                                  "text": "«datum.type»",
+                                  "alias": "«datum.type»",
+                                  "meta": "@sys.«datum.type.toString().replace('_','-')»",
+                                  "userDefined": true
+                                }
+                                
                             «ELSEIF datum instanceof TextImpl»
                                 {
                                 "text": "«datum.text»",
@@ -156,6 +176,16 @@ class DialogflowConfigGenerator extends AbstractGenerator {
         )
     }
 
+    protected def String getParamTypeName(Parameter param) {
+        var typeName = '';
+        if (param.builtInType !== null) {
+            typeName = "sys." + param.builtInType.toString().replace('_', '-');
+        } else {
+            typeName = param.type.toString();
+        }
+        return typeName;
+    }
+
     protected def void generateIntentFile(IFileSystemAccess2 fsa, AgentImpl agent, IntentImpl intent) {
         fsa.generateFile(
             '''intents/«intent.name».json''',
@@ -163,7 +193,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                 {
                 	"id": "«UUID.randomUUID()»",
                 	  "name": "«intent.name»",
-                	  "auto": «intent.auto»,
+                	  "auto": «intent.disable_ml»,
                 	  "contexts": [
                 	  «FOR context : intent.inputContexts»
                 	      «IF context != intent.inputContexts.get(0)»,«ENDIF»
@@ -173,6 +203,9 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                 	  "responses": [
                 	    {
                 	      "resetContexts": false,
+                	      «IF intent.action !== null»
+                	          "action": "«intent.action»",
+                	      «ENDIF»
                 	      "affectedContexts": [
                 	        «FOR context : intent.affectedContexts»
                 	            «IF context != intent.affectedContexts.get(0)»,«ENDIF»
@@ -186,29 +219,39 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                 	      "parameters": [
                 	        «FOR param : intent.parameters»
                 	            «IF param != intent.parameters.get(0)»,«ENDIF»
-                	            {
-                	              "id": "«UUID.randomUUID()»",
-                	              "required": «param.required»,
-                	              "dataType": "@«IF param.type.builtIn»sys.«ENDIF»«param.type.name»",
-                	              "name": "«param.type.name»",
-                	              "value": "$«param.type.name»",
-                	              "isList": «param.list»
-                	            }
+                	                {
+                	                  "id": "«UUID.randomUUID()»",
+                	                  "required": «param.required»,
+                	                  "dataType": "@«getParamTypeName(param)»",
+                	                  "name": "«getParamTypeName(param)»",
+                	                  "value": "$«getParamTypeName(param)»",
+                	                  «FOR prompt: param.prompts»
+                	                      "prompts": [
+                	                                  {
+                	                                    "lang": "«agent.language»",
+                	                                    "value": "«prompt»"
+                	                                  }
+                	                      ],
+                	                  «ENDFOR»
+                	                  "isList": «param.list»
+                	                }
                 	        «ENDFOR»
                 	      ],
-                	      "messages": [
-                	      {
-                	          "type": 0,
-                	          "lang": "«agent.language»",
-                	          "speech": 
-                	          [
-                	       «FOR response : intent.responses»
-                	           «IF response != intent.responses.get(0)»,«ENDIF»
-                	            	"«response»"
-                	      «ENDFOR»
-                	      ]
-                	      }
-                	      ],
+                	      «IF !intent.responses.empty»
+                	          "messages": [
+                	              {
+                	                  "type": 0,
+                	                  "lang": "«agent.language»",
+                	                  "speech": 
+                	                  [
+                	              «FOR response : intent.responses»
+                	                  «IF response != intent.responses.get(0)»,«ENDIF»
+                	                   	"«response»"
+                	              «ENDFOR»
+                	              ]
+                	              }
+                	          ],
+                	      «ENDIF»
                 	      "defaultResponsePlatforms": {},
                 	      "speech": []
                 	    }
@@ -218,7 +261,14 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                 	  "webhookForSlotFilling": «intent.webHookForSlotFilling»,
                 	  "lastUpdate": «new Date().time/1000»,
                 	  "fallbackIntent": false,
-                	  "events": []
+                	  "events": [
+                	   «FOR event : intent.events»
+                	       «IF event != intent.events.get(0)»,«ENDIF»
+                	               {
+                	                 "name": "«event»"
+                	               }
+                	   «ENDFOR»
+                	  ]
                 }
             '''
         )

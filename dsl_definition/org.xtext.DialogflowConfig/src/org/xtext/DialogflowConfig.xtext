@@ -6,6 +6,7 @@ Agent:
     'Agent' name=ID
     'language' language=Language
     ('description' description=STRING)?
+    ('version' version=VERSION)?
     ('ml_classification_threshold' mlMinConfidence=DOUBLE)?
     webhook=Webhook?
     elements+=AbstractElement*
@@ -17,21 +18,27 @@ Agent:
 
 terminal DOUBLE:
     INT '.' INT;
+    
+terminal VERSION:
+    INT '.' INT '.' INT;
 
 AbstractElement:
     Intent | EntityType;
 
 Intent:
+    fallback?='fallback'?
     'Intent' name=ID
-    ('parameters' parameters+=Parameter*)?
     ('contexts' (('in' inputContexts+=InputContext+)?
     ('out' affectedContexts+=OutputContext+)?))?
+    ('parameters' parameters+=Parameter*)?
     ('file' file=STRING
     | 'trained' 'with' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*)?
     ('response' responses+=STRING+)?
+    ('action' action=STRING)?
+    ('events' events+=STRING+)?
     (webHookFulfillment?='webhook_fullfillment'?
     & webHookForSlotFilling?='webhook_slot_filling'?
-    & auto?='disable_ml'?
+    & disable_ml?='disable_ml'?
     & end?='end_of_conversation'?)
     'end';
 
@@ -45,23 +52,27 @@ TrainingPhrase:
     data+=AbstractWord+;
 
 AbstractWord:
-    Text | Token;
+    Text | customToken | builtinToken;
 
 Text:
     text=STRING;
 
-Token:
+customToken:
     type=[EntityType];
 
+builtinToken:
+    type=BuiltInType
+;
+
 Parameter:
-    type=[EntityType]
+    (type=[EntityType] | builtInType=BuiltInType)
     ('('
-    (required?='required'? & list?='list'?)
+    (required?='required'? & ('prompts' prompts+=STRING+)? & list?='list'?)
     ')')?;
 
 EntityType:
     'Type' name=ID
-    (dynamic?='dynamic' | builtIn?='builtin' |
+    (dynamic?='dynamic' |
     'values' values+=Entity+)
     ('state'
     (isOverridable?='overridable'?
@@ -102,3 +113,56 @@ enum Language:
     th |
     tr |
     uk;
+    
+ enum BuiltInType:
+    date_time
+    | date
+    | date_period
+    | time
+    | time_period
+    | number
+    | cardinal
+    | ordinal
+    | number_integer
+    | number_sequence
+    | flight_number
+    | unit_area
+    | unit_currency
+    | unit_length
+    | unit_speed
+    | unit_volume
+    | unit_weight
+    | unit_information
+    | percentage
+    | temperature
+    | duration
+    | age
+    | currency_name
+    | unit_area_name
+    | unit_length_name
+    | unit_speed_name
+    | unit_volume_name
+    | unit_weight_name
+    | unit_information_name
+    | address
+    | zip_code
+    | geo_capital
+    | geo_country
+    | geo_country_code
+    | geo_city
+    | geo_state
+    | place_attraction
+    | airport
+    | location
+    | email
+    | phone_number
+    | given_name
+    | last_name
+    | person
+    | music_artist
+    | music_genre
+    | color
+    | language
+    | any
+    | url
+ ;
