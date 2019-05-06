@@ -3,21 +3,20 @@
  */
 package org.xtext.generator
 
+import java.io.FileNotFoundException
 import java.util.Date
 import java.util.UUID
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.xtext.dialogflowConfig.Parameter
 import org.xtext.dialogflowConfig.impl.AgentImpl
 import org.xtext.dialogflowConfig.impl.EntityTypeImpl
 import org.xtext.dialogflowConfig.impl.IntentImpl
 import org.xtext.dialogflowConfig.impl.TextImpl
-import org.xtext.dialogflowConfig.impl.customTokenImpl
 import org.xtext.dialogflowConfig.impl.builtinTokenImpl
-import org.xtext.dialogflowConfig.Parameter
-import java.util.Map
-import java.util.HashMap
+import org.xtext.dialogflowConfig.impl.customTokenImpl
 
 /**
  * Generates code from your model files on save.
@@ -178,10 +177,14 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                 '''
             )
         } else if (intent.file !== null) {
-            fsa.generateFile(
-                '''intents/«intent.name»_usersays_«agent.language».json''',
-                fsa.readTextFile(intent.file)
-            )
+            try {
+                fsa.generateFile(
+                    '''intents/«intent.name»_usersays_«agent.language».json''',
+                    fsa.readTextFile(intent.file)
+                )
+            } catch (FileNotFoundException e) {
+                return
+            }
         }
     }
 
