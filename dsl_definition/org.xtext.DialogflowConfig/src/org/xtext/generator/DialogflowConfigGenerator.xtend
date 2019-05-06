@@ -180,7 +180,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
             try {
                 fsa.generateFile(
                     '''intents/«intent.name»_usersays_«agent.language».json''',
-                    fsa.readTextFile(intent.file)
+                    fsa.readTextFile('''../«intent.file»''')
                 )
             } catch (FileNotFoundException e) {
                 return
