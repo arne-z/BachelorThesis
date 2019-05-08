@@ -217,7 +217,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                 {
                 	"id": "«UUID.randomUUID()»",
                 	  "name": "«intent.name»",
-                	  "auto": «intent.disable_ml»,
+                	  "auto": «!intent.disable_ml»,
                 	  "contexts": [
                 	  «FOR context : intent.inputContexts»
                 	      «IF context != intent.inputContexts.get(0)»,«ENDIF»
