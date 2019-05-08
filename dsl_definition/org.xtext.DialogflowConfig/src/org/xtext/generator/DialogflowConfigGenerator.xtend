@@ -197,16 +197,12 @@ class DialogflowConfigGenerator extends AbstractGenerator {
     protected def Param getParamTypeName(Parameter param) {
         var obj = new Param();
         if (param.builtInType !== null) {
-            var temp = param.builtInType.toString().replace('_', '-');
-            obj.datatype = '@sys.' + temp;
-            obj.name = temp;
-            obj.value = '$' + temp;
+            obj.datatype = '@sys.' + param.builtInType.toString().replace('_', '-');
         } else {
-            var temp = param.type.toString();
-            obj.datatype = temp;
-            obj.name = temp;
-            obj.value = '$' + temp;
+            obj.datatype = param.type.toString();
         }
+        obj.name = param.name;
+        obj.value = '$' + param.name;
         return obj;
     }
 
@@ -221,7 +217,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                 	  "contexts": [
                 	  «FOR context : intent.inputContexts»
                 	      «IF context != intent.inputContexts.get(0)»,«ENDIF»
-                	      "«context.type.name»"
+                	      "«context.name»"
                 	  «ENDFOR»
                 	  ],
                 	  "responses": [
@@ -234,7 +230,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                 	        «FOR context : intent.affectedContexts»
                 	            «IF context != intent.affectedContexts.get(0)»,«ENDIF»
                 	                    {
-                	                      "name": "«context.type.name»",
+                	                      "name": "«context.name»",
                 	                      "parameters": {},
                 	                      "lifespan": «if(context.lifespan > 0){context.lifespan}else{5}»
                 	                    }

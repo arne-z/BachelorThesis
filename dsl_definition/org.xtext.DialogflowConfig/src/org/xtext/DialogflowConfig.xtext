@@ -5,20 +5,19 @@ generate dialogflowConfig "http://www.xtext.org/DialogflowConfig"
 Agent:
     'Agent' name=ID
     'language' language=Language
-    ('description' description=STRING)?
-    ('version' version=VERSION)?
-    ('ml_classification_threshold' mlMinConfidence=DOUBLE)?
-    webhook=Webhook?
-    elements+=AbstractElement*
-    interactionLogs?='enable_logs'?
+    (('description' description=STRING)?
+    & ('version' version=VERSION)?
+    & ('ml_classification_threshold' mlMinConfidence=DOUBLE)?
+    & webhook=Webhook?
+    & interactionLogs?='enable_logs'?
     & stackdriverLogs?='log_to_google_cloud'?
     & isPrivate?='private'?
-    & hybridMatchMode?='hybrid_match_mode'?
-    'end';
+    & hybridMatchMode?='hybrid_match_mode'?)
+    elements+=AbstractElement*;
 
 terminal DOUBLE:
     INT '.' INT;
-    
+
 terminal VERSION:
     INT '.' INT '.' INT;
 
@@ -28,26 +27,38 @@ AbstractElement:
 Intent:
     fallback?='fallback'?
     'Intent' name=ID
-    ('contexts' (('in' inputContexts+=InputContext+)?
-    ('out' affectedContexts+=OutputContext+)?))?
-    ('parameters' parameters+=Parameter*)?
-    ('trained' 'with' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*
-        | 'file' file=STRING
+    
+    ('contexts'
+        ('input' inputContexts+=InputContext+)?
+        ('output' affectedContexts+=OutputContext+)?
     )?
-    ('response' responses+=STRING+)?
-    ('action' action=STRING)?
-    ('events' events+=STRING+)?
-    (webHookFulfillment?='webhook_fullfillment'?
+    
+    & ('parameters' parameters+=Parameter+)?
+    
+    & (
+    ('trained' 'with' 'phrase' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*)
+    |('trained' 'with' 'file' file=STRING)
+    )?
+    
+    & ('response' responses+=STRING+)?
+    
+    & ('action' action=STRING)?
+    
+    & ('events' events+=STRING+)?
+    
+    & webHookFulfillment?='webhook_fullfillment'?
+    
     & webHookForSlotFilling?='webhook_slot_filling'?
+    
     & disable_ml?='disable_ml'?
-    & end?='end_of_conversation'?)
-    'end';
+    
+    & end?='end_of_conversation'?;
 
 InputContext:
-    type=[EntityType];
+    name=ID;
 
 OutputContext:
-    type=[EntityType] ('lifespan' lifespan=INT)?;
+    name=ID ('lifespan' lifespan=INT)?;
 
 TrainingPhrase:
     data+=AbstractWord+;
@@ -59,13 +70,13 @@ Text:
     text=STRING;
 
 customToken:
-    type=[EntityType];
+    type=[Parameter];
 
 builtinToken:
-    type=BuiltInType
-;
+    type=BuiltInType;
 
 Parameter:
+    name = ID
     (type=[EntityType] | builtInType=BuiltInType)
     ('('
     (required?='required'? & ('prompts' prompts+=STRING+)? & list?='list'?)
@@ -74,13 +85,11 @@ Parameter:
 EntityType:
     'Type' name=ID
     (dynamic?='dynamic' |
-    'values' values+=Entity+)
-    ('state'
-    (isOverridable?='overridable'?
+    'values' values+=Entity (',' values+=Entity)*)
+    & isOverridable?='overridable'?
     & isEnum?='enum'?
     & automatedExpansion?='auto_expand'?
-    & allowFuzzyExtraction?='fuzzy_extract'?))?
-    'end';
+    & allowFuzzyExtraction?='fuzzy_extract'?;
 
 Entity:
     name=STRING
@@ -114,8 +123,8 @@ enum Language:
     th |
     tr |
     uk;
-    
- enum BuiltInType:
+
+enum BuiltInType:
     date_time
     | date
     | date_period
@@ -165,5 +174,4 @@ enum Language:
     | color
     | language
     | any
-    | url
- ;
+    | url;
