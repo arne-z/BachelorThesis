@@ -6,7 +6,7 @@ Agent SampleAgent
 		active 
 		url 'https://sample.weatherservice.com/agentresponse'
 	Intent CheckWeather
-		parameters Place geo_city (required list prompts "Blub")
+		parameters Place geo_city (required)
 		trained with phrase 'What is the weather like here'
 		webhook_fullfillment
 		
