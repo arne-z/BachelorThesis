@@ -1,26 +1,39 @@
-Bachelor Thesis
+# Bachelor Thesis
 
-0. Cover
+# 0. Cover
 
-1. Status Quo (What is the Situation?)
+# 1. Status Quo (What is the Situation?)
 
-2. The Problem (What is the Problem?)
+# 2. The Problem (What is the Problem?)
 
-3. The Solution (What do we do to sole this? How does it work?)
+# 3. The Solution (What do we do to sole this? How does it work?)
 
-4. Why does it work? (skip for now)
+... All these problems could be worked around but this would leave us in a less than optimal situation.
 
-5. When does it work?
+Instead, I propose designing a domain specific language (DSL) in order to create a text based notation (or code) for the configuration of a Dialogflow agent, which I will refer to as “agent” from now on.
 
-6. Why does it work when it works?
+This DSL must fulfill a number of requirements to be usable:
 
-7. Evaluation (How well does it work?)
+- It needs to be significantly shorter than the JSON representation of an agent
+- It needs to be more readable than the JSON representation of an agent.
+- It needs to be automatically compiled and updated on the web.
+- It needs to create smaller diffs (sum of changed lines in a file) than the JSON representation when making changes
 
-8. What further work could be done?
+If we can manage to do this, we´ll have solved the problem.
 
-9. Declaration of Independence!
+# 4. Why does it work? (skip for now)
 
-10. Apendix
+# 5. When does it work?
+
+# 6. Why does it work when it works?
+
+# 7. Evaluation (How well does it work?)
+
+# 8. What further work could be done?
+
+# 9. Declaration of Independence!
+
+# 10. Apendix
  - Code
  - Abstract in German
 
@@ -30,3 +43,31 @@ Sources:
 https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q=%22Dialogflow%22&btnG=
 https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q=git+version+control&btnG=&oq=Git+Versio
 https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q=%22Version+Control%22&btnG=
+
+
+Likely Usefull:
+Version Control with Git: Powerful Tools and Techniques for Collaborative ...
+von Jon Loeliger, Matthew McCullough
+Pages 2-4
+
+Why Git for your organization
+https://www.atlassian.com/git/tutorials/why-git
+
+
+
+Facts:
+more than 188M repos on Github alone in 2019:
+https://api.github.com/repositories?since=188000000
+
+
+
+Unlikely usefull:
+Hands-On Chatbots and Conversational UI Development: Build chatbots and ...
+von Srini Janarthanam
+Pages 146ff
+
+To Be looked at:
+
+https://books.google.de/books?hl=de&lr=&id=8CrCXVZXLjcC&oi=fnd&pg=PT20&dq=domain+specific+language&ots=1pwxUbQWLv&sig=yxYGlnaQwt1lF_FhayL-6P2nMnM#v=onepage&q=domain%20specific%20language&f=false
+
+https://www.sciencedirect.com/science/article/pii/S0164121200000893
