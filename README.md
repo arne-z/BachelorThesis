@@ -162,7 +162,7 @@ Training phrases can be manually entered if only a small number are used, or a f
 
 In the case of entering the phrases directly the syntax is exactly as seen above:  
 ```
-trained with phrase 'Training Pharse here', 'Another Training Phrase'
+trained with phrase 'Training Phrase here', 'Another Training Phrase'
 ```
 if a file is passed in the syntax used is:  
 ```
