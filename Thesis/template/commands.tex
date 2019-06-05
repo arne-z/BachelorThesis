@@ -1,0 +1,147 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HYPTHENATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hyphenation{Graph-struk-tur Story-patterns Story-pattern}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TODO MARKERS EETC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\citeNeeded}{\textcolor{hpired}{[citation~needed]}}
+\newcommand{\factCheck}{\textcolor{hpired}{[check this fact]}}
+\newcommand{\inlinetodo}{\textcolor{hpired}{ TODO HERE }}
+
+\usepackage{framed, xcolor} 
+\newcommand{\todo}[1]{
+  \noindent \colorbox{lightgray}{\parbox{\textwidth}{
+    \textcolor{black}{
+      \large{ TODO: #1 }
+    }
+  }}
+}
+\newcommand{\note}[1]{
+  \noindent \colorbox{lightgray}{\parbox{\textwidth}{
+    \textcolor{black}{
+      \small{ #1 }
+    }
+  }}
+}
+\newcommand{\question}[1]{
+  \noindent \colorbox{hpired}{\parbox{\textwidth}{
+    \textcolor{white}{
+      QUESTION: #1 
+    }
+  }}
+}
+\newcommand{\answer}[1]{
+  \noindent \colorbox{hpiyellow3}{\parbox{\textwidth}{
+    \textcolor{black}{#1}
+  }}
+}
+\newcommand{\todoExample}{
+  \noindent \colorbox{hpiyellow3}{\parbox{\textwidth}{
+    \textcolor{black}{
+      \centerline{\large{ EXAMPLE HERE!}}
+    }
+  }}
+}
+
+
+\newcommand{\todoOptional}[1]{
+  \noindent \colorbox{hpiyellow3}{\parbox[c][2cm]{\textwidth}{
+    \textcolor{black}{ \large{OPTIONAL:~~ #1} }
+  }}
+}
+\newcommand{\todoWrite}[1]{
+  \noindent \colorbox{hpired3}{\parbox[c][2cm]{\textwidth}{
+    \textcolor{black}{
+      \centerline{\huge{ #1 } }
+      \centerline{\large{...still needs major content!}}
+    }
+  }}
+}
+\newcommand{\todoImprove}[1]{
+  \noindent \colorbox{hpiorange3}{\parbox[c][2cm]{\textwidth}{
+    \textcolor{black}{
+      \centerline{\huge{ #1 } }
+      \centerline{\large{...still needs improvement / minor additions!}}
+    }
+  }}
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% OLD (giese template)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\appendixChapter}[1]{\chapter{#1}\setcounter{page}{1}}
+
+\def\TReg{\textsuperscript{\textregistered}}
+
+%\zitat{quotation}
+\newcommand{\zitat}[1]{
+ \begin{quote}
+  \fboxsep5mm
+  \shadowbox{
+  \begin{minipage}{0.8\textwidth}
+    #1
+  \end{minipage}}
+\end{quote}}
+
+%\begriff{caption}{quotation or definition}
+\newcommand{\begriff}[2]{
+  \begin{quote}
+  \fboxsep5mm
+  \shadowbox{
+  \begin{minipage}{0.8\textwidth}
+   \begin{center}\textbf{#1}\end{center}
+   \bigskip
+   #2
+  \end{minipage}}
+  \end{quote}}
+
+\definecolor{lightblue}{rgb}{0.9,0.9,0.9}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{darkgrey}{rgb}{0.8,0.8,0.8}
+
+\renewcommand*\lstlistingname{Quelltext}
+%\JavaStyleBegin{title}{caption}{label}
+\newcommand{\JavaStyleBegin}[3]{
+  \begin{lstlisting}[language = Java,
+   frame=none,
+   framerule=1pt,
+   tabsize=4,
+   title={#1},
+   caption={#2},
+   label=#3,
+   backgroundcolor=\color{lightblue},
+   columns=fixed,
+   basicstyle=\scriptsize \ttfamily \color{black},
+   commentstyle=\itshape\color{darkgreen},
+   keywordstyle=\bfseries\color{blue},
+   stringstyle=\color{darkred},
+   showspaces=false,
+   breaklines=true,
+   numbers=left,
+   numberstyle=\tiny \color{magenta},
+   showstringspaces=false,
+   captionpos=b,
+   xleftmargin=0.04\textwidth, 
+   morekeywords={}]}
+%\end{lstlisting}
+																									
+\newcommand{\methode}[1]{\sl #1\normalfont}
+\newcommand{\klasse}[1]{\tt #1\normalfont}
+\newcommand{\attribut}[1]{\textit{#1}}
+\newcommand{\interface}[1]{\tt #1\normalfont}
+\newcommand{\code}[1]{\ttfamily#1\normalfont}
+
+\newcommand{\trenn}{\left|\right|}
+
+

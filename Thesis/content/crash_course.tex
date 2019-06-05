@@ -1,0 +1,93 @@
+\chapter{Latex Crash Course}
+\label{sec:explanation}
+This is a template for writing a bachelor thesis. Feel free to change the presets to your desire.
+The template will walk you through the most common tasks. You might not want to change it directly but instead create a copy, so that you always have a backup.
+
+\section{Tooling}
+There are lots of ways to use latex. This template can be used with your personal setup so you don't need to do what I am doing.
+
+\subsection{Onlinetools}
+The most comfortable and easy way to use latex are online tools like Overleaf. These simplify the process of writing and compiling Latex documents. They have decent git integration and are pretty much just "plug and play". If you've never used Latex before, start with this if you just want to write! \\
+These tools do have a few problems though. First and foremost they only work online. So if you are on the go or want to turn of internet so you don't get distracted while writing, you can't do that! Secondly compiling is slow. Once the document gets a little longer and you click on compile the time you wait can become multiple minutes. The compiling is done server side for overleaf and since it's a free tool they wont have limitless ressources for each and every user.
+
+\subsection{Offline}
+There are lots of ways to setup Latex locally on your pc. I'm personally using vscode + Latex Workshop with a simple texlive installation.
+If you want to use a different editor you can also do that. Christian Zöllner recommends sublime text with Latextools. For distributions I highly recommend that you stick to Tex Live on Linux. If you work on windows you can install something like MikTex instead but I don't guarantee that the template is going to work very well.\\
+With a local installation you avoid the problems mentioned above. You can work offline just fine and performance of compiling will be limited to your machine. But obviously setup will be a little bit more troublesome. Although it went very smoothly for me personally.\\
+Just as a hint, there are also Latex Plugins for Vim and Emacs which the most harcore users will recommend for obvious reasons. So knock yourself out, GL!
+
+\section{Citing and Referencing}
+
+\subsection{Bibliography}
+\cite[p.~341-348]{Hutchison1973}
+To cite any source in your thesis, you will need to add that source to your .bib file.
+In this template you can find the .bib file in \path{/content_extra/literature.bib}.
+I have added a few sample entries so you can use those to add your own.
+Or to make the handling of the bibtex file a little easier you can use a reference manager like Mendeley \cite{mendeley}.
+If you prefer something a little bit more oldschool try JabRef.\\
+To then actually add the reference you simply use \verb|\cite{your_reference}|.\\
+For more information on citing checkout: \url{https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management}
+
+\subsection{Crossreferencing}
+To create a crossreference you need to create a label with \verb|\label{your_label}| at the point that you want to crossreference. Afterwards you can use \verb|\autoref{your_label}| to crossreference that point. It looks like this: \autoref{sec:explanation} 
+
+\section{Glossary}
+If you want to use a glossary uncomment the line \verb|\makeglossaries| in the template.
+Regardless of if you want to have a glossary (you probably wont need it), it is always a good idea to define your acronyms in there.
+Because these might change later on.
+You can do that with the command \verb|\newacronym{label}{Acronym}{Full name}| And then use it via: \verb|\gls{label}|. It will look like this on first use: \gls{HPI}. And like this for all uses afterwards: \gls{HPI}.\\
+
+For a more information on glossaries checkout: \url{https://www.overleaf.com/learn/latex/Glossaries}
+
+
+\section{Code}
+For displaying code I recommend the environment \verb|\begin{lstlisting}[language=Python]| as it comes with highlighting and looks decently nice.
+\begin{lstlisting}[language=Python]
+    def a_very_cool_method(a, b):
+        """ yes since python doesn't support multiline lambdas
+            and I want to save the result in an extra variable.
+            I need a method for this! It's very pythonic! """
+        c = a * b
+        return c;
+\end{lstlisting}
+If you aren't happy with the styling, somebody should make the effort to customize it as suggested here: \url{https://www.overleaf.com/learn/latex/Code_listing}
+\section{Figures, Graphics and Tables}
+
+\subsection{Tables}
+Tables are pretty straight forward and look like this:
+
+\begin{tabular}{r|cl}
+1st column & 2nd column & 3rd column\\
+\hline
+a & b & c
+\end{tabular}
+
+The code for this table looks like this:
+
+\begin{verbatim}
+\begin{tabular}{r|cl}
+    1st column & 2nd column & 3rd column\\
+    \hline
+    a & b & c
+\end{tabular}
+\end{verbatim}
+
+For a very thorough guide on tables check this page from overleaf again: \url{https://de.overleaf.com/learn/latex/Tables}
+\subsection{Graphics and Figures}
+
+Including a graphic is very easily done by using \verb|\includegraphics{path_to_graphic}|
+Wrapping a graphic in a \verb|begin{figure} \end{figure}| environment allows you to configure the graphic as you wish.
+For example you can add a caption with \verb|\caption{your_caption}|.
+
+
+\begin{figure}[H] % Using H here as I want the image to be displayed between the paragraphes usually the small h is enough.
+    \centering
+    \includegraphics{template/logo/hpi_logo.pdf}
+    \caption{This is the HPI logo yay!}
+    \label{fig:hpi_logo1}
+\end{figure}
+
+It makes a lot of sense to give your images a \verb|\label| so that you can reference it like this: \autoref{fig:hpi_logo1}.
+
+
+For a thorough guide on graphics and figures checkout: \url{https://de.overleaf.com/learn/latex/Inserting_Images}

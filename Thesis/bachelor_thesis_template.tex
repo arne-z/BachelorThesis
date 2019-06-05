@@ -1,0 +1,82 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% global TEMPLATE (document class and untilites)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{scrlfile}
+\IfFileExists{template/hpi_thesis.cls}{
+	\ReplaceClass{hpi_thesis}{template/hpi_thesis}
+}{}
+\documentclass{hpi_thesis}
+\input{template/commands}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% document-specific data IMPORTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{content_extra/literature}
+\loadglsentries{content_extra/glossary}
+
+\makeglossaries
+\input{content_extra/properties}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MAIN DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	\selectlanguage{english}
+
+	%%% PDF-DOCUMENT-INFO
+	\hypersetup{%
+		pdftitle	= {\docTitleEn},
+		pdfsubject	= {Bachelor's Thesis},
+		pdfauthor	= {\docAuthor},
+		pdfcreator	= {PDFLaTeX},
+		pdfproducer	= {LaTeX with hyperref}		
+	}
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% TITLEPAGE + PRE-CONTENT
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pagenumbering{Roman}
+	\maketitle
+	\cleardoublepage
+	
+	% \input{content_extra/abstract_en}
+	% \input{content_extra/abstract_de}
+
+	\newpage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Table of Contents}
+	\tableofcontents
+ 	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% MAIN CONTENT
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\cleardoublepage
+	\pagenumbering{arabic}
+
+	% ALL THE CHAPTERS
+	\include{content/thesis_body}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% APPENDIX
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\cleardoublepage
+	% \pagenumbering{Roman}
+	\appendix
+
+	% ALL APPENDIX STUFF
+	\printbibliography[heading=bibintoc]
+	\clearpage
+	% Using these 2 is without waranty! Like anything else really.
+	% But to be blunt I didn't quite get them to work yet. In theory the first will print all
+	% acronyms and the second the rest of the glossary entries.
+	%\printglossaries[type=\acronymtype]
+	%\printglossaries
+	
+
+\end{document}
