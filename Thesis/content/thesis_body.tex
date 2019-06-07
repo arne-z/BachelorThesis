@@ -1,30 +1,16 @@
+
 \chapter{Introduction}
 
-REWRITE BELOW TEXT
-
-In this bachelor thesis, I plan to provide a way to save a voice interface in Git alongside the code it corresponds to. To approach this goal, I will attempt to create a Domain Specific Language (DSL) to describe the configuration of a voice interface in a text-based but still abstract and intuitive way. \\
-I will focus on development using Google Dialogflow as it is by far the more widely used tool it is also what my bachelor team is using in our project.
+The following bachelor thesis is part of the "Ask your Repository!" bachelor project.\footnote{\url{https://hpi.de/giese/lehre/bachelorprojekte/ask-your-repository.html}}\\
+In this thesis, I will demonstrate a possible solution for the issue of synchronizing development on voice interfaces with that of application code by checking voice interface configuration into version control alongside the code it corresponds to. The focus will be on allowing the use of version control for Voice Interface configurations.\\
+To approach this goal, I have designed a Domain Specific Language (DSL) to describe the configuration of a voice interface in a text-based but still abstract and intuitive way. \\
+I will focus on development using Google Dialogflow as it is the most widely used tool; it is also what my bachelor team is using in our project. \citeNeeded
 
 I propose that by designing a DSL that can be used to configure a Dialogflow agent in a way that is text based and can be managed by version control systems like Git - but that still feels seamless to a user and is intuitive to use for a developer familiar with the Dialogflow web interface - development on voice interfaces can be simplified and development teams in the future will be able to work on voice assistants in the same way that they are used to working with code. This opens up the entirety of code based tools which exist for making development more streamlined for the development of voice interfaces, while keeping the robustness of code which can be saved in version control.
 
-I will initially attempt to use Xtext to create a grammar and code generator for configuring Google Dialogflow agents. The grammar will be used to create a plugin for eclipse and the language server protocol that provides syntax highlighting and validation. The output of the code generator should be a valid voice interface configuration in its JSON representation, ready to be imported into Google Dialogflow.
-
-The DSL I am planning to create will need to compete with two other solutions. \\
-Firstly, there is the web interface that is the common way of editing an agent. This solution is very easy to get started with and lets anyone, even someone with no development experience, configure a voice interface.
-Secondly, there is the JSON representation of the agent, that can - despite this not being intended - be directly edited.
-For the DSL to provide a tangible benefit compared to both of these solutions it has to reach the following criteria:
-\begin{itemize}
-    \item The DSL has to be easy to use for a developer who is used to the Dialogflow web interface.
-    \item The DSL has to be saved as a text representation (code) that can be saved in source control alongside application code, but that is more readable and less cluttered than the JSON representation.
-\end{itemize}
-There are additional goals that are worth trying for but not strictly mandatory:
-\begin{itemize}
-    \item Object oriented inheritance - specifically for "intents" and "entities" - would allow significant benefits over configuring the agent on the web interface through reducing duplication.
-    \item IDE support for the DSL would provide developers with automatic checking for the validity of their agent configuration.
-\end{itemize}
-
-I am planning to validate the goals mentioned above through a user study - using the cognitive walkthrough method - in which I aim to have a group of developers use my solution to edit an existing Dialogflow configuration and collect feedback on the above criteria.\\
-A specific risk that I have to mitigate is the potential impact of changes Google could make to their V2 API which is currently under development or to the format of their JSON configuration.
+In chapter 2, I will explain the current situation in regard to voice interface technology and version control. Afterwards, in Chapter 3, I will then more closely examine the main problem caused by the given situation.
+Chapter 4 will focus on finding a solution to the above mentioned problem, and on the specific solution, I built a prototype for. Going into more detail, chapter 4.2 will show how I used Xtext to create a grammar and code generator for configuring Google Dialogflow agents. This grammar was used to provide syntax highlighting and validation in Eclipse DSL; the output of the code generator is a valid voice interface configuration in its JSON representation, ready to be imported into Google Dialogflow.
+Lastly in chapter 5, I will evaluate the sucess of the prototype by comparing it to an alternative way of checking voice interfaces into source control. 
 
 \chapter{Status Quo}
 \section{Voice Interfaces}
@@ -38,9 +24,11 @@ While the web interface makes initial setup of the voice interface easier for a 
 The state of the art solution for managing iterative work in development teams is Git. \citeNeeded
 Git provides a functionality for saving snapshots of specific iteration in your project and handling the problems that come up in iterative work.
 These problems are:
-•	merging work done by multiple users
-•	ensuring that a stable version of a project is saved while developers are working on more experimental changes
-•	giving the team the ability to easily track and revert changes that have been made.
+\begin{itemize}
+    \item merging work done by multiple users
+    \item ensuring that a stable version of a project is saved while developers are working on more experimental changes
+    \item giving the team the ability to easily track and revert changes that have been made.
+\end{itemize}
 The issue that arises is that the above mentioned technologies are not compatible and the configuration of a voice interface can easily get out of sync with the changes made to the application and managed in Git. \citeNeeded
 
 \section{Previous Work}
@@ -81,7 +69,7 @@ Secondly, using a specific version control system that is developed to allow com
 
 Therefore, instead of trying and failing to develop a competing standard to Git, I decided to make use of a workaround that is possible with Dialogflow.
 
-\subsection{Git with exported JSONS}
+\subsection{Git with exported JSON files}
 
 It is possible to export a folder with a JSON representation of an agent and save this in Git. This solves some of the issues mentioned in chapter X (…), but an agent's JSON representation is not intended for readability by humans, and neither is it meant for direct editing. This makes certain aspects of the workflows I described above much harder, e.g. conducting a code review, since it is difficult to read the changes to the JSON files describing the agent’s configuration.
 
@@ -89,24 +77,26 @@ It is possible to export a folder with a JSON representation of an agent and sav
 While trying to solve the problems mentioned so far, it became obvious that a solution to these problems would require configuring an agent in a format that is compatible with text based tools like Git but that also maintains or even enhances upon the maintainability and readability of Google Dialogflow configuration in the web interface.
 For this purpose, I designed a domain specific language (DSL) in order to create a text-based notation (DSL code) for the configuration of an agent.
 
-\subsection{Requirenments for the DSL}
-
-This DSL must fulfill a number of requirements:
-•	It needs to be significantly shorter than the JSON representation of an agent.
-•	It needs to be more readable than the JSON representation.
-•	It needs to create smaller diffs (sum of changed lines) than the JSON representation when making changes.
-•	A user needs to be able to automatically compile and update an agent on the web from DSL code.
-
-During the process of my work it became clear that solving the above mentioned problems made it necessary to find solutions for every one of these requirements.
 
 \section{DSL Engineering}
 
-What I built is a so called Dom. Spec. Lang..
-It consists of 2 main parts.
-Firstly, there´s a grammar which defines what you can write in the DSL.
-The grammar contains all possible combinations of words that you can use to write in this language
+\subsection{Requirenments for the DSL}
+
+In order to provide a tangible benefit the DSL must fulfill a number of requirements:
+\begin{itemize}
+    \item It needs to be significantly shorter than the JSON representation of an agent.
+    \item It needs to be more readable than the JSON representation.
+    \item It needs to create smaller diffs (sum of changed lines) than the JSON representation when making changes.
+    \item A user needs to be able to automatically compile and update an agent on the web from DSL code.
+\end{itemize}
+
+During the process of my work it became clear that solving the above mentioned problems made it necessary to find solutions for every one of these requirements.
 
 \subsection{Grammar}
+
+The DSL consists of 2 main parts.
+Firstly, there´s a grammar which defines what you can write in the DSL.
+The grammar contains all possible combinations of words that you can use to write in this language
 
 \subsubsection{Design Decisions}
 
@@ -171,7 +161,7 @@ The V2API allows you to update the online version of your agent using the JSON f
 Under which circumstances will the DSL provide a benefit for a project?
 
 
-
+\chapter{Testing and Evaluation}
 
 
 
