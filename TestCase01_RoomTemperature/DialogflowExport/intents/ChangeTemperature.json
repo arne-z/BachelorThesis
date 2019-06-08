@@ -21,6 +21,14 @@
             }
           ],
           "isList": false
+        },
+        {
+          "id": "3f53e160-18ac-4318-99a8-5f84581bb045",
+          "required": false,
+          "dataType": "@sys.time",
+          "name": "point",
+          "value": "$point",
+          "isList": false
         }
       ],
       "messages": [],
