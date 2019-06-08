@@ -15,7 +15,6 @@ import org.xtext.dialogflowConfig.impl.AgentImpl
 import org.xtext.dialogflowConfig.impl.EntityTypeImpl
 import org.xtext.dialogflowConfig.impl.IntentImpl
 import org.xtext.dialogflowConfig.impl.TextImpl
-import org.xtext.dialogflowConfig.impl.builtinTokenImpl
 import org.xtext.dialogflowConfig.impl.customTokenImpl
 
 /**
@@ -62,7 +61,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                 {
                   "description": "«IF agent.description !== null»«agent.description»«ENDIF»",
                   "language": "«agent.language»",
-                  "disableInteractionLogs": «!agent.interactionLogs»,
+                  "disableInteractionLogs": «agent.interactionLogs»,
                   "disableStackdriverLogs": «!agent.stackdriverLogs»,
                   «IF agent.webhook !== null»
                       "webhook": {
@@ -82,10 +81,10 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                       "cloudFunctionsEnabled": false,
                       "cloudFunctionsInitialized": false
                       },
-                  «ENDIF»
-                  "isPrivate": «agent.isPrivate»,
-                  "customClassifierMode": «IF agent.hybridMatchMode»"use.after"«ELSE»"use.instead"«ENDIF»,
-                  "mlMinConfidence": «IF agent.mlMinConfidence !== null» «agent.mlMinConfidence» «ELSE» 0.4 «ENDIF»,
+                  «ENDIF»   
+                  "isPublic": «agent.isPublic»,
+                  "customClassifierMode": «IF agent.noHybridMatchMode»"use.instead"«ELSE»"use.after"«ENDIF»,
+                  "mlMinConfidence": «IF agent.mlMinConfidence !== null» «agent.mlMinConfidence» «ELSE» 0.3 «ENDIF»,
                   "onePlatformApiVersion": "v2"
                 }
             '''
@@ -102,12 +101,18 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                 	    «IF entity != entityType.values.get(0)»,«ENDIF»
                 	    {
                 	    	"value": "«entity.name»",
+                	    	«IF entity.synonyms.isEmpty»
+                	    	"synonyms": [
+                	    	  "«entity.name»"
+                	    	 ]
+                	    	«ELSE»
                 	    	"synonyms": [
                 	    		«FOR synonym :entity.synonyms»
                 	    		    «IF synonym != entity.synonyms.get(0)»,«ENDIF»
                 	    		    "«synonym»"
                 	    		«ENDFOR»
                 	    	]
+                	    	«ENDIF»
                 	    }
                 	«ENDFOR»
                 ]
@@ -146,20 +151,21 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                             «FOR datum: phrase.data»
                                 «IF datum != phrase.data.get(0)»,«ENDIF»
                                 «IF datum instanceof customTokenImpl»
-                                    {
-                                      "text": "«datum.type.name»",
-                                      "alias": "«datum.type.name»",
-                                      "meta": "@«datum.type.name»",
-                                      "userDefined": true
-                                    }
-                                «ELSEIF datum instanceof builtinTokenImpl»
-                                    {
-                                      "text": "«datum.type»",
-                                      "alias": "«datum.type»",
-                                      "meta": "@sys.«datum.type.toString().replace('_','-')»",
-                                      "userDefined": true
-                                    }
-                                    
+                                    «IF datum.param.type !== null»
+                                        {
+                                          "text": "«datum.param.name»",
+                                          "alias": "«datum.param.name»",
+                                          "meta": "@«datum.param.type.name»",
+                                          "userDefined": true
+                                        }
+                                    «ELSEIF datum.param.builtInType !== null»
+                                        {
+                                          "text": "«datum.param.name»",
+                                          "alias": "«datum.param.name»",
+                                          "meta": "@sys.«datum.param.builtInType.toString().replace('_','-')»",
+                                          "userDefined": true
+                                        }
+                                    «ENDIF»
                                 «ELSEIF datum instanceof TextImpl»
                                     {
                                     "text": "«datum.text»",

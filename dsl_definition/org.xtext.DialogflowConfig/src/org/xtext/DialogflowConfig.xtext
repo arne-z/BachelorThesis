@@ -9,10 +9,10 @@ Agent:
     & ('version' version=VERSION)?
     & ('ml_classification_threshold' mlMinConfidence=DOUBLE)?
     & webhook=Webhook?
-    & interactionLogs?='enable_logs'?
+    & interactionLogs?='disable_logs'?
     & stackdriverLogs?='log_to_google_cloud'?
-    & isPrivate?='private'?
-    & hybridMatchMode?='hybrid_match_mode'?)
+    & isPublic?='public'?
+    & noHybridMatchMode?='no_hybrid_match_mode'?)
     elements+=AbstractElement*;
 
 terminal DOUBLE:
@@ -64,16 +64,13 @@ TrainingPhrase:
     data+=AbstractWord+;
 
 AbstractWord:
-    Text | customToken | builtinToken;
+    Text | customToken;
 
 Text:
     text=STRING;
 
 customToken:
-    type=[Parameter];
-
-builtinToken:
-    type=BuiltInType;
+    param=[Parameter];
 
 Parameter:
     name = ID
