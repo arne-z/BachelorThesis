@@ -1,5 +1,22 @@
 [
   {
+    "id": "f3b809fb-40e0-4e23-b7d4-e89c35e4fab4",
+    "data": [
+      {
+        "text": "Make sure the AC is ",
+        "userDefined": false
+      },
+      {
+        "text": "on",
+        "alias": "state",
+        "meta": "@ACState",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
     "id": "ece1cd68-b549-45ef-a68c-5bf5f79d4f8c",
     "data": [
       {

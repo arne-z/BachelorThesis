@@ -1,5 +1,22 @@
 [
   {
+    "id": "e7dbd110-0604-476f-a997-5d90932ef9df",
+    "data": [
+      {
+        "text": "Make sure the AC is at ",
+        "userDefined": false
+      },
+      {
+        "text": "temp",
+        "alias": "temp",
+        "meta": "@sys.temperature",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
     "id": "1f80dd19-9fd9-4276-bbac-024bbf74b2f3",
     "data": [
       {
