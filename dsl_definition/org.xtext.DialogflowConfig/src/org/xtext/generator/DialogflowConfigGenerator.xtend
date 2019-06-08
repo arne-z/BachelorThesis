@@ -203,7 +203,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
     protected def Param getParamTypeName(Parameter param) {
         var obj = new Param();
         if (param.type !== null) {
-            obj.datatype = param.type.toString();
+            obj.datatype = "@" + param.type.name
         } else {
             obj.datatype = '@sys.' + param.builtInType.toString().replace('_', '-');
         }
