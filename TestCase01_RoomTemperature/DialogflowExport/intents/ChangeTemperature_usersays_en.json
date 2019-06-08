@@ -1,186 +1,209 @@
 [
   {
-    "id": "ff8c47db-a72c-4f81-af4f-961155cad46b",
+    "id": "ef80bfaf-d511-4098-9a8e-9b9f18f8692f",
     "data": [
-      {
-        "text": "Set the AC to",
-        "userDefined": false
-      },
-      {
-        "text": "temp",
-        "alias": "temp",
-        "meta": "@sys.temperature",
-        "userDefined": true
-      }
+    {
+    "text": "Set the AC to ",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "temp ",
+      "alias": "temp",
+      "meta": "@sys.temperature",
+      "userDefined": true
+    }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559991165
-  },
+    "updated": 1559992717
+  	}
+,
   {
-    "id": "3beeb392-550b-46b2-a516-1763dd4084fe",
+    "id": "f8cf573a-9129-4105-ae21-6092fda825bd",
     "data": [
-      {
-        "text": "Set the air conditioner to",
-        "userDefined": false
-      },
-      {
-        "text": "temp",
-        "alias": "temp",
-        "meta": "@sys.temperature",
-        "userDefined": true
-      }
+    {
+    "text": "Set the air conditioner to ",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "temp ",
+      "alias": "temp",
+      "meta": "@sys.temperature",
+      "userDefined": true
+    }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559991165
-  },
+    "updated": 1559992717
+  	}
+,
   {
-    "id": "4afc24b1-5e9c-48d4-87b9-1e58aa828130",
+    "id": "45d7a20e-b54a-4098-a792-d8422c63e29d",
     "data": [
-      {
-        "text": "I want the AC turned to",
-        "userDefined": false
-      },
-      {
-        "text": "temp",
-        "alias": "temp",
-        "meta": "@sys.temperature",
-        "userDefined": true
-      }
+    {
+    "text": "I want the AC turned to ",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "temp ",
+      "alias": "temp",
+      "meta": "@sys.temperature",
+      "userDefined": true
+    }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559991165
-  },
+    "updated": 1559992717
+  	}
+,
   {
-    "id": "a5dbe67e-531d-4bd1-85f4-c34983454da4",
+    "id": "c41e27ad-b97a-4558-872e-ed6078f33836",
     "data": [
-      {
-        "text": "Make sure the AC is at",
-        "userDefined": false
-      },
-      {
-        "text": "temp",
-        "alias": "temp",
-        "meta": "@sys.temperature",
-        "userDefined": true
-      }
+    {
+    "text": "Make sure the AC is at ",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "temp ",
+      "alias": "temp",
+      "meta": "@sys.temperature",
+      "userDefined": true
+    }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559991165
-  },
+    "updated": 1559992717
+  	}
+,
   {
-    "id": "b42edbbc-7d8e-48bc-862b-dc904a1f8e34",
+    "id": "25ea7041-f138-4b4b-a4e0-b543eea3653b",
     "data": [
-      {
-        "text": "Set the AC to",
-        "userDefined": false
-      },
-      {
-        "text": "temp",
-        "alias": "temp",
-        "meta": "@sys.temperature",
-        "userDefined": true
-      },
-      {
-        "text": "at",
-        "userDefined": false
-      },
-      {
-        "text": "point",
-        "alias": "point",
-        "meta": "@sys.time",
-        "userDefined": true
-      }
+    {
+    "text": "Set the AC to ",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "temp ",
+      "alias": "temp",
+      "meta": "@sys.temperature",
+      "userDefined": true
+    }
+    ,
+    {
+    "text": "at ",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "point ",
+      "alias": "point",
+      "meta": "@sys.time",
+      "userDefined": true
+    }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559991165
-  },
+    "updated": 1559992717
+  	}
+,
   {
-    "id": "fe1d0c6e-a611-4de2-b97b-be2aabc3ddf4",
+    "id": "d770a7f6-f3f7-418b-9cbd-2aac1d281d77",
     "data": [
-      {
-        "text": "Set the air conditioner to",
-        "userDefined": false
-      },
-      {
-        "text": "temp",
-        "alias": "temp",
-        "meta": "@sys.temperature",
-        "userDefined": true
-      },
-      {
-        "text": "at",
-        "userDefined": false
-      },
-      {
-        "text": "point",
-        "alias": "point",
-        "meta": "@sys.time",
-        "userDefined": true
-      }
+    {
+    "text": "Set the air conditioner to ",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "temp ",
+      "alias": "temp",
+      "meta": "@sys.temperature",
+      "userDefined": true
+    }
+    ,
+    {
+    "text": "at ",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "point ",
+      "alias": "point",
+      "meta": "@sys.time",
+      "userDefined": true
+    }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559991165
-  },
+    "updated": 1559992717
+  	}
+,
   {
-    "id": "f7de1a08-935a-4d23-9120-97cafb64f3fc",
+    "id": "bffaf830-3b6e-4faf-9b1d-36a3a64581f8",
     "data": [
-      {
-        "text": "I want the AC turned to",
-        "userDefined": false
-      },
-      {
-        "text": "temp",
-        "alias": "temp",
-        "meta": "@sys.temperature",
-        "userDefined": true
-      },
-      {
-        "text": "at",
-        "userDefined": false
-      },
-      {
-        "text": "point",
-        "alias": "point",
-        "meta": "@sys.time",
-        "userDefined": true
-      }
+    {
+    "text": "I want the AC turned to ",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "temp ",
+      "alias": "temp",
+      "meta": "@sys.temperature",
+      "userDefined": true
+    }
+    ,
+    {
+    "text": "at ",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "point ",
+      "alias": "point",
+      "meta": "@sys.time",
+      "userDefined": true
+    }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559991165
-  },
+    "updated": 1559992717
+  	}
+,
   {
-    "id": "d23dd532-0557-4ee0-820c-62b4384ab7aa",
+    "id": "76877e9a-9f4f-4116-9e36-c5617cc38139",
     "data": [
-      {
-        "text": "Make sure the AC is at",
-        "userDefined": false
-      },
-      {
-        "text": "temp",
-        "alias": "temp",
-        "meta": "@sys.temperature",
-        "userDefined": true
-      },
-      {
-        "text": "at",
-        "userDefined": false
-      },
-      {
-        "text": "point",
-        "alias": "point",
-        "meta": "@sys.time",
-        "userDefined": true
-      }
+    {
+    "text": "Make sure the AC is at ",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "temp ",
+      "alias": "temp",
+      "meta": "@sys.temperature",
+      "userDefined": true
+    }
+    ,
+    {
+    "text": "at ",
+    "userDefined": false
+    }
+    ,
+    {
+      "text": "point ",
+      "alias": "point",
+      "meta": "@sys.time",
+      "userDefined": true
+    }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559991165
-  }
-]
+    "updated": 1559992717
+  	}
+	]
