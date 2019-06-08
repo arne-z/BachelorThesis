@@ -1,39 +1,36 @@
 {
-	"id": "87e1fda4-b998-4190-8790-71e682bd69ff",
-	  "name": "SwitchAC",
-	  "auto": true,
-	  "contexts": [
-	  ],
-	  "responses": [
-	    {
-	      "resetContexts": false,
-	      "affectedContexts": [
-	      ],
-	      "parameters": [
-	            {
-	              "id": "b1e1f465-2ca4-4cfa-9c9d-68ad0883ccd5",
-	              "required": true,
-	              "dataType": "org.xtext.dialogflowConfig.impl.EntityTypeImpl@632816d0 (name: ACState) (dynamic: false, isOverridable: false, isEnum: false, automatedExpansion: true, allowFuzzyExtraction: false)",
-	              "name": "state",
-	              "value": "$state",
-	              "prompts": [
-	                          {
-	                            "lang": "en",
-	                            "value": "Did you want the AC turned On or Off?"
-	                          }
-	              ],
-	              "isList": false
-	            }
-	      ],
-	      "defaultResponsePlatforms": {},
-	      "speech": []
-	    }
-	  ],
-	  "priority": 500000,
-	  "webhookUsed": true,
-	  "webhookForSlotFilling": false,
-	  "lastUpdate": 1559992717,
-	  "fallbackIntent": false,
-	  "events": [
-	  ]
+  "id": "87e1fda4-b998-4190-8790-71e682bd69ff",
+  "name": "SwitchAC",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "b1e1f465-2ca4-4cfa-9c9d-68ad0883ccd5",
+          "required": true,
+          "dataType": "org.xtext.dialogflowConfig.impl.EntityTypeImpl@632816d0 (name: ACState) (dynamic: false, isOverridable: false, isEnum: false, automatedExpansion: true, allowFuzzyExtraction: false)",
+          "name": "state",
+          "value": "$state",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Did you want the AC turned On or Off?"
+            }
+          ],
+          "isList": false
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1559992717,
+  "fallbackIntent": false,
+  "events": []
 }

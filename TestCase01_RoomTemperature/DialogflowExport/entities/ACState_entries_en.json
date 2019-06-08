@@ -1,19 +1,16 @@
 [
-	{
-		"value": "Off",
-		"synonyms": [
-			"Deactivated"
-			,
-			"Disabled"
-		]
-	}
-	,
-	{
-		"value": "On",
-		"synonyms": [
-			"Active"
-			,
-			"Enabled"
-		]
-	}
+  {
+    "value": "Off",
+    "synonyms": [
+      "Deactivated",
+      "Disabled"
+    ]
+  },
+  {
+    "value": "On",
+    "synonyms": [
+      "Active",
+      "Enabled"
+    ]
+  }
 ]

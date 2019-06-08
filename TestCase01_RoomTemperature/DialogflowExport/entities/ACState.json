@@ -1,8 +1,9 @@
 {
-    "id": "e702cb79-f05f-45a3-974b-79aa93e313e9",
-    "name": "ACState",
-	"isOverridable": false,
-	"isEnum": false,
-	"automatedExpansion": true,
-	"allowFuzzyExtraction": false
+  "id": "e702cb79-f05f-45a3-974b-79aa93e313e9",
+  "name": "ACState",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": true,
+  "allowFuzzyExtraction": false
 }

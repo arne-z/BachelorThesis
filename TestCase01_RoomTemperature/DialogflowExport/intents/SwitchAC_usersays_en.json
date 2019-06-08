@@ -1,106 +1,96 @@
 [
   {
-    "id": "7516ebce-dd53-4b9d-b385-5b41d5944758",
+    "id": "38a4cf09-bdfb-464f-893f-2759b34a6287",
     "data": [
-    {
-    "text": "Turn ",
-    "userDefined": false
-    }
-    ,
-    {
-      "text": "state ",
-      "alias": "state",
-      "meta": "@ACState",
-      "userDefined": true
-    }
-    ,
-    {
-    "text": "the AC ",
-    "userDefined": false
-    }
+      {
+        "text": "Turn ",
+        "userDefined": false
+      },
+      {
+        "text": "state ",
+        "alias": "state",
+        "meta": "@ACState",
+        "userDefined": true
+      },
+      {
+        "text": "the AC ",
+        "userDefined": false
+      }
     ],
     "isTemplate": false,
     "count": 0,
     "updated": 1559992717
-  	}
-,
+  },
   {
-    "id": "87015633-eb79-48a6-880c-f2ac19a08c35",
+    "id": "baad7893-85c2-4157-9f69-6d6b39f86c33",
     "data": [
-    {
-    "text": "Set the AC to ",
-    "userDefined": false
-    }
-    ,
-    {
-      "text": "state ",
-      "alias": "state",
-      "meta": "@ACState",
-      "userDefined": true
-    }
+      {
+        "text": "Set the AC to ",
+        "userDefined": false
+      },
+      {
+        "text": "state ",
+        "alias": "state",
+        "meta": "@ACState",
+        "userDefined": true
+      }
     ],
     "isTemplate": false,
     "count": 0,
     "updated": 1559992717
-  	}
-,
+  },
   {
-    "id": "bab8a22f-bf05-47e9-9b1f-b11887481e86",
+    "id": "77ad6fdb-f419-422d-9120-80761e08d2c8",
     "data": [
-    {
-    "text": "Set the air conditioner to ",
-    "userDefined": false
-    }
-    ,
-    {
-      "text": "state ",
-      "alias": "state",
-      "meta": "@ACState",
-      "userDefined": true
-    }
+      {
+        "text": "Set the air conditioner to ",
+        "userDefined": false
+      },
+      {
+        "text": "state ",
+        "alias": "state",
+        "meta": "@ACState",
+        "userDefined": true
+      }
     ],
     "isTemplate": false,
     "count": 0,
     "updated": 1559992717
-  	}
-,
+  },
   {
-    "id": "099b7e4f-8e7b-4855-ba9e-8d44169b58da",
+    "id": "e27d8d74-087c-4096-a788-79469570354a",
     "data": [
-    {
-    "text": "I want the AC turned ",
-    "userDefined": false
-    }
-    ,
-    {
-      "text": "state ",
-      "alias": "state",
-      "meta": "@ACState",
-      "userDefined": true
-    }
+      {
+        "text": "I want the AC turned ",
+        "userDefined": false
+      },
+      {
+        "text": "state ",
+        "alias": "state",
+        "meta": "@ACState",
+        "userDefined": true
+      }
     ],
     "isTemplate": false,
     "count": 0,
     "updated": 1559992717
-  	}
-,
+  },
   {
-    "id": "026ca418-79db-4d0a-98cb-6f971d84b4a8",
+    "id": "79e3887f-6c82-4d7a-bc32-7be9cda61637",
     "data": [
-    {
-    "text": "Make sure the AC is ",
-    "userDefined": false
-    }
-    ,
-    {
-      "text": "state ",
-      "alias": "state",
-      "meta": "@ACState",
-      "userDefined": true
-    }
+      {
+        "text": "Make sure the AC is ",
+        "userDefined": false
+      },
+      {
+        "text": "state ",
+        "alias": "state",
+        "meta": "@ACState",
+        "userDefined": true
+      }
     ],
     "isTemplate": false,
     "count": 0,
     "updated": 1559992717
-  	}
-	]
+  }
+]
