@@ -1,5 +1,5 @@
 {
-  "id": "1e66c1c3-3c16-4249-8a57-ce2f88117e83",
+  "id": "6497d720-9ccf-41e1-a056-8742cee33a8a",
   "name": "SwitchAC",
   "auto": true,
   "contexts": [],
@@ -9,7 +9,7 @@
       "affectedContexts": [],
       "parameters": [
         {
-          "id": "57cad4a5-a159-4026-9073-238ffdd1bc94",
+          "id": "dde5b5a3-0f3b-45f0-bbb7-0faa438f6252",
           "required": true,
           "dataType": "@sys.date-time",
           "name": "state",
@@ -30,7 +30,7 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1559987102,
+  "lastUpdate": 1559991165,
   "fallbackIntent": false,
   "events": []
 }

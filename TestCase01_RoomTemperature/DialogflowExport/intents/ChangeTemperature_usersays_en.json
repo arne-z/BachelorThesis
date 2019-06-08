@@ -1,6 +1,6 @@
 [
   {
-    "id": "2f86c9b0-ca24-4ebb-9095-5972acdda7ea",
+    "id": "ff8c47db-a72c-4f81-af4f-961155cad46b",
     "data": [
       {
         "text": "Set the AC to",
@@ -9,16 +9,16 @@
       {
         "text": "temp",
         "alias": "temp",
-        "meta": "@temp",
+        "meta": "@sys.temperature",
         "userDefined": true
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559987102
+    "updated": 1559991165
   },
   {
-    "id": "3da40f98-7025-4ac0-a001-b14523780b53",
+    "id": "3beeb392-550b-46b2-a516-1763dd4084fe",
     "data": [
       {
         "text": "Set the air conditioner to",
@@ -27,16 +27,16 @@
       {
         "text": "temp",
         "alias": "temp",
-        "meta": "@temp",
+        "meta": "@sys.temperature",
         "userDefined": true
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559987102
+    "updated": 1559991165
   },
   {
-    "id": "94277d5b-5f42-4c54-8a5d-f20049a06a20",
+    "id": "4afc24b1-5e9c-48d4-87b9-1e58aa828130",
     "data": [
       {
         "text": "I want the AC turned to",
@@ -45,16 +45,16 @@
       {
         "text": "temp",
         "alias": "temp",
-        "meta": "@temp",
+        "meta": "@sys.temperature",
         "userDefined": true
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559987102
+    "updated": 1559991165
   },
   {
-    "id": "802f34be-10e6-4291-8f86-50353bed9289",
+    "id": "a5dbe67e-531d-4bd1-85f4-c34983454da4",
     "data": [
       {
         "text": "Make sure the AC is at",
@@ -63,16 +63,16 @@
       {
         "text": "temp",
         "alias": "temp",
-        "meta": "@temp",
+        "meta": "@sys.temperature",
         "userDefined": true
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559987102
+    "updated": 1559991165
   },
   {
-    "id": "eea450b1-9027-414e-a6ed-5b150ee46d6f",
+    "id": "b42edbbc-7d8e-48bc-862b-dc904a1f8e34",
     "data": [
       {
         "text": "Set the AC to",
@@ -81,7 +81,7 @@
       {
         "text": "temp",
         "alias": "temp",
-        "meta": "@temp",
+        "meta": "@sys.temperature",
         "userDefined": true
       },
       {
@@ -91,16 +91,16 @@
       {
         "text": "point",
         "alias": "point",
-        "meta": "@point",
+        "meta": "@sys.time",
         "userDefined": true
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559987102
+    "updated": 1559991165
   },
   {
-    "id": "9d917a98-bec5-4f3b-88dd-1462243b9744",
+    "id": "fe1d0c6e-a611-4de2-b97b-be2aabc3ddf4",
     "data": [
       {
         "text": "Set the air conditioner to",
@@ -109,7 +109,7 @@
       {
         "text": "temp",
         "alias": "temp",
-        "meta": "@temp",
+        "meta": "@sys.temperature",
         "userDefined": true
       },
       {
@@ -119,16 +119,16 @@
       {
         "text": "point",
         "alias": "point",
-        "meta": "@point",
+        "meta": "@sys.time",
         "userDefined": true
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559987102
+    "updated": 1559991165
   },
   {
-    "id": "bfacdd25-3af7-4fbb-8608-940e3cb86c7d",
+    "id": "f7de1a08-935a-4d23-9120-97cafb64f3fc",
     "data": [
       {
         "text": "I want the AC turned to",
@@ -137,7 +137,7 @@
       {
         "text": "temp",
         "alias": "temp",
-        "meta": "@temp",
+        "meta": "@sys.temperature",
         "userDefined": true
       },
       {
@@ -147,16 +147,16 @@
       {
         "text": "point",
         "alias": "point",
-        "meta": "@point",
+        "meta": "@sys.time",
         "userDefined": true
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559987102
+    "updated": 1559991165
   },
   {
-    "id": "71051eb6-8a44-439a-83d3-6b4c66544ccf",
+    "id": "d23dd532-0557-4ee0-820c-62b4384ab7aa",
     "data": [
       {
         "text": "Make sure the AC is at",
@@ -165,7 +165,7 @@
       {
         "text": "temp",
         "alias": "temp",
-        "meta": "@temp",
+        "meta": "@sys.temperature",
         "userDefined": true
       },
       {
@@ -175,12 +175,12 @@
       {
         "text": "point",
         "alias": "point",
-        "meta": "@point",
+        "meta": "@sys.time",
         "userDefined": true
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559987102
+    "updated": 1559991165
   }
 ]

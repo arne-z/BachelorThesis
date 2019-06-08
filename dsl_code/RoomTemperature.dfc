@@ -13,7 +13,7 @@ Agent TestAgent_RoomTemperature
 		auto_expand
 	
 	Intent SwitchAC
-		parameters 
+		parameters
 			state ACState (required prompts "Did you want the AC turned On or Off?")
 		trained with phrase
 		 	"Turn" state "the AC",

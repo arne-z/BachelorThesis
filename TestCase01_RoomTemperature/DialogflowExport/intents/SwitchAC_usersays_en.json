@@ -1,6 +1,6 @@
 [
   {
-    "id": "447e3efc-1a36-4289-a9b6-ede3924f25db",
+    "id": "2c6819f1-8016-4475-8c4b-4cebb8f4babc",
     "data": [
       {
         "text": "Turn",
@@ -9,7 +9,7 @@
       {
         "text": "state",
         "alias": "state",
-        "meta": "@state",
+        "meta": "@ACState",
         "userDefined": true
       },
       {
@@ -19,10 +19,10 @@
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559987102
+    "updated": 1559991165
   },
   {
-    "id": "897dd2ff-2d6a-4258-9f62-d7d84c79080e",
+    "id": "818affbf-8763-4444-88ae-92dfb9ff6b9e",
     "data": [
       {
         "text": "Set the AC to",
@@ -31,16 +31,16 @@
       {
         "text": "state",
         "alias": "state",
-        "meta": "@state",
+        "meta": "@ACState",
         "userDefined": true
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559987102
+    "updated": 1559991165
   },
   {
-    "id": "3bf31bd9-a2f0-4322-b04c-e3138f8cf9a5",
+    "id": "b47d5043-041f-45ce-9ea6-981c2481039b",
     "data": [
       {
         "text": "Set the air conditioner to",
@@ -49,16 +49,16 @@
       {
         "text": "state",
         "alias": "state",
-        "meta": "@state",
+        "meta": "@ACState",
         "userDefined": true
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559987102
+    "updated": 1559991165
   },
   {
-    "id": "d9068e3f-a0b4-4b85-b2e9-e62357aa15cd",
+    "id": "57498d51-634d-4159-b9ad-2bee85fed3b7",
     "data": [
       {
         "text": "I want the AC turned",
@@ -67,16 +67,16 @@
       {
         "text": "state",
         "alias": "state",
-        "meta": "@state",
+        "meta": "@ACState",
         "userDefined": true
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559987102
+    "updated": 1559991165
   },
   {
-    "id": "d21c3581-9ca9-4ed8-823e-8736fefc955a",
+    "id": "5fdd6e01-a891-4f8d-9f5a-e7852bf7857a",
     "data": [
       {
         "text": "Make sure the AC is",
@@ -85,12 +85,12 @@
       {
         "text": "state",
         "alias": "state",
-        "meta": "@state",
+        "meta": "@ACState",
         "userDefined": true
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1559987102
+    "updated": 1559991165
   }
 ]

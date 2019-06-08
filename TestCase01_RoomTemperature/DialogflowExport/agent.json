@@ -1,7 +1,7 @@
 {
   "description": "This agent is a Test case only. It is meant to understand input directing it to change the AC temperature.",
   "language": "en",
-  "disableInteractionLogs": true,
+  "disableInteractionLogs": false,
   "disableStackdriverLogs": true,
   "googleAssistant": {
     "googleAssistantCompatible": false,
@@ -27,8 +27,8 @@
     "cloudFunctionsInitialized": false
   },
   "isPrivate": false,
-  "customClassifierMode": "use.instead",
-  "mlMinConfidence": 0.4,
+  "customClassifierMode": "use.after",
+  "mlMinConfidence": 0.3,
   "supportedLanguages": [],
   "onePlatformApiVersion": "v2",
   "analyzeQueryTextSentiment": false,
