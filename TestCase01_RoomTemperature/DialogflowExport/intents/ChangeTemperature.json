@@ -1,0 +1,36 @@
+{
+  "id": "effe012b-fc04-487a-87d6-589665a0255b",
+  "name": "ChangeTemperature",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "21040d87-4878-4142-811d-dc98510080e5",
+          "required": true,
+          "dataType": "@sys.temperature",
+          "name": "temp",
+          "value": "$temp",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "What temperature do would you like the AC set to?"
+            }
+          ],
+          "isList": false
+        }
+      ],
+      "messages": [],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}
