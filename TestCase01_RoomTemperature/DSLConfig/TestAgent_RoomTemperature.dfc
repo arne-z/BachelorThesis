@@ -19,14 +19,16 @@ Agent TestAgent_RoomTemperature
 		 	"Turn" state "the AC",
 		 	"Set the AC to" state,
 		 	"Set the air conditioner to" state,
-		 	"I want the AC turned" state
+		 	"I want the AC turned" state,
+		 	"Make sure the AC is" state
 		webhook_fullfillment
-		
+	
 	Intent ChangeTemperature
 		parameters 
 			temp temperature (required prompts "What temperature do would you like the AC set to?")
 		trained with phrase 
 			"Set the AC to" temp, 
 			"Set the air conditioner to" temp, 
-			"I want the AC turned to" temp
+			"I want the AC turned to" temp, 
+			"Make sure the AC is at" temp
 		webhook_fullfillment
