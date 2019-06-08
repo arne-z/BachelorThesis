@@ -153,14 +153,14 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                                 «IF datum instanceof customTokenImpl»
                                     «IF datum.param.type !== null»
                                         {
-                                          "text": "«datum.param.name»",
+                                          "text": "«datum.param.name» ",
                                           "alias": "«datum.param.name»",
                                           "meta": "@«datum.param.type.name»",
                                           "userDefined": true
                                         }
-                                    «ELSEIF datum.param.builtInType !== null»
+                                    «ELSE»
                                         {
-                                          "text": "«datum.param.name»",
+                                          "text": "«datum.param.name» ",
                                           "alias": "«datum.param.name»",
                                           "meta": "@sys.«datum.param.builtInType.toString().replace('_','-')»",
                                           "userDefined": true
@@ -168,7 +168,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                                     «ENDIF»
                                 «ELSEIF datum instanceof TextImpl»
                                     {
-                                    "text": "«datum.text»",
+                                    "text": "«datum.text» ",
                                     "userDefined": false
                                     }
                                 «ENDIF»
@@ -202,10 +202,10 @@ class DialogflowConfigGenerator extends AbstractGenerator {
 
     protected def Param getParamTypeName(Parameter param) {
         var obj = new Param();
-        if (param.builtInType !== null) {
-            obj.datatype = '@sys.' + param.builtInType.toString().replace('_', '-');
-        } else {
+        if (param.type !== null) {
             obj.datatype = param.type.toString();
+        } else {
+            obj.datatype = '@sys.' + param.builtInType.toString().replace('_', '-');
         }
         obj.name = param.name;
         obj.value = '$' + param.name;
