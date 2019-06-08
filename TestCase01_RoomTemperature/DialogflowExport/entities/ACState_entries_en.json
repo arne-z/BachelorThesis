@@ -3,16 +3,14 @@
     "value": "Off",
     "synonyms": [
       "Deactivated",
-      "Disabled",
-      "Off"
+      "Disabled"
     ]
   },
   {
     "value": "On",
     "synonyms": [
       "Active",
-      "Enabled",
-      "On"
+      "Enabled"
     ]
   }
 ]

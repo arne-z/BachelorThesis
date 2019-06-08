@@ -1,7 +1,7 @@
 {
   "description": "This agent is a Test case only. It is meant to understand input directing it to change the AC temperature.",
   "language": "en",
-  "disableInteractionLogs": false,
+  "disableInteractionLogs": true,
   "disableStackdriverLogs": true,
   "googleAssistant": {
     "googleAssistantCompatible": false,
@@ -20,14 +20,15 @@
   },
   "defaultTimezone": "Europe/Madrid",
   "webhook": {
-    "available": false,
+    "url": "https://fake.ac_controller.com/vi_webhook",
+    "available": true,
     "useForDomains": false,
     "cloudFunctionsEnabled": false,
     "cloudFunctionsInitialized": false
   },
-  "isPrivate": true,
-  "customClassifierMode": "use.after",
-  "mlMinConfidence": 0.3,
+  "isPrivate": false,
+  "customClassifierMode": "use.instead",
+  "mlMinConfidence": 0.4,
   "supportedLanguages": [],
   "onePlatformApiVersion": "v2",
   "analyzeQueryTextSentiment": false,

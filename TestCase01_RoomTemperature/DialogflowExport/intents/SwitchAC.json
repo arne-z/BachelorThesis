@@ -1,5 +1,5 @@
 {
-  "id": "9a1bdb5b-92d6-4054-8f08-1f047f41978e",
+  "id": "1e66c1c3-3c16-4249-8a57-ce2f88117e83",
   "name": "SwitchAC",
   "auto": true,
   "contexts": [],
@@ -9,9 +9,9 @@
       "affectedContexts": [],
       "parameters": [
         {
-          "id": "aee97c66-6758-4577-af16-8446be1c5ab1",
+          "id": "57cad4a5-a159-4026-9073-238ffdd1bc94",
           "required": true,
-          "dataType": "@ACState",
+          "dataType": "@sys.date-time",
           "name": "state",
           "value": "$state",
           "prompts": [
@@ -23,7 +23,6 @@
           "isList": false
         }
       ],
-      "messages": [],
       "defaultResponsePlatforms": {},
       "speech": []
     }
@@ -31,6 +30,7 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
+  "lastUpdate": 1559987102,
   "fallbackIntent": false,
   "events": []
 }

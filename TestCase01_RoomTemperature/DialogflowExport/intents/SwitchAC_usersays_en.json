@@ -1,91 +1,96 @@
 [
   {
-    "id": "f3b809fb-40e0-4e23-b7d4-e89c35e4fab4",
+    "id": "447e3efc-1a36-4289-a9b6-ede3924f25db",
     "data": [
       {
-        "text": "Make sure the AC is ",
+        "text": "Turn",
         "userDefined": false
       },
       {
-        "text": "on",
+        "text": "state",
         "alias": "state",
-        "meta": "@ACState",
+        "meta": "@state",
+        "userDefined": true
+      },
+      {
+        "text": "the AC",
         "userDefined": false
       }
     ],
     "isTemplate": false,
-    "count": 0
+    "count": 0,
+    "updated": 1559987102
   },
   {
-    "id": "ece1cd68-b549-45ef-a68c-5bf5f79d4f8c",
+    "id": "897dd2ff-2d6a-4258-9f62-d7d84c79080e",
     "data": [
       {
-        "text": "I want the AC turned ",
+        "text": "Set the AC to",
         "userDefined": false
       },
       {
-        "text": "on",
+        "text": "state",
         "alias": "state",
-        "meta": "@ACState",
-        "userDefined": false
+        "meta": "@state",
+        "userDefined": true
       }
     ],
     "isTemplate": false,
-    "count": 0
+    "count": 0,
+    "updated": 1559987102
   },
   {
-    "id": "be73b9d6-e528-4cb4-b5de-9e3c520d9fb2",
+    "id": "3bf31bd9-a2f0-4322-b04c-e3138f8cf9a5",
     "data": [
       {
-        "text": "Set the air conditioner to ",
+        "text": "Set the air conditioner to",
         "userDefined": false
       },
       {
-        "text": "on",
+        "text": "state",
         "alias": "state",
-        "meta": "@ACState",
-        "userDefined": false
+        "meta": "@state",
+        "userDefined": true
       }
     ],
     "isTemplate": false,
-    "count": 0
+    "count": 0,
+    "updated": 1559987102
   },
   {
-    "id": "682ad135-4cb0-4678-931c-a388bba16e5d",
+    "id": "d9068e3f-a0b4-4b85-b2e9-e62357aa15cd",
     "data": [
       {
-        "text": "Set the AC to ",
+        "text": "I want the AC turned",
         "userDefined": false
       },
       {
-        "text": "on",
+        "text": "state",
         "alias": "state",
-        "meta": "@ACState",
-        "userDefined": false
+        "meta": "@state",
+        "userDefined": true
       }
     ],
     "isTemplate": false,
-    "count": 0
+    "count": 0,
+    "updated": 1559987102
   },
   {
-    "id": "dad6c648-8683-4f74-8a09-79a0a7afdc0b",
+    "id": "d21c3581-9ca9-4ed8-823e-8736fefc955a",
     "data": [
       {
-        "text": "Turn ",
+        "text": "Make sure the AC is",
         "userDefined": false
       },
       {
-        "text": "on",
+        "text": "state",
         "alias": "state",
-        "meta": "@ACState",
-        "userDefined": false
-      },
-      {
-        "text": " the AC",
-        "userDefined": false
+        "meta": "@state",
+        "userDefined": true
       }
     ],
     "isTemplate": false,
-    "count": 0
+    "count": 0,
+    "updated": 1559987102
   }
 ]

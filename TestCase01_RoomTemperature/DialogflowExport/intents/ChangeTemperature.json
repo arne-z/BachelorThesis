@@ -1,5 +1,5 @@
 {
-  "id": "effe012b-fc04-487a-87d6-589665a0255b",
+  "id": "2c83d2e0-4375-40e3-a986-42a8194da5a8",
   "name": "ChangeTemperature",
   "auto": true,
   "contexts": [],
@@ -9,7 +9,7 @@
       "affectedContexts": [],
       "parameters": [
         {
-          "id": "21040d87-4878-4142-811d-dc98510080e5",
+          "id": "8f06146a-31d2-49bb-86bb-57ea7b7eb5e5",
           "required": true,
           "dataType": "@sys.temperature",
           "name": "temp",
@@ -23,7 +23,7 @@
           "isList": false
         },
         {
-          "id": "3f53e160-18ac-4318-99a8-5f84581bb045",
+          "id": "b369a6f4-31ac-4302-b40b-1634a9120343",
           "required": false,
           "dataType": "@sys.time",
           "name": "point",
@@ -31,7 +31,6 @@
           "isList": false
         }
       ],
-      "messages": [],
       "defaultResponsePlatforms": {},
       "speech": []
     }
@@ -39,6 +38,7 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
+  "lastUpdate": 1559987102,
   "fallbackIntent": false,
   "events": []
 }
