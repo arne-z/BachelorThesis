@@ -1,0 +1,36 @@
+{
+  "id": "8fd9e226-05ce-48eb-a726-13f07b1d8b1d",
+  "name": "SwitchAC",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "1aa93aa1-8817-429b-bbf0-608d93ae8c5d",
+          "required": true,
+          "dataType": "@ACState",
+          "name": "state",
+          "value": "$state",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Did you want the AC turned On or Off?"
+            }
+          ],
+          "isList": false
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1560083189,
+  "fallbackIntent": false,
+  "events": []
+}

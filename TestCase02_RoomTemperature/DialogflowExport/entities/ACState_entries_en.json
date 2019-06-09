@@ -1,0 +1,18 @@
+[
+  {
+    "value": "Off",
+    "synonyms": [
+      "Disabled",
+      "Inactive",
+      "Off"
+    ]
+  },
+  {
+    "value": "On",
+    "synonyms": [
+      "Active",
+      "Enabled",
+      "On"
+    ]
+  }
+]

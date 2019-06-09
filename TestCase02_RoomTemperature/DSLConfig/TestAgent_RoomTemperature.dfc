@@ -1,0 +1,23 @@
+ Agent TestAgent_RoomTemperature
+        language en 
+            
+        Webhook 
+            active 
+            url "https://fake.ac_controller.com/vi_webhook"
+
+        Type ACState
+            values 
+                "Off" ("Inactive" "Disabled" "Off"),
+                "On" ("Active" "Enabled" "On")
+        auto_expand
+
+        Intent SwitchAC
+            parameters
+                state ACState (required prompts "Did you want the AC turned On or Off?")
+            trained with phrase
+                "Turn" state "the AC",
+                "Set the AC to" state,
+                "Set the air conditioner to" state,
+                "I want the AC turned" state,
+                "Make sure the AC is" state
+            webhook_fullfillment

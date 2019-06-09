@@ -1,0 +1,96 @@
+[
+  {
+    "id": "ed813a56-e6e9-4bce-b0ed-dca488102333",
+    "data": [
+      {
+        "text": "Turn ",
+        "userDefined": false
+      },
+      {
+        "text": "state ",
+        "alias": "state",
+        "meta": "@ACState",
+        "userDefined": true
+      },
+      {
+        "text": "the AC ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560083189
+  },
+  {
+    "id": "6a6ce0ea-f89b-445c-88cb-3a7cf0909cd0",
+    "data": [
+      {
+        "text": "Set the AC to ",
+        "userDefined": false
+      },
+      {
+        "text": "state ",
+        "alias": "state",
+        "meta": "@ACState",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560083189
+  },
+  {
+    "id": "8fad988c-aaa3-4eae-b996-f479988bceed",
+    "data": [
+      {
+        "text": "Set the air conditioner to ",
+        "userDefined": false
+      },
+      {
+        "text": "state ",
+        "alias": "state",
+        "meta": "@ACState",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560083189
+  },
+  {
+    "id": "e30f40ee-3513-4495-8d43-683734ae8f65",
+    "data": [
+      {
+        "text": "I want the AC turned ",
+        "userDefined": false
+      },
+      {
+        "text": "state ",
+        "alias": "state",
+        "meta": "@ACState",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560083189
+  },
+  {
+    "id": "96752680-9e38-47fc-a4b6-9b0ec36a9899",
+    "data": [
+      {
+        "text": "Make sure the AC is ",
+        "userDefined": false
+      },
+      {
+        "text": "state ",
+        "alias": "state",
+        "meta": "@ACState",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560083189
+  }
+]

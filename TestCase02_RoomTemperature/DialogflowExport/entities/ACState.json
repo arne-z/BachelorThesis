@@ -1,0 +1,9 @@
+{
+  "id": "c1d36132-e52a-47f0-806e-de781b0f66e0",
+  "name": "ACState",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": true,
+  "allowFuzzyExtraction": false
+}
