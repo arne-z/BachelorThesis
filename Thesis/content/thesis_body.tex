@@ -80,6 +80,20 @@ For this purpose, I designed a domain specific language (DSL) in order to create
 
 \section{DSL Engineering}
 
+
+\subsection{WHAT IS A DSL}
+REPLACE THIS\\
+The DSL consists of 2 main parts.
+Firstly, there´s a grammar which defines what you can write in the DSL.
+The grammar contains all possible combinations of words that you can use to write in this language
+Specifying this grammar allows me to have live IDE support including syntax validation while writing DSL code. Which Markus Voelter says is a vital part of DSL design. \citeNeeded (cite this using Markus Voelter: dsl engineering)
+
+The other part I built is a code generator.
+What this does is it takes input in the form of code that is written in a DSL in accordance with the grammar, and output files containing generated code,
+In this case containing the full JSON representation of a Dialogflow agent.
+
+On a higher level, let´s have a look at this graphic: …
+
 \subsection{Requirenments for the DSL}
 
 In order to provide a tangible benefit the DSL must fulfill a number of requirements:
@@ -92,77 +106,207 @@ In order to provide a tangible benefit the DSL must fulfill a number of requirem
 
 During the process of my work it became clear that solving the above mentioned problems made it necessary to find solutions for every one of these requirements.
 
-\subsection{Grammar}
+\subsection{Design Decisions}
 
-The DSL consists of 2 main parts.
-Firstly, there´s a grammar which defines what you can write in the DSL.
-The grammar contains all possible combinations of words that you can use to write in this language
+I wanted the DSL code to read naturally for a developer used to the Dialogflow interface.
+In order to achieve this, I tried to closely mimic the structure of the web interface in my DSL code.
 
-\subsubsection{Design Decisions}
+In order to show this, I will walk you through an example agent I created for testing purposes. The agent is a very simple controler for regulating the air conditioning in a room. It listens to the user and sends their requests to a server. Throughout the four steps of this example, I will follow a pattern of first showing how a developer would set up an agent on the Dialogflow website, followed by showing how to do the same in DSL code.
 
-I wanted the DSL code to read naturally for a person used to the Df interface.
+\subsubsection{Creating an Agent}
+First a developer needs to create a new agent. To do so, they click on "create agent", and enter the agent's name and language as seen in \autoref{CreateAgent}.
+To achieve the same effect, in DSL code, a developer would enter the following:
 
-I tried to – in all the language design – mimic the interface on the Df website.
-E.g.: when entering an intent, the way it starts is: (Sample code here with highlighting)
+\begin{verbatim}
+    Agent TestAgent_RoomTemperature
+        language en 
+\end{verbatim}
 
-1. key word “intent”
-2. the name of the intent –
-3. option to enter contexts and/or the option to enter events
-4. Enter parameters
-5. Enter training phrases
-6. actions
-7. enter responses
-8. fulfillment settings
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{Thesis Images/CreateAgent.PNG}
+    \caption{Creating an agent on Dialogflow.}
+        \label{CreateAgent}
+\end{figure}
 
+\subsubsection{Setting an Entity-Type}
+In the next step, an entity-type needs to be created to allow to intuitively turn on and off the air conditioning.
+In Dialogflow this is achieved by filling in the form seen in \autoref{CreateType}.
+In DSL code the same can be done by writing the following:
 
-The cool things is:
-On the Df website when creating a new intent, the 1st thing you do is to klick “create intent”.
-Then you enter an intent name, and are presented with a page where you can enter in this exact order: contexts, events, training phrases, actions and parameters, responses, and fulfillment settings;
-As you can see, the DSL closely mirrors the web interface.
+\begin{verbatim}
+    Agent TestAgent_RoomTemperature
+        language en 
+    
+        Type ACState
+            values 
+                "On" ("Active" "Enabled" "On"),
+                "Off" ("Inactive" "Disabled" "Off")
+        auto_expand
+\end{verbatim}
 
-There is one exception: the parameters are entered before training phrases to allow for validation of training phrases that use these parameters.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{Thesis Images/CreateType.PNG}
+    \caption{Creating an entity-type on Dialogflow.}
+        \label{CreateType}
+\end{figure}
 
+\subsubsection{Setting a Webhook}
+For the agent to actually affect an air conditioner in the real world, it needs to send the user's request to a webserver. To do so, a webhook is enabled in Dialogflow by filling in the form as seen in \autoref{CreateWebhook}.
+In DSL code the same can be achieved:
+\begin{verbatim}
+    Agent TestAgent_RoomTemperature
+        language en 
+            
+        Webhook 
+            active 
+            url "https://fake.ac_controller.com/vi_webhook"
 
-Another example: Entity type : (Sample code here with highlighting)
+        Type ACState
+            values 
+                "Off" ("Inactive" "Disabled" "Off"),
+                "On" ("Active" "Enabled" "On")
+        auto_expand
+\end{verbatim}
 
-In Df you create entities which represent a type for which you supply all possible values.
-There are numerous built-in types like dates or numbers.
-In building an agent, oftentimes you will want to use custom types and in the DSL this is possible through the following:
-- key word “Type”
-- name of the type
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{Thesis Images/CreateWebhook.PNG}
+    \caption{Setting a webhook on Dialogflow.}
+        \label{CreateWebhook}
+\end{figure}
+
+\subsubsection{Writing an Intent}
+The last and most vital step is to create an intent that the agent can understand. This is done on the website by filling in the form seen in \autoref{CreateIntent} and can alternatively be achieved in DSL code as follows:
+\begin{verbatim}
+    Agent TestAgent_RoomTemperature
+        language en 
+            
+        Webhook 
+            active 
+            url "https://fake.ac_controller.com/vi_webhook"
+
+        Type ACState
+            values 
+                "Off" ("Inactive" "Disabled" "Off"),
+                "On" ("Active" "Enabled" "On")
+        auto_expand
+
+        Intent SwitchAC
+            parameters
+                state ACState (required prompts "Did you want the AC turned On or Off?")
+            trained with phrase
+                "Turn" state "the AC",
+                "Set the AC to" state,
+                "Set the air conditioner to" state,
+                "I want the AC turned" state,
+                "Make sure the AC is" state
+            webhook_fullfillment
+\end{verbatim}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{Thesis Images/CreateIntent.PNG}
+    \caption{Setting up an intent on Dialogflow.}
+        \label{CreateIntent}
+\end{figure}
+
+\subsubsection{Summary}
+From the above it becomes apparent that the DSL I designed is a viable alternative to using the Web interface.
+From personal expirience I can say, that I can configure an agent more quickly in the DSL code than in the Web interface. However in the following section of this chapter, I will talk about which conseccions I had to make and which disadvantages the DSL still has to overcome, for some of which I will offer solutions.
+
+\subsection{Concessions and Drawbacks}
+UNFINISHED
+
+The parameters are entered before training phrases to allow for validation of training phrases that use these parameters.
+
+Problem: Changes to DSL code are not affected by dynamic entity changes via API.
 Next it is possible to enter either the keyword “dynamic” or the keyword “values” followed by a comma separated list of values that are possible for this type.
-- additional settings
-
 This allows the user to either enter a type with it’s associated values, or have the type exist in the DSL and be valid for validation - but not have any JSON files generated for it, so as not to overwrite an entity type that is dynamically set on Df via the API.
 This is relevant in cases like the team selection in our Ask your Repository project.
 In that case a list of teams was kept as an entity type, and dynamically updated whenever new teams were created. This allowed the user to say “Select Team” followed by their team’s name and have the voice interface understand their team name.
-
-
-Specifying this grammar allows me to have live IDE support including syntax validation while writing DSL code. Which Markus Voelter says is a vital part of DSL design. (cite this using Markus Voelter: dsl engineering)
-
-\subsubsection{Concessions and Drawbacks}
-
-MORE HERE LATER
-
-
-\subsection{Code generation}
-
-The other part I built is a code generator.
-What this does is it takes input in the form of code that is written in a DSL in accordance with the grammar, and output files containing generated code,
-In this case containing the full JSON representation of a Dialogflow agent.
-
-On a higher level, let´s have a look at this graphic: …
 
 \subsection{Usage}
 When you use the tool/compiler that I built, you run this compiler with the input being the DSL code; the output will be a full JSON representation of a Dialogflow agent which can be sent to the Dialogflow V2API.
 The V2API allows you to update the online version of your agent using the JSON files.
 
+
 \section{Circumstances under which using the DSL is beneficial}
 Under which circumstances will the DSL provide a benefit for a project?
 
 
-\chapter{Testing and Evaluation}
+\chapter{Evaluation}
 
+Testing and evaluation has been done by myself by referring back to the requirements I stated earlier in chapter four.\\
+These requirements were:
+\begin{itemize}
+    \item Length
+    \item Readability
+    \item Diff size
+    \item Automatic compilation and update
+\end{itemize}
+
+In the following chapter I will talk about each of these requirements and whether and in howfar my prototype can fulfill them.
+
+\section{Length}
+
+In order to provide a tangible benefit the DSL code must be significantly shorter than the JSON representation. Coming back to the agent used in chapter four, I can show that the DSL code for that agent is exactly 23 lines long, while using a large amount of whitespace and linebreaks to support readability.
+
+However, the JSON version for this same agent, comes in at exactly 200 lines as you can see in the appendix. \ref{}REFTHISLATER \url{https://github.com/arne-z/BachelorThesis/commit/d61614158d41d72bb72f28f941718a707d72a5e0}
+
+This demonstrates, that the DSL code for an agent is significantly shorter than the JSON version.
+The benefit of thia is that less code causes better maintainability and faster and easier code reviews. 
+
+\section{Readability}
+In order to provide a tangible benefit the DSL code must be more readable than the JSON representation.
+\citeNeeded Definition of readability == undefined
+
+
+
+\section{Diff size}
+In order to provide a tangible benefit the DSL code must create smaller diffs (sum of changed lines) than the JSON representation when making changes.
+
+Using the air conditioning example again, when making a change - in this case adding more training phrases to an agent to allow additional functionality - the diff size shows a large difference between DSL code and JSON version. In this specific example, the DSL code has a diff of 7 lines\footnote{\url{https://github.com/arne-z/BachelorThesis/commit/559f72d4dd8550d57bef8b42ee34678317e21fcb}} and the JSON version one of 124 lines.
+\footnote{\url{https://github.com/arne-z/BachelorThesis/commit/08255f4b1bff5a2bb4bf57319ab37033193429c5}}
+
+
+
+\section{Automatic compilation and update}
+A developer needs to be able to automatically compile and update an agent on the web from DSL code.
+The compiler created alongside this prototype\footnote{\url{https://github.com/arne-z/BachelorThesis/releases}} is able to automatically generate the JSON representation of an agent from DSL code.
+Alongside this, I have written a script, that automatically sends the resulting JSON files to the Dialogflow website.
+This can be used in continuous integration setups like CircleCI\footnote{\url{https://circleci.com/}} to automatically keep the online version of a Dialogflow agent up to date with the most current version of the DSL code in source control.
+
+Below you can see an example of the CircleCI job configuration used with the prototype in our bachelor project.
+\footnote{The full configuration can be found here.\\
+\url{https://github.com/hpi-sam/ask-your-repository-dialogflow-adapter/blob/agent-config-with-dsl/.circleci/config.yml}}
+
+\begin{verbatim}
+    deploy_agent:
+        docker:
+            - image: circleci/openjdk:latest-node
+        steps:
+            - checkout
+            - run: > 
+                wget -O ./dfc_compiler.jar
+                https://github.com/arne-z/BachelorThesis/releases/...
+            - run: yarn install
+            - run: java -jar ./dfc_compiler.jar ./Agent/Tobito.dfc
+            - run: echo $GOOGLE_CERT_FILE_64 | base64 --decode > ./googleKey.json
+            - run: >
+                node ./utility/importAgent.js 
+                --dir ./src-gen 
+                --key ./googleKey.json 
+                --pid projects/newagent-bdb60
+\end{verbatim}
+
+
+The above configuration starts a docker image with java and node installed - java is required for the DSL compiler, JavaScript for the import script - and checks out the most recent version of our project from source control.
+It then downloads the DSL compiler from my github repository and runs the compiler targeting the .dfc file containing the DSL code for our project's agent.
+It then saves our project's google authentication key in a JSON file and runs the importAgent script that will send the JSONs generated by the compiler to the Dialogflow API.
+
+This setup allows a "hands free" approach to developing for Dialogflow, where the developer has to only change the DSL code and once that is pushed to master on git, the Dialogflow agent is updated automatically.
 
 
 \chapter{Summary and further Work}

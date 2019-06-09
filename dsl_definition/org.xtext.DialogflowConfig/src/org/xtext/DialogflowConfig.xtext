@@ -27,31 +27,18 @@ AbstractElement:
 Intent:
     fallback?='fallback'?
     'Intent' name=ID
-    
     ('contexts'
-        ('input' inputContexts+=InputContext+)?
-        ('output' affectedContexts+=OutputContext+)?
-    )?
-    
+    ('input' inputContexts+=InputContext+)?
+    ('output' affectedContexts+=OutputContext+)?)?
     & ('parameters' parameters+=Parameter+)?
-    
-    & (
-    ('trained' 'with' 'phrase' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*)
-    |('trained' 'with' 'file' file=STRING)
-    )?
-    
+    & (('trained' 'with' 'phrase' trainingPhrases+=TrainingPhrase (',' trainingPhrases+=TrainingPhrase)*)
+    | ('trained' 'with' 'file' file=STRING))?
     & ('response' responses+=STRING+)?
-    
     & ('action' action=STRING)?
-    
     & ('events' events+=STRING+)?
-    
     & webHookFulfillment?='webhook_fullfillment'?
-    
     & webHookForSlotFilling?='webhook_slot_filling'?
-    
     & disable_ml?='disable_ml'?
-    
     & end?='end_of_conversation'?;
 
 InputContext:
@@ -73,7 +60,7 @@ customToken:
     param=[Parameter];
 
 Parameter:
-    name = ID
+    name=ID
     (type=[EntityType] | builtInType=BuiltInType)
     ('('
     (required?='required'? & ('prompts' prompts+=STRING+)? & list?='list'?)
