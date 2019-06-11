@@ -81,18 +81,16 @@ For this purpose, I designed a domain specific language (DSL) in order to create
 \section{DSL Engineering}
 
 
-\subsection{WHAT IS A DSL}
-REPLACE THIS\\
-The DSL consists of 2 main parts.
-Firstly, there´s a grammar which defines what you can write in the DSL.
-The grammar contains all possible combinations of words that you can use to write in this language
-Specifying this grammar allows me to have live IDE support including syntax validation while writing DSL code. Which Markus Voelter says is a vital part of DSL design. \citeNeeded (cite this using Markus Voelter: dsl engineering)
+\subsection{What is a DSL?}
 
-The other part I built is a code generator.
-What this does is it takes input in the form of code that is written in a DSL in accordance with the grammar, and output files containing generated code,
-In this case containing the full JSON representation of a Dialogflow agent.
+DSL stands for domain specific language. In contrast to a GPL (general purpose language) a DSL is a smaller and more narrow programming language, and oftentimes is not turing complete. The advantage of a DSL comes in the form of concise syntax, that is streamlined for one specific purpose. While a GPL has to allow the user to be able to build quite literally anything within the constraints of the language, the DSL makes no such claims but can instead provide shortcuts for the few things that it is able to do.
 
-On a higher level, let´s have a look at this graphic: …
+The DSL prototype I built consists of two main parts.\\
+Firstly, there is a grammar which defines all possible combinations of words that can be used to write in this language.
+Specifying this grammar allows the user to have live IDE support including syntax validation while writing DSL code.
+
+The second part I built is a code generator.\\
+This generator compiles DSL code into a collection of JSON files in a format accepted by the Google API. It allows the user to automatically generate a working Dialogflow agent from their DSL code.
 
 \subsection{Requirenments for the DSL}
 
