@@ -325,12 +325,27 @@ This setup allows a "hands free" approach to developing for Dialogflow, where al
 
 \chapter{Summary and further Work}
 
-It was my task for this Bachelor thesis to build a prototype for Df to find out if you can configure Df agents as code in a DSL.
+It was my self set task for this Bachelor thesis to find a solution shortcomings in available version control for Dialogflow agents. In oorder to solve this I built a prototype of a DSL for describing Dialogflow agents.
+My assumption going into this project was, that there shoud and could be a simpler shorter and more readable solution for using version control with a Dialogflow agent than saving the cofiguration of said agent in JSON files.
+The main Idea was to offer this solution to teams of developers working longer term on maintaining an agent throughout it's coevolution with their application.
+In order to build this DSL I had to design a grammar to describe the syntax possible in the language and build a code generator using this grammar to generate JSON files.
+In order to test and evaluate this prototype, I designed multiple test cases in each of which I compared the performance of the prototype with that of the established way of saving the agent configuration using JSON files.
+In result I have found that the DSL provides a measurable improvement in both the size of agent configurations and the size of diffs created by changes to the configuration, a XXX\% reduction in size and a YYY\% reduction in diff size respectively, while also improving readability and almost entirely maintaining the ease of updating the agent's online version.
+Team working with this tool will find that this tool offers benefits in regard to teamwork, learning, cosistency, and keeping track of their version history.
+The code for my prototype is available online, free and open source.
 
-For further projects one could consider
+\dots
 
-•	build a second compiler for amazon lex
-•	my compiler is not ready for the market (minor bugs and flaws), so there is more work here 
-•	build a generator for DSL code from the JSON representation of an agent (the other way round) so you would want a “reverse compiler” to be able to input … and get, as an put, the DSL – no more manual … ! 
+
+For further projects one could consider:
+\begin{itemize}
+    \item A larger survey for better evaluation of long term benefits to teams working with this tool.
+    \item Finding out wether it is possible to use a DSL like this to create agents in a uniform language for both Dialogflow and Amazon Lex.
+    \item Build a producation ready tool from the prototype that achieves full feature parity with the dialogflow web interface.
+    \item Build a generator for DSL code from Dialogflow JSON exports, to helpt teams reduce the cost of switching to the DSL solution.
+\end{itemize}
+
+For the nearest future my tool will help my bachelor project team, with working on our own Dialogflow agent.
+
 
 \chapter{Declaration of Independence}
