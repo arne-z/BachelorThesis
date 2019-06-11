@@ -62,7 +62,7 @@ In summary the problem is that there is no sufficient version control system tha
 
 \subsection{Version Control System}
 
-Since there is no version control system that is compatible with Dialogflow the obvious solution might be to build a new version control system that is compatible with Dialogflow. This has been done before for other technologies (cite this, evtl the Evolution control paper or with smt. from here \url{https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q=version+control+xml&btnG=}) but I decided against this approach for multiple reasons.
+Since there is no version control system that is compatible with Dialogflow the obvious solution might be to build a new version control system that is compatible with Dialogflow. This has been done before for other technologies (cite this, evtl the Evolution control paper or with smt. from here \citeNeeded \url{https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q=version+control+xml&btnG=}) but I decided against this approach for multiple reasons.
 
 Firstly, I believe that it will be hard to get developers to move from an established tool like Git; I assume that developers would not choose to give up feature rich support that exists for Git (Github, Gitlab, Bitbucket to only name a few).
 Secondly, using a specific version control system that is developed to allow compatibility with Dialogflow, it would be hard to also maintain compatibility with other tools.
@@ -232,9 +232,19 @@ When you use the tool/compiler that I built, you run this compiler with the inpu
 The V2API allows you to update the online version of your agent using the JSON files.
 
 
-\section{Circumstances under which using the DSL is beneficial}
-Under which circumstances will the DSL provide a benefit for a project?
+\section{Target Group}
 
+This project is directed at teams of developers who will be working on an angent for an extended time, and for whom using version control is a neccessity
+
+If however, you are a small group under time pressure, and you do not need to maintain the agent throughout it's co evolution with your application, continuing to use the Dialogflow web interface will simpler.
+
+Developer who will profit from the tool I have designed, will see advantages in the following aspects, mostly by virtue of being able to integrate with Git:
+\begin{itemize}
+    \item Teamwork: \\ Looking up changes by kolleagues.
+    \item Learning: \\ Help avoid repeating mistakes and provide a solution to bugs that were solved before.
+    \item History: \\ Allow new developers joing the team to get an overview of the project so far and allow important workflows like finding out wich version introduced a bug.
+    \item Consistency: \\ Make code reviews for changes to an agent possible, which reduces bugs and impoves code quality \citeNeeded.
+\end{itemize}
 
 \chapter{Evaluation}
 In the following chapter I will evaluate the performance of my DSL-prototype.
@@ -266,13 +276,16 @@ This demonstrates, that the DSL code for an agent is significantly shorter than 
 In order to provide a tangible benefit the DSL code must be more readable than the JSON representation.
 \citeNeeded Definition of readability == undefined
 
+It's easier to see what is important to notice in the DSL code, than in the much longer JSON representation.
+
 
 
 \section{Diff size}
 In order to provide a tangible benefit the DSL code must create smaller diffs (sum of changed lines) than the JSON representation when making changes.
 
 Using the air conditioning example again, when making a change - in this case adding more training phrases to an agent to allow additional functionality - the diff size shows a large difference between DSL code and JSON version. In this specific example, the DSL code has a diff of 7 lines\footnote{\url{https://github.com/arne-z/BachelorThesis/commit/559f72d4dd8550d57bef8b42ee34678317e21fcb}} and the JSON version one of 124 lines.
-\footnote{\url{https://github.com/arne-z/BachelorThesis/commit/08255f4b1bff5a2bb4bf57319ab37033193429c5}}
+\footnote{\url{https://github.com/arne-z/BachelorThesis/commit/08255f4b1bff5a2bb4bf57319ab37033193429c5}}\\
+Another thing of note, is that the DSL code causes less unintended diffs, as some elemants of the JSON - like generated Unique Identifiers - can cause diffs that are unrelated to any intentional changes by the developer.
 
 
 
