@@ -114,15 +114,16 @@ In order to show this, I will walk you through an example agent I created for te
 \subsubsection{Creating an Agent}
 First a developer needs to create a new agent. To do so, they click on "create agent", and enter the agent's name and language as seen in \autoref{CreateAgent}.
 To achieve the same effect, in DSL code, a developer would enter the following:
-
-\begin{verbatim}
-    Agent TestAgent_RoomTemperature
-        language en 
-\end{verbatim}
+\begin{samepage}
+    \begin{verbatim}
+        Agent TestAgent_RoomTemperature
+            language en 
+    \end{verbatim}
+\end{samepage}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{Thesis Images/CreateAgent.PNG}
+    \includegraphics[width=1\textwidth]{Thesis_Images/CreateAgent.PNG}
     \caption{Creating an agent on Dialogflow.}
         \label{CreateAgent}
 \end{figure}
@@ -131,21 +132,22 @@ To achieve the same effect, in DSL code, a developer would enter the following:
 In the next step, an entity-type needs to be created to allow to intuitively turn on and off the air conditioning.
 In Dialogflow this is achieved by filling in the form seen in \autoref{CreateType}.
 In DSL code the same can be done by writing the following:
-
-\begin{verbatim}
-    Agent TestAgent_RoomTemperature
-        language en 
-    
-        Type ACState
-            values 
-                "On" ("Active" "Enabled" "On"),
-                "Off" ("Inactive" "Disabled" "Off")
-        auto_expand
-\end{verbatim}
+\begin{samepage}    
+    \begin{verbatim}
+        Agent TestAgent_RoomTemperature
+            language en 
+        
+            Type ACState
+                values 
+                    "On" ("Active" "Enabled" "On"),
+                    "Off" ("Inactive" "Disabled" "Off")
+            auto_expand
+    \end{verbatim}
+\end{samepage}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{Thesis Images/CreateType.PNG}
+    \includegraphics[width=1\textwidth]{Thesis_Images/CreateType.PNG}
     \caption{Creating an entity-type on Dialogflow.}
         \label{CreateType}
 \end{figure}
@@ -153,7 +155,8 @@ In DSL code the same can be done by writing the following:
 \subsubsection{Setting a Webhook}
 For the agent to actually affect an air conditioner in the real world, it needs to send the user's request to a webserver. To do so, a webhook is enabled in Dialogflow by filling in the form as seen in \autoref{CreateWebhook}.
 In DSL code the same can be achieved:
-\begin{verbatim}
+\begin{samepage}
+    \begin{verbatim}
     Agent TestAgent_RoomTemperature
         language en 
             
@@ -166,46 +169,49 @@ In DSL code the same can be achieved:
                 "Off" ("Inactive" "Disabled" "Off"),
                 "On" ("Active" "Enabled" "On")
         auto_expand
-\end{verbatim}
+    \end{verbatim}
+\end{samepage}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{Thesis Images/CreateWebhook.PNG}
+    \includegraphics[width=1\textwidth]{Thesis_Images/CreateWebhook.PNG}
     \caption{Setting a webhook on Dialogflow.}
         \label{CreateWebhook}
 \end{figure}
 
 \subsubsection{Writing an Intent}
 The last and most vital step is to create an intent that the agent can understand. This is done on the website by filling in the form seen in \autoref{CreateIntent} and can alternatively be achieved in DSL code as follows:
-\begin{verbatim}
-    Agent TestAgent_RoomTemperature
-        language en 
-            
-        Webhook 
-            active 
-            url "https://fake.ac_controller.com/vi_webhook"
+\begin{samepage}
+    \begin{verbatim}
+        Agent TestAgent_RoomTemperature
+            language en 
+                
+            Webhook 
+                active 
+                url "https://fake.ac_controller.com/vi_webhook"
 
-        Type ACState
-            values 
-                "Off" ("Inactive" "Disabled" "Off"),
-                "On" ("Active" "Enabled" "On")
-        auto_expand
+            Type ACState
+                values 
+                    "Off" ("Inactive" "Disabled" "Off"),
+                    "On" ("Active" "Enabled" "On")
+            auto_expand
 
-        Intent SwitchAC
-            parameters
-                state ACState (required prompts "Did you want the AC turned On or Off?")
-            trained with phrase
-                "Turn" state "the AC",
-                "Set the AC to" state,
-                "Set the air conditioner to" state,
-                "I want the AC turned" state,
-                "Make sure the AC is" state
-            webhook_fullfillment
-\end{verbatim}
+            Intent SwitchAC
+                parameters
+                    state ACState (required prompts "Did you want the AC turned On or Off?")
+                trained with phrase
+                    "Turn" state "the AC",
+                    "Set the AC to" state,
+                    "Set the air conditioner to" state,
+                    "I want the AC turned" state,
+                    "Make sure the AC is" state
+                webhook_fullfillment
+    \end{verbatim}
+\end{samepage}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{Thesis Images/CreateIntent.PNG}
+    \includegraphics[width=1\textwidth]{Thesis_Images/CreateIntent.PNG}
     \caption{Setting up an intent on Dialogflow.}
         \label{CreateIntent}
 \end{figure}
@@ -296,25 +302,26 @@ This can be used in continuous integration setups like CircleCI\footnote{\url{ht
 Below you can see an example of the CircleCI job configuration that I set up for the prototype in our bachelor project.
 \footnote{The full configuration set up by our bachelor project team can be found here.\\
 \url{https://github.com/hpi-sam/ask-your-repository-dialogflow-adapter/blob/agent-config-with-dsl/.circleci/config.yml}}
-
-\begin{verbatim}
-    deploy_agent:
-        docker:
-            - image: circleci/openjdk:latest-node
-        steps:
-            - checkout
-            - run: > 
-                wget -O ./dfc_compiler.jar
-                https://github.com/arne-z/BachelorThesis/releases/...
-            - run: yarn install
-            - run: java -jar ./dfc_compiler.jar ./Agent/Tobito.dfc
-            - run: echo $GOOGLE_CERT_FILE_64 | base64 --decode > ./googleKey.json
-            - run: >
-                node ./utility/importAgent.js 
-                --dir ./src-gen 
-                --key ./googleKey.json 
-                --pid projects/newagent-bdb60
-\end{verbatim}
+\begin{samepage}    
+    \begin{verbatim}
+        deploy_agent:
+            docker:
+                - image: circleci/openjdk:latest-node
+            steps:
+                - checkout
+                - run: > 
+                    wget -O ./dfc_compiler.jar
+                    https://github.com/arne-z/BachelorThesis/releases/...
+                - run: yarn install
+                - run: java -jar ./dfc_compiler.jar ./Agent/Tobito.dfc
+                - run: echo $GOOGLE_CERT_FILE_64 | base64 --decode > ./googleKey.json
+                - run: >
+                    node ./utility/importAgent.js 
+                    --dir ./src-gen 
+                    --key ./googleKey.json 
+                    --pid projects/newagent-bdb60
+    \end{verbatim}
+\end{samepage}
 
 The above configuration starts a docker image with Java and Node installed - Java is required for the DSL compiler, Node for the import script - and checks out the most recent version of our project from source control.
 It then downloads the DSL compiler from my github repository and runs the compiler targeting the .dfc file containing the DSL code for our project's agent.
@@ -349,3 +356,4 @@ For the nearest future my tool will help my bachelor project team, with working 
 
 
 \chapter{Declaration of Independence}
+Look at this.\cite{stackups} 
