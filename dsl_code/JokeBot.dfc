@@ -1,0 +1,43 @@
+Agent JokeBot
+	language en
+	
+	Webhook
+		active
+		url "https://fake.rate_my_jokes.com/vi_webhook"
+	
+	Intent DadJoke
+		contexts 
+			output joke 
+		trained with phrase
+			"Tell me a Dad joke",
+			"Do you know any stupid jokes?",
+			"Do you know any dad jokes?"
+		response 
+			"What is brown and sticky? ... A stick."
+			"My wife is really mad at the fact that I have no sense of direction. So I packed up my stuff and right."
+			"I bought some shoes from a drug dealer. I don't know what he laced them with, but I was tripping all day!"
+			"Why can't you hear a pterodactyl go to the bathroom? Because the pee is silent."
+	
+	Intent RateJokePositive
+		contexts 
+			input joke
+		action "ratePositive"
+		trained with phrase
+			"Wow that was funny",
+			"That was awesome",
+			"I liked that joke"
+		response
+			"Glad you liked it."
+		webhook_fullfillment
+	
+	Intent RateJokeNegative
+		contexts 
+			input joke
+		action "rateNegative"
+		trained with phrase
+			"Bad joke",
+			"Don't tell that joke again",
+			"Thanks, I hate it."
+		response
+			"Well that's your loss, I like the Joke."
+		webhook_fullfillment

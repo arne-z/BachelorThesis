@@ -1,0 +1,46 @@
+Agent MusicPlayer
+	language en
+	
+	Webhook
+		active
+		url "https://fake.music_controller.com/vi_webhook"
+		
+	Intent PlaySong
+		parameters 
+			Artist music_artist
+			Genre music_genre
+			Title any
+		trained with phrase
+			"Play a " Genre "song",
+			"Play some" Genre,
+			"Play a song by "Artist,
+			"Play" Title "by" Artist,
+			"Play" Title,
+			"Play a random song"
+		webhook_fullfillment
+		
+		Intent StopMusic
+			action "StopMusic"
+			trained with phrase
+				"Pause",
+				"Stop",
+				"Quiet",
+				"Stop the Music"
+			webhook_fullfillment
+		
+		Intent VolUp
+			action "VolUp"
+			trained with phrase
+				"Louder",
+				"More Volume",
+				"Too quiet",
+				"Volume Up"
+			webhook_fullfillment
+			
+		Intent VolDown
+			action "VolDown"
+			trained with phrase
+				"Lower Volume",
+				"Too loud",
+				"Volume Down"
+			webhook_fullfillment
