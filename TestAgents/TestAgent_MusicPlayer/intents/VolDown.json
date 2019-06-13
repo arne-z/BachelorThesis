@@ -1,0 +1,22 @@
+{
+  "id": "f2c54b72-b035-471c-95f3-41f6ed5b5c22",
+  "name": "VolDown",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "VolDown",
+      "affectedContexts": [],
+      "parameters": [],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1560427004,
+  "fallbackIntent": false,
+  "events": []
+}

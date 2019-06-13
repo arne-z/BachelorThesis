@@ -1,0 +1,22 @@
+{
+  "id": "3883cb98-8d75-401a-afb6-cd425bc64248",
+  "name": "StopMusic",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "StopMusic",
+      "affectedContexts": [],
+      "parameters": [],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1560427004,
+  "fallbackIntent": false,
+  "events": []
+}

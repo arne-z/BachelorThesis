@@ -1,0 +1,118 @@
+[
+  {
+    "id": "bc220b4d-aac8-45b6-9e27-9f2eb366c9a7",
+    "data": [
+      {
+        "text": "Play a  ",
+        "userDefined": false
+      },
+      {
+        "text": "Genre ",
+        "alias": "Genre",
+        "meta": "@sys.music-genre",
+        "userDefined": true
+      },
+      {
+        "text": "song ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427004
+  },
+  {
+    "id": "b23029df-eab5-4a9c-95d1-a72cba266298",
+    "data": [
+      {
+        "text": "Play some ",
+        "userDefined": false
+      },
+      {
+        "text": "Genre ",
+        "alias": "Genre",
+        "meta": "@sys.music-genre",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427004
+  },
+  {
+    "id": "856c9531-86af-42a3-b270-ede3b9504d72",
+    "data": [
+      {
+        "text": "Play a song by  ",
+        "userDefined": false
+      },
+      {
+        "text": "Artist ",
+        "alias": "Artist",
+        "meta": "@sys.music-artist",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427004
+  },
+  {
+    "id": "b57bcf39-30de-4115-9a52-7ca9fab5a05f",
+    "data": [
+      {
+        "text": "Play ",
+        "userDefined": false
+      },
+      {
+        "text": "Title ",
+        "alias": "Title",
+        "meta": "@sys.any",
+        "userDefined": true
+      },
+      {
+        "text": "by ",
+        "userDefined": false
+      },
+      {
+        "text": "Artist ",
+        "alias": "Artist",
+        "meta": "@sys.music-artist",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427004
+  },
+  {
+    "id": "5f02ca64-dc7c-4197-ba8e-36369a24b8cc",
+    "data": [
+      {
+        "text": "Play ",
+        "userDefined": false
+      },
+      {
+        "text": "Title ",
+        "alias": "Title",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427004
+  },
+  {
+    "id": "12b4c0fb-1c88-4474-9be9-113db1ec7bcf",
+    "data": [
+      {
+        "text": "Play a random song ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427004
+  }
+]
