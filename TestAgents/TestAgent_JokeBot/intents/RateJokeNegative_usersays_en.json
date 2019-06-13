@@ -1,0 +1,38 @@
+[
+  {
+    "id": "92c83753-ea84-4ca5-a334-70a6df4e8e8a",
+    "data": [
+      {
+        "text": "Bad joke ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427009
+  },
+  {
+    "id": "df0fb1b4-1c85-439a-b032-90c6db8c5768",
+    "data": [
+      {
+        "text": "Don\u0027t tell that joke again ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427009
+  },
+  {
+    "id": "a2a09216-fd96-495c-8810-d9ff530c9429",
+    "data": [
+      {
+        "text": "Thanks, I hate it. ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427009
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "511710c2-c0b4-4677-85f1-fb6649b03362",
+    "data": [
+      {
+        "text": "Tell me a Dad joke ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427009
+  },
+  {
+    "id": "e8663a28-6736-412b-ad39-e2fbc4ed1682",
+    "data": [
+      {
+        "text": "Do you know any stupid jokes? ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427009
+  },
+  {
+    "id": "1b2d2b8c-ed85-4838-9a1c-6f2d6ce9a141",
+    "data": [
+      {
+        "text": "Do you know any dad jokes? ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427009
+  }
+]

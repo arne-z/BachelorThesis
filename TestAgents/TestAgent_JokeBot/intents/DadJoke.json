@@ -1,0 +1,39 @@
+{
+  "id": "893933f7-7ad5-4750-af84-0b4d72f686fd",
+  "name": "DadJoke",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "joke",
+          "parameters": {},
+          "lifespan": 5
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": [
+            "What is brown and sticky? ... A stick.",
+            "My wife is really mad at the fact that I have no sense of direction. So I packed up my stuff and right.",
+            "I bought some shoes from a drug dealer. I don\u0027t know what he laced them with, but I was tripping all day!",
+            "Why can\u0027t you hear a pterodactyl go to the bathroom? Because the pee is silent."
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1560427009,
+  "fallbackIntent": false,
+  "events": []
+}

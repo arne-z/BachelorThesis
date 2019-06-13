@@ -1,0 +1,31 @@
+{
+  "id": "f36e27b7-5b16-40ff-b3dc-a968e3f3ae49",
+  "name": "RateJokePositive",
+  "auto": true,
+  "contexts": [
+    "joke"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "ratePositive",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": "Glad you liked it."
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1560427009,
+  "fallbackIntent": false,
+  "events": []
+}

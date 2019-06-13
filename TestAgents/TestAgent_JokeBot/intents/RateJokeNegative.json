@@ -1,0 +1,31 @@
+{
+  "id": "6925a223-1e4c-44d6-9bfe-effe1a3a6443",
+  "name": "RateJokeNegative",
+  "auto": true,
+  "contexts": [
+    "joke"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "rateNegative",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": "Well that\u0027s your loss, I like the Joke."
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1560427009,
+  "fallbackIntent": false,
+  "events": []
+}

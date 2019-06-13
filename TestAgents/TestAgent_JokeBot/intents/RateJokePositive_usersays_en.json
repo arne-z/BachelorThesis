@@ -1,0 +1,38 @@
+[
+  {
+    "id": "32d5c712-d473-4746-9af4-a4004df3a456",
+    "data": [
+      {
+        "text": "Wow that was funny ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427009
+  },
+  {
+    "id": "f7dd36bf-0b25-4496-9048-14db132b86ed",
+    "data": [
+      {
+        "text": "That was awesome ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427009
+  },
+  {
+    "id": "ba4528c3-3a74-45a6-92f0-cdd0dcf0424e",
+    "data": [
+      {
+        "text": "I liked that joke ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427009
+  }
+]
