@@ -1,0 +1,33 @@
+{
+  "id": "a6b52c27-034f-4bc3-9634-0344098407d2",
+  "name": "OscarWildeQuote",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": [
+            "To live is the rarest thing in the world. Most people exist, that is all.",
+            "Only dull people are brilliant at breakfast.",
+            "I think God, in creating man, somewhat overestimated his ability.",
+            "Democracy means simply the bludgeoning of the people by the people for the people."
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1560426994,
+  "fallbackIntent": false,
+  "events": []
+}

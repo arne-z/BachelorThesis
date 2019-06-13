@@ -1,0 +1,26 @@
+[
+  {
+    "id": "43efa9c3-606e-4848-a2bf-5a0c6e880643",
+    "data": [
+      {
+        "text": "Tell me a quote by Albert Einstein ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560426994
+  },
+  {
+    "id": "82e6ecaa-c035-45e2-bcc7-3a7a7e6278e9",
+    "data": [
+      {
+        "text": "What would Einstein say ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560426994
+  }
+]

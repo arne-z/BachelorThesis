@@ -1,0 +1,32 @@
+{
+  "id": "6d3f6f62-1ba7-4cc6-822c-18458041a758",
+  "name": "EinsteinQuote",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": [
+            "Two things are infinite: the universe and human stupidity; and I\u0027m not sure about the universe.",
+            "If you can\u0027t explain it to a six year old, you don\u0027t understand it yourself.",
+            "Never memorize something that you can look up."
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1560426994,
+  "fallbackIntent": false,
+  "events": []
+}
