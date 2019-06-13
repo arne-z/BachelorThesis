@@ -41,13 +41,13 @@ class DialogflowConfigGenerator extends AbstractGenerator {
         }
 
         for (entityType : entityTypes) {
-            generateEntityFile(fsa, entityType)
+            generateEntityFile(fsa, agent, entityType)
             generateEntityUsersaysFile(fsa, agent, entityType)
         }
     }
 
     protected def void generatePackageFile(IFileSystemAccess2 fsa, AgentImpl agent) {
-        fsa.generateFile('''package.json''', '''
+        fsa.generateFile('''«agent.name»/package.json''', '''
             {
               "version": «IF agent.version !== null »«agent.version»«ELSE»"1.0.0"«ENDIF»
             }
@@ -56,7 +56,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
 
     protected def void generateAgentFile(IFileSystemAccess2 fsa, AgentImpl agent) {
         fsa.generateFile(
-            '''agent.json''',
+            '''«agent.name»/agent.json''',
             '''
                 {
                   "description": "«IF agent.description !== null»«agent.description»«ENDIF»",
@@ -94,7 +94,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
     protected def void generateEntityUsersaysFile(IFileSystemAccess2 fsa, AgentImpl agent, EntityTypeImpl entityType) {
         if(entityType.dynamic) return;
         fsa.generateFile(
-            '''entities/«entityType.name»_entries_«agent.language».json''',
+            '''«agent.name»/entities/«entityType.name»_entries_«agent.language».json''',
             '''
                 [
                 	«FOR entity : entityType.values»
@@ -120,10 +120,10 @@ class DialogflowConfigGenerator extends AbstractGenerator {
         )
     }
 
-    protected def void generateEntityFile(IFileSystemAccess2 fsa, EntityTypeImpl entityType) {
+    protected def void generateEntityFile(IFileSystemAccess2 fsa, AgentImpl agent, EntityTypeImpl entityType) {
         if(entityType.dynamic) return;
         fsa.generateFile(
-            '''entities/«entityType.name».json''',
+            '''«agent.name»/entities/«entityType.name».json''',
             '''
                 {
                     "id": "«UUID.randomUUID()»",
@@ -140,7 +140,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
     protected def void generateIntentUsersaysFile(IFileSystemAccess2 fsa, AgentImpl agent, IntentImpl intent) {
         if (!intent.trainingPhrases.empty) {
             fsa.generateFile(
-                '''intents/«intent.name»_usersays_«agent.language».json''',
+                '''«agent.name»/intents/«intent.name»_usersays_«agent.language».json''',
                 '''
                     [
                     «FOR phrase : intent.trainingPhrases»
@@ -185,7 +185,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
         } else if (intent.file !== null) {
             try {
                 fsa.generateFile(
-                    '''intents/«intent.name»_usersays_«agent.language».json''',
+                    '''«agent.name»/intents/«intent.name»_usersays_«agent.language».json''',
                     fsa.readTextFile('''../«intent.file»''')
                 )
             } catch (FileNotFoundException e) {
@@ -214,7 +214,7 @@ class DialogflowConfigGenerator extends AbstractGenerator {
 
     protected def void generateIntentFile(IFileSystemAccess2 fsa, AgentImpl agent, IntentImpl intent) {
         fsa.generateFile(
-            '''intents/«intent.name».json''',
+            '''«agent.name»/intents/«intent.name».json''',
             '''
                 {
                 	"id": "«UUID.randomUUID()»",

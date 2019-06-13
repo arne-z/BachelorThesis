@@ -2,11 +2,10 @@ Agent SampleAgent
 	language en
 	version 0.1.1
 	description 'This is a sample agent to show how the .dfc language is specified.'
-	Webhook 
+	Webhook
 		active 
 		url 'https://sample.weatherservice.com/agentresponse'
 	Intent CheckWeather
 		parameters Place geo_city (required)
 		trained with phrase 'What is the weather like here'
 		webhook_fullfillment
-		
