@@ -1,0 +1,20 @@
+[
+  {
+    "value": "Appointment",
+    "synonyms": [
+      "Appointment"
+    ]
+  },
+  {
+    "value": "Event",
+    "synonyms": [
+      "Event"
+    ]
+  },
+  {
+    "value": "Reminder",
+    "synonyms": [
+      "Reminder"
+    ]
+  }
+]

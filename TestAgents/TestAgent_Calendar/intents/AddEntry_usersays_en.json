@@ -1,0 +1,82 @@
+[
+  {
+    "id": "6562a974-1eaa-455e-a958-bcd2ea9ccfab",
+    "data": [
+      {
+        "text": "Add a new ",
+        "userDefined": false
+      },
+      {
+        "text": "Entry ",
+        "alias": "Entry",
+        "meta": "@Entry",
+        "userDefined": true
+      },
+      {
+        "text": "for ",
+        "userDefined": false
+      },
+      {
+        "text": "Time ",
+        "alias": "Time",
+        "meta": "@sys.date-time",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427014
+  },
+  {
+    "id": "de1a0dc6-cf8c-4bd9-b534-8ac9cf74138d",
+    "data": [
+      {
+        "text": "Add a new ",
+        "userDefined": false
+      },
+      {
+        "text": "Entry ",
+        "alias": "Entry",
+        "meta": "@Entry",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427014
+  },
+  {
+    "id": "e4b2bb4c-c293-42b5-9cb0-94bd5b138e0e",
+    "data": [
+      {
+        "text": "Add a ",
+        "userDefined": false
+      },
+      {
+        "text": "Entry ",
+        "alias": "Entry",
+        "meta": "@Entry",
+        "userDefined": true
+      },
+      {
+        "text": "at ",
+        "userDefined": false
+      },
+      {
+        "text": "Time ",
+        "alias": "Time",
+        "meta": "@sys.date-time",
+        "userDefined": true
+      },
+      {
+        "text": "Title ",
+        "alias": "Title",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1560427014
+  }
+]

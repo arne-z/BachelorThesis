@@ -1,0 +1,58 @@
+{
+  "id": "22b91445-bc55-42a8-9938-760bcdc2a471",
+  "name": "AddEntry",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "3d56121e-87cc-487c-9db1-f29825502604",
+          "required": false,
+          "dataType": "@Entry",
+          "name": "Entry",
+          "value": "$Entry",
+          "isList": false
+        },
+        {
+          "id": "18bb87d4-840d-4b9b-a842-f07cc69cb80c",
+          "required": true,
+          "dataType": "@sys.date-time",
+          "name": "Time",
+          "value": "$Time",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "For when should I enter that entry?"
+            }
+          ],
+          "isList": false
+        },
+        {
+          "id": "4ea0e686-b979-4491-96fb-2430d9cd1952",
+          "required": true,
+          "dataType": "@sys.any",
+          "name": "Title",
+          "value": "$Title",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "What should I call the entry?"
+            }
+          ],
+          "isList": false
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1560427014,
+  "fallbackIntent": false,
+  "events": []
+}
