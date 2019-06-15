@@ -268,20 +268,41 @@ In the following sections I will talk about each of these requirements and wheth
 In order to provide a tangible benefit the DSL code must be significantly shorter than the JSON representation. Coming back to the agent used in chapter four, I can show that the DSL code for that agent is exactly 23 lines long, while using a large amount of whitespace and linebreaks to support readability.
 
 The JSON version for this same agent, however, comes in at exactly 200 lines as you can see in the appendix. \ref{}REFTHISLATER \url{https://github.com/arne-z/BachelorThesis/commit/d61614158d41d72bb72f28f941718a707d72a5e0}
-
-CREATE MORE TESTCASES. REFER TO THEM HERE. PUT IN APENDIX.
-
-TABLE!!!
-
-
-This demonstrates, that the DSL code for an agent is significantly shorter than the JSON version. Less code causes better maintainability and faster and easier code reviews. 
+This trend continues accross all my test cases, as you can see in \autoref{SizeChart}.
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ybar,
+            width=0.75\textwidth,
+            enlargelimits=0.15,
+            legend style={at={(0.5,-0.2)},
+              anchor=north,legend columns=-1},
+            ylabel={Size in lines},
+            symbolic x coords={Testcase1, Testcase2, Testcase3, Testcase4, Testcase5},
+            xtick=data,
+            nodes near coords,
+            nodes near coords align={vertical},
+            ]
+        \addplot coordinates {(Testcase1,23) (Testcase2,24) (Testcase3,43) (Testcase4, 46) (Testcase5, 21)};
+        \addplot coordinates {(Testcase1,200) (Testcase2,210) (Testcase3,256) (Testcase4, 409) (Testcase5, 158)};
+        \legend{dfc,JSON}
+        \end{axis}
+    \end{tikzpicture}
+    
+    \caption{Difference in configuration size.}
+    \label{SizeChart}
+    
+\end{figure}
+This demonstrates, that the DSL code for an agent is significantly shorter than the JSON version.
 
 \section{Readability}
 In order to provide a tangible benefit the DSL code must be more readable than the JSON representation.
 \citeNeeded Definition of readability == undefined
+Use Chris's study for this.
+Less code causes better maintainability and faster and easier code reviews. 
 
 It's easier to see what is important to notice in the DSL code, than in the much longer JSON representation.
-
 
 
 \section{Diff size}
