@@ -141,7 +141,7 @@ In DSL code the same can be done by writing the following:
                 values 
                     "On" ("Active" "Enabled" "On"),
                     "Off" ("Inactive" "Disabled" "Off")
-            auto_expand
+                auto_expand
     \end{verbatim}
 \end{samepage}
 
@@ -168,7 +168,7 @@ In DSL code the same can be achieved:
             values 
                 "Off" ("Inactive" "Disabled" "Off"),
                 "On" ("Active" "Enabled" "On")
-        auto_expand
+            auto_expand
     \end{verbatim}
 \end{samepage}
 
@@ -194,7 +194,7 @@ The last and most vital step is to create an intent that the agent can understan
                 values 
                     "Off" ("Inactive" "Disabled" "Off"),
                     "On" ("Active" "Enabled" "On")
-            auto_expand
+                auto_expand
 
             Intent SwitchAC
                 parameters
@@ -221,7 +221,11 @@ From the above it becomes apparent that the DSL I designed is a viable alternati
 From personal expirience I can say, that I can configure an agent more quickly in the DSL code than in the Web interface. However in the following section of this chapter, I will talk about which conseccions I had to make and which disadvantages the DSL still has to overcome, for some of which I will offer solutions.
 
 \subsection{Concessions and Drawbacks}
+//TODO
+
 UNFINISHED
+
+Writing in Template mode instead of Example mode.
 
 The parameters are entered before training phrases to allow for validation of training phrases that use these parameters.
 
@@ -232,6 +236,8 @@ This is relevant in cases like the team selection in our Ask your Repository pro
 In that case a list of teams was kept as an entity type, and dynamically updated whenever new teams were created. This allowed the user to say “Select Team” followed by their team’s name and have the voice interface understand their team name.
 
 \subsection{Usage}
+//TODO
+
 When you use the tool/compiler that I built, you run this compiler with the input being the DSL code; the output will be a full JSON representation of a Dialogflow agent which can be sent to the Dialogflow V2API.
 The V2API allows you to update the online version of your agent using the JSON files.
 
@@ -274,18 +280,18 @@ This trend continues accross all my test cases, as you can see in \autoref{SizeC
     \begin{tikzpicture}
         \begin{axis}[
             ybar,
-            width=0.75\textwidth,
+            width=0.95\textwidth,
             enlargelimits=0.15,
             legend style={at={(0.5,-0.2)},
               anchor=north,legend columns=-1},
             ylabel={Size in lines},
-            symbolic x coords={Testcase1, Testcase2, Testcase3, Testcase4, Testcase5},
+            symbolic x coords={RoomTemperature, Calendar, JokeBot, MusicPlayer, OuoteBot},
             xtick=data,
             nodes near coords,
             nodes near coords align={vertical},
             ]
-        \addplot coordinates {(Testcase1,23) (Testcase2,24) (Testcase3,43) (Testcase4, 46) (Testcase5, 21)};
-        \addplot coordinates {(Testcase1,200) (Testcase2,210) (Testcase3,256) (Testcase4, 409) (Testcase5, 158)};
+        \addplot coordinates {(RoomTemperature,23) (Calendar,24) (JokeBot,43) (MusicPlayer, 46) (OuoteBot, 21)};
+        \addplot coordinates {(RoomTemperature,200) (Calendar,210) (JokeBot,256) (MusicPlayer, 409) (OuoteBot, 158)};
         \legend{dfc,JSON}
         \end{axis}
     \end{tikzpicture}
@@ -294,9 +300,82 @@ This trend continues accross all my test cases, as you can see in \autoref{SizeC
     \label{SizeChart}
     
 \end{figure}
-This demonstrates, that the DSL code for an agent is significantly shorter than the JSON version.
+This demonstrates, that the DSL code for an agent is significantly shorter than the JSON version. This saves the developer valuable time, e.g. when conducting a code review. Going of numbers from \citeNeeded (Chris, code reading speed), reading the DSL code instead of the JSON files in the example given above would save a developer more than 50 minutes of code inspection. This is a large benefit in and of itself, but is amplified by the following point.
 
 \section{Readability}
+
+While length is an objective criterion, readability is innately more subjetive, as it relates to how well a developer will be able to understand a piece of code.\\
+For this comparison I will focus on five criteria; the first three are reworded from Egon Elbre's "The psychology of code readability" \citeNeeded \url{https://medium.com/@egonelbre/psychology-of-code-readability-d23b1ff1258a}; the last two are based on my own observations.
+\begin{itemize}
+    \item Cohesive pieces of code, conveying one idea at a time.
+    \item Descriptive - but not overly long - names and keywords.
+    \item Using idioms from natural language.
+    \item Indentation and whitespace.
+    \item Leaving out unneccessary values.
+\end{itemize}
+
+\subsubsection{Cohesive pieces of code, conveying one idea at a time.}
+
+The following piece of JSON configuration defines a single training phrase for the SwitchAC intent, from the same example used above. The intent itself, is not defined in the same file, since training phrases are kept in a seperate file in the JSON configuration.
+\begin{samepage}
+    \begin{verbatim}
+        {
+            "id": "ed813a56-e6e9-4bce-b0ed-dca488102333",
+            "data": [
+              {
+                "text": "Turn ",
+                "userDefined": false
+              },
+              {
+                "text": "state ",
+                "alias": "state",
+                "meta": "@ACState",
+                "userDefined": true
+              },
+              {
+                "text": "the AC ",
+                "userDefined": false
+              }
+            ],
+            "isTemplate": false,
+            "count": 0,
+            "updated": 1560083189
+          },
+    \end{verbatim}
+\end{samepage}
+
+This is equivalent to the following line found in my SwitchAC example:
+\begin{verbatim}
+    trained with phrase
+        "Turn" state "the AC"
+\end{verbatim}
+As can clearly be seen, the JSON configuration is more intended for automatic parsing, than for human readability. It is also limited by the key value, and stringly typed nature of the configuration in JSON format. In my DSL, the training phrase can easily be traced back to it's intent, which is defined only three lines above in this example.
+
+\subsubsection{Descriptive - but not overly long - names and keywords.}
+
+When designing the syntax for my DSL, I tried - whenever possible - to use syntax, that reads close to a normal sentence in natural language. This is why a developer writes: 
+\begin{verbatim}
+    trained with file
+        "filename"
+\end{verbatim}
+in order to include a file with pre-generated training phrases. A reader can immediately understand what the otherwise not always recognizable filename refers to.
+For the same reason, a new entity-type is defined with the keyword "Type" followed by the name of the newly defined type. The same is true for an intent, using "Intent".
+
+In contrast, the JSON example I showed above contains keys with names like "data" for a training phrase, "meta" for the type a parameter corresponds to, and the "isTemplate" key which is always set to false, because it is depracated.
+
+\subsubsection{Using idioms from natural language.}
+//TODO
+In the JSON representation long jumbles of number and letters 
+
+\subsubsection{Indentation and whitespace.}
+//TODO
+
+\subsubsection{Leaving out unneccessary values.}
+//TODO
+
+Fallback intent example here.
+
+UNFINISHED
 In order to provide a tangible benefit the DSL code must be more readable than the JSON representation.
 \citeNeeded Definition of readability == undefined
 Use Chris's study for this.
@@ -308,11 +387,36 @@ It's easier to see what is important to notice in the DSL code, than in the much
 \section{Diff size}
 In order to provide a tangible benefit the DSL code must create smaller diffs (sum of changed lines) than the JSON representation when making changes.
 
-Using the air conditioning example again, when making a change - in this case adding more training phrases to an agent to allow additional functionality - the diff size shows a large difference between DSL code and JSON version. In this specific example, the DSL code has a diff of 7 lines\footnote{\url{https://github.com/arne-z/BachelorThesis/commit/559f72d4dd8550d57bef8b42ee34678317e21fcb}} and the JSON version one of 124 lines.
+Using the air conditioning example again, when making a change - in this case adding more training phrases to an agent to allow additional functionality - the diff size shows a large difference between DSL code and JSON version. In this specific example, the DSL code has a diff of 7 lines\footnote{\url{https://github.com/arne-z/BachelorThesis/commit/559f72d4dd8550d57bef8b42ee34678317e21fcb}} and the JSON version one of 124 lines. the other test cases can be see in \autoref{DiffChart}.
 \footnote{\url{https://github.com/arne-z/BachelorThesis/commit/08255f4b1bff5a2bb4bf57319ab37033193429c5}}\\
 Another thing of note, is that the DSL code causes less unintended diffs, as some elemants of the JSON - like generated Unique Identifiers - can cause diffs that are unrelated to any intentional changes by the developer.
 
 
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ybar,
+            width=0.95\textwidth,
+            enlargelimits=0.15,
+            legend style={at={(0.5,-0.2)},
+              anchor=north,legend columns=-1},
+            ylabel={Size in lines},
+            symbolic x coords={RoomTemperature, Calendar, JokeBot, MusicPlayer, OuoteBot},
+            xtick=data,
+            nodes near coords,
+            nodes near coords align={vertical},
+            ]
+        \addplot coordinates {(RoomTemperature,23) (Calendar,24) (JokeBot,43) (MusicPlayer, 46) (OuoteBot, 21)};
+        \addplot coordinates {(RoomTemperature,200) (Calendar,210) (JokeBot,256) (MusicPlayer, 409) (OuoteBot, 158)};
+        \legend{dfc,JSON}
+        \end{axis}
+    \end{tikzpicture}
+    
+    \caption{Difference in diff size.}
+    \label{DiffChart}
+    
+\end{figure}
 
 \section{Automatic compilation and update}
 A developer needs to be able to automatically compile and update an agent on the web from DSL code.
@@ -353,15 +457,17 @@ This setup allows a "hands free" approach to developing for Dialogflow, where al
 
 \chapter{Summary and further Work}
 
-It was my self set task for this Bachelor thesis to find a solution shortcomings in available version control for Dialogflow agents. In oorder to solve this I built a prototype of a DSL for describing Dialogflow agents.
+It was my self set task for this Bachelor thesis to find a solution for shortcomings in available version control for Dialogflow agents. In oorder to solve this I built a prototype of a DSL for describing Dialogflow agents.
 My assumption going into this project was, that there shoud and could be a simpler shorter and more readable solution for using version control with a Dialogflow agent than saving the cofiguration of said agent in JSON files.
 The main Idea was to offer this solution to teams of developers working longer term on maintaining an agent throughout it's coevolution with their application.
+I arrived at this solution because, for the very beginning, I wanted to find a way for deveoplers to work with dialogflow without leaving their familiar way of working.
 In order to build this DSL I had to design a grammar to describe the syntax possible in the language and build a code generator using this grammar to generate JSON files.
 In order to test and evaluate this prototype, I designed multiple test cases in each of which I compared the performance of the prototype with that of the established way of saving the agent configuration using JSON files.
 In result I have found that the DSL provides a measurable improvement in both the size of agent configurations and the size of diffs created by changes to the configuration, a XXX\% reduction in size and a YYY\% reduction in diff size respectively, while also improving readability and almost entirely maintaining the ease of updating the agent's online version.
 Team working with this tool will find that this tool offers benefits in regard to teamwork, learning, cosistency, and keeping track of their version history.
 The code for my prototype is available online, free and open source.
 
+//TODO more
 \dots
 
 
@@ -377,4 +483,4 @@ For the nearest future my tool will help my bachelor project team, with working 
 
 
 \chapter{Declaration of Independence}
-Look at this.\cite{stackups} 
+//TODO

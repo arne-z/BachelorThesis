@@ -172,6 +172,8 @@ parskip=half
   \\[0.5\baselineskip]
 	{\normalsize \docAuthorMail}\\
 
+  \todoImprove{Add Graphic.}
+
 	\vfill
 
 	\large Supervised by \docSupervisited
