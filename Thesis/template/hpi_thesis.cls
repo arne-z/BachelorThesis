@@ -154,11 +154,11 @@ parskip=half
 	\includegraphics[height=20ex]{logo/uni_potsdam_logo}
 	\hspace{2.5cm}
 	\includegraphics[width=35ex]{logo/hpi_logo}
-	\vspace*{0.75cm}
+	\vspace*{0.5cm}
 
 	\textsf{\Large \docIntituteLong}\\
 
-	\vspace{2cm}
+	\vspace{1cm}
 
 	\LARGE \textbf{Bachelor's Thesis}
   \\[0.5\baselineskip]
@@ -166,13 +166,13 @@ parskip=half
   \\[0.5\baselineskip]
   \Large \docTitleDe
 
-	\vspace{1.5cm}
+	\vspace{0.75cm}
 
 	{\Large \docAuthor}
   \\[0.5\baselineskip]
-	{\normalsize \docAuthorMail}\\
-
-  \todoImprove{Add Graphic.}
+  {\normalsize \docAuthorMail}\\
+  
+  \includegraphics[width=0.7\textwidth]{Thesis_Images/LogosForCover.png}
 
 	\vfill
 
@@ -180,7 +180,7 @@ parskip=half
 	\\[0.1\baselineskip]
 	\docChair
 
-	\vspace{1cm}
+	\vspace{0.25cm}
 	\textsf{\docCity{}, \docDate}\\ %%Date - better you write it yourself.
 	\end{titlepage}
 }
