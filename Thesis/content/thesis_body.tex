@@ -221,19 +221,38 @@ From the above it becomes apparent that the DSL I designed is a viable alternati
 From personal expirience I can say, that I can configure an agent more quickly in the DSL code than in the Web interface. However in the following section of this chapter, I will talk about which conseccions I had to make and which disadvantages the DSL still has to overcome, for some of which I will offer solutions.
 
 \subsection{Concessions and Drawbacks}
-//TODO
+//TODO (I might want to move this to the end of Evaluation, it fits there better.)
 
-UNFINISHED
+Working with the DSL instead of Dialogflow directly comes with some drawbacks, as I had to make certain concessions during development. 
+These concessions sepparate into three/four categories.
 
-Writing in Template mode instead of Example mode.
+\subsubsection{Design choicess differing from the Dialogflow website.}
+As I stated before, I atempted to stay as close to the Dialogflow website as possible, but there are some elements of the website that do not lend themselves to translation into a text based configuration.
 
-The parameters are entered before training phrases to allow for validation of training phrases that use these parameters.
+For one example of this, look at the way parameters are entered in Dialogflow \autoref{CreateIntent}. Translating this to a text based interface with the requirement of live syntax checking, it became neccessary to enter the parameters allowed in Training phrases before defining the phrases.
+Simmillarly, Dialogflow switched from what is called Template Mode where a training phrase would be described like the following "Turn state the AC" to what they call example mode, which means the phrase would be "Turn on the AC" with the "on" beeing annotated to show that it is meant to represent a number of possible values.
+When translating this to a text based interface, I considered a solution that would look as follows:
 
-Problem: Changes to DSL code are not affected by dynamic entity changes via API.
-Next it is possible to enter either the keyword “dynamic” or the keyword “values” followed by a comma separated list of values that are possible for this type.
-This allows the user to either enter a type with it’s associated values, or have the type exist in the DSL and be valid for validation - but not have any JSON files generated for it, so as not to overwrite an entity type that is dynamically set on Df via the API.
-This is relevant in cases like the team selection in our Ask your Repository project.
-In that case a list of teams was kept as an entity type, and dynamically updated whenever new teams were created. This allowed the user to say “Select Team” followed by their team’s name and have the voice interface understand their team name.
+\begin{verbatim}
+    intent SampleIntent
+        trained with phrase
+            "Turn {on : state} the AC"
+\end{verbatim}
+
+I eventually decided against this, as I perceived it to make both writing and reading of the training phrases more difficult.
+
+\subsubsection{The difficulty of deciding on defaults.}
+
+A large part of what makes both the web interface and the DSL easier to work with, is that a user can assume all the defaults to be reasonable. When first creating a new Dialogflow Agent, all the default settings are already set for you to start working with. I found that for my tool I would have to use the same defaults that the website does, so that the same workflow of creating an agent and some intents for it would arrive at the same results on the website and in the DSL. 
+This lead to a bit of a problem when it came to the two default intents that a Dialogflow agent is created with. The "Default Fallback Intent" and the "Default Welcome Intent". 
+I considered a solution of adding these default intents during compilation, unless the user set a specific setting in the agent, but I found this to be too unintuitive. On the Dialogflow website a user can always see the list of the intents in the agent, including the two default ones on the Intents panel, but in a text based interface the user cannot easily be informed of the default intents existing in the background. I decided, that only the intents described in the user's code should be in the agent. I plan to, at a later date add a shortcut for using the default intents via a "use\_default\_intents" flag, so the user can still use the default intents, but they are not hidden from them.
+
+\subsubsection{Missing  Features}
+
+Dialogflow is a large project, much bigger in scope than this Thesis, so it was immediately apparent, that I would not be able to support all of the features and settings that are available in dialogflow.
+Instead I selected the features that were neccessary to support developemt in my bachelor project.
+This means, that some projects might be unable to use this prototype, as they rely on features that are not supported.
+
 
 \subsection{Usage}
 //TODO
@@ -241,6 +260,14 @@ In that case a list of teams was kept as an entity type, and dynamically updated
 When you use the tool/compiler that I built, you run this compiler with the input being the DSL code; the output will be a full JSON representation of a Dialogflow agent which can be sent to the Dialogflow V2API.
 The V2API allows you to update the online version of your agent using the JSON files.
 
+\subsubsection{Dynamic Entity Control}
+//TODO
+
+In our bachelor projekt we have some entity types that are dynamically updated via the Dialogflow API in order to stay up to date with our production database. For Example, we have the Team entity type, that is populated with the names of teams that are signed up to our service. This allows a user to select his team via the voice assistant.
+Since Teams are created and deleted by the users, we need to update the entity type while the service is deployed.
+This makes it impossible to have a list of all Teams written down in the DSL code to send to the server. 
+Instead it is possible to enter either the keyword “dynamic” for an Entity Type.
+This allows the user to have the type exist in the DSL and be valid for validation - but not have any JSON files generated for it, so as not to overwrite an entity type that is dynamically set on Dialogflow via the API.
 
 \section{Target Group}
 
