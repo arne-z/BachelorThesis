@@ -1,10 +1,11 @@
 
 \chapter{Introduction}
 
-The following bachelor thesis is part of the "Ask your Repository!" bachelor project.\footnote{\url{https://hpi.de/giese/lehre/bachelorprojekte/ask-your-repository.html}}\\
+The following Bachelor thesis is part of the "Ask your Repository!" Bachelor project.\footnote{\url{https://hpi.de/giese/lehre/bachelorprojekte/ask-your-repository.html}}\\
 In this thesis, I will demonstrate a possible solution for the issue of synchronizing development on voice interfaces with that of application code by checking voice interface configuration into version control alongside the code it corresponds to. The focus will be on allowing the use of existing version control systems for Voice Interface configurations.\\
 To approach this goal, I have designed a Domain Specific Language (DSL) to describe the configuration of a voice interface in a text-based but still abstract and intuitive way. \\
-I will focus on development using Google Dialogflow as it is the most widely used tool \cite{Stackshare}; it is also what my bachelor team is using in our project.
+I will focus on development using Google Dialogflow as it is the most widely used tool \cite{Stackshare}; it is also what my Bachelor team is using in our project.
+\footnote{The code for my DSL can be found here: \url{https://github.com/arne-z/BachelorThesis} and an implementation for the voice assistant in our bachelor project using the DSL can be found here: \url{https://github.com/hpi-sam/ask-your-repository-dialogflow-adapter/tree/agent-config-with-dsl}}
 
 I propose that by designing a DSL that can be used to configure a Dialogflow agent in a way that is text based and can be managed by version control systems like Git - but that still feels seamless to a user and is intuitive to use for a developer familiar with the Dialogflow web interface - development on voice interfaces can be simplified and development teams in the future will be able to work on voice assistants in the same way that they are used to working with code. This opens up the entirety of code based tools which exist for making development more streamlined for the development of voice interfaces, while keeping the robustness of code which can be saved in version control.
 
@@ -14,14 +15,19 @@ Lastly in chapter 5, I will evaluate the sucess of the prototype by comparing it
 
 \chapter{Status Quo}
 \section{Voice Interfaces}
-Voice assistants, voice interfaces, and chat bots are increasingly popular technologies that are experimented with and used by every major player in the technology market \cite{Chatbots2018}. To keep up with this trend, developers either need to be able to build their own voice interfaces or integrate with an existing system of which Google Assistant and Amazon Alexa are the most relevant at the moment. \citeNeeded
+Voice assistants, voice interfaces, and chat bots are increasingly popular technologies \cite[page 8]{Olson2019} that are experimented with and used by every major player in the technology market \cite{Chatbots2018}. To keep up with this trend, developers either need to be able to build their own voice interfaces or integrate with an existing system of which many exist at present \cite{Alternativeto2019} and of which Google Assistant and Amazon Alexa are the most relevant; this can be seen in a survey Microsoft conducted this year on the popularity of voice assistants \cite[page 9]{Olson2019}.
 Currently, depending on whether you are developing for Google Assistant or Alexa, designing a voice interface for one of these systems usually entails working with either Google Dialogflow or Amazon Lex. These are powerful tools which enable developers or domain specialists to quickly and easily design a voice interface.
-These tools are interacted with through a website which provides a graphical editor for the configuration of the voice interface. Although this makes the initial development of a voice interface easier, it comes with a severe drawback.
+These tools are interacted with through a website which provides a graphical editor for the configuration of the voice interface. 
 
 \section{Version Control}
-While the web interface makes initial setup of the voice interface easier for a single domain expert or developer, new difficulties arise when a team of developers is working on a voice interface in an iterative fashion. It becomes crucial for the team to manage versions and track changes to the interface along with the changes to the application the interface is supporting. \citeNeeded
+While the web interface makes initial setup of the voice interface easier for a single domain expert or developer, new difficulties arise when a team of developers is working on a voice interface in an iterative fashion. It becomes crucial for the team to manage versions and track changes to the interface along with the changes to the application the interface is supporting. 
 
-The state of the art solution for managing iterative work in development teams is Git. \citeNeeded
+As Martin Charles states in the text accompanying his Dialogflow CLI community tool:
+\begin{quote}
+    DialogFlow stores intents and entities outside of source control. This makes rollbacks and keeping track of history difficult. \cite[page 1]{0xcaff2018}
+\end{quote} 
+
+The state of the art solution for managing iterative work in development teams is Git. On GitHub alone there are more than 190 million Git repositories at present as can bee seen by looking at \cite{Githuba}.
 Git provides a functionality for saving snapshots of specific iteration in your project and handling the problems that come up in iterative work.
 These problems are:
 \begin{itemize}
@@ -31,13 +37,10 @@ These problems are:
 \end{itemize}
 The issue that arises is that the above mentioned technologies are not compatible and the configuration of a voice interface can easily get out of sync with the changes made to the application and managed in Git.
 
-\section{Previous Work}
-Previously, similar issues have been solved for other technologies \citeNeeded (cite this, evtl the Evolution control paper or with smt. from here \url{https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q=version+control+xml&btnG=})  by designing Version control systems that specialize in managing the artifacts those technologies rely on. 
-
 \section{Lack of Solution}
 A solution like this has not been built for Dialogflow, most likely because voice interface tools like Amazon Lex or Google Dialogflow are a newer development, with Dialogflow having only existed in its current fashion since it's accuiry by Google at the end of 2016 \cite{Huffman2016} and the Dialogflow V2 API that I am using, and that was necessary for the success of this project currently being in Beta stage. The V2 API is generally available since 17 April 2018 \cite{Imrie-Situnayake2018}
 And “V1 of Dialogflow´s API will be deprecated on October 23, 2019” \cite{Dialogflow}.
-Dialogflow is currently still transitioning tot he use oft he new V2 API.
+Dialogflow is currently still transitioning to the use oft he new V2 API.
 It is the V2 API that makes this project possible because it includes the agent management APIs used for exporting, importing, and updating of Dialogflow "agents" (this is what Google calls a specific voice interface) using the JSON format.
 
 \chapter{Problem Statement}
@@ -61,7 +64,9 @@ In summary the problem is that there is no sufficient version control system tha
 
 \subsection{Version Control System}
 
-Since there is no version control system that is compatible with Dialogflow the obvious solution might be to build a new version control system that is compatible with Dialogflow. This has been done before for other technologies (cite this, evtl the Evolution control paper or with smt. from here \citeNeeded \url{https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q=version+control+xml&btnG=}) but I decided against this approach for multiple reasons.
+Since there is no version control system that is compatible with Dialogflow, the obvious solution might be to build a new version control system that is compatible with Dialogflow. This has been done before for other technologies.
+An example of this would be the Open-source Version Control System for Machine Learning Projects that evolved from the neccessity of specialized version control for machine learning models and data sets.\cite{Petrov}
+I decided against this approach for multiple reasons I will describe below.
 
 Firstly, I believe that it will be hard to get developers to move from an established tool like Git; I assume that developers would not choose to give up feature rich support that exists for Git (Github, Gitlab, Bitbucket to only name a few).
 Secondly, using a specific version control system that is developed to allow compatibility with Dialogflow, it would be hard to also maintain compatibility with other tools.
@@ -220,19 +225,17 @@ From the above it becomes apparent that the DSL I designed is a viable alternati
 From personal expirience I can say, that I can configure an agent more quickly in the DSL code than in the Web interface. However in the following section of this chapter, I will talk about which conseccions I had to make and which disadvantages the DSL still has to overcome, for some of which I will offer solutions.
 
 \subsection{Usage}
-//TODO
 
-When you use the tool/compiler that I built, you run this compiler with the input being the DSL code; the output will be a full JSON representation of a Dialogflow agent which can be sent to the Dialogflow V2API.
-The V2API allows you to update the online version of your agent using the JSON files. For this you can either use the Dialogflow-Cli tool the Dialogflow comunity has built, or build your own script like I did initially.\cite{0xcaff2018}
+When developing with the DSL I designed, in order to update the Dialogflow agent on the web, you run the compiler for the DSL using the DSL code as input; the output will be a full JSON representation of the Dialogflow agent which can be sent to the Dialogflow V2API.
+The V2API allows you to update the online version of your agent using the JSON files. For this you can either use the Dialogflow-Cli tool \cite{Charles2018} the Dialogflow comunity has built, or build your own script like I have done so far.
 
 \subsubsection{Dynamic Entity Control}
-//TODO
 
-In our bachelor projekt we have some entity types that are dynamically updated via the Dialogflow API in order to stay up to date with our production database. For Example, we have the Team entity type, that is populated with the names of teams that are signed up to our service. This allows a user to select his team via the voice assistant.
+In our Bachelor projekt we have some entity types that are dynamically updated via the Dialogflow API in order to stay up to date with our production database. For Example, we have the Team entity type, that is populated with the names of teams that are signed up to our service. This allows a user to select his team via the voice assistant.
 Since Teams are created and deleted by the users, we need to update the entity type while the service is deployed.
 This makes it impossible to have a list of all Teams written down in the DSL code to send to the server. 
-Instead it is possible to enter either the keyword “dynamic” for an Entity Type.
-This allows the user to have the type exist in the DSL and be valid for validation - but not have any JSON files generated for it, so as not to overwrite an entity type that is dynamically set on Dialogflow via the API.
+Instead it is possible to enter the keyword “dynamic” for an Entity Type.
+This allows the user to have the type exist in the DSL and be valid for syntax validation - but not have any JSON files generated for it, so as not to overwrite an entity type that is dynamically set on Dialogflow via the API.
 
 \section{Target Group}
 
@@ -293,6 +296,41 @@ This trend continues accross all my test cases, as you can see in \autoref{SizeC
     
 \end{figure}
 This demonstrates, that the DSL code for an agent is significantly shorter than the JSON version. This saves the developer valuable time, e.g. when conducting a code review. Going of numbers from \citeNeeded (Chris, code reading speed), reading the DSL code instead of the JSON files in the example given above would save a developer more than 50 minutes of code inspection. This is a large benefit in and of itself, but is amplified by the following point.
+
+
+\section{Diff size}
+In order to provide a tangible benefit the DSL code must create smaller diffs (sum of changed lines) than the JSON representation when making changes.
+
+Using the air conditioning example again, when making a change - in this case adding more training phrases to an agent to allow additional functionality - the diff size shows a large difference between DSL code and JSON version. In this specific example, the DSL code has a diff of 7 lines //TODO PUT IN APPENDIX\footnote{\url{https://github.com/arne-z/BachelorThesis/commit/559f72d4dd8550d57bef8b42ee34678317e21fcb}} and the JSON version one of 124 lines. the other test cases can be see in \autoref{DiffChart}.
+//TODO PUT IN APPENDIX\footnote{\url{https://github.com/arne-z/BachelorThesis/commit/08255f4b1bff5a2bb4bf57319ab37033193429c5}}\\
+Another thing of note, is that the DSL code causes less unintended diffs, as some elemants of the JSON - like generated Unique Identifiers - can cause diffs that are unrelated to any intentional changes by the developer.
+
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ybar,
+            width=0.95\textwidth,
+            enlargelimits=0.15,
+            legend style={at={(0.5,-0.2)},
+              anchor=north,legend columns=-1},
+            ylabel={Size in lines},
+            symbolic x coords={RoomTemperature, Calendar, JokeBot, MusicPlayer, OuoteBot},
+            xtick=data,
+            nodes near coords,
+            nodes near coords align={vertical},
+            ]
+        \addplot coordinates {(RoomTemperature,23) (Calendar,24) (JokeBot,43) (MusicPlayer, 46) (OuoteBot, 21)};
+        \addplot coordinates {(RoomTemperature,200) (Calendar,210) (JokeBot,256) (MusicPlayer, 409) (OuoteBot, 158)};
+        \legend{dfc,JSON}
+        \end{axis}
+    \end{tikzpicture}
+    
+    \caption{Difference in diff size.}
+    \label{DiffChart}
+    
+\end{figure}
 
 \section{Readability}
 
@@ -356,17 +394,17 @@ For the same reason, a new entity-type is defined with the keyword "Type" follow
 In contrast, the JSON example I showed above contains keys with names like "data" for a training phrase, "meta" for the type a parameter corresponds to, and the "isTemplate" key which is always set to false, because it is depracated.
 
 \subsubsection{Using idioms from natural language.}
-//TODO
-The JSON representation is modeled after the structure of a Javascript object, and is meant to acurately describe objects and their attributes in computer progams. It does not use idioms from natural language to attempt intuitive understanding of an agent's behaviour.
-This is a specific advantage of the DSL version, that becomes especially obvious in cases like the one described in the section above.
 
-A specific example worth mentioning here is the definition of a fallback intent, which is an intent only used if no other intent can match the users utterance.
-In the JSON representation a fallback intent is only different from a regular intent by a boolean value at the bottom of the intent description:
+The JSON representation is modeled after the structure of a Javascript object, and is meant to accurately describe objects and their attributes in computer progams. It does not use idioms from natural language to attempt intuitive understanding of an agent's behaviour.
+A specific advantage of the DSL version is that I am able to design the DSL so that agent behaviour is conveyed intuitively. 
+
+A specific example worth mentioning here is the definition of a fallback intent, which is an intent only used if no other intent can match the user's utterance.
+In the JSON representation a fallback intent is only different from a regular intent by a boolean value at the very bottom of the intent description:
 \begin{verbatim}
     "fallbackIntent": true,
 \end{verbatim}
-This works perfectly fine if the intention is for the file to be parsed by a computer, but for human readability the way the Dialogflow website does this is much more beneficial.
-On the website a fallback intent is visually distinguished from normal intents and is created with a sepperate button.
+This works perfectly fine if the intention is for the file to be parsed by a computer, but for human readability the way the Dialogflow website handles this is much more beneficial.
+On the website a fallback intent is visually distinguished from normal intents and is created with a separate button.
 For the DSL version I decided that a fallback intent should be defined as follows:
 \begin{verbatim}
     fallback Intent DefaultFallbackIntent
@@ -385,66 +423,32 @@ For the DSL version I decided that a fallback intent should be defined as follow
             "I missed that, say that again?"
         action 'input.unknown'
 \end{verbatim}
-This example is the default fallback intent that every agent created on the Dialogflow website is created with.
+This example is the default fallback intent that every agent on the Dialogflow website is created with. Note that the definition begins with \textit{fallback Intent} instead of \textit{Intent}. This immediately makes it clear to the reader that this intent should be read as a fallback and not as a regular inent.
 
 \subsubsection{Indentation and whitespace.}
-//TODO
-An additional benefit for readability is the ability to sepperate a program into meaningful paragraphs. An example for this is, when an intent is described and the line both above and below the intent is left empty, to visually sepperate it from e.g. another intent described before.
-As a further project, but not possible in the scope of this thesis an automatic linting and formating tool for the DSL could be considered. Simmillar tools have been developed for general programming languages numerous times with a very popular example beeing Black for Python\cite{Python} and numerous other examples existing \cite{Github}.
+
+An additional benefit for readability is the ability to seperate a program into meaningful paragraphs. An example for this is, when an intent is described and the line both above and below the intent is left empty, to visually seperate it from e.g. another intent described before.\\
+As a further project, but not possible in the scope of this thesis, an automatic linting and formating tool for the DSL could be considered. Similar tools have been developed for general programming languages numerous times with a very popular example being Black for Python \cite{Python} and numerous other examples existing \cite{Github}.
 
 \subsubsection{Leaving out unneccessary values.}
-//TODO
-One of the most important ways of reducing clutter in the Agent configuration and reducing the configuration's size is to leave out unneccessary values like unchanged default values and empty values.
-If an agent does not have a description the JSON representation will carry the following line.
+
+One of the most important ways of reducing clutter in the agent configuration and reducing the configuration's size, is to leave out unneccessary values like unchanged default values and empty values.
+If an agent does not have a description, the JSON representation will carry the following line.
 \begin{verbatim}
     "description": "",
 \end{verbatim}
-Instead the DSL version simply will not have a line concerning the description, since it is not changed from it's default value of being an empty string.
-The same is done for a large number of settings, that a user is able to change in DSL code but that have a default value in Dialogflow and need not be displayed in DSL code if the deafult value is not changed.
+Instead, the DSL version simply will not have a line concerning the description, since it is not changed from it's default value of being an empty string.
+The same is done for a large number of settings that a user is able to change in DSL code but that have a default value in Dialogflow and need not be displayed in DSL code if the deafult value is not changed.
 
-
-\section{Diff size}
-In order to provide a tangible benefit the DSL code must create smaller diffs (sum of changed lines) than the JSON representation when making changes.
-
-Using the air conditioning example again, when making a change - in this case adding more training phrases to an agent to allow additional functionality - the diff size shows a large difference between DSL code and JSON version. In this specific example, the DSL code has a diff of 7 lines\footnote{\url{https://github.com/arne-z/BachelorThesis/commit/559f72d4dd8550d57bef8b42ee34678317e21fcb}} and the JSON version one of 124 lines. the other test cases can be see in \autoref{DiffChart}.
-\footnote{\url{https://github.com/arne-z/BachelorThesis/commit/08255f4b1bff5a2bb4bf57319ab37033193429c5}}\\
-Another thing of note, is that the DSL code causes less unintended diffs, as some elemants of the JSON - like generated Unique Identifiers - can cause diffs that are unrelated to any intentional changes by the developer.
-
-
-\begin{figure}
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            ybar,
-            width=0.95\textwidth,
-            enlargelimits=0.15,
-            legend style={at={(0.5,-0.2)},
-              anchor=north,legend columns=-1},
-            ylabel={Size in lines},
-            symbolic x coords={RoomTemperature, Calendar, JokeBot, MusicPlayer, OuoteBot},
-            xtick=data,
-            nodes near coords,
-            nodes near coords align={vertical},
-            ]
-        \addplot coordinates {(RoomTemperature,23) (Calendar,24) (JokeBot,43) (MusicPlayer, 46) (OuoteBot, 21)};
-        \addplot coordinates {(RoomTemperature,200) (Calendar,210) (JokeBot,256) (MusicPlayer, 409) (OuoteBot, 158)};
-        \legend{dfc,JSON}
-        \end{axis}
-    \end{tikzpicture}
-    
-    \caption{Difference in diff size.}
-    \label{DiffChart}
-    
-\end{figure}
 
 \section{Automatic compilation and update}
 A developer needs to be able to automatically compile and update an agent on the web from DSL code.
 The compiler created alongside this prototype\footnote{\url{https://github.com/arne-z/BachelorThesis/releases}} is able to automatically generate the JSON representation of an agent from DSL code.
 Alongside this, I have written a script that automatically sends the resulting JSON files to the Dialogflow website.
-This can be used in continuous integration setups like CircleCI\footnote{\url{https://circleci.com/}} to automatically keep the online version of a Dialogflow agent up to date with the most current version of the DSL code in source control.
+This can be used in continuous integration setups like CircleCI \cite{CircleCI} to automatically keep the online version of a Dialogflow agent up to date with the most current version of the DSL code in source control.
 
-Below you can see an example of the CircleCI job configuration that I set up for the prototype in our bachelor project.
-\footnote{The full configuration set up by our bachelor project team can be found here.\\
+Below you can see an example of the CircleCI job configuration that I set up for the prototype in our Bachelor project.
+\footnote{The full configuration set up by our Bachelor project team can be found here.\\
 \url{https://github.com/hpi-sam/ask-your-repository-dialogflow-adapter/blob/agent-config-with-dsl/.circleci/config.yml}}
 \begin{samepage}    
     \begin{verbatim}
@@ -475,17 +479,16 @@ This setup allows a "hands free" approach to developing for Dialogflow, where al
 
 
 \section{Concessions and Drawbacks}
-//TODO 
 
 Working with the DSL instead of Dialogflow directly comes with some drawbacks, as I had to make certain concessions during development. 
-These concessions sepparate into four categories.
+These concessions can be devided into four categories.
 
 \subsubsection{Design choicess differing from the Dialogflow website.}
-As I stated before, I atempted to stay as close to the Dialogflow website as possible, but there are some elements of the website that do not lend themselves to translation into a text based configuration.
+As I stated before, I attempted to stay as close to the Dialogflow website as possible, but there are some elements of the website that do not lend themselves to being translated into a text based configuration.
 
-For one example of this, look at the way parameters are entered in Dialogflow \autoref{CreateIntent}. Translating this to a text based interface with the requirement of live syntax checking, it became neccessary to enter the parameters allowed in Training phrases before defining the phrases.
-Simmillarly, Dialogflow switched from what is called Template Mode where a training phrase would be described like the following "Turn state the AC" to what they call example mode, which means the phrase would be "Turn on the AC" with the "on" beeing annotated to show that it is meant to represent a number of possible values.
-When translating this to a text based interface, I considered a solution that would look as follows:
+The way parameters are entered in Dialogflow is an interesting example of this, as is shown in \autoref{CreateIntent}. Translating this to a text based interface with the requirement of live syntax validation, it became neccessary to enter the parameters allowed in training phrases before defining the phrases.
+Similarly, Dialogflow switched from what is called \textit{template mode}, where a training phrase would be described as: "Turn state the AC", to what is called \textit{example mode}, which means the phrase would be: "Turn on the AC" - with the "on" being annotated to show that it is meant to represent a number of possible values.
+In order to translate this to a text based interface, I considered a solution that would have looked as follows:
 
 \begin{verbatim}
     intent SampleIntent
@@ -493,46 +496,51 @@ When translating this to a text based interface, I considered a solution that wo
             "Turn {on : state} the AC"
 \end{verbatim}
 
-I eventually decided against this, as I perceived it to make both writing and reading of the training phrases more difficult.
+I eventually decided against this, as I perceived this solution to make both writing and reading of the training phrases unneccessaryly difficult. Instead I decided to continue using the template format for the DSL as seen below:
 
-\subsubsection{The difficulty of deciding on defaults.}
+\begin{verbatim}
+    intent SampleIntent
+        trained with phrase
+            "Turn" state "the AC"
+\end{verbatim}
 
-A large part of what makes both the web interface and the DSL easier to work with, is that a user can assume all the defaults to be reasonable. When first creating a new Dialogflow Agent, all the default settings are already set for you to start working with. I found that for my tool I would have to use the same defaults that the website does, so that the same workflow of creating an agent and some intents for it would arrive at the same results on the website and in the DSL. 
-This lead to a bit of a problem when it came to the two default intents that a Dialogflow agent is created with. The "Default Fallback Intent" and the "Default Welcome Intent". 
-I considered a solution of adding these default intents during compilation, unless the user set a specific setting in the agent, but I found this to be too unintuitive. On the Dialogflow website a user can always see the list of the intents in the agent, including the two default ones on the Intents panel, but in a text based interface the user cannot easily be informed of the default intents existing in the background. I decided, that only the intents described in the user's code should be in the agent. I plan to, at a later date add a shortcut for using the default intents via a "use\_default\_intents" flag, so the user can still use the default intents, but they are not hidden from them.
+\subsubsection{The Difficulty of Deciding on Defaults.}
 
-\subsubsection{Missing  Features}
+A large part of what makes both the web interface and the DSL easier to work with than the JSON files, is that here a user can assume all the defaults to be reasonable. When first creating a new Dialogflow agent, all the default settings are already set for you to start working with. I found that for my tool I was able to use the same defaults that the website uses, so that the same workflow of creating an agent arrives at the same results on the website and in the DSL.
 
-Dialogflow is a large project, much bigger in scope than this Thesis, so it was immediately apparent, that I would not be able to support all of the features and settings that are available in dialogflow.
-Instead I selected the features that were neccessary to support developemt in my bachelor project.
-This means, that some projects might be unable to use this prototype, as they rely on features that are not supported.
+This lead to a bit of a problem when it came to the two default intents that a Dialogflow agent is created with, the "Default Fallback Intent" and the "Default Welcome Intent". \\
+I considered adding these default intents during compilation, unless the user specifically disabled this, but I found that to be too unintuitive. On the Dialogflow website a user can always see the list of intents in the agent, including these two default intents on the intents panel, but in a text based interface the user cannot easily be informed of the default intents existing in the background. Instead, I decided that only the intents described in the user's code should be in the compiled agent. \\
+My plan is to add a shortcut for enabling the default intents via a \textbf{use\_default\_intents} flag, so that the user can easily use the default intents, and anyone reading the code will still know these intents are enabled.
+
+\subsubsection{Unsupported Dialogflow Features}
+
+Dialogflow is a large project, much bigger in scope than this thesis, so it was immediately apparent that my prototype would not be able to support all of the features and settings that are available in Dialogflow.
+Instead I selected the features that were neccessary to support developemt in my Bachelor project.
+This means that some projects might be unable to use this prototype, as they rely on features that are not supported.
 
 
 \chapter{Summary and further Work}
 
-It was my self set task for this Bachelor thesis to find a solution for shortcomings in available version control for Dialogflow agents. In oorder to solve this I built a prototype of a DSL for describing Dialogflow agents.
-My assumption going into this project was, that there shoud and could be a simpler shorter and more readable solution for using version control with a Dialogflow agent than saving the cofiguration of said agent in JSON files.
-The main Idea was to offer this solution to teams of developers working longer term on maintaining an agent throughout it's coevolution with their application.
-I arrived at this solution because, for the very beginning, I wanted to find a way for deveoplers to work with dialogflow without leaving their familiar way of working.
-In order to build this DSL I had to design a grammar to describe the syntax possible in the language and build a code generator using this grammar to generate JSON files.
+It was my self set task for this Bachelor thesis to find a solution for shortcomings in available version control for Dialogflow agents. In order to accomplish this, I built a prototype of a DSL for describing Dialogflow agents.
+When starting this project my assumption was, that there should and could be a solution for using version control with a Dialogflow agent that is simpler, shorter, and more readable than saving the JSON cofiguration of the agent in source control.
+This solution is aimed at teams of developers working longer term on maintaining an agent throughout it's coevolution with their application.
+I arrived at this solution because, for the very beginning, I wanted to find a way for developers to work with dialogflow without leaving their familiar way of working.
+In order to build this DSL, I had to design a grammar to describe the syntax possible in the language and build a code generator using this grammar to generate JSON files.
 In order to test and evaluate this prototype, I designed multiple test cases in each of which I compared the performance of the prototype with that of the established way of saving the agent configuration using JSON files.
-In result I have found that the DSL provides a measurable improvement in both the size of agent configurations and the size of diffs created by changes to the configuration, a XXX\% reduction in size and a YYY\% reduction in diff size respectively, while also improving readability and almost entirely maintaining the ease of updating the agent's online version.
-Team working with this tool will find that this tool offers benefits in regard to teamwork, learning, cosistency, and keeping track of their version history.
+In result, I have found that the DSL provides a measurable improvement in both the size of agent configurations and the size of diffs created by changes to the configuration - to be more precise: a XXX\% reduction in size and a YYY\% reduction in diff size respectively - while also improving readability and almost entirely maintaining the ease of updating the agent's online version.
+Teams working with this tool will find that it offers benefits in regard to teamwork, learning, consistency, and keeping track of their version history.
 The code for my prototype is available online, free and open source.
 
-//TODO more
-\dots
-
-
-For further projects one could consider:
+There are a number of questions still unaswered and as I meantioned multiple times above some improvements to the DSL are still possible.
+Some of these further projects one could consider are:
 \begin{itemize}
     \item A larger survey for better evaluation of long term benefits to teams working with this tool.
     \item Finding out wether it is possible to use a DSL like this to create agents in a uniform language for both Dialogflow and Amazon Lex.
-    \item Build a producation ready tool from the prototype that achieves full feature parity with the dialogflow web interface.
-    \item Build a generator for DSL code from Dialogflow JSON exports, to helpt teams reduce the cost of switching to the DSL solution.
+    \item Build a production ready tool from the prototype that achieves full feature parity with the dialogflow web interface.
+    \item Build a generator for DSL code from Dialogflow JSON exports, to help teams reduce the cost of switching to the DSL solution.
 \end{itemize}
 
-For the nearest future my tool will help my bachelor project team, with working on our own Dialogflow agent.
+For the nearest future my tool will help my Bachelor project team, with working on our own Dialogflow agent.
 
 
 \chapter{Declaration of Independence}
