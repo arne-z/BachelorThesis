@@ -4,7 +4,7 @@
 The following bachelor thesis is part of the "Ask your Repository!" bachelor project.\footnote{\url{https://hpi.de/giese/lehre/bachelorprojekte/ask-your-repository.html}}\\
 In this thesis, I will demonstrate a possible solution for the issue of synchronizing development on voice interfaces with that of application code by checking voice interface configuration into version control alongside the code it corresponds to. The focus will be on allowing the use of existing version control systems for Voice Interface configurations.\\
 To approach this goal, I have designed a Domain Specific Language (DSL) to describe the configuration of a voice interface in a text-based but still abstract and intuitive way. \\
-I will focus on development using Google Dialogflow as it is the most widely used tool \cite{stackups}; it is also what my bachelor team is using in our project.
+I will focus on development using Google Dialogflow as it is the most widely used tool \cite{Stackshare}; it is also what my bachelor team is using in our project.
 
 I propose that by designing a DSL that can be used to configure a Dialogflow agent in a way that is text based and can be managed by version control systems like Git - but that still feels seamless to a user and is intuitive to use for a developer familiar with the Dialogflow web interface - development on voice interfaces can be simplified and development teams in the future will be able to work on voice assistants in the same way that they are used to working with code. This opens up the entirety of code based tools which exist for making development more streamlined for the development of voice interfaces, while keeping the robustness of code which can be saved in version control.
 
@@ -14,7 +14,7 @@ Lastly in chapter 5, I will evaluate the sucess of the prototype by comparing it
 
 \chapter{Status Quo}
 \section{Voice Interfaces}
-Voice assistants and voice interfaces are increasingly popular technologies that are experimented with and used by every major player in the technology market \citeNeeded. To keep up with this trend, developers either need to be able to build their own voice interfaces or integrate with an existing system of which Google Assistant and Amazon Alexa are the most relevant. \citeNeeded
+Voice assistants, voice interfaces, and chat bots are increasingly popular technologies that are experimented with and used by every major player in the technology market \cite{Chatbots2018}. To keep up with this trend, developers either need to be able to build their own voice interfaces or integrate with an existing system of which Google Assistant and Amazon Alexa are the most relevant at the moment. \citeNeeded
 Currently, depending on whether you are developing for Google Assistant or Alexa, designing a voice interface for one of these systems usually entails working with either Google Dialogflow or Amazon Lex. These are powerful tools which enable developers or domain specialists to quickly and easily design a voice interface.
 These tools are interacted with through a website which provides a graphical editor for the configuration of the voice interface. Although this makes the initial development of a voice interface easier, it comes with a severe drawback.
 
@@ -29,22 +29,21 @@ These problems are:
     \item ensuring that a stable version of a project is saved while developers are working on more experimental changes
     \item giving the team the ability to easily track and revert changes that have been made.
 \end{itemize}
-The issue that arises is that the above mentioned technologies are not compatible and the configuration of a voice interface can easily get out of sync with the changes made to the application and managed in Git. \citeNeeded
+The issue that arises is that the above mentioned technologies are not compatible and the configuration of a voice interface can easily get out of sync with the changes made to the application and managed in Git.
 
 \section{Previous Work}
 Previously, similar issues have been solved for other technologies \citeNeeded (cite this, evtl the Evolution control paper or with smt. from here \url{https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q=version+control+xml&btnG=})  by designing Version control systems that specialize in managing the artifacts those technologies rely on. 
 
 \section{Lack of Solution}
-A solution like this has not been built for Dialogflow, most likely because voice interface tools like Amazon Lex or Google Dialogflow are a newer development, with Dialogflow having only existed in its current fashion since October 2017 \citeNeeded and the Dialogflow V2 API that I am using, and that was necessary for the success of this project is currently in Beta stage. The V2 API is generally available since 17 April 2018
-(\url{https://blog.dialogflow.com/post/v2-and-enterprise-edition-generally-available/}  4.6.2019)
-And “V1 of Dialogflow´s API will be deprecated on October 23, 2019”. (\url{https://dialogflow.com/docs/reference/v1-v2-migration-guide} , 4.6.2019).
+A solution like this has not been built for Dialogflow, most likely because voice interface tools like Amazon Lex or Google Dialogflow are a newer development, with Dialogflow having only existed in its current fashion since it's accuiry by Google at the end of 2016 \cite{Huffman2016} and the Dialogflow V2 API that I am using, and that was necessary for the success of this project currently being in Beta stage. The V2 API is generally available since 17 April 2018 \cite{Imrie-Situnayake2018}
+And “V1 of Dialogflow´s API will be deprecated on October 23, 2019” \cite{Dialogflow}.
 Dialogflow is currently still transitioning tot he use oft he new V2 API.
 It is the V2 API that makes this project possible because it includes the agent management APIs used for exporting, importing, and updating of Dialogflow "agents" (this is what Google calls a specific voice interface) using the JSON format.
 
 \chapter{Problem Statement}
 
 As stated before, currently there is no version control system for Dialogflow agents.
-This is problematic because when designing a voice interface, it is necessary to make iterative changes, so the voice interface can evolve alongside the application it supports. This can lead to issues in the following workflows that are common in software development:  (Reword this to prepare for ALL points below)
+This is problematic because when designing a voice interface, it is necessary to make iterative changes, so the voice interface can evolve alongside the application it supports. This can lead to issues in a number of different situation, and causes voice interface developers too miss out on the advantages modern software development gains from using Git.
 \begin{itemize}
     \item When starting work on a new feature a new branch is created. This is done so that changes, which might not work right away, are contained to this branch and can be merged into the main application at a later time. If this feature requires changes to the voice interface, a problem may arise, because the voice interface has no mechanism for branching.
     \item Once experimental changes on a feature branch advance to a point where they are meant to be included in the master branch, code can simply be merged from one branch to another. The changes to a voice interface configuration cannot be included in a pull request.
@@ -220,45 +219,11 @@ The last and most vital step is to create an intent that the agent can understan
 From the above it becomes apparent that the DSL I designed is a viable alternative to using the Web interface.
 From personal expirience I can say, that I can configure an agent more quickly in the DSL code than in the Web interface. However in the following section of this chapter, I will talk about which conseccions I had to make and which disadvantages the DSL still has to overcome, for some of which I will offer solutions.
 
-\subsection{Concessions and Drawbacks}
-//TODO (I might want to move this to the end of Evaluation, it fits there better.)
-
-Working with the DSL instead of Dialogflow directly comes with some drawbacks, as I had to make certain concessions during development. 
-These concessions sepparate into three/four categories.
-
-\subsubsection{Design choicess differing from the Dialogflow website.}
-As I stated before, I atempted to stay as close to the Dialogflow website as possible, but there are some elements of the website that do not lend themselves to translation into a text based configuration.
-
-For one example of this, look at the way parameters are entered in Dialogflow \autoref{CreateIntent}. Translating this to a text based interface with the requirement of live syntax checking, it became neccessary to enter the parameters allowed in Training phrases before defining the phrases.
-Simmillarly, Dialogflow switched from what is called Template Mode where a training phrase would be described like the following "Turn state the AC" to what they call example mode, which means the phrase would be "Turn on the AC" with the "on" beeing annotated to show that it is meant to represent a number of possible values.
-When translating this to a text based interface, I considered a solution that would look as follows:
-
-\begin{verbatim}
-    intent SampleIntent
-        trained with phrase
-            "Turn {on : state} the AC"
-\end{verbatim}
-
-I eventually decided against this, as I perceived it to make both writing and reading of the training phrases more difficult.
-
-\subsubsection{The difficulty of deciding on defaults.}
-
-A large part of what makes both the web interface and the DSL easier to work with, is that a user can assume all the defaults to be reasonable. When first creating a new Dialogflow Agent, all the default settings are already set for you to start working with. I found that for my tool I would have to use the same defaults that the website does, so that the same workflow of creating an agent and some intents for it would arrive at the same results on the website and in the DSL. 
-This lead to a bit of a problem when it came to the two default intents that a Dialogflow agent is created with. The "Default Fallback Intent" and the "Default Welcome Intent". 
-I considered a solution of adding these default intents during compilation, unless the user set a specific setting in the agent, but I found this to be too unintuitive. On the Dialogflow website a user can always see the list of the intents in the agent, including the two default ones on the Intents panel, but in a text based interface the user cannot easily be informed of the default intents existing in the background. I decided, that only the intents described in the user's code should be in the agent. I plan to, at a later date add a shortcut for using the default intents via a "use\_default\_intents" flag, so the user can still use the default intents, but they are not hidden from them.
-
-\subsubsection{Missing  Features}
-
-Dialogflow is a large project, much bigger in scope than this Thesis, so it was immediately apparent, that I would not be able to support all of the features and settings that are available in dialogflow.
-Instead I selected the features that were neccessary to support developemt in my bachelor project.
-This means, that some projects might be unable to use this prototype, as they rely on features that are not supported.
-
-
 \subsection{Usage}
 //TODO
 
 When you use the tool/compiler that I built, you run this compiler with the input being the DSL code; the output will be a full JSON representation of a Dialogflow agent which can be sent to the Dialogflow V2API.
-The V2API allows you to update the online version of your agent using the JSON files.
+The V2API allows you to update the online version of your agent using the JSON files. For this you can either use the Dialogflow-Cli tool the Dialogflow comunity has built, or build your own script like I did initially.\cite{0xcaff2018}
 
 \subsubsection{Dynamic Entity Control}
 //TODO
@@ -300,7 +265,7 @@ In the following sections I will talk about each of these requirements and wheth
 
 In order to provide a tangible benefit the DSL code must be significantly shorter than the JSON representation. Coming back to the agent used in chapter four, I can show that the DSL code for that agent is exactly 23 lines long, while using a large amount of whitespace and linebreaks to support readability.
 
-The JSON version for this same agent, however, comes in at exactly 200 lines as you can see in the appendix. \ref{}REFTHISLATER \url{https://github.com/arne-z/BachelorThesis/commit/d61614158d41d72bb72f28f941718a707d72a5e0}
+The JSON version for this same agent, however, comes in at exactly 200 lines as you can see in the appendix. \ref{} //TODO \url{https://github.com/arne-z/BachelorThesis/commit/d61614158d41d72bb72f28f941718a707d72a5e0}
 This trend continues accross all my test cases, as you can see in \autoref{SizeChart}.
 \begin{figure}
     \centering
@@ -332,7 +297,7 @@ This demonstrates, that the DSL code for an agent is significantly shorter than 
 \section{Readability}
 
 While length is an objective criterion, readability is innately more subjetive, as it relates to how well a developer will be able to understand a piece of code.\\
-For this comparison I will focus on five criteria; the first three are reworded from Egon Elbre's "The psychology of code readability" \citeNeeded \url{https://medium.com/@egonelbre/psychology-of-code-readability-d23b1ff1258a}; the last two are based on my own observations.
+For this comparison I will focus on five criteria; the first three are reworded from Egon Elbre's "The psychology of code readability" \cite{Elbre}; the last two are based on my own observations.
 \begin{itemize}
     \item Cohesive pieces of code, conveying one idea at a time.
     \item Descriptive - but not overly long - names and keywords.
@@ -392,23 +357,50 @@ In contrast, the JSON example I showed above contains keys with names like "data
 
 \subsubsection{Using idioms from natural language.}
 //TODO
-In the JSON representation long jumbles of number and letters 
+The JSON representation is modeled after the structure of a Javascript object, and is meant to acurately describe objects and their attributes in computer progams. It does not use idioms from natural language to attempt intuitive understanding of an agent's behaviour.
+This is a specific advantage of the DSL version, that becomes especially obvious in cases like the one described in the section above.
+
+A specific example worth mentioning here is the definition of a fallback intent, which is an intent only used if no other intent can match the users utterance.
+In the JSON representation a fallback intent is only different from a regular intent by a boolean value at the bottom of the intent description:
+\begin{verbatim}
+    "fallbackIntent": true,
+\end{verbatim}
+This works perfectly fine if the intention is for the file to be parsed by a computer, but for human readability the way the Dialogflow website does this is much more beneficial.
+On the website a fallback intent is visually distinguished from normal intents and is created with a sepperate button.
+For the DSL version I decided that a fallback intent should be defined as follows:
+\begin{verbatim}
+    fallback Intent DefaultFallbackIntent
+        response 
+            "I didn\u0027t get that. Can you say it again?"
+            "I missed what you said. What was that?"
+            "Sorry, could you say that again?"
+            "Sorry, can you say that again?"
+            "Can you say that again?"
+            "Sorry, I didn\u0027t get that. Can you rephrase?"
+            "Sorry, what was that?"
+            "One more time?"
+            "What was that?"
+            "Say that one more time?"
+            "I didn\u0027t get that. Can you repeat?"
+            "I missed that, say that again?"
+        action 'input.unknown'
+\end{verbatim}
+This example is the default fallback intent that every agent created on the Dialogflow website is created with.
 
 \subsubsection{Indentation and whitespace.}
 //TODO
+An additional benefit for readability is the ability to sepperate a program into meaningful paragraphs. An example for this is, when an intent is described and the line both above and below the intent is left empty, to visually sepperate it from e.g. another intent described before.
+As a further project, but not possible in the scope of this thesis an automatic linting and formating tool for the DSL could be considered. Simmillar tools have been developed for general programming languages numerous times with a very popular example beeing Black for Python\cite{Python} and numerous other examples existing \cite{Github}.
 
 \subsubsection{Leaving out unneccessary values.}
 //TODO
-
-Fallback intent example here.
-
-UNFINISHED
-In order to provide a tangible benefit the DSL code must be more readable than the JSON representation.
-\citeNeeded Definition of readability == undefined
-Use Chris's study for this.
-Less code causes better maintainability and faster and easier code reviews. 
-
-It's easier to see what is important to notice in the DSL code, than in the much longer JSON representation.
+One of the most important ways of reducing clutter in the Agent configuration and reducing the configuration's size is to leave out unneccessary values like unchanged default values and empty values.
+If an agent does not have a description the JSON representation will carry the following line.
+\begin{verbatim}
+    "description": "",
+\end{verbatim}
+Instead the DSL version simply will not have a line concerning the description, since it is not changed from it's default value of being an empty string.
+The same is done for a large number of settings, that a user is able to change in DSL code but that have a default value in Dialogflow and need not be displayed in DSL code if the deafult value is not changed.
 
 
 \section{Diff size}
@@ -480,6 +472,40 @@ It then downloads the DSL compiler from my github repository and runs the compil
 It then runs the importAgent script that will send the JSONs generated by the compiler to the Dialogflow API.
 
 This setup allows a "hands free" approach to developing for Dialogflow, where all the developer has to do is change the DSL code and once that is pushed to Git, the Dialogflow agent is updated automatically.
+
+
+\section{Concessions and Drawbacks}
+//TODO 
+
+Working with the DSL instead of Dialogflow directly comes with some drawbacks, as I had to make certain concessions during development. 
+These concessions sepparate into four categories.
+
+\subsubsection{Design choicess differing from the Dialogflow website.}
+As I stated before, I atempted to stay as close to the Dialogflow website as possible, but there are some elements of the website that do not lend themselves to translation into a text based configuration.
+
+For one example of this, look at the way parameters are entered in Dialogflow \autoref{CreateIntent}. Translating this to a text based interface with the requirement of live syntax checking, it became neccessary to enter the parameters allowed in Training phrases before defining the phrases.
+Simmillarly, Dialogflow switched from what is called Template Mode where a training phrase would be described like the following "Turn state the AC" to what they call example mode, which means the phrase would be "Turn on the AC" with the "on" beeing annotated to show that it is meant to represent a number of possible values.
+When translating this to a text based interface, I considered a solution that would look as follows:
+
+\begin{verbatim}
+    intent SampleIntent
+        trained with phrase
+            "Turn {on : state} the AC"
+\end{verbatim}
+
+I eventually decided against this, as I perceived it to make both writing and reading of the training phrases more difficult.
+
+\subsubsection{The difficulty of deciding on defaults.}
+
+A large part of what makes both the web interface and the DSL easier to work with, is that a user can assume all the defaults to be reasonable. When first creating a new Dialogflow Agent, all the default settings are already set for you to start working with. I found that for my tool I would have to use the same defaults that the website does, so that the same workflow of creating an agent and some intents for it would arrive at the same results on the website and in the DSL. 
+This lead to a bit of a problem when it came to the two default intents that a Dialogflow agent is created with. The "Default Fallback Intent" and the "Default Welcome Intent". 
+I considered a solution of adding these default intents during compilation, unless the user set a specific setting in the agent, but I found this to be too unintuitive. On the Dialogflow website a user can always see the list of the intents in the agent, including the two default ones on the Intents panel, but in a text based interface the user cannot easily be informed of the default intents existing in the background. I decided, that only the intents described in the user's code should be in the agent. I plan to, at a later date add a shortcut for using the default intents via a "use\_default\_intents" flag, so the user can still use the default intents, but they are not hidden from them.
+
+\subsubsection{Missing  Features}
+
+Dialogflow is a large project, much bigger in scope than this Thesis, so it was immediately apparent, that I would not be able to support all of the features and settings that are available in dialogflow.
+Instead I selected the features that were neccessary to support developemt in my bachelor project.
+This means, that some projects might be unable to use this prototype, as they rely on features that are not supported.
 
 
 \chapter{Summary and further Work}
