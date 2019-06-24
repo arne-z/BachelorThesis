@@ -1,0 +1,205 @@
+\chapter{JSON Version of a Test Agent}
+\section{RoomTemperature Agent}
+\subsection{Agent}
+\subsubsection{agent.json}
+\begin{lstlisting}
+{
+  "description": "",
+  "language": "en",
+  "disableInteractionLogs": false,
+  "disableStackdriverLogs": true,
+  "webhook": {
+    "url": "https://fake.ac_controller.com/vi_webhook",
+    "available": true,
+    "useForDomains": false,
+    "cloudFunctionsEnabled": false,
+    "cloudFunctionsInitialized": false
+  },
+  "isPublic": false,
+  "customClassifierMode": "use.after",
+  "mlMinConfidence": 0.3,
+  "onePlatformApiVersion": "v2"
+}
+\end{lstlisting}
+\subsubsection{package.json}
+\begin{lstlisting}
+{
+  "version": "1.0.0"
+}
+\end{lstlisting}
+\subsection{Entities}
+\subsubsection{ACState.json}
+\begin{lstlisting}
+{
+  "id": "31b65f06-3c68-4335-bedb-7eed2c98404d",
+  "name": "ACState",
+  "isOverridable": false,
+  "isEnum": false,
+  "automatedExpansion": true,
+  "allowFuzzyExtraction": false
+}	
+\end{lstlisting}
+\subsubsection{ACState\_entries\_en.json}
+\begin{lstlisting}
+[
+  {
+    "value": "Off",
+    "synonyms": [
+      "Inactive",
+      "Disabled",
+      "Off"
+    ]
+  },
+  {
+    "value": "On",
+    "synonyms": [
+      "Active",
+      "Enabled",
+      "On"
+    ]
+  }
+]
+\end{lstlisting}
+
+\subsection{Intents}
+\subsubsection{SwitchAC.json}
+\begin{lstlisting}
+{
+  "id": "1b3f96d9-3e41-4ccc-95be-601237d1d20d",
+  "name": "SwitchAC",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "9a814870-de5f-4547-ab9a-42ef2fd73040",
+          "required": true,
+          "dataType": "@ACState",
+          "name": "state",
+          "value": "$state",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Did you want the AC turned On or Off?"
+            }
+          ],
+          "isList": false
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1560426984,
+  "fallbackIntent": false,
+  "events": []
+}
+\end{lstlisting}
+\subsubsection{SwitchAC\_usersays\_en.json}
+\begin{lstlisting}
+[
+  {
+  "id": "3269ba06-10da-4003-ba29-dd2348642a86",
+  "data": [
+    {
+    "text": "Turn ",
+    "userDefined": false
+    },
+    {
+    "text": "state ",
+    "alias": "state",
+    "meta": "@ACState",
+    "userDefined": true
+    },
+    {
+    "text": "the AC ",
+    "userDefined": false
+    }
+  ],
+  "isTemplate": false,
+  "count": 0,
+  "updated": 1560426984
+  },
+  {
+  "id": "dd84e278-63a9-4e84-afc6-b183463ee671",
+  "data": [
+    {
+    "text": "Set the AC to ",
+    "userDefined": false
+    },
+    {
+    "text": "state ",
+    "alias": "state",
+    "meta": "@ACState",
+    "userDefined": true
+    }
+  ],
+  "isTemplate": false,
+  "count": 0,
+  "updated": 1560426984
+  },
+  {
+  "id": "d013f09a-738d-4898-931d-bebcc61e67df",
+  "data": [
+    {
+    "text": "Set the air conditioner to ",
+    "userDefined": false
+    },
+    {
+    "text": "state ",
+    "alias": "state",
+    "meta": "@ACState",
+    "userDefined": true
+    }
+  ],
+  "isTemplate": false,
+  "count": 0,
+  "updated": 1560426984
+  },
+  {
+  "id": "6363fec0-0da7-406f-a000-b6c46ab72a35",
+  "data": [
+    {
+    "text": "I want the AC turned ",
+    "userDefined": false
+    },
+    {
+    "text": "state ",
+    "alias": "state",
+    "meta": "@ACState",
+    "userDefined": true
+    }
+  ],
+  "isTemplate": false,
+  "count": 0,
+  "updated": 1560426984
+  },
+  {
+  "id": "71975954-724f-4217-a333-0ba53ad5394e",
+  "data": [
+    {
+    "text": "Make sure the AC is ",
+    "userDefined": false
+    },
+    {
+    "text": "state ",
+    "alias": "state",
+    "meta": "@ACState",
+    "userDefined": true
+    }
+  ],
+  "isTemplate": false,
+  "count": 0,
+  "updated": 1560426984
+  }
+]
+\end{lstlisting}
+
+\section{Remaining Four Test Agents}
+The other four test agents are not printet here to prevent the appendix from becoming too long. They can be found on my GitHub instead.\footnote{\url{https://github.com/arne-z/BachelorThesis/tree/master/TestAgents}}
