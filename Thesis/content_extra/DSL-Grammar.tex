@@ -1,0 +1,169 @@
+\chapter{DSL Grammar}
+
+\begin{lstlisting}
+  grammar org.xtext.DialogflowConfig 
+    with org.eclipse.xtext.common.Terminals
+
+  generate dialogflowConfig "http://www.xtext.org/DialogflowConfig"
+  
+  Agent:
+    'Agent' name=ID
+    'language' language=Language
+    (('description' description=STRING)?
+    & ('version' version=VERSION)?
+    & ('ml_classification_threshold' mlMinConfidence=DOUBLE)?
+    & webhook=Webhook?
+    & interactionLogs?='disable_logs'?
+    & stackdriverLogs?='log_to_google_cloud'?
+    & isPublic?='public'?
+    & noHybridMatchMode?='no_hybrid_match_mode'?)
+    elements+=AbstractElement*;
+  
+  terminal DOUBLE:
+    INT '.' INT;
+  
+  terminal VERSION:
+    INT '.' INT '.' INT;
+  
+  AbstractElement:
+    Intent | EntityType;
+  
+  Intent:
+    fallback?='fallback'?
+    'Intent' name=ID
+    ('contexts'
+    ('input' inputContexts+=InputContext+)?
+    ('output' affectedContexts+=OutputContext+)?)?
+    & ('parameters' parameters+=Parameter+)?
+    & (('trained' 'with' 'phrase' trainingPhrases+=TrainingPhrase 
+      (',' trainingPhrases+=TrainingPhrase)*)
+    | ('trained' 'with' 'file' file=STRING))?
+    & ('response' responses+=STRING+)?
+    & ('action' action=STRING)?
+    & ('events' events+=STRING+)?
+    & webHookFulfillment?='webhook_fullfillment'?
+    & webHookForSlotFilling?='webhook_slot_filling'?
+    & disable_ml?='disable_ml'?
+    & end?='end_of_conversation'?;
+  
+  InputContext:
+    name=ID;
+  
+  OutputContext:
+    name=ID ('lifespan' lifespan=INT)?;
+  
+  TrainingPhrase:
+    data+=AbstractWord+;
+  
+  AbstractWord:
+    Text | customToken;
+  
+  Text:
+    text=STRING;
+  
+  customToken:
+    param=[Parameter];
+  
+  Parameter:
+    name=ID
+    (type=[EntityType] | builtInType=BuiltInType)
+    ('('
+    (required?='required'? 
+    & ('prompts' prompts+=STRING+)? 
+    & list?='list'?)
+    ')')?;
+  
+  EntityType:
+    'Type' name=ID
+    (dynamic?='dynamic' |
+    'values' values+=Entity (',' values+=Entity)*)
+    & isOverridable?='overridable'?
+    & isEnum?='enum'?
+    & automatedExpansion?='auto_expand'?
+    & allowFuzzyExtraction?='fuzzy_extract'?;
+  
+  Entity:
+    name=STRING
+    ('(' synonyms+=STRING* ')')?;
+  
+  Webhook:
+    'Webhook'
+    available?='active'?
+    ('url' url=STRING)
+    ('headers' headers+=Header+)?;
+  
+  Header:
+    key=STRING ':' value=STRING;
+  
+  enum Language:
+    en |
+    de |
+    fr |
+    es |
+    da |
+    hi |
+    id |
+    it |
+    ja |
+    ko |
+    ni |
+    pl |
+    pt |
+    ru |
+    sv |
+    th |
+    tr |
+    uk;
+  
+  enum BuiltInType:
+    date_time
+    | date
+    | date_period
+    | time
+    | time_period
+    | number
+    | cardinal
+    | ordinal
+    | number_integer
+    | number_sequence
+    | flight_number
+    | unit_area
+    | unit_currency
+    | unit_length
+    | unit_speed
+    | unit_volume
+    | unit_weight
+    | unit_information
+    | percentage
+    | temperature
+    | duration
+    | age
+    | currency_name
+    | unit_area_name
+    | unit_length_name
+    | unit_speed_name
+    | unit_volume_name
+    | unit_weight_name
+    | unit_information_name
+    | address
+    | zip_code
+    | geo_capital
+    | geo_country
+    | geo_country_code
+    | geo_city
+    | geo_state
+    | place_attraction
+    | airport
+    | location
+    | email
+    | phone_number
+    | given_name
+    | last_name
+    | person
+    | music_artist
+    | music_genre
+    | color
+    | language
+    | any
+    | url;
+\end{lstlisting}
