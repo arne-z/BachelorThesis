@@ -5,17 +5,26 @@ Agent MusicPlayer
 		active
 		url "https://fake.music_controller.com/vi_webhook"
 		
+	Type Era
+		values
+			"nineties",
+			"eighties",
+			"seventies",
+			"sixties"
+	
 	Intent PlaySong
 		parameters 
 			Artist music_artist
 			Genre music_genre
 			Title any
+			Era Era
 		trained with phrase
 			"Play a " Genre "song",
 			"Play some" Genre,
 			"Play a song by "Artist,
 			"Play" Title "by" Artist,
 			"Play" Title,
+			"Play a song from the" Era,
 			"Play a random song"
 		webhook_fullfillment
 		
@@ -27,6 +36,12 @@ Agent MusicPlayer
 				"Quiet",
 				"Stop the Music"
 			webhook_fullfillment
+			
+		Intent NextSong
+			action "NextSong"
+			trained with phrase
+				"Next",
+				"Skip"
 		
 		Intent VolUp
 			action "VolUp"
