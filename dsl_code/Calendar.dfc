@@ -17,8 +17,11 @@ Agent Calendar
 			Entry Entry
 			Time date_time (required prompts "For when should I enter that entry?")
 			Title any (required prompts "What should I call the entry?")
+			Note any
 		trained with phrase
 			"Add a new" Entry "for" Time,
 			"Add a new" Entry,
 			"Add a" Entry "at" Time Title
+			"Add a" Entry "with note" Note
+			"Add a" Entry "at" Time "with note" Note
 		webhook_fullfillment
