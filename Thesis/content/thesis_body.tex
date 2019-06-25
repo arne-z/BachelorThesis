@@ -521,7 +521,7 @@ This solution is aimed at teams of developers working longer term on maintaining
 I arrived at this solution because, for the very beginning, I wanted to find a way for developers to work with dialogflow without leaving their familiar way of working.
 In order to build this DSL, I had to design a grammar to describe the syntax possible in the language and build a code generator using this grammar to generate JSON files.
 In order to test and evaluate this prototype, I designed multiple test cases in each of which I compared the performance of the prototype with that of the established way of saving the agent configuration using JSON files.
-In result, I have found that the DSL provides a measurable improvement in both the size of agent configurations and the size of diffs created by changes to the configuration - to be more precise: a XXX\% reduction in size and a YYY\% reduction in diff size respectively - while also improving readability and almost entirely maintaining the ease of updating the agent's online version.
+In result, I have found that the DSL provides a measurable improvement in both the size of agent configurations and the size of diffs created by changes to the configuration - to be more precise: a 87.15\% reduction in size and a 88.9\% reduction in diff size on average respectively (see \autoref{ResultTables}) - while also improving readability and almost entirely maintaining the ease of updating the agent's online version.
 Teams working with this tool will find that it offers benefits in regard to teamwork, learning, consistency, and keeping track of their version history.
 The code for my prototype is available online, free and open source.
 
