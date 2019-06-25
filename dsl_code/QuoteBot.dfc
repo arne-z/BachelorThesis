@@ -19,3 +19,7 @@ Agent QuoteBot
 			"Two things are infinite: the universe and human stupidity; and I'm not sure about the universe."
 			"If you can't explain it to a six year old, you don't understand it yourself."
 			"Never memorize something that you can look up."
+			
+	fallback Intent DidNotUnderstand
+		response 
+			"Sorry I didn't understand you. I really only know Einstein and Oscar Wilde Quotes."
