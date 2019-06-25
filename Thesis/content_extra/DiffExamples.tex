@@ -1,0 +1,26 @@
+\chapter{Examples of Diffs created from Test Agents}
+
+\section{RoomTemperature Agent}
+\label{RoomTemperature Agent DSLDiff}
+
+\begin{lstlisting}
+  @@ -26,9 +26,14 @@ Agent TestAgent_RoomTemperature
+     Intent ChangeTemperature
+       parameters 
+         temp temperature (required prompts "What temperature 
+           would you like the AC set to?")
+  +      point time
+       trained with phrase 
+         "Set the AC to" temp, 
+         "Set the air conditioner to" temp, 
+         "I want the AC turned to" temp, 
+  -      "Make sure the AC is at" temp
+  +      "Make sure the AC is at" temp,
+  +      "Set the AC to" temp "at" point, 
+  +      "Set the air conditioner to" temp "at" point,
+  +      "I want the AC turned to" temp "at" point,
+  +      "Make sure the AC is at" temp "at" point
+       webhook_fullfillment
+\end{lstlisting}
+
+\pagebreak

@@ -202,6 +202,189 @@
 ]
 \end{lstlisting}
 
-\section{Remaining Four Test Agents}
+\section{Test Agents 2-5}
 The other four test agents are not printet here to prevent the appendix from becoming too long. They can be found on my GitHub instead.
 \footnote{\url{https://github.com/arne-z/BachelorThesis/tree/5100ed5f712fb93a079af095e1dcd6c159cfe68f/TestAgents}}
+
+\chapter{Examples of Diffs created from Test Agent JSON files}
+
+\section{RoomTemperature Agent}
+\label{RoomTemperature Agent JSONDiff}
+
+\begin{lstlisting}
+  --- a/TestCase01_RoomTemperature/DialogflowExport/intents/ChangeTemperature.json
+  +++ b/TestCase01_RoomTemperature/DialogflowExport/intents/ChangeTemperature.json
+  @@ -21,6 +21,14 @@
+               }
+             ],
+             "isList": false
+  +        },
+  +        {
+  +          "id": "3f53e160-18ac-4318-99a8-5f84581bb045",
+  +          "required": false,
+  +          "dataType": "@sys.time",
+  +          "name": "point",
+  +          "value": "$point",
+  +          "isList": false
+           }
+         ],
+         "messages": [],
+
+  --- a/TestCase01_RoomTemperature/DialogflowExport/intents/ChangeTemperature_usersays_en.json
+  +++ b/TestCase01_RoomTemperature/DialogflowExport/intents/ChangeTemperature_usersays_en.json
+  @@ -1,9 +1,9 @@
+   [
+     {
+  -    "id": "e7dbd110-0604-476f-a997-5d90932ef9df",
+  +    "id": "46e61317-0882-4cb8-999b-2b5042cc27cf",
+       "data": [
+         {
+  -        "text": "Make sure the AC is at ",
+  +        "text": "Set the air conditioner to ",
+           "userDefined": false
+         },
+         {
+  @@ -17,10 +17,10 @@
+       "count": 0
+     },
+     {
+  -    "id": "1f80dd19-9fd9-4276-bbac-024bbf74b2f3",
+  +    "id": "62839ba2-4045-490d-8bc8-c74ff6a761cb",
+       "data": [
+         {
+  -        "text": "I want the AC turned to ",
+  +        "text": "Set the AC to ",
+           "userDefined": false
+         },
+         {
+  @@ -28,6 +28,16 @@
+           "alias": "temp",
+           "meta": "@sys.temperature",
+           "userDefined": true
+  +      },
+  +      {
+  +        "text": " at ",
+  +        "userDefined": false
+  +      },
+  +      {
+  +        "text": "point",
+  +        "alias": "point",
+  +        "meta": "@sys.time",
+  +        "userDefined": true
+         }
+       ],
+       "isTemplate": false,
+  @@ -45,11 +55,109 @@
+           "alias": "temp",
+           "meta": "@sys.temperature",
+           "userDefined": true
+  +      },
+  +      {
+  +        "text": " at ",
+  +        "userDefined": false
+  +      },
+  +      {
+  +        "text": "point",
+  +        "alias": "point",
+  +        "meta": "@sys.time",
+  +        "userDefined": true
+  +      }
+  +    ],
+  +    "isTemplate": false,
+  +    "count": 0
+  +  },
+  +  {
+  +    "id": "cf3e56d7-7e28-4d61-bea5-20bb052b0aa6",
+  +    "data": [
+  +      {
+  +        "text": "I want the AC turned to ",
+  +        "userDefined": false
+  +      },
+  +      {
+  +        "text": "temp",
+  +        "alias": "temp",
+  +        "meta": "@sys.temperature",
+  +        "userDefined": true
+  +      },
+  +      {
+  +        "text": " at ",
+  +        "userDefined": false
+  +      },
+  +      {
+  +        "text": "point",
+  +        "alias": "point",
+  +        "meta": "@sys.time",
+  +        "userDefined": true
+         }
+       ],
+       "isTemplate": false,
+       "count": 0
+     },
+  +  {
+  +    "id": "0a434408-2e28-4719-b822-855b13df6dee",
+  +    "data": [
+  +      {
+  +        "text": "Make sure the AC is at ",
+  +        "userDefined": false
+  +      },
+  +      {
+  +        "text": "temp",
+  +        "alias": "temp",
+  +        "meta": "@sys.temperature",
+  +        "userDefined": true
+  +      },
+  +      {
+  +        "text": " at ",
+  +        "userDefined": false
+  +      },
+  +      {
+  +        "text": "point",
+  +        "alias": "point",
+  +        "meta": "@sys.time",
+  +        "userDefined": true
+  +      }
+  +    ],
+  +    "isTemplate": false,
+  +    "count": 0
+  +  },
+  +  {
+  +    "id": "e7dbd110-0604-476f-a997-5d90932ef9df",
+  +    "data": [
+  +      {
+  +        "text": "Make sure the AC is at ",
+  +        "userDefined": false
+  +      },
+  +      {
+  +        "text": "temp",
+  +        "alias": "temp",
+  +        "meta": "@sys.temperature",
+  +        "userDefined": true
+  +      }
+  +    ],
+  +    "isTemplate": false,
+  +    "count": 0
+  +  },
+  +  {
+  +    "id": "1f80dd19-9fd9-4276-bbac-024bbf74b2f3",
+  +    "data": [
+  +      {
+  +        "text": "I want the AC turned to ",
+  +        "userDefined": false
+  +      },
+  +      {
+  +        "text": "temp",
+  +        "alias": "temp",
+  +        "meta": "@sys.temperature",
+  +        "userDefined": true
+  +      }
+  +    ],
+  +    "isTemplate": false,
+  +    "count": 1
+  +  },
+     {
+       "id": "5940a192-1fe4-4849-bea3-aeff5824c916",
+       "data": [  
+\end{lstlisting}
+
+\section{Test Agents 2-5}
+The diffs created from the other four test agents are not printet here to prevent the appendix from becoming too long. They can be found on my GitHub instead.\footnote{See https://github.com/arne-z/BachelorThesis/commits/master all commits that are prefixed with "Test Case".}

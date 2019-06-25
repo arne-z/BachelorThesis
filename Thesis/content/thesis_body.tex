@@ -100,7 +100,7 @@ This generator compiles DSL code into a collection of JSON files in a format acc
 
 \subsection{Requirenments for the DSL}
 
-In order to provide a tangible benefit the DSL must fulfill a number of requirements:
+In order to provide a tangible benefit, the DSL must fulfill a number of requirements:
 \begin{itemize}
     \item It needs to be significantly shorter than the JSON representation of an agent.
     \item It needs to be more readable than the JSON representation.
@@ -256,8 +256,8 @@ Testing and evaluation has been done by myself by referring back to the requirem
 The requirements I used for evaluation were:
 \begin{itemize}
     \item Length
-    \item Readability
     \item Diff size
+    \item Readability
     \item Automatic compilation and update
 \end{itemize}
 
@@ -265,9 +265,9 @@ In the following sections I will talk about each of these requirements and wheth
 
 \section{Length}
 
-In order to provide a tangible benefit the DSL code must be significantly shorter than the JSON representation. Coming back to the agent used in chapter four, I can show that the DSL code for that agent is exactly 23 lines long, while using a large amount of whitespace and linebreaks to support readability. \ref{RoomTemperature Agent DSL}
-The JSON version for this same agent, however, comes in at exactly 200 lines as you can see in the appendix. \ref{RoomTemperature Agent JSON}.
-This trend continues accross all my test cases, as you can see in \autoref{SizeChart}.
+In order to provide a tangible benefit, the DSL code must be significantly shorter than the JSON representation. Coming back to the agent used in chapter four, I can show that the DSL code for that agent is exactly 23 lines long, while using a large amount of whitespace and linebreaks to support readability (see \autoref{RoomTemperature Agent DSL}).
+The JSON version for this same agent, however, comes in at exactly 200 lines as you can see in the appendix (see \autoref{RoomTemperature Agent JSON}) - a trend that continues accross all my test cases, as can be seen in \autoref{SizeChart}.
+
 \begin{figure}
     \centering
     \begin{tikzpicture}
@@ -293,15 +293,17 @@ This trend continues accross all my test cases, as you can see in \autoref{SizeC
     \label{SizeChart}
     
 \end{figure}
-This demonstrates, that the DSL code for an agent is significantly shorter than the JSON version. This saves the developer valuable time, e.g. when conducting a code review. Going of numbers from \citeNeeded (Chris, code reading speed), reading the DSL code instead of the JSON files in the example given above would save a developer more than 50 minutes of code inspection. This is a large benefit in and of itself, but is amplified by the following point.
+
+This demonstrates that the DSL code for an agent is significantly shorter than the JSON version which saves the developer valuable time, e.g. when conducting a code review. This is a large benefit in and of itself, but it is amplified by the following point.
 
 
-\section{Diff size}
-In order to provide a tangible benefit the DSL code must create smaller diffs (sum of changed lines) than the JSON representation when making changes.
+\section{Diff Size}
+In order to provide a tangible benefit, the DSL code must create smaller diffs\footnote{A diff refers to the sum of changed lines in a change.} than the JSON representation when making changes.
 
-Using the air conditioning example again, when making a change - in this case adding more training phrases to an agent to allow additional functionality - the diff size shows a large difference between DSL code and JSON version. In this specific example, the DSL code has a diff of 7 lines //TODO PUT IN APPENDIX\footnote{\url{https://github.com/arne-z/BachelorThesis/commit/559f72d4dd8550d57bef8b42ee34678317e21fcb}} and the JSON version one of 124 lines. the other test cases can be see in \autoref{DiffChart}.
-//TODO PUT IN APPENDIX\footnote{\url{https://github.com/arne-z/BachelorThesis/commit/08255f4b1bff5a2bb4bf57319ab37033193429c5}}\\
-Another thing of note, is that the DSL code causes less unintended diffs, as some elemants of the JSON - like generated Unique Identifiers - can cause diffs that are unrelated to any intentional changes by the developer.
+Using the air conditioning example again, when making a change - in this case adding more training phrases to an agent to allow additional functionality - the diff size shows a large difference between DSL code and JSON version. In this specific example, the DSL code has a diff of 7 lines (as seen in \autoref{RoomTemperature Agent DSLDiff}) and the JSON version one of 124 lines (see \autoref{RoomTemperature Agent JSONDiff}).
+An overview of all test cases is given in \autoref{DiffChart}.
+
+It is also noteworthy that the DSL code causes less unintended diffs, as some elements of the JSON - like generated Unique Identifiers - can cause diffs that are unrelated to any intentional changes by the developer (as seen in \autoref{RoomTemperature Agent JSONDiff}).
 
 
 \begin{figure}
@@ -333,7 +335,7 @@ Another thing of note, is that the DSL code causes less unintended diffs, as som
 \section{Readability}
 
 While length is an objective criterion, readability is innately more subjetive, as it relates to how well a developer will be able to understand a piece of code.\\
-For this comparison I will focus on five criteria; the first three are reworded from Egon Elbre's "The psychology of code readability" \cite{Elbre}; the last two are based on my own observations.
+For this comparison I will focus on five criteria; the first three are reworded from developer Egon Elbre's article "The psychology of code readability" \cite{Elbre}; the last two are based on my own observations.
 \begin{itemize}
     \item Cohesive pieces of code, conveying one idea at a time.
     \item Descriptive - but not overly long - names and keywords.
@@ -421,7 +423,7 @@ For the DSL version I decided that a fallback intent should be defined as follow
             "I missed that, say that again?"
         action 'input.unknown'
 \end{verbatim}
-This example is the default fallback intent that every agent on the Dialogflow website is created with. Note that the definition begins with \textit{fallback Intent} instead of \textit{Intent}. This immediately makes it clear to the reader that this intent should be read as a fallback and not as a regular inent.
+This example is the default fallback intent that every agent on the Dialogflow website is created with. Note that the definition begins with \textit{fallback Intent} instead of \textit{Intent}. This immediately makes it clear to the reader that this intent should be read as a fallback and not as a regular intent.
 
 \subsubsection{Indentation and whitespace.}
 
