@@ -1,5 +1,5 @@
 {
-  "id": "38978c1e-c8d5-4ba0-a122-5e6cbcb25807",
+  "id": "dc906aa0-4bc2-499a-bf73-3deb8e6181e3",
   "name": "VolUp",
   "auto": true,
   "contexts": [],
@@ -9,6 +9,7 @@
       "action": "VolUp",
       "affectedContexts": [],
       "parameters": [],
+      "messages": [],
       "defaultResponsePlatforms": {},
       "speech": []
     }
@@ -16,7 +17,6 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1560427004,
   "fallbackIntent": false,
   "events": []
 }

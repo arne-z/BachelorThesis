@@ -1,0 +1,9 @@
+{
+  "id": "69fdbe8a-98c5-4796-a5f5-f52a81d2c137",
+  "name": "Era",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": false,
+  "allowFuzzyExtraction": false
+}

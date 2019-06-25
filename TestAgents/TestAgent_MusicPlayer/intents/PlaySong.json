@@ -1,5 +1,5 @@
 {
-  "id": "ec9125d3-a957-4f45-9c91-f7df98a5f40e",
+  "id": "75f2b470-864b-45fe-94c2-10b75f59a554",
   "name": "PlaySong",
   "auto": true,
   "contexts": [],
@@ -9,7 +9,7 @@
       "affectedContexts": [],
       "parameters": [
         {
-          "id": "2cc32242-b0cd-49ed-8d3c-6ddb223dfcad",
+          "id": "75d10441-21c4-455a-8890-14faf543a026",
           "required": false,
           "dataType": "@sys.music-artist",
           "name": "Artist",
@@ -17,7 +17,7 @@
           "isList": false
         },
         {
-          "id": "ed276c5f-db95-4ba2-8a4e-96260452f12c",
+          "id": "a130892b-b392-4ebd-a805-fbce45368cb1",
           "required": false,
           "dataType": "@sys.music-genre",
           "name": "Genre",
@@ -25,14 +25,23 @@
           "isList": false
         },
         {
-          "id": "066a4d3e-e090-4f6e-b8b6-f70d30a306ab",
+          "id": "400d5b2f-7a01-43d4-a345-be014cbf36c0",
           "required": false,
           "dataType": "@sys.any",
           "name": "Title",
           "value": "$Title",
           "isList": false
+        },
+        {
+          "id": "fe6b28e4-ed38-49db-b44e-f4e688f7c2ef",
+          "required": false,
+          "dataType": "@Era",
+          "name": "Era",
+          "value": "$Era",
+          "isList": false
         }
       ],
+      "messages": [],
       "defaultResponsePlatforms": {},
       "speech": []
     }
@@ -40,7 +49,6 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1560427004,
   "fallbackIntent": false,
   "events": []
 }

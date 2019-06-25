@@ -1,12 +1,12 @@
 {
-  "id": "9cf4a63b-29a5-4d4c-9e52-26093d3d01b1",
-  "name": "VolDown",
+  "id": "d704d163-109a-4d73-8cc7-c7a8a46bd5d7",
+  "name": "NextSong",
   "auto": true,
   "contexts": [],
   "responses": [
     {
       "resetContexts": false,
-      "action": "VolDown",
+      "action": "NextSong",
       "affectedContexts": [],
       "parameters": [],
       "messages": [],
@@ -15,7 +15,7 @@
     }
   ],
   "priority": 500000,
-  "webhookUsed": true,
+  "webhookUsed": false,
   "webhookForSlotFilling": false,
   "fallbackIntent": false,
   "events": []

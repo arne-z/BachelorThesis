@@ -4,7 +4,8 @@
   "disableInteractionLogs": false,
   "disableStackdriverLogs": true,
   "googleAssistant": {
-    "googleAssistantCompatible": false,
+    "googleAssistantCompatible": true,
+    "project": "testagent-bachelor-thesis",
     "welcomeIntentSignInRequired": false,
     "startIntents": [],
     "systemIntents": [],
