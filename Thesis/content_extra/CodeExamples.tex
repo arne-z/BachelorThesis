@@ -85,36 +85,35 @@ Agent MusicPlayer
 \end{lstlisting}
 
 
-\section{QuoteBot Agent}
-\label{QuoteBot Agent DSL}
+\section{Calendar Agent}
+\label{Calendar Agent DSL}
 
 \begin{lstlisting}
-Agent QuoteBot
+Agent Calendar
   language en
+
+  Webhook
+    active
+    url "https://fake.calendar_controller.com/vi_webhook"
   
-  Intent OscarWildeQuote
+  Type Entry
+    values 
+      "Appointment", 
+      "Reminder", 
+      "Event"
+    auto_expand
+  
+  Intent AddEntry
+    parameters 
+      Entry Entry
+      Time date_time (required prompts "For when should I
+        enter that entry?")
+      Title any (required prompts "What should I call the entry?")
     trained with phrase
-      "Tell me a quote by Oscar Wilde",
-      "What would Oscar Wilde say"
-    response
-      "To live is the rarest thing in the world. 
-        Most people exist, that is all."
-      "Only dull people are brilliant at breakfast."
-      "I think God, in creating man,
-        somewhat overestimated his ability."
-      "Democracy means simply the bludgeoning of the people
-        by the people for the people."
-      
-  Intent EinsteinQuote
-    trained with phrase
-      "Tell me a quote by Albert Einstein",
-      "What would Einstein say"
-    response
-      "Two things are infinite: the universe and
-        human stupidity; and I'm not sure about the universe."
-      "If you can't explain it to a six year old,
-        you don't understand it yourself."
-      "Never memorize something that you can look up."
+      "Add a new" Entry "for" Time,
+      "Add a new" Entry,
+      "Add a" Entry "at" Time Title
+    webhook_fullfillment
 \end{lstlisting}
 
 
@@ -171,33 +170,34 @@ Agent JokeBot
 \end{lstlisting}
 
 
-\section{Calendar Agent}
-\label{Calendar Agent DSL}
+\section{QuoteBot Agent}
+\label{QuoteBot Agent DSL}
 
 \begin{lstlisting}
-Agent Calendar
+Agent QuoteBot
   language en
-
-  Webhook
-    active
-    url "https://fake.calendar_controller.com/vi_webhook"
   
-  Type Entry
-    values 
-      "Appointment", 
-      "Reminder", 
-      "Event"
-    auto_expand
-  
-  Intent AddEntry
-    parameters 
-      Entry Entry
-      Time date_time (required prompts "For when should I
-        enter that entry?")
-      Title any (required prompts "What should I call the entry?")
+  Intent OscarWildeQuote
     trained with phrase
-      "Add a new" Entry "for" Time,
-      "Add a new" Entry,
-      "Add a" Entry "at" Time Title
-    webhook_fullfillment
+      "Tell me a quote by Oscar Wilde",
+      "What would Oscar Wilde say"
+    response
+      "To live is the rarest thing in the world. 
+        Most people exist, that is all."
+      "Only dull people are brilliant at breakfast."
+      "I think God, in creating man,
+        somewhat overestimated his ability."
+      "Democracy means simply the bludgeoning of the people
+        by the people for the people."
+      
+  Intent EinsteinQuote
+    trained with phrase
+      "Tell me a quote by Albert Einstein",
+      "What would Einstein say"
+    response
+      "Two things are infinite: the universe and
+        human stupidity; and I'm not sure about the universe."
+      "If you can't explain it to a six year old,
+        you don't understand it yourself."
+      "Never memorize something that you can look up."
 \end{lstlisting}
