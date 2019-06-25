@@ -3,7 +3,7 @@ Agent JokeBot
 	
 	Webhook
 		active
-		url "https://fake.rate_my_jokes.com/vi_webhook"
+		url "https://fake.rate_some_jokes.com/vi_webhook"
 	
 	Intent DadJoke
 		contexts 
@@ -14,6 +14,8 @@ Agent JokeBot
 			"Do you know any dad jokes?"
 		response 
 			"What is brown and sticky? ... A stick."
+			"What do you call a monkey that loves Doritos? A chipmunk!"
+			"Why did the can crusher quit his job? Because it was soda pressing!"
 			"My wife is really mad at the fact that I have no sense of direction. So I packed up my stuff and right."
 			"I bought some shoes from a drug dealer. I don't know what he laced them with, but I was tripping all day!"
 			"Why can't you hear a pterodactyl go to the bathroom? Because the pee is silent."
@@ -28,6 +30,7 @@ Agent JokeBot
 			"I liked that joke"
 		response
 			"Glad you liked it."
+			"I tell the best Jokes!"
 		webhook_fullfillment
 	
 	Intent RateJokeNegative
@@ -37,7 +40,9 @@ Agent JokeBot
 		trained with phrase
 			"Bad joke",
 			"Don't tell that joke again",
-			"Thanks, I hate it."
+			"Thanks, I hate it.",
+			"Please don't tell that Joke again."
 		response
 			"Well that's your loss, I like the Joke."
+			"Didn't like the Joke? Sucks to be you I guess."
 		webhook_fullfillment
