@@ -4,7 +4,8 @@
   "disableInteractionLogs": false,
   "disableStackdriverLogs": true,
   "googleAssistant": {
-    "googleAssistantCompatible": false,
+    "googleAssistantCompatible": true,
+    "project": "testagent-bachelor-thesis",
     "welcomeIntentSignInRequired": false,
     "startIntents": [],
     "systemIntents": [],
@@ -20,7 +21,7 @@
   },
   "defaultTimezone": "Europe/Madrid",
   "webhook": {
-    "url": "https://fake.rate_my_jokes.com/vi_webhook",
+    "url": "https://fake.rate_some_jokes.com/vi_webhook",
     "available": true,
     "useForDomains": false,
     "cloudFunctionsEnabled": false,

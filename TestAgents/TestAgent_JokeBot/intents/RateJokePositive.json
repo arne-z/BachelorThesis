@@ -1,5 +1,5 @@
 {
-  "id": "f36e27b7-5b16-40ff-b3dc-a968e3f3ae49",
+  "id": "d7299678-33de-49e1-ae07-44a1a1a76193",
   "name": "RateJokePositive",
   "auto": true,
   "contexts": [
@@ -15,7 +15,10 @@
         {
           "type": 0,
           "lang": "en",
-          "speech": "Glad you liked it."
+          "speech": [
+            "Glad you liked it.",
+            "I tell the best Jokes!"
+          ]
         }
       ],
       "defaultResponsePlatforms": {},
@@ -25,7 +28,6 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1560427009,
   "fallbackIntent": false,
   "events": []
 }

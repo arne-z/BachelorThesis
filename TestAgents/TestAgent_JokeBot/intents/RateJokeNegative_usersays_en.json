@@ -1,6 +1,6 @@
 [
   {
-    "id": "92c83753-ea84-4ca5-a334-70a6df4e8e8a",
+    "id": "defaf670-9017-4727-a703-71e713a768e0",
     "data": [
       {
         "text": "Bad joke ",
@@ -9,10 +9,10 @@
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1560427009
+    "updated": 0
   },
   {
-    "id": "df0fb1b4-1c85-439a-b032-90c6db8c5768",
+    "id": "38753617-a4d5-4380-8434-4187cf728076",
     "data": [
       {
         "text": "Don\u0027t tell that joke again ",
@@ -21,10 +21,10 @@
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1560427009
+    "updated": 0
   },
   {
-    "id": "a2a09216-fd96-495c-8810-d9ff530c9429",
+    "id": "d089f4c1-fcc5-49ed-8331-8102fa58ea76",
     "data": [
       {
         "text": "Thanks, I hate it. ",
@@ -33,6 +33,18 @@
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1560427009
+    "updated": 0
+  },
+  {
+    "id": "b54ce714-fa56-4296-b0d3-d19c73dc4d8e",
+    "data": [
+      {
+        "text": "Please don\u0027t tell that Joke again. ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
   }
 ]

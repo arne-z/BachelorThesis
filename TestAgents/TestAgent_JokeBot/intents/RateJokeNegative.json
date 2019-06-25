@@ -1,5 +1,5 @@
 {
-  "id": "6925a223-1e4c-44d6-9bfe-effe1a3a6443",
+  "id": "09c70319-5064-4a3b-9e5a-0db058b342b8",
   "name": "RateJokeNegative",
   "auto": true,
   "contexts": [
@@ -15,7 +15,10 @@
         {
           "type": 0,
           "lang": "en",
-          "speech": "Well that\u0027s your loss, I like the Joke."
+          "speech": [
+            "Well that\u0027s your loss, I like the Joke.",
+            "Didn\u0027t like the Joke? Sucks to be you I guess."
+          ]
         }
       ],
       "defaultResponsePlatforms": {},
@@ -25,7 +28,6 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1560427009,
   "fallbackIntent": false,
   "events": []
 }

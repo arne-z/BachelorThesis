@@ -1,5 +1,5 @@
 {
-  "id": "893933f7-7ad5-4750-af84-0b4d72f686fd",
+  "id": "35cd1ef1-bdab-4ffd-9207-fe1e9133882d",
   "name": "DadJoke",
   "auto": true,
   "contexts": [],
@@ -20,6 +20,8 @@
           "lang": "en",
           "speech": [
             "What is brown and sticky? ... A stick.",
+            "What do you call a monkey that loves Doritos? A chipmunk!",
+            "Why did the can crusher quit his job? Because it was soda pressing!",
             "My wife is really mad at the fact that I have no sense of direction. So I packed up my stuff and right.",
             "I bought some shoes from a drug dealer. I don\u0027t know what he laced them with, but I was tripping all day!",
             "Why can\u0027t you hear a pterodactyl go to the bathroom? Because the pee is silent."
@@ -33,7 +35,6 @@
   "priority": 500000,
   "webhookUsed": false,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1560427009,
   "fallbackIntent": false,
   "events": []
 }
