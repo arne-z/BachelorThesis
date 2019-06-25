@@ -266,9 +266,8 @@ In the following sections I will talk about each of these requirements and wheth
 
 \section{Length}
 
-In order to provide a tangible benefit the DSL code must be significantly shorter than the JSON representation. Coming back to the agent used in chapter four, I can show that the DSL code for that agent is exactly 23 lines long, while using a large amount of whitespace and linebreaks to support readability.
-
-The JSON version for this same agent, however, comes in at exactly 200 lines as you can see in the appendix. \ref{} //TODO \url{https://github.com/arne-z/BachelorThesis/commit/d61614158d41d72bb72f28f941718a707d72a5e0}
+In order to provide a tangible benefit the DSL code must be significantly shorter than the JSON representation. Coming back to the agent used in chapter four, I can show that the DSL code for that agent is exactly 23 lines long, while using a large amount of whitespace and linebreaks to support readability. \ref{RoomTemperature Agent DSL}
+The JSON version for this same agent, however, comes in at exactly 200 lines as you can see in the appendix. \ref{RoomTemperature Agent JSON}.
 This trend continues accross all my test cases, as you can see in \autoref{SizeChart}.
 \begin{figure}
     \centering
@@ -287,7 +286,7 @@ This trend continues accross all my test cases, as you can see in \autoref{SizeC
             ]
         \addplot coordinates {(RoomTemperature,23) (Calendar,24) (JokeBot,43) (MusicPlayer, 46) (OuoteBot, 21)};
         \addplot coordinates {(RoomTemperature,200) (Calendar,210) (JokeBot,256) (MusicPlayer, 409) (OuoteBot, 158)};
-        \legend{dfc,JSON}
+        \legend{DSL,JSON}
         \end{axis}
     \end{tikzpicture}
     
@@ -321,9 +320,9 @@ Another thing of note, is that the DSL code causes less unintended diffs, as som
             nodes near coords,
             nodes near coords align={vertical},
             ]
-        \addplot coordinates {(RoomTemperature,23) (Calendar,24) (JokeBot,43) (MusicPlayer, 46) (OuoteBot, 21)};
-        \addplot coordinates {(RoomTemperature,200) (Calendar,210) (JokeBot,256) (MusicPlayer, 409) (OuoteBot, 158)};
-        \legend{dfc,JSON}
+        \addplot coordinates {(RoomTemperature,11) (Calendar,3) (JokeBot,9) (MusicPlayer, 15) (OuoteBot, 6)};
+        \addplot coordinates {(RoomTemperature,89) (Calendar,85) (JokeBot,74) (MusicPlayer, 202) (OuoteBot, 30)};
+        \legend{DSL,JSON}
         \end{axis}
     \end{tikzpicture}
     
