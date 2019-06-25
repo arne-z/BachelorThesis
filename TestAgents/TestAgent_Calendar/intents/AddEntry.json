@@ -1,5 +1,5 @@
 {
-  "id": "22b91445-bc55-42a8-9938-760bcdc2a471",
+  "id": "22094c6e-7327-4a1b-89b7-0a3f57a7667e",
   "name": "AddEntry",
   "auto": true,
   "contexts": [],
@@ -9,7 +9,7 @@
       "affectedContexts": [],
       "parameters": [
         {
-          "id": "3d56121e-87cc-487c-9db1-f29825502604",
+          "id": "004a42e2-7602-418c-bbf9-84b5f748c9d8",
           "required": false,
           "dataType": "@Entry",
           "name": "Entry",
@@ -17,7 +17,7 @@
           "isList": false
         },
         {
-          "id": "18bb87d4-840d-4b9b-a842-f07cc69cb80c",
+          "id": "00966f5b-1834-46e0-a675-08215dd1759c",
           "required": true,
           "dataType": "@sys.date-time",
           "name": "Time",
@@ -31,7 +31,7 @@
           "isList": false
         },
         {
-          "id": "4ea0e686-b979-4491-96fb-2430d9cd1952",
+          "id": "6773b656-0c89-4a67-af44-3391b915021a",
           "required": true,
           "dataType": "@sys.any",
           "name": "Title",
@@ -43,8 +43,17 @@
             }
           ],
           "isList": false
+        },
+        {
+          "id": "9b66a339-1704-4e94-b39a-1c0d56a2e12a",
+          "required": false,
+          "dataType": "@sys.any",
+          "name": "Note",
+          "value": "$Note",
+          "isList": false
         }
       ],
+      "messages": [],
       "defaultResponsePlatforms": {},
       "speech": []
     }
@@ -52,7 +61,6 @@
   "priority": 500000,
   "webhookUsed": true,
   "webhookForSlotFilling": false,
-  "lastUpdate": 1560427014,
   "fallbackIntent": false,
   "events": []
 }

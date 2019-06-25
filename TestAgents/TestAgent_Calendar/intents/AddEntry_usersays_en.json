@@ -1,6 +1,6 @@
 [
   {
-    "id": "6562a974-1eaa-455e-a958-bcd2ea9ccfab",
+    "id": "07fe1942-ce97-4994-b534-3ad6f9eb287b",
     "data": [
       {
         "text": "Add a new ",
@@ -25,10 +25,10 @@
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1560427014
+    "updated": 0
   },
   {
-    "id": "de1a0dc6-cf8c-4bd9-b534-8ac9cf74138d",
+    "id": "c2474a5c-ed35-4186-9704-354667d54332",
     "data": [
       {
         "text": "Add a new ",
@@ -43,10 +43,10 @@
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1560427014
+    "updated": 0
   },
   {
-    "id": "e4b2bb4c-c293-42b5-9cb0-94bd5b138e0e",
+    "id": "7ea3cb28-44bb-406e-8e20-008329ab61eb",
     "data": [
       {
         "text": "Add a ",
@@ -73,10 +73,60 @@
         "alias": "Title",
         "meta": "@sys.any",
         "userDefined": true
+      },
+      {
+        "text": "Add a ",
+        "userDefined": false
+      },
+      {
+        "text": "Entry ",
+        "alias": "Entry",
+        "meta": "@Entry",
+        "userDefined": true
+      },
+      {
+        "text": "with note ",
+        "userDefined": false
+      },
+      {
+        "text": "Note ",
+        "alias": "Note",
+        "meta": "@sys.any",
+        "userDefined": true
+      },
+      {
+        "text": "Add a ",
+        "userDefined": false
+      },
+      {
+        "text": "Entry ",
+        "alias": "Entry",
+        "meta": "@Entry",
+        "userDefined": true
+      },
+      {
+        "text": "at ",
+        "userDefined": false
+      },
+      {
+        "text": "Time ",
+        "alias": "Time",
+        "meta": "@sys.date-time",
+        "userDefined": true
+      },
+      {
+        "text": "with note ",
+        "userDefined": false
+      },
+      {
+        "text": "Note ",
+        "alias": "Note",
+        "meta": "@sys.any",
+        "userDefined": true
       }
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1560427014
+    "updated": 0
   }
 ]
