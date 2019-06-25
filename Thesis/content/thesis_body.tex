@@ -22,26 +22,28 @@ These tools are interacted with through a website which provides a graphical edi
 \section{Version Control}
 While the web interface makes initial setup of the voice interface easier for a single domain expert or developer, new difficulties arise when a team of developers is working on a voice interface in an iterative fashion. It becomes crucial for the team to manage versions and track changes to the interface along with the changes to the application the interface is supporting. 
 
-As Martin Charles states in the text accompanying his Dialogflow CLI community tool:
-\begin{quote}
-    DialogFlow stores intents and entities outside of source control. This makes rollbacks and keeping track of history difficult. \cite[page 1]{0xcaff2018}
-\end{quote} 
-
+As Martin Charles states in the text accompanying his Dialogflow CLI community tool \cite[page 1]{0xcaff2018}:
+\zitat{
+    DialogFlow stores intents and entities outside of source control. This makes rollbacks and keeping track of history difficult.
+}
 The state of the art solution for managing iterative work in development teams is Git. On GitHub alone there are more than 190 million Git repositories at present as can bee seen by looking at \cite{Githuba}.
 Git provides a functionality for saving snapshots of specific iteration in your project and handling the problems that come up in iterative work.
-These problems are:
-\begin{itemize}
-    \item merging work done by multiple users
-    \item ensuring that a stable version of a project is saved while developers are working on more experimental changes
-    \item giving the team the ability to easily track and revert changes that have been made.
-\end{itemize}
+\begin{samepage}
+    These problems are:
+    \begin{itemize}
+        \item merging work done by multiple users
+        \item ensuring that a stable version of a project is saved while developers are working on more experimental changes
+        \item giving the team the ability to easily track and revert changes that have been made.
+    \end{itemize}
+\end{samepage}
+
 The issue that arises is that the above mentioned technologies are not compatible and the configuration of a voice interface can easily get out of sync with the changes made to the application and managed in Git.
 
 \section{Lack of Solution}
-A solution like this has not been built for Dialogflow, most likely because voice interface tools like Amazon Lex or Google Dialogflow are a newer development, with Dialogflow having only existed in its current fashion since it's accuiry by Google at the end of 2016 \cite{Huffman2016} and the Dialogflow V2 API that I am using, and that was necessary for the success of this project currently being in Beta stage. The V2 API is generally available since 17 April 2018 \cite{Imrie-Situnayake2018}
+A solution like this has not been built for Dialogflow, most likely because voice interface tools like Amazon Lex or Google Dialogflow are a newer development, with Dialogflow having only existed in its current fashion since it's acquisition by Google at the end of 2016 \cite{Huffman2016} and the Dialogflow V2 API that I am using, and that was necessary for the success of this project currently being in Beta stage. The V2 API is generally available since 17 April 2018 \cite{Imrie-Situnayake2018}
 And “V1 of Dialogflow´s API will be deprecated on October 23, 2019” \cite{Dialogflow}.
 Dialogflow is currently still transitioning to the use oft he new V2 API.
-It is the V2 API that makes this project possible because it includes the agent management APIs used for exporting, importing, and updating of Dialogflow "agents" (this is what Google calls a specific voice interface) using the JSON format.
+It is the V2 API that makes this project possible because it includes the agent management APIs used for exporting, importing, and updating of Dialogflow agents \footnote{Agent is what Google calls a specific voice interface.} using the JSON format.
 
 \chapter{Problem Statement}
 
@@ -87,7 +89,7 @@ For this purpose, I designed a domain specific language (DSL) in order to create
 
 \subsection{What is a DSL?}
 
-DSL stands for domain specific language. In contrast to a GPL (general purpose language) a DSL is a smaller and more narrow programming language, and oftentimes is not turing complete. The advantage of a DSL comes in the form of concise syntax, that is streamlined for one specific purpose. While a GPL has to allow the user to be able to build quite literally anything within the constraints of the language, the DSL makes no such claims but can instead provide shortcuts for the few things that it is able to do.
+DSL stands for domain specific language. In contrast to a GPL (general purpose language) a DSL is a smaller and more narrow programming language, and oftentimes is not turing complete. The advantage of a DSL comes in the form of concise syntax, that is streamlined for one specific purpose. While a GPL has to allow the user to be able to build quite literally anything within the constraints of the language, the DSL makes no such claims but can instead provide shortcuts for the few things that it is able to do. (Compare chapter 2 in \cite{Voelter2013}.)
 
 The DSL prototype I built consists of two main parts.\\
 Firstly, there is a grammar which defines all possible combinations of words that can be used to write in this language.
@@ -220,10 +222,6 @@ The last and most vital step is to create an intent that the agent can understan
         \label{CreateIntent}
 \end{figure}
 
-\subsubsection{Summary}
-From the above it becomes apparent that the DSL I designed is a viable alternative to using the Web interface.
-From personal expirience I can say, that I can configure an agent more quickly in the DSL code than in the Web interface. However in the following section of this chapter, I will talk about which conseccions I had to make and which disadvantages the DSL still has to overcome, for some of which I will offer solutions.
-
 \subsection{Usage}
 
 When developing with the DSL I designed, in order to update the Dialogflow agent on the web, you run the compiler for the DSL using the DSL code as input; the output will be a full JSON representation of the Dialogflow agent which can be sent to the Dialogflow V2API.
@@ -239,17 +237,18 @@ This allows the user to have the type exist in the DSL and be valid for syntax v
 
 \section{Target Group}
 
-This project is directed at teams of developers who will be working on an angent for an extended time, and for whom using version control is a neccessity
+This project is directed at teams of developers who will be working on an agent for an extended time, and for whom using version control is a neccessity.
+If however, you are a small group under time pressure, and you do not need to maintain the agent throughout it's co-evolution with your application, continuing to use the Dialogflow web interface will be simpler.
 
-If however, you are a small group under time pressure, and you do not need to maintain the agent throughout it's co evolution with your application, continuing to use the Dialogflow web interface will simpler.
-
-Developer who will profit from the tool I have designed, will see advantages in the following aspects, mostly by virtue of being able to integrate with Git:
-\begin{itemize}
-    \item Teamwork: \\ Looking up changes by kolleagues.
-    \item Learning: \\ Help avoid repeating mistakes and provide a solution to bugs that were solved before.
-    \item History: \\ Allow new developers joing the team to get an overview of the project so far and allow important workflows like finding out wich version introduced a bug.
-    \item Consistency: \\ Make code reviews for changes to an agent possible, which reduces bugs and impoves code quality \citeNeeded.
-\end{itemize}
+\begin{samepage}
+    Developers who will profit from the tool I have designed, will see advantages in the following aspects, mostly by virtue of being able to integrate with Git:
+    \begin{itemize}
+        \item Teamwork: \\ Looking up changes by colleagues.
+        \item Learning: \\ Help avoid repeating mistakes and have a solution to bugs that were solved before ready.
+        \item History: \\ Allow new developers joing the team to get an overview of the project so far and allow important workflows like finding out wich version introduced a bug.
+        \item Consistency: \\ Make code reviews for changes to an agent possible, which reduces bugs and impoves code quality.
+    \end{itemize}
+\end{samepage}
 
 \chapter{Evaluation}
 In the following chapter I will evaluate the performance of my DSL-prototype.
