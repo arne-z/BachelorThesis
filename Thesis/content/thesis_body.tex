@@ -121,13 +121,13 @@ In order to show this, I will walk you through an example agent I created for te
 First a developer needs to create a new agent. To do so, they click on "create agent" and enter the agent's name and language as seen in \autoref{CreateAgent}.
 To achieve the same effect in DSL code, a developer would enter the following:
 \begin{samepage}
-    \begin{lstlisting}
+    \begin{DSL}
         Agent TestAgent_RoomTemperature
             language en 
-    \end{lstlisting}
+    \end{DSL}
 \end{samepage}
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=1\textwidth]{Thesis_Images/CreateAgent.PNG}
     \caption{Creating an agent on Dialogflow.}
@@ -139,7 +139,7 @@ In the next step, an entity-type needs to be created to allow to intuitively tur
 In Dialogflow, this is achieved by filling in the form seen in \autoref{CreateType}.
 In DSL code, the same can be done by writing the following:
 \begin{samepage}    
-    \begin{lstlisting}
+    \begin{DSL}
         Agent TestAgent_RoomTemperature
             language en 
         
@@ -148,10 +148,10 @@ In DSL code, the same can be done by writing the following:
                     "On" ("Active" "Enabled" "On"),
                     "Off" ("Inactive" "Disabled" "Off")
                 auto_expand
-    \end{lstlisting}
+    \end{DSL}
 \end{samepage}
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=1\textwidth]{Thesis_Images/CreateType.PNG}
     \caption{Creating an entity-type on Dialogflow.}
@@ -162,7 +162,7 @@ In DSL code, the same can be done by writing the following:
 For the agent to actually affect an air conditioner in the real world, it needs to send the user's request to a webserver. To do so, a webhook is enabled in Dialogflow by filling in the form as seen in \autoref{CreateWebhook}.
 In DSL code, the same can be achieved:
 \begin{samepage}
-    \begin{lstlisting}
+    \begin{DSL}
     Agent TestAgent_RoomTemperature
         language en 
             
@@ -175,10 +175,10 @@ In DSL code, the same can be achieved:
                 "Off" ("Inactive" "Disabled" "Off"),
                 "On" ("Active" "Enabled" "On")
             auto_expand
-    \end{lstlisting}
+    \end{DSL}
 \end{samepage}
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=1\textwidth]{Thesis_Images/CreateWebhook.PNG}
     \caption{Setting a webhook on Dialogflow.}
@@ -186,9 +186,17 @@ In DSL code, the same can be achieved:
 \end{figure}
 
 \subsubsection{Step 4: Writing an Intent}
+
 The last and most vital step is to create an intent that the agent can understand. This is done on the website by filling in the form seen in \autoref{CreateIntent} and can alternatively be achieved in DSL code as follows:
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{Thesis_Images/CreateIntent.PNG}
+    \caption{Setting up an intent on Dialogflow.}
+        \label{CreateIntent}
+\end{figure}
 \begin{samepage}
-    \begin{lstlisting}
+    \begin{DSL}
         Agent TestAgent_RoomTemperature
             language en 
                 
@@ -204,7 +212,8 @@ The last and most vital step is to create an intent that the agent can understan
 
             Intent SwitchAC
                 parameters
-                    state ACState (required prompts "Did you want the AC turned On or Off?")
+                    state ACState (required prompts 
+                        "Did you want the AC turned On or Off?")
                 trained with phrase
                     "Turn" state "the AC",
                     "Set the AC to" state,
@@ -212,15 +221,8 @@ The last and most vital step is to create an intent that the agent can understan
                     "I want the AC turned" state,
                     "Make sure the AC is" state
                 webhook_fullfillment
-    \end{lstlisting}
+    \end{DSL}
 \end{samepage}
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=1\textwidth]{Thesis_Images/CreateIntent.PNG}
-    \caption{Setting up an intent on Dialogflow.}
-        \label{CreateIntent}
-\end{figure}
 
 \subsection{Usage}
 
@@ -341,7 +343,7 @@ For this comparison I will focus on five criteria; the first three are reworded 
 
 The following piece of JSON configuration defines a single training phrase for the SwitchAC intent, from the same example used above. The intent itself is not defined in the same file, since training phrases are kept in a seperate file in the JSON configuration.
 \begin{samepage}
-    \begin{lstlisting}
+    \begin{JSON}
         {
             "id": "ed813a56-e6e9-4bce-b0ed-dca488102333",
             "data": [
@@ -364,14 +366,14 @@ The following piece of JSON configuration defines a single training phrase for t
             "count": 0,
             "updated": 1560083189
           },
-    \end{lstlisting}
+    \end{JSON}
 \end{samepage}
 
 This is equivalent to the following lines found in my SwitchAC example:
-\begin{lstlisting}
+\begin{DSL}
     trained with phrase
         "Turn" state "the AC"
-\end{lstlisting}
+\end{DSL}
 As can clearly be seen, the JSON configuration is intended for automatic parsing, rather than for human readability. It is also limited by the key value and stringly typed nature of the configuration in JSON format. In my DSL, the training phrase can easily be traced back to it's intent, which is defined just three lines above in the room temperature example.
 
 \subsubsection{Descriptive - but not overly long - names and keywords}
@@ -384,10 +386,10 @@ In contrast, the JSON example I showed above contains keys with names like "data
 \subsubsection{Using idioms from natural language}
 
 When designing the syntax for my DSL, I tried - whenever possible - to use syntax that reads like a normal sentence in natural language. This is why a developer writes: 
-\begin{lstlisting}
+\begin{DSL}
     trained with file
         "filename"
-\end{lstlisting}
+\end{DSL}
 in order to include a file with pre-generated training phrases. A reader can immediately understand what the otherwise not always recognizable filename refers to.
 
 In contrast, the JSON representation is modeled after the structure of a JavaScript object and is meant to accurately describe objects and their attributes in computer progams. It does not use idioms from natural language to attempt intuitive understanding of an agent's behaviour.
@@ -395,13 +397,13 @@ A specific advantage of the DSL version is that it was designed from the beginni
 
 A specific example worth mentioning here is the definition of a fallback intent, which is an intent only used if no other intent can match the user's utterance.
 In the JSON representation a fallback intent is only different from a regular intent by a boolean value at the very bottom of the intent description:
-\begin{lstlisting}
+\begin{JSON}
     "fallbackIntent": true,
-\end{lstlisting}
+\end{JSON}
 This works perfectly fine if the intention is for the file to be parsed by a computer, but for human readability, the way the Dialogflow website handles this is much more beneficial.
 On the website a fallback intent is visually distinguished from normal intents and is created with a separate button.
 For the DSL version, I decided that a fallback intent should be defined as follows:
-\begin{lstlisting}
+\begin{DSL}
     fallback Intent DefaultFallbackIntent
         response 
             "I didn\u0027t get that. Can you say it again?"
@@ -417,7 +419,7 @@ For the DSL version, I decided that a fallback intent should be defined as follo
             "I didn\u0027t get that. Can you repeat?"
             "I missed that, say that again?"
         action 'input.unknown'
-\end{lstlisting}
+\end{DSL}
 This example is the default fallback intent that every agent on the Dialogflow website is created with. Note that the definition begins with \textit{fallback Intent} instead of \textit{Intent}. This immediately makes it clear to the reader that this intent should be read as a fallback and not as a regular intent.
 
 \subsubsection{Indentation and whitespace}
@@ -432,9 +434,9 @@ As a further project, but not possible in the scope of this thesis, an automatic
 
 One of the most important ways of reducing clutter in the agent configuration - and of thereby reducing the configuration's size - is to leave out unneccessary values like unchanged default values and empty values.
 If an agent does not have a description, the JSON representation will carry the following line.
-\begin{lstlisting}
+\begin{JSON}
     "description": "",
-\end{lstlisting}
+\end{JSON}
 Instead, the DSL version simply will not have a line concerning the description, since it is not changed from it's default value of being an empty string.
 The same is done for a large number of settings that a developer is able to change in DSL code but that have a default value in Dialogflow. They need not be displayed in DSL code if the deafult value is not changed.
 
@@ -457,10 +459,12 @@ Below, you can see an example of the CircleCI job configuration that I set up fo
                 - checkout
                 - run: > 
                     wget -O ./dfc_compiler.jar
-                    https://github.com/arne-z/BachelorThesis/releases/...
+                    https://github.com/arne-z/BachelorThesis/...
                 - run: yarn install
-                - run: java -jar ./dfc_compiler.jar ./Agent/Tobito.dfc
-                - run: echo $GOOGLE_CERT_FILE_64 | base64 --decode > ./googleKey.json
+                - run: > java -jar ./dfc_compiler.jar 
+                    ./Agent/Tobito.dfc
+                - run: > echo $GOOGLE_CERT_FILE_64 
+                    | base64 --decode > ./googleKey.json
                 - run: >
                     node ./utility/importAgent.js 
                     --dir ./src-gen 
@@ -488,19 +492,19 @@ The way parameters are entered in Dialogflow is an interesting example of this, 
 Similarly, Dialogflow switched from what is called \textit{template mode}, where a training phrase would be described as, e.g.: "Turn state the AC", to what is called \textit{example mode}, which means the phrase would be: "Turn on the AC" - with the "on" being annotated to show that it is meant to represent a number of possible values.
 In order to translate this to a text based interface, I considered a solution that would have looked as follows:
 
-\begin{lstlisting}
+\begin{DSL}
     intent SampleIntent
         trained with phrase
             "Turn {on : state} the AC"
-\end{lstlisting}
+\end{DSL}
 
 I eventually decided against this, as I perceived this solution to make both writing and reading the training phrases unneccessaryly difficult. Instead I decided to continue using the template format for the DSL as seen below:
 
-\begin{lstlisting}
+\begin{DSL}
     intent SampleIntent
         trained with phrase
             "Turn" state "the AC"
-\end{lstlisting}
+\end{DSL}
 
 This works and is fairly easy to read but is still a compromise and doesn't quite allow the same user experience as the Dialogflow website.
 

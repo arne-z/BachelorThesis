@@ -8,6 +8,8 @@
 \documentclass{hpi_thesis}
 \input{template/commands}
 \usepackage{pgfplots}
+\usepackage{color}
+
 \pgfplotsset{width=7cm,compat=1.8}
 
 
@@ -38,10 +40,79 @@
 	}
 	
 	\lstset{
-		frame=single,
-		numbers=left,
-		tabsize=2
+			frame=single,
+			numbers=left,
+			tabsize=2
 	}
+	
+	\lstnewenvironment{JSON}{
+		\lstset{
+			language=C++,
+			frame=single,
+			numbers=left,
+			tabsize=2,
+			basicstyle=\ttfamily,
+			keywordstyle=\color{purple}\bfseries,
+			stringstyle=\ttfamily\color{blue},
+			showstringspaces=false
+		}
+	}{}
+	
+	\lstnewenvironment{DSL}{
+		\lstset{
+			language=C++,
+			frame=single,
+			numbers=left,
+			tabsize=2,
+			basicstyle=\ttfamily,
+			keywordstyle=\color{purple}\bfseries,
+			stringstyle=\ttfamily\color{blue},
+			showstringspaces=false,
+			morekeywords={
+				Agent,
+				language,
+				description,
+				version,
+				ml_classification_threshold,
+				disable_logs,
+				log_to_google_cloud,
+				public,
+				no_hybrid_match_mode,
+				fallback,
+				Intent,
+				contexts,
+				input,
+				output,
+				parameters,
+				trained,
+				with,
+				phrase,
+				file,
+				response,
+				action,
+				events,
+				webhook_fullfillment,
+				webhook_slot_filling,
+				disable_ml,
+				end_of_conversation,
+				lifespan,
+				required,
+				prompts,
+				list,
+				Type,
+				dynamic,
+				values,
+				overridable,
+				enum,
+				auto_expand,
+				fuzzy_extract,
+				Webhook,
+				active,
+				url,
+				headers
+			}
+		}
+	}{}
 	
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
