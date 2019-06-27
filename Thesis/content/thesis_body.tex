@@ -31,7 +31,7 @@ Git provides functionalities for saving snapshots of specific iteration in your 
 \begin{samepage}
     These problems are:
     \begin{itemize}
-        \item merging work done by multiple users
+        \item merging work done by multiple developers
         \item ensuring that a stable version of a project is saved while developers are working on more experimental changes
         \item giving the team the ability to easily track and revert changes that have been made.
     \end{itemize}
@@ -105,7 +105,7 @@ In order to provide a tangible benefit, the DSL must fulfill a number of require
     \item It needs to be significantly shorter than the JSON representation of an agent.
     \item It needs to create smaller diffs\footnote{A diff refers to the sum of changed lines in a change.} than the JSON representation when making changes.
     \item It needs to be more readable than the JSON representation.
-    \item A user needs to be able to automatically compile and update an agent on the web from DSL code.
+    \item A developer needs to be able to automatically compile and update an agent on the web from DSL code.
 \end{itemize}
 
 During the process of my work it became clear that solving the above mentioned problems made it necessary to find solutions for every one of these requirements.
@@ -227,7 +227,7 @@ The last and most vital step is to create an intent that the agent can understan
 \subsection{Usage}
 
 When developing with the DSL I designed, in order to update the Dialogflow agent on the web, you run the compiler for the DSL using the DSL code as input; the output will be a full JSON representation of the Dialogflow agent which can be sent to the Dialogflow V2API.
-The V2API allows you to update the online version of your agent using the JSON files. For this you can either use the Dialogflow-Cli tool \cite{Charles2018} the Dialogflow comunity has built, or build your own script like I did.
+The V2API allows you to update the online version of your agent using the JSON files. For this you can either use the Dialogflow-Cli tool \cite{0xcaff2018} the Dialogflow comunity has built, or build your own script like I did.
 
 \subsection{Dynamic Entity Control}
 
@@ -395,7 +395,7 @@ in order to include a file with pre-generated training phrases. A reader can imm
 In contrast, the JSON representation is modeled after the structure of a JavaScript object and is meant to accurately describe objects and their attributes in computer progams. It does not use idioms from natural language to attempt intuitive understanding of an agent's behaviour.
 A specific advantage of the DSL version is that it was designed from the beginning to intuitively convey agent behaviour.
 
-A specific example worth mentioning here is the definition of a fallback intent, which is an intent only used if no other intent can match the user's utterance.
+An example worth mentioning here is the definition of a fallback intent, which is an intent only used if no other intent can match the user's utterance.
 In the JSON representation a fallback intent is only different from a regular intent by a boolean value at the very bottom of the intent description:
 \begin{JSON}
     "fallbackIntent": true,
@@ -438,7 +438,7 @@ If an agent does not have a description, the JSON representation will carry the 
     "description": "",
 \end{JSON}
 Instead, the DSL version simply will not have a line concerning the description, since it is not changed from it's default value of being an empty string.
-The same is done for a large number of settings that a developer is able to change in DSL code but that have a default value in Dialogflow. They need not be displayed in DSL code if the deafult value is not changed.
+The same is done for a large number of settings that a developer is able to change in DSL code but that have a default value in Dialogflow. They need not be displayed in DSL code if the default value is not changed.
 
 
 \section{Automatic compilation and update}
