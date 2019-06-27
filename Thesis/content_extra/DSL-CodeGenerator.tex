@@ -106,8 +106,11 @@ class DialogflowConfigGenerator extends AbstractGenerator {
     )
   }
 
-  protected def void generateEntityUsersaysFile(IFileSystemAccess2 fsa, 
-    AgentImpl agent, EntityTypeImpl entityType) {
+  protected def void generateEntityUsersaysFile(
+    IFileSystemAccess2 fsa,
+    AgentImpl agent,
+    EntityTypeImpl entityType
+  ) {
     if(entityType.dynamic) return;
     fsa.generateFile(
       '''#agent.name#/entities/#entityType.name
@@ -183,7 +186,8 @@ class DialogflowConfigGenerator extends AbstractGenerator {
                       "text": "#datum.param.name# ",
                       "alias": "#datum.param.name#",
                       "meta": "@sys.#
-                        datum.param.builtInType.toString().replace('_','-')#",
+                        datum.param.builtInType.toString()
+                        .replace('_','-')#",
                       "userDefined": true
                     }
                   #ENDIF#
