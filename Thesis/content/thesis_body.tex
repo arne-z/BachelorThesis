@@ -483,7 +483,7 @@ This setup allows a "hands free" approach to developing for Dialogflow, where al
 \section{Concessions and Drawbacks}
 
 Working with the DSL instead of Dialogflow directly comes with some drawbacks, as I had to make certain concessions during development. 
-These concessions can be devided into four categories.
+These concessions can be divided into four categories.
 
 \subsection{Design Choices differing from the Dialogflow Website}
 As I stated before, I attempted to stay as close to the Dialogflow website as possible, but there are some elements of the website that do not lend themselves to being translated into a text based configuration.
@@ -493,15 +493,15 @@ Similarly, Dialogflow switched from what is called \textit{template mode}, where
 In order to translate this to a text based interface, I considered a solution that would have looked as follows:
 
 \begin{DSL}
-    intent SampleIntent
+    Intent SampleIntent
         trained with phrase
             "Turn {on : state} the AC"
 \end{DSL}
 
-I eventually decided against this, as I perceived this solution to make both writing and reading the training phrases unneccessaryly difficult. Instead I decided to continue using the template format for the DSL as seen below:
+I eventually decided against this, as I perceived this solution to make both writing and reading the training phrases unneccessarily difficult. Instead I decided to continue using the template format for the DSL as seen below:
 
 \begin{DSL}
-    intent SampleIntent
+    Intent SampleIntent
         trained with phrase
             "Turn" state "the AC"
 \end{DSL}
@@ -528,7 +528,7 @@ This means that some projects might be unable to use this prototype, as they rel
 It was my self-set task for this Bachelor thesis to find a solution for shortcomings in available version control for Dialogflow agents. In order to accomplish this, I built a prototype of a DSL for describing Dialogflow agents.
 When starting this project my assumption was, that there should and could be a solution for using version control with a Dialogflow agent that is simpler, shorter, and more readable than saving the JSON cofiguration of the agent in source control.\\
 The solution I eventually built is aimed at teams of developers working longer term on maintaining an agent throughout it's coevolution with their application.
-I arrived at this solution because, for the very beginning, I wanted to find a way for developers to work with dialogflow without leaving their familiar way of working.\\
+I arrived at this solution because, from the very beginning, I wanted to find a way for developers to work with dialogflow without leaving their familiar way of working.\\
 In order to build this DSL, I had to design a grammar to describe the syntax possible in the language and build a code generator using this grammar to generate JSON files.\\
 In order to test and evaluate this prototype, I designed five test cases in each of which I compared the performance of the prototype with that of the established way of saving the agent configuration using JSON files.\\
 In result, I have found that the DSL provides a measurable improvement in both the size of agent configurations and the size of diffs created by changes to the configuration - to be more precise: a 87.15\% reduction in size and a 88.9\% reduction in diff size on average respectively (see \autoref{ResultTables}) - while also improving readability and almost entirely maintaining the ease of updating the agent's online version.\\
@@ -540,7 +540,7 @@ Some further projects one could consider are:
 \begin{itemize}
     \item A larger survey for better evaluation of long term benefits to teams working with this tool.
     \item Finding out whether it is possible to use a DSL like this to create agents in a uniform language for both Dialogflow and Amazon Lex.
-    \item Build a production-ready tool from the prototype that achieves full feature parity with the dialogflow web interface.
+    \item Build a production-ready tool from the prototype that achieves full feature parity with the Dialogflow web interface.
     \item Build a generator for DSL code from Dialogflow JSON exports, to help teams reduce the cost of switching to the DSL solution.
 \end{itemize}
 

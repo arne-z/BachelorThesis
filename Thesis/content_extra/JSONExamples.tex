@@ -3,7 +3,7 @@
 \label{RoomTemperature Agent JSON}
 \subsection{Agent}
 \subsubsection{agent.json}
-\begin{lstlisting}
+\begin{JSON}
 {
   "description": "",
   "language": "en",
@@ -21,16 +21,16 @@
   "mlMinConfidence": 0.3,
   "onePlatformApiVersion": "v2"
 }
-\end{lstlisting}
+\end{JSON}
 \subsubsection{package.json}
-\begin{lstlisting}
+\begin{JSON}
 {
   "version": "1.0.0"
 }
-\end{lstlisting}
+\end{JSON}
 \subsection{Entities}
 \subsubsection{ACState.json}
-\begin{lstlisting}
+\begin{JSON}
 {
   "id": "31b65f06-3c68-4335-bedb-7eed2c98404d",
   "name": "ACState",
@@ -39,9 +39,9 @@
   "automatedExpansion": true,
   "allowFuzzyExtraction": false
 }	
-\end{lstlisting}
+\end{JSON}
 \subsubsection{ACState\_entries\_en.json}
-\begin{lstlisting}
+\begin{JSON}
 [
   {
     "value": "Off",
@@ -60,11 +60,11 @@
     ]
   }
 ]
-\end{lstlisting}
+\end{JSON}
 
 \subsection{Intents}
 \subsubsection{SwitchAC.json}
-\begin{lstlisting}
+\begin{JSON}
 {
   "id": "1b3f96d9-3e41-4ccc-95be-601237d1d20d",
   "name": "SwitchAC",
@@ -101,9 +101,9 @@
   "fallbackIntent": false,
   "events": []
 }
-\end{lstlisting}
+\end{JSON}
 \subsubsection{SwitchAC\_usersays\_en.json}
-\begin{lstlisting}
+\begin{JSON}
 [
   {
   "id": "3269ba06-10da-4003-ba29-dd2348642a86",
@@ -200,7 +200,7 @@
   "updated": 1560426984
   }
 ]
-\end{lstlisting}
+\end{JSON}
 
 \section{Test Agents 2-5}
 The other four test agents are not printed here to prevent the appendix from becoming too long. They can be found on my GitHub instead.
@@ -211,7 +211,7 @@ The other four test agents are not printed here to prevent the appendix from bec
 \section{RoomTemperature Agent}
 \label{RoomTemperature Agent JSONDiff}
 
-\begin{lstlisting}
+\begin{JSON}
   --- a/TestCase01_RoomTemperature/DialogflowExport/intents/ChangeTemperature.json
   +++ b/TestCase01_RoomTemperature/DialogflowExport/intents/ChangeTemperature.json
   @@ -21,6 +21,14 @@
@@ -384,7 +384,7 @@ The other four test agents are not printed here to prevent the appendix from bec
      {
        "id": "5940a192-1fe4-4849-bea3-aeff5824c916",
        "data": [  
-\end{lstlisting}
+\end{JSON}
 
 \section{Test Agents 2-5}
 The diffs created from the other four test agents are not printed here to prevent the appendix from becoming too long. They can be found on my GitHub instead.\footnote{See https://github.com/arne-z/BachelorThesis/commits/master all commits that are prefixed with "Test Case".}
