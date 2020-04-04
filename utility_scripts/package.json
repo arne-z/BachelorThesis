@@ -3,7 +3,7 @@
     "adm-zip": "^0.4.13",
     "dialogflow": "^0.8.2",
     "dotenv": "^7.0.0",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.3",
     "rimraf": "^2.6.3"
   }
 }
